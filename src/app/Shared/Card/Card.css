@@ -1,0 +1,599 @@
+.pree-date {
+  color: #fff;
+  text-align: center;
+}
+.pree-date {
+  padding: 3px 0;
+  background: var(--primary);
+  margin-top: -10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.number-card-os {
+  background: unset;
+  border-radius: 17px;
+  position: relative;
+  display: flex;
+  border: 2px solid var(--primary);
+  height: 100%;
+}
+
+.number-card-os:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  bottom: 0;
+  left: 0;
+  border-radius: 17px;
+  z-index: -99999 !important;
+  opacity: 0.1;
+  transition: 0.3s;
+}
+.number-card-os:hover:after {
+  transform: rotate(8deg);
+  transition: 0.3s;
+}
+.number-card-main-row-os {
+  background: #fff;
+  border-radius: 17px;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.number-card-price-data-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  flex-direction: row-reverse;
+  align-items: end;
+}
+.number-card-review-star-os,
+.number-card-timer span.days {
+  display: none;
+}
+.number-card-crown-wishlist-data-os button span {
+  display: flex;
+}
+.number-card-crown-os {
+  background: #fff;
+  border-radius: 7px;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+.number-card-adjustment-rs,
+.number-card-vipNumber-os {
+  font-weight: 800;
+  line-height: 40px;
+  color: #000;
+  padding: 12px;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+
+  font-style: normal;
+  cursor: pointer;
+  display: flex;
+}
+.number-card-vipNumber-os {
+  font-size: 34px;
+  justify-content: center;
+}
+.number-card-adjustment-rs {
+  font-size: 32px;
+  justify-content: center;
+}
+.number-card-timer {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  color: #fff;
+  width: fit-content;
+  position: absolute;
+  left: 20px;
+  padding: 3px 15px;
+  background: #ef6b19;
+  top: 40px;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  box-shadow: 3px 4px 10px gray;
+  rotate: -5deg;
+}
+.number-card-timer-discount-os {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: right;
+  color: #fff;
+  border-radius: 5px;
+}
+.number-card-price-os {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 25px;
+  text-align: center;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.number-card-compareAt-price-os,
+span.number-card-compareAt-price-os {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13.5263px;
+  line-height: 16px;
+  text-align: center;
+  color: #82838e;
+  text-decoration: line-through;
+}
+.number-card-crown-wishlist-data-os button span svg {
+  height: 18px;
+  width: auto;
+}
+.number-card-wishlist-os {
+  border-radius: 7px;
+  border: none;
+  padding: 8px;
+  background: #e0d0ff;
+}
+.number-card-crown-wishlist-data-os {
+  display: flex;
+  gap: 5px;
+}
+.number-card-total-sum-cod-data-row-os {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.number-card-sponsored-os,
+.number-card-total-cod-acknowledge-os span {
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.number-card-price-review-stars-os {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.gk-card-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+/* .number-card-timer-data-os {
+  position: relative;
+  width: 100%;
+  background: var(--primary);  
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+.number-card-total-cod-acknowledge-os span {
+  font-size: 9.63279px;
+  line-height: 11px;
+  padding: 8px 12px;
+  background: #d80027;
+  border-radius: 1.74589px;
+}
+.number-card-total-cod-acknowledge-os {
+  display: flex;
+  justify-content: center;
+  border-left: 1px dashed #898989;
+}
+.number-card-sponsored-os {
+  font-size: 16px;
+  line-height: 20px;
+  background: var(--secondary);
+  border-radius: 4.60844px 4.60844px 0 0;
+  padding: 8px 1rem;
+  position: absolute;
+  top: -36px;
+  left: 0;
+  width: 40%;
+}
+
+.preBook-button-os {
+  font-style: normal;
+  font-weight: 700;
+}
+/* .number-card-crown-os.active .outlined-heart path {
+  fill:  var(--primary) ;
+} */
+.wishlist-heart-os {
+  position: relative;
+}
+.wishlist-heart-os.active {
+  opacity: 1;
+  right: 0;
+}
+
+.animation.shake {
+  animation: 0.4s ease-in-out forwards shakeCart;
+}
+.preBook-button-os {
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  height: 48px;
+  margin: 0 auto;
+  text-decoration: none;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  background: var(--secondary);
+  color: var(--darktext);
+  transition: 0.3s;
+}
+.preBook-button-os:hover {
+  color: #fff;
+  background: var(--primary);
+  border: 2px solid var(--secondary);
+  flex-direction: row-reverse;
+  transition: 0.3s;
+}
+@keyframes xAxis {
+  100% {
+    transform: translateX(calc(50vw - 105px));
+  }
+}
+@keyframes yAxis {
+  100% {
+    transform: translateY(calc(-50vh + 75px));
+  }
+}
+@keyframes shakeCart {
+  25% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  75% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@media screen and (max-width: 1600px) {
+  .number-card-wishlist-os {
+    padding: 6px;
+  }
+  .number-card-price-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .number-card-crown-wishlist-data-os button span svg {
+    height: 14px;
+    width: auto;
+  }
+  .number-card-adjustment-rs,
+  .number-card-vipNumber-os {
+    font-size: 30px;
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: 1028px) {
+  .gk-card-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .number-card-os {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .number-card-total-sum-acknowledge-os {
+    line-height: 18px !important;
+  }
+  .number-card-adjustment-rs,
+  .number-card-vipNumber-os {
+    font-size: 21px;
+    line-height: 30px;
+    padding: 5px 7px;
+  }
+  .family-card-os .number-card-price-data-os {
+    border-radius: 3px 3px 0 0 !important;
+  }
+  .preBook-button-os {
+    padding: 0 5px !important;
+    height: 30px;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 15px !important;
+  }
+
+  .wishlist-heart-os {
+    right: 0;
+    opacity: 1;
+  }
+  .number-card-main-row-os,
+  .number-card-os {
+    padding: 0;
+  }
+  .number-card-crown-os {
+    padding: 4px;
+  }
+  .number-card-crown-wishlist-data-os button span svg {
+    height: 13px;
+  }
+  .number-card-review-star-os span svg {
+    width: 12px;
+    height: auto;
+  }
+  .number-card-review-star-os span {
+    display: flex;
+  }
+  .number-card-vipNumber-os .number-card-adjustment-rs {
+    font-size: 17px;
+    line-height: 20px;
+    padding: 0.3rem 0;
+  }
+
+  .number-card-total-sum-cod-data-row-os {
+    padding-top: 8px;
+  }
+
+  .number-card-buy-now-os {
+    bottom: -18px;
+  }
+  .gk-card-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .number-card-timer-data-os {
+    padding: 10px 5px;
+  }
+  .pree-date {
+    font-size: 12px !important;
+  }
+}
+@media screen and (max-width: 375px) {
+  .number-card-vipNumber-os {
+    font-size: 20px;
+    line-height: 30px;
+    padding: 5px 7px;
+  }
+  .pree-date {
+    font-size: 12px;
+  }
+  .number-card-vipNumber-os .number-card-adjustment-rs {
+    font-size: 22px;
+  }
+  .number-card-total-sum-acknowledge-os {
+    font-weight: 700;
+    font-size: 14px !important;
+    line-height: 20px;
+  }
+
+  .number-card-price-data-os {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 5px;
+    flex-direction: row-reverse;
+    gap: 2px;
+  }
+  .gk-card-main {
+    justify-content: space-between;
+    padding: 5px;
+  }
+
+  .number-card-timer-discount-os {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: right;
+  }
+  .number-card-timer-data-os {
+    position: relative;
+    width: 100%;
+    padding: 10px 7px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary);
+    align-items: center;
+  }
+  .number-card-timer-discount-os span {
+    padding: 0;
+  }
+  .number-card-price-os {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .number-card-review-star-os {
+    padding-bottom: 0.2rem;
+  }
+  .number-card-crown-wishlist-data-os {
+    gap: 2px;
+  }
+  .number-card-timer {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+}
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.modal-body {
+  text-align: center;
+}
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.modal-button-no,
+.modal-button-yes {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.modal-button-no {
+  background-color: #e74c3c;
+  color: #fff;
+}
+.modal-button-yes {
+  background-color: #2ecc71;
+  color: #fff;
+}
+.color-of-product {
+  background: #dadae5;
+}
+:where(.css-dev-only-do-not-override-1km3mtt).ant-modal .ant-modal-footer {
+  text-align: end;
+  background: 0 0;
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+@media screen and (max-width: 1440px) {
+  .number-card-total-sum-acknowledge-os {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    color: #000;
+  }
+
+  .number-card-total-sum-cod-data-row-os {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .number-card-timer {
+    font-size: 10px;
+    line-height: 14px;
+    font-weight: 500;
+    left: 5px;
+    top: 32px;
+    padding: 3px 5px;
+    border: 1px solid #fff;
+  }
+  .PDP-product-col-11-os .number-card-timer {
+    rotate: 0deg;
+  }
+
+  .number-card-timer-discount-os {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+  }
+}
+@media screen and (max-width: 375px) {
+  .number-card-timer-discount-os {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+  }
+  .number-card-timer {
+    font-size: 9px;
+  }
+  .number-card-price-os {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .number-card-timer {
+    font-size: 11px;
+    padding: 3px 10px;
+    top: 40px;
+  }
+  .number-card-total-sum-cod-data-row-os {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .preBook-button-os,
+  .visit-store-button-os {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .preBook-button-os {
+    padding: 0 1rem;
+  }
+  .visit-store-button-os {
+    height: 35px;
+  }
+  .number-card-price-data-os {
+    padding: 0.5rem;
+  }
+  .gk-card-main {
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .preBook-button-os {
+    font-size: 12px !important;
+  }
+}
+
+.svg-inline--fa {
+  fill: none !important;
+  stroke: var(--primary);
+}

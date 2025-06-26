@@ -1,0 +1,88 @@
+.signIn-page-login-with-otp-os a {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #9b9b9b;
+  display: flex;
+  justify-content: flex-end;
+}
+.signIn-new-customer-register-os,
+.signIn-page-heading-os {
+  font-size: 20px;
+  line-height: 24px;
+}
+.signIn-page-main-heading-os {
+  font-size: 24px;
+  line-height: 28px;
+  padding-bottom: 2rem;
+}
+.loginWith-passwd-opt-os,
+.resendOtp-btn-os {
+  font-size: 16px;
+  text-align: right;
+  text-decoration-line: underline;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.loginWith-passwd-opt-os,
+.resendOtp-btn-os,
+.signIn-page-countrySelector-os .css-13cymwt-control {
+  font-style: normal;
+  font-weight: 500;
+  line-height: 119.5%;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+}
+.signIn-page-countrySelector-os .css-13cymwt-control {
+  padding: 0.5rem;
+  font-size: 17px;
+  background: #fff;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+}
+/* .signIn-page-countrySelector-os .css-13cymwt-control:hover {
+  border-color: unset;
+} */
+.signIn-page-countrySelector-os .css-1xc3v61-indicatorContainer:hover {
+  color: #7f7f7f;
+}
+.signIn-page-row-os {
+  max-width: 600px;
+}
+.resendOtp-loginWithPass-btn-os {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.resendOtp-btn-os {
+  border: none;
+}
+@media screen and (max-width: 576px) {
+  .signIn-page-row-os {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+  .register-form-os {
+    padding: 0 1rem;
+  }
+  .signIn-page-main-heading-os {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .signIn-new-customer-register-os,
+  .signIn-page-heading-os {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .signIn-page-countrySelector-os .css-13cymwt-control {
+    padding: 0.3rem;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+  }
+}

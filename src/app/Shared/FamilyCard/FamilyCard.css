@@ -1,0 +1,389 @@
+.number-Family {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: #fff;
+}
+
+.familyPack-list-selected-price-os {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.number-Family .checkmark {
+  background-color: var(--primary);
+  border: 1px solid #fff !important;
+  border-radius: 15px;
+}
+
+.family-all-label label {
+  color: #fff;
+}
+
+.gk-border-family {
+  border-bottom: 1px solid #161616;
+  margin: 12px;
+}
+
+.family-card-os .container_checkbox-os .checkmark {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.family-card-os .container_checkbox-os:hover input ~ .checkmark {
+  border-radius: 15px;
+}
+
+.family-card-os .container_checkbox-os input:checked ~ .checkmark {
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+}
+
+.family-card-rupay {
+  display: flex;
+  align-items: center;
+}
+
+.family-card-os .container_checkbox-os .checkmark:after {
+  left: 7px;
+  top: 2px;
+  width: 7px;
+  height: 14px;
+}
+
+.family-card-os .number-card-price-data-os {
+  border-bottom: 1px dashed #898989;
+  align-items: center;
+  flex-direction: row-reverse;
+  background: var(--primary);
+  border-radius: 10px 10px 0 0;
+}
+
+.family-card-list-row-os {
+  padding: 6px;
+  max-height: 322px;
+  overflow-y: auto;
+}
+
+.all-div span.checkmark {
+  border: 2px solid #fff !important;
+}
+
+.all-div label {
+  color: #fff !important;
+}
+
+.btn-low {
+  border-bottom: 1px solid;
+}
+
+.family-card-list-row-os li {
+  padding: 0 6px;
+  margin: 6px 0;
+  background: #fff;
+}
+
+.family-card-list-row-os li:hover {
+  background: var(--lightprimery);
+  border-radius: 8.14172px;
+}
+
+.family-card-list-row-os .familyPack-selected-checkbox-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.family-card-list-row-os .container_checkbox-os .checkmark {
+  position: absolute;
+  top: 25%;
+}
+
+.family-card-list-row-os::-webkit-scrollbar-thumb {
+  background-color: #898989;
+}
+
+.family-card-list-row-os::-webkit-scrollbar {
+  width: 2px;
+  background-color: #fff;
+}
+
+.family-card-list-row-os::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  background-color: #fff;
+}
+
+.family-card-plan-buyNow-btn-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8.14172px;
+  gap: 4px;
+}
+
+.family-card-plan-price-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 12px;
+  color: var(--primary);
+}
+
+.family-card-plan-by-selector-os {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.family-card-plan-buyNow-btn-os button {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 3.55103px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 10px 1rem;
+  text-decoration: none;
+  height: 40px;
+  border-style: none;
+}
+
+.family-card-plan-buyNow-btn-os button:hover {
+  background: var(--secondary);
+  color: var(--derktext);
+}
+
+.family-card-plan-buyNow-btn-os button[disabled] {
+  opacity: 0.8;
+}
+
+.family-card-plan-buyNow-btn-os a span,
+.family-card-plan-buyNow-btn-os span {
+  display: flex;
+}
+
+.number-card-wishlist-os.active span svg {
+  fill: rgb(133, 71, 254);
+}
+
+.familyPack-selected-checkbox-col-os-1 {
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 20px;
+}
+
+.font-familyPack-selected-rs {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+@media only screen and (max-width: 767px) {
+  .family-card-list-row-os .familyPack-selected-checkbox-os {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .family-card-list-row-os .container_checkbox-os .checkmark {
+    top: 4px;
+    left: unset;
+    bottom: 8px;
+    right: 3px;
+  }
+
+  .family-card-plan-price-os {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 12px;
+    color: var(--primary);
+  }
+
+  .family-card-plan-buyNow-btn-os button {
+    padding: 0 3px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .FamilyPack-plan-row-os {
+    gap: 1rem 3.33%;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .family-card-plan-buyNow-btn-os {
+    justify-content: space-between;
+    padding: 8px;
+    margin: 0;
+    border-radius: 4px;
+  }
+
+  .family-card-list-row-os li {
+    padding: 0;
+    margin: 0 0 5px;
+  }
+
+  .family-card-os .number-card-main-row-os {
+    padding: 0;
+    border-radius: 8px;
+  }
+
+  .family-card-os .number-card-price-data-os,
+  .number-card-price-data-os {
+    padding: 6px 5px !important;
+    margin: 0 !important;
+  }
+
+  .number-card-price-data-os {
+    gap: 4px;
+  }
+
+  .familyPack-selected-checkbox-col-os-1 {
+    width: 100%;
+  }
+
+  .familyPack-list-selected-price-os {
+    opacity: 0.8;
+  }
+
+  .number-card-os.family-card-os {
+    border-radius: 8px;
+  }
+
+  .family-card-os .container_checkbox-os .checkmark:after {
+    left: 7px;
+    top: 5px;
+    width: 5px;
+    height: 8px;
+  }
+
+  .family-card-os .container_checkbox-os .checkmark {
+    height: 21px;
+    width: 21px;
+  }
+
+  .familyPack-seclect-all-checkbox-os .container_checkbox-os {
+    padding-left: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .family-card-plan-by-selector-os {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: #333;
+    gap: 4px;
+    justify-content: unset;
+  }
+
+  .family-card-list-row-os {
+    padding: 4px;
+  }
+
+  .font-familyPack-selected-rs {
+    font-size: 16px !important;
+  }
+
+  .familyPack-list-selected-price-os {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .family-card-list-row-os .familyPack-selected-checkbox-os {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+    flex-wrap: wrap;
+    gap: 2px;
+    flex-direction: column;
+  }
+
+  .family-card-plan-buyNow-btn-os {
+    gap: 10px;
+  }
+
+  .family-card-plan-price-os {
+    font-size: 14px !important;
+    line-height: 12px;
+  }
+
+  .family-card-plan-price-os svg {
+    height: 13px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .familyPack-selected-checkbox-col-os-1 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .font-familyPack-selected-rs {
+    font-size: 18px;
+  }
+
+  .family-card-plan-buyNow-btn-os button {
+    font-size: 10px;
+  }
+
+  .family-card-plan-price-os {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 12px;
+    color: var(--primary);
+  }
+
+  .family-card-plan-by-selector-os {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #333;
+    gap: 4px;
+  }
+
+  .family-card-os .number-card-main-row-os {
+    padding: 0;
+    border-radius: 8px;
+  }
+
+  .familyPack-list-selected-price-os {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

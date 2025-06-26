@@ -1,0 +1,29 @@
+  /* Hide button on mobile (show on desktop) */
+  .chat-button {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chat-button-desktop {
+    padding: 10px 15px;
+    background-color: #691EDE;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+  }
+   
+  .chat-button-desktop:hover {
+    background-color: #4e15a8;
+  }
+  
+  @media (max-width: 768px) {
+    .chat-button {
+      display: none;
+    }
+  }
+  

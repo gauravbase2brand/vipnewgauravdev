@@ -1,0 +1,718 @@
+import React, { useContext, useEffect, useRef, useState } from "react";
+import SubmitButton from "../Shared/SubmitButton/SubmitButton";
+import axios from "axios"; // Import axios for HTTP requests
+import "./Numerology.css";
+import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { getOrderNumId, getProfile } from "../Services/Services";
+import { useGetQueryParams } from "../utils";
+
+const NumerologyPopup = () => {
+  const { queryParams } = useGetQueryParams();
+  const { setNumerologyPop, user, setNameUpdate } = useContext(AppStateContext);
+  const panelImg = process.env.NEXT_PUBLIC_IMAGES;
+  const [area, setArea] = useState([]);
+  const Router = useRouter();
+  const [data, setData] = useState({
+    full_name: "",
+    dob: "",
+    mobileNumber: "",
+    email: "",
+    pin_code: "",
+    area: "",
+    lag_lat: "",
+    state_name: "",
+    time_of_birth: "",
+    district: "",
+    address: "",
+  });
+  const [rawTime, setRawTime] = useState("");
+  const reff = useRef(false);
+  const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
+  // otp states ends
+  const [loading, setLoading] = useState(false);
+  const [profile, setProfile] = useState({
+    first_name: "",
+    mobile_number: "",
+    primary_email: "",
+    postal_code: "",
+    billing_address: "",
+    city: "",
+    district: "",
+    state: "",
+  });
+  const [formData, setFormData] = useState({
+    first_name: profile?.full_name?.split(" ")[0] || "",
+    last_name: profile?.full_name?.split(" ")[1] || "",
+    mobile_number: profile?.mobile || "",
+    primary_email: profile?.email || "",
+    postal_code: profile?.zip_code || "",
+    amount: "",
+    billing_address: profile?.address || "",
+    original_amount: "",
+    city: profile?.city || "",
+    post_office: "",
+    district: "",
+    state: profile?.state || "",
+    seller_id: "2",
+    otp: "",
+  });
+
+  useEffect(() => {
+    if (queryParams?.isRetry) {
+      reff.current = true;
+    }
+  }, [queryParams]);
+
+  const today = new Date().toISOString().split("T")[0];
+  //user profile code
+  useEffect(() => {
+    if (user?.token) {
+      getProfile(user?.token)?.then((res) => {
+        setProfile(res);
+        const address = res?.address || {};
+        const dateBirth = res?.contactsubdetails || {};
+        const fullName = `${res?.firstname || ""} ${
+          res?.lastname || ""
+        }`.trim(); // Remove leading/trailing spaces from the full name
+        setFormData((prevState) => ({
+          ...prevState,
+          first_name: `${res?.firstname} ${res.lastname}` || "",
+          last_name: res?.lastname || "",
+          mobile_number: res?.mobile || "",
+          primary_email: res?.email || "",
+          postal_code: address?.zip_code || "",
+          billing_address: address?.address || "",
+          city: address?.city || "",
+          district: res?.contact_cf?.district || "",
+          state: address?.state || "",
+          seller_id: "2",
+          full_name: fullName,
+        }));
+        setData((prevState) => ({
+          ...prevState,
+          full_name: `${res?.firstname} ${res.lastname}` || "",
+          mobileNumber: res?.mobile || "",
+          email: res?.email || "",
+          pin_code: address?.zip_code || "",
+          area: address?.city || "",
+          district: res?.contact_cf?.district || "",
+          state_name: address?.state || "",
+          dob: dateBirth?.date_of_birth || "",
+          address: address?.address || "",
+          time_of_birth: res?.contact_cf?.time_of_birth,
+        }));
+        if (res?.contact_cf?.time_of_birth) {
+          setRawTime(res.contact_cf.time_of_birth);
+        }
+        setLoading(false);
+      });
+    }
+  }, [user]);
+
+  // Payment Integration code
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    script.onload = async () => {};
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [user]);
+
+  // Payment Integration code
+  const razarAmount = 1999;
+  function handleRzpClick(e) {
+    const token = user?.token; // get the user's token data
+    const orderData = {
+      amount: razarAmount,
+      currency: "INR",
+    };
+
+    getOrderNumId(orderData, token).then((res) => {
+      // Create Razorpay options for the payment form
+      const options = {
+        key: "rzp_live_mMfqxRhCpzrpog",
+        name: "VIP NUMBER SHOP",
+        description: "Payment for VIP Mobile Number",
+        image: `${panelImg}/assets/img/vip-images/VIP-icon-2_iyiaaj.webp`,
+        order_id: res?.data?.data?.order_id,
+        handler: function (response) {
+          ajaxRequest(response, false);
+        },
+        prefill: {
+          name: formData.first_name + " " + formData.last_name,
+          email: formData.primary_email,
+          contact: formData.mobile_number,
+        },
+        notes: {
+          address: formData.billing_address,
+        },
+        theme: {
+          color: "#3399cc",
+        },
+        method: "upi",
+      };
+      const rzp1 = new window.Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        ajaxRequest(response, true);
+      });
+      rzp1 && rzp1.open();
+    });
+  }
+  // Payment Integration code
+  function ajaxRequest(response, orderdeclined) {
+    let data;
+    let leadPayload = {};
+    if (response.error) {
+      data = {
+        payment_status: 0,
+        amount: razarAmount,
+        user_id: 613,
+        razorpay_payment_id: response.error.metadata.payment_id,
+        razorpay_order_id: response.error.metadata.order_id,
+        error_code: response.error.code,
+        error_description: response.error.description,
+        error_source: response.error.source,
+        error_step: response.error.step,
+        error_reason: response.error.reason,
+      };
+      leadPayload.payment_status = "failed";
+      leadPayload.payment_id = response.error.metadata.payment_id; // Add payment_id to leadPayload
+    } else {
+      data = {
+        payment_status: 1,
+        amount: razarAmount,
+        user_id: 613,
+        razorpay_payment_id: response.razorpay_payment_id,
+        razorpay_order_id: response.razorpay_order_id,
+        razorpay_signature: response.razorpay_signature,
+      };
+      leadPayload.payment_status = "success";
+      leadPayload.payment_id = response.razorpay_payment_id; // Add payment_id to leadPayload
+    }
+    const token = user?.token; // get the user's token data
+    const orderId =
+      response.razorpay_order_id || response.error.metadata.order_id;
+    fetch(`${apiUrl}/web/transaction/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // use the user's token data
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Response is successful
+          response.json().then((data) => {
+            if (orderdeclined) {
+              localStorage.setItem("vipDeclined", true);
+              Router.push("/payment-declined?orderId=" + orderId);
+            } else {
+              toast.success(
+                "Thanks for your payment Please check your WhatsApp for Numerology report."
+              );
+              try {
+                axios.post(
+                  `${apiUrl}/web/profile/update`,
+                  {
+                    action: "Numerology Payment",
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${user?.token}`,
+                    },
+                  }
+                );
+              } catch (error) {
+                console.error("Error during second update:", error);
+              }
+            }
+          });
+        } else {
+          // Response is not successful
+          response.json().then((data) => {
+            toast.error(data.message);
+            localStorage.setItem("vipDeclined", true);
+            Router.push("/payment-declined");
+            console.error(data);
+          });
+        }
+      })
+      .catch((error) => console.error(error));
+  }
+
+  useEffect(() => {
+    if (data.area && area.length > 0) {
+      const selectedOffice = area.find((item) => item.area === data.area);
+      if (selectedOffice) {
+        const lag_lat = `${selectedOffice?.lat},${selectedOffice?.lng}`;
+        setData((prevData) => ({
+          ...prevData,
+          lag_lat: lag_lat,
+        }));
+      }
+    }
+  }, [data.area, area]);
+  // Fetch country details when pin_code changes
+  useEffect(() => {
+    const fetchCountryDetails = async () => {
+      // setLoading(true);
+      if (data.pin_code.length === 6) {
+        const options = {
+          method: "GET",
+          url: `https://india-pincode-with-latitude-and-longitude.p.rapidapi.com/api/v1/pincode/${data?.pin_code}`,
+          // params: { pincode: data?.pin_code },
+          headers: {
+            // 'x-rapidapi-key': 'ee11a73520msh3bc2c5ff2b05944p1db01ajsnb7329a946610',
+            "x-rapidapi-key":
+              "415e3ad969msha200b348b290cdfp12dcafjsn9e2296ee4904",
+            "x-rapidapi-host":
+              "india-pincode-with-latitude-and-longitude.p.rapidapi.com",
+          },
+        };
+
+        try {
+          const response = await axios.get(options.url, {
+            params: options.params,
+            headers: options.headers,
+          });
+          setArea(response.data);
+          setLoading(false);
+        } catch (error) {
+          console.error(
+            "Error fetching country details:",
+            error.response ? error.response.data : error.message
+          );
+          toast.error("please check your pin code");
+        }
+      }
+    };
+
+    fetchCountryDetails();
+  }, [data?.pin_code]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "time_of_birth") {
+      setRawTime(value);
+      const [hours, minutes] = value.split(":");
+      const period = hours >= 12 ? "PM" : "AM";
+      const formattedHours = hours % 12;
+      const formattedValue = `${formattedHours}:${minutes}${period}`;
+      setData({ ...data, [name]: formattedValue });
+    } else {
+      setData({ ...data, [name]: value });
+    }
+  };
+
+  const handleAreaChange = (e) => {
+    const selectedOffice = area.find((item) => item.area === e.target.value);
+    if (selectedOffice) {
+      const lag_lat = `${selectedOffice?.lat},${selectedOffice?.lng}`;
+      setData((prevData) => ({
+        ...prevData,
+        area: selectedOffice?.area,
+        lag_lat: lag_lat,
+        state_name: selectedOffice?.state,
+        district: selectedOffice?.district,
+      }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (loading) return;
+    const emailInput = document.querySelector("input[name='email']");
+    if (emailInput && !emailInput.checkValidity()) {
+      emailInput.reportValidity(); // Show the browser's error message
+      return;
+    }
+    if (user?.token) {
+      const emptyFields = [];
+      Object.keys(data).forEach((key) => {
+        // Exclude 'district', 'address', and 'state_name' from validation
+        if (
+          data[key] === "" &&
+          !["district", "address", "state_name", "lag_lat"].includes(key)
+        ) {
+          let fieldName;
+          switch (key) {
+            case "full_name":
+              fieldName = "Full Name";
+              break;
+            case "mobileNumber":
+              fieldName = "Mobile Number";
+              break;
+            case "email":
+              fieldName = "Email";
+              break;
+            case "dob":
+              fieldName = "Date of Birth";
+              break;
+            case "pin_code":
+              fieldName = "Pin Code";
+              break;
+            case "area":
+              fieldName = "Area";
+              break;
+            case "time_of_birth":
+              fieldName = "Time of Birth";
+              break;
+            default:
+              fieldName = key;
+          }
+          emptyFields.push(fieldName);
+        }
+      });
+
+      if (emptyFields.length > 0) {
+        toast.warn(
+          `Please fill in the following fields: ${emptyFields.join(", ")}`
+        );
+        return;
+      }
+      const invalidNames = [
+        "loged-in",
+        "loged in",
+        "missed call",
+        "call me back",
+        "vip",
+        "undefined",
+        "-",
+      ];
+      // This pattern disallows any special characters, quotes, and symbols, allowing only letters, spaces, and hyphens
+      const invalidCharPattern = /[^a-zA-Z\s-]/;
+
+      const nameToCheck = data?.full_name?.toLowerCase().trim();
+
+      if (
+        invalidNames.includes(nameToCheck) ||
+        invalidCharPattern.test(data?.full_name) ||
+        !data?.full_name.trim()
+      ) {
+        toast.error(`Enter Correct Name`);
+        return;
+      }
+      try {
+        setLoading(true);
+        const storedReferId = localStorage.getItem("referId");
+        const response = await axios.post(
+          `${apiUrl}/web/profile/update`,
+          {
+            full_name: data.full_name,
+            date_of_birth: data.dob,
+            mobile: data.mobileNumber,
+            email: data.email,
+            zip_code: data.pin_code,
+            address: data?.address,
+            city: data?.area,
+            lag_lat: data.lag_lat,
+            state: data.state_name,
+            time_zone: "GMT+5:30",
+            time_of_birth: data.time_of_birth,
+            district: data.district,
+            ...(storedReferId && {
+              refer_id: storedReferId === "undefined" ? "" : storedReferId,
+            }),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${user?.token}`,
+            },
+          }
+        );
+        setNumerologyPop(false);
+        setNameUpdate(true);
+        handleRzpClick();
+        await axios.post(
+          `${apiUrl}/web/lead/create`,
+          {
+            mobile_number: data.mobileNumber,
+            first_name: data.full_name,
+            primary_email: data.email,
+            postal_code: data.pin_code,
+            billing_address: data.address,
+            city: data.area,
+            state: data.state_name,
+            district: data.district,
+            ...(storedReferId && {
+              refer_id: storedReferId === "undefined" ? "" : storedReferId,
+            }),
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.token}`,
+            },
+          }
+        );
+      } catch (error) {
+        console.error("Error updating profile:", error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      toast.warn("Enter your Number and otp..");
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <section className="numerlogy-popup-section-os">
+        <div className="container-os">
+          <div className="numerlogy-popup-os numerlogy-popup-page-row-os">
+            <div className="numerlogy-popup-main-heading-os numerlogy-popup-page-main-heading-os">
+              Numerology Calculator
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setNumerologyPop(false);
+              }}
+              className="numerlogy-popup-cross-button-os"
+              aria-label="Numerology"
+            >
+              <svg
+                width="30"
+                height="30"
+                viewBox="0 0 53 53"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="26.5" cy="26.5" r="26.5" fill="#D80027"></circle>
+                <path
+                  d="M20.9132 15.5879L26.4994 23.9516L32.0857 15.5879H35.6768L28.3349 26.3947L35.8524 37.4114H32.2293L26.4994 28.8829L20.7696 37.4114H17.1465L24.664 26.3947L17.3221 15.5879H20.9132Z"
+                  fill="#EFEFEF"
+                ></path>
+              </svg>
+            </button>
+            <div
+              // className="popup-numerology modal_ph_view"
+              className={`${
+                user?.token
+                  ? "grid lg:grid-cols-1 gap-2 p-2 grid-cols-1 items-baseline"
+                  : "modal_ph_view"
+              }`}
+            >
+              {user?.token && (
+                <div className="w-full">
+                  <div className="relative ">
+                    <input
+                      id="first_name"
+                      type="text"
+                      name="full_name"
+                      value={data?.full_name}
+                      placeholder=" "
+                      onChange={handleChange}
+                      className="peer w-full bg-transparent text-black border-2 border-primary rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary  hover:border-primary shadow-sm text-[16px] leading-4"
+                    />
+                    <label
+                      htmlFor="first_name" // Match the label's htmlFor to input id
+                      className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                        data?.full_name
+                          ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                          : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                      }`}
+                    >
+                      Enter Your Full Name
+                    </label>
+                  </div>
+                </div>
+              )}
+              <div className="w-full my-3">
+                <div className="relative ">
+                  <input
+                    id="mobile_number" // Unique id for accessibility
+                    type="text"
+                    name="mobileNumber"
+                    value={data.mobileNumber}
+                    placeholder=" " // Keeping the placeholder blank for better label animation
+                    onChange={handleChange}
+                    disabled={user?.token && data.mobileNumber !== ""}
+                    className="peer w-full bg-transparent text-black border-2 border-primary rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary  hover:border-primary shadow-sm text-[16px] leading-4"
+                  />
+                  <label
+                    htmlFor="mobile_number" // Match label's htmlFor with input id
+                    className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                      data.mobileNumber
+                        ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                        : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                    }`}
+                  >
+                    Mobile Number
+                  </label>
+                </div>
+              </div>
+              {user?.token && (
+                <>
+                  <div className="w-full">
+                    <div className="relative ">
+                      <input
+                        id="email" // Unique id for accessibility
+                        type="email"
+                        name="email"
+                        value={data?.email}
+                        placeholder=" " // Keeping the placeholder blank for better label animation
+                        onChange={handleChange}
+                        className="peer w-full bg-transparent text-black border-2 border-primary rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary  hover:border-primary shadow-sm text-[16px] leading-4"
+                      />
+                      <label
+                        htmlFor="email" // Match label's htmlFor with input id
+                        className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                          data?.email
+                            ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                            : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                        }`}
+                      >
+                        Email
+                      </label>
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <div className="relative ">
+                      <input
+                        id="birth" // Unique id for accessibility
+                        type="date"
+                        name="dob"
+                        value={data?.dob}
+                        onChange={handleChange}
+                        max={today} // Ensure the date cannot exceed the current date
+                        className="iphone-field peer w-full bg-transparent text-black border-2 border-primary  rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary hover:border-primary  shadow-sm text-[16px] leading-4"
+                      />
+                      <label
+                        htmlFor="birth" // Match label's htmlFor with input id
+                        className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                          data?.dob
+                            ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                            : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                        }`}
+                      >
+                        Enter Your DOB
+                      </label>
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <div className="relative ">
+                      <input
+                        id="time_of_birth" // Unique id for accessibility
+                        type="time"
+                        name="time_of_birth"
+                        value={rawTime}
+                        placeholder=" " // Keeping the placeholder blank for better label animation
+                        onChange={handleChange}
+                        className="iphone-field peer w-full bg-transparent text-black border-2 border-primary  rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary hover:border-primary  shadow-sm text-[16px] leading-4"
+                      />
+                      <label
+                        htmlFor="time_of_birth" // Match label's htmlFor with input id
+                        className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                          rawTime
+                            ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                            : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                        }`}
+                      >
+                        Time of Birth
+                      </label>
+                    </div>
+                  </div>
+                  <div className="w-full">
+                    <div className="relative">
+                      <input
+                        id="pin_code"
+                        type="text"
+                        name="pin_code"
+                        value={data?.pin_code}
+                        placeholder=" "
+                        onChange={handleChange}
+                        maxLength={6}
+                        className="peer w-full bg-transparent text-black border-2 border-primary rounded-md px-3 lg:py-4 py-3  transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary  hover:border-primary shadow-sm text-[16px] leading-4"
+                      />
+                      <label
+                        htmlFor="pin_code"
+                        className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                          data?.pin_code
+                            ? "-top-2 left-2.5 text-xs text-primary scale-90"
+                            : "top-[20px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
+                        }`}
+                      >
+                        Pin Code (Birth place)
+                      </label>
+                    </div>
+
+                    {/* Displaying state and district below the input field */}
+                    <span style={{ color: "red" }} className="text-[14px]">
+                      {`${data.state_name} ${data.district}`}
+                    </span>
+                  </div>
+                </>
+              )}
+            </div>
+            {user?.token && (
+              <div className="px-2">
+                <div className="relative">
+                  <select
+                    className="peer w-full bg-transparent text-gray-900 border-2 border-primary rounded-md p-4 transition duration-300 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary  hover:border-primary shadow-sm text-[16px] leading-4"
+                    onChange={handleAreaChange}
+                    value={data.area}
+                    disabled={loading}
+                    id="area"
+                  >
+                    <option value="">Select Area</option>
+                    {area.map((item) => (
+                      <option key={item?.area} value={item?.area}>
+                        {item?.area}
+                      </option>
+                    ))}
+                  </select>
+                  <label
+                    htmlFor="area"
+                    className="absolute left-[7px] top-[-8px] text-primary bg-white text-xs  scale-90"
+                  >
+                    Select Area
+                  </label>
+                </div>
+              </div>
+            )}
+            <div className="submit-numerology">
+              {user?.token && (
+                <SubmitButton
+                  buttonTitle={
+                    !loading ? (
+                      "Pay 1,999 For Numerology Report"
+                    ) : (
+                      <span className="dot-loader ml-2 flex justify-center">
+                        <span className="dot animate-bounce delay-0 bg-white h-2 w-2 rounded-full"></span>
+                        <span className="dot animate-bounce delay-200 bg-white h-2 w-2 rounded-full mx-1"></span>
+                        <span className="dot animate-bounce delay-400 bg-white h-2 w-2 rounded-full"></span>
+                      </span>
+                    )
+                  }
+                  onClick={handleSubmit}
+                />
+              )}
+              <div className="cashback-row-rs">
+                <p>
+                  Get<span style={{ color: "red" }}> 1,500</span> Cashback with
+                  your Numerology Report.
+                </p>
+                <p>
+                  Cashback can be used only on www.vip
+                  <span style={{ color: "red" }}>number</span>shop.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default NumerologyPopup;

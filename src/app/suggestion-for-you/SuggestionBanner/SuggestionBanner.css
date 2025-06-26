@@ -1,0 +1,96 @@
+/* .SuggestionBanner-row-os {
+    background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/aboutbg_s9gfut.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 224;
+    border-radius: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 1rem
+}
+
+.SuggestionBanner-row-os a {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.8882px;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 12px 2rem;
+    width: max-content;
+    margin: .8rem auto 0;
+    border: 1px solid #fff;
+    border-radius: 30px
+}
+
+.SuggestionBanner-row-os h1,
+.Tetra-Number {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    color: #fff;
+    text-align: center
+}
+
+.SuggestionBanner-row-os a:hover {
+    opacity: .8
+}
+
+.SuggestionBanner-row-os h1 {
+    line-height: 45px
+}
+
+.WishlistBanner-section-os {
+    padding-bottom: 1rem
+}
+
+.SuggestionBanner-row-os p {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 31px;
+    color: #fff;
+    padding: 0 .5rem;
+    text-align: center
+}
+
+.Tetra-Number {
+    line-height: 63px
+}
+
+@media screen and (max-width:576px) {
+    .SuggestionBanner-row-os {
+        min-height: unset;
+        border-radius: 12px
+    }
+
+    .SuggestionBanner-row-os h1 {
+        font-size: 34.03px;
+        line-height: 42px
+    }
+
+    .SuggestionBanner-row-os a {
+        font-size: 14px;
+        line-height: 21px;
+        padding: 8px 1.5rem
+    }
+
+    .WishlistBanner-section-os {
+        padding-bottom: 1.5rem
+    }
+
+    .Tetra-Number {
+        font-size: 34.03px
+    }
+} */

@@ -1,0 +1,90 @@
+.GoogleRefference-page .VipNumberSlider-heading-os {
+  display: none;
+}
+
+.GoogleRefference-page .VipNumberSlider-slider-row-os {
+  padding: 0;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.GoogleRefference-page .VipNumberSlider-section-os {
+  padding-bottom: 0;
+  display: block;
+}
+
+.GoogleRefference-page .MobileSearch-filter-content-data-os {
+  padding: 0;
+}
+
+.GoogleRefference-page .search-data-row-os {
+  margin: 0 auto;
+}
+
+.GoogleRefference-visitStore-btn-os {
+  padding-bottom: 0.5rem;
+}
+
+.GoogleRefference-visitStore-btn-os a {
+  background: var(--secondary);
+  color: var(--darktext);
+}
+
+.googleReference-icon-os img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.GoogleRefference-page .search-filter-checkboxes-row-os {
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 1600px) {
+
+  .GoogleRefference-page .search-data-row-os,
+  .GoogleRefference-page .search-filter-data-os {
+    padding: 1.5rem;
+  }
+
+  .GoogleRefference-page .defaultPage-search-section-os {
+    margin: -6rem auto 2rem;
+  }
+
+  .GoogleRefference-visitStore-btn-os {
+    padding-bottom: 3rem;
+  }
+
+  .googleReference-icon-os img {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .GoogleRefference-visitStore-btn-os {
+    padding-bottom: 1.5rem;
+  }
+
+  .GoogleRefference-page .defaultPage-search-section-os {
+    margin: 0 auto 1.5rem;
+  }
+
+  .GoogleRefference-visitStore-btn-os a {
+    background: var(--secondary);
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .googleReference-icon-os img {
+    max-width: 100px;
+  }
+
+  .GoogleRefference-page .MobileSearch-filter-search-by-digits-filter-1-os {
+    padding-top: 0;
+  }
+
+  .GoogleRefference-page .VipNumberSlider-slider-row-os {
+    width: 100%;
+  }
+}

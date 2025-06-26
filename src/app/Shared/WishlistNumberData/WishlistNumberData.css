@@ -1,0 +1,223 @@
+.WishListNumber-heading-data-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+.WishListNumber-list-col-1-os {
+  display: flex;
+  /* flex-wrap: wrap; */
+  width: 100%;
+}
+
+.format-rtpDate {
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.WishListNumber-row-1-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 0 14px 14px 0;
+  padding: 6px 1.5rem;
+  gap: 1rem 0;
+}
+
+.WishListNumber-price-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 33.4532px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  background: var(--primary);  
+  border-radius: 0px 0px 0px 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  width: 30%;
+  justify-content: center;
+}
+
+.WishListNumber-col-1-total-sum-data-os {
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.WishListNumber-col-1-total-sum-data-os span {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13.4786px;
+  line-height: 16px;
+  text-align: center;
+  color: var(--primary); 
+}
+
+.WishListNumber-col-1-total-sum-data-os span:first-child {
+  padding-right: 12px;
+  margin-right: 12px;
+  border-right: 0.962759px dashed #898989;
+}
+
+.WishListNumber-col-1-list-number-os {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30.1795px;
+  line-height: 35px;
+  color: var(--primary); 
+}
+
+.WishListNumber-col-2-os button {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13.7726px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  background: var(--primary);  
+  border: 1.6203px solid #f16c19;
+  border-radius: 4.86091px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  text-decoration: none;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.WishListNumber-col-2-os button:hover {
+  opacity: 0.8;
+}
+
+.WishListNumber-addToCart-delete-btn-os {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.WishListNumber-addToCart-delete-btn-os button span svg path {
+  fill: #8a8a8a;
+}
+
+.WishListNumber-addToCart-delete-btn-os button {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13.7726px;
+  line-height: 16px;
+  text-align: center;
+color: var(--primary)  ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  width: 50%;
+  border: 1px solid  var(--primary) ;
+  border-radius: 2px;
+  background-color: #fff;
+  gap: 8px;
+}
+
+.WishListNumber-addToCart-delete-btn-os button:hover {
+  opacity: 0.8;
+}
+
+.WishListNumber-col-2-os {
+  max-width: 250px;
+  width: 100%;
+}
+
+.WishListNumber-premium-tag-os {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18.29px;
+  line-height: 21px;
+  text-align: center;
+  color: #000000;
+  background: #ffcc1b;
+  border-radius: 9px 9px 0px 0px;
+  width: max-content;
+  padding: 8px 2rem 6px;
+}
+
+@media screen and (max-width: 1028px) {
+  .WishListNumber-col-1-list-number-os {
+    font-size: 26px !important;
+  }
+  .WishListNumber-price-os {
+    font-size: 16px !important;
+  }
+  .WishlistBanner-row-os h1 {
+    font-size: 34px;
+    line-height: 48px;
+  }
+
+  .WishlistBanner-view-morebtn-os {
+    font-size: 16px;
+    line-height: 21px;
+    padding: 8px 2rem;
+  }
+
+  .WishlistBanner-buyNow-os {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0.5rem 1rem;
+  }
+
+  .WishlistBanner-wishList-os {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0.5rem 1rem;
+  }
+
+  .WishlistBanner-row-os {
+    padding: 2rem 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .WishListNumber-row-1-os {
+    padding: 1rem;
+    gap: 2px 0;
+  }
+
+  .WishListNumber-col-2-os button {
+    margin-bottom: 5px;
+  }
+
+  .WishListNumber-col-2-os {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .WishListNumber-heading-data-os h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .WishListNumber-heading-data-os {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .WishListNumber-addToCart-delete-btn-os button {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .WishListNumber-premium-tag-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

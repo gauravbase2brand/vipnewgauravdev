@@ -1,0 +1,66 @@
+.AnnouncementBar-col-os img {
+  max-height: 25px;
+  min-height: 16px;
+  height: auto;
+  width: auto;
+  display: flex !important;
+}
+.AnnouncementBar-col-os {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-right: 2px solid var(--primary);
+  padding: 0.5rem;
+}
+.AnnouncementBar-slider-content-os {
+  max-width: 50%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+.main_banner_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  color: #fff;
+}
+.fastival_icon,
+img.logo_spacial_offer {
+  width: 100px;
+  height: 90px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1199px) {
+
+
+
+  .AnnouncementBar-slider-content-os {
+    max-width: 70%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .fastival_icon,
+  img.logo_spacial_offer {
+    width: 60px;
+    height: 60px;
+  }
+  .main_banner_sections {
+    padding: 4px 0;
+  }
+  .AnnouncementBar-slider-content-os {
+    max-width: 100%;
+  }
+  .AnnouncementBar-col-os img {
+    max-height: 20px;
+  }
+  .main_head-top .main_head {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 0;
+  }
+
+}

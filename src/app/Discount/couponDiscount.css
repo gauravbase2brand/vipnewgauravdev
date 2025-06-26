@@ -1,0 +1,285 @@
+.coupon_code_btn {
+  padding: 14px;
+  background: var(--primary);  
+  border-style: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.coupon_code_btn-rs {
+  padding: 14px;
+  background: var(--primary);  
+  border-style: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.selct_coupon_rs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.discount_code-cross-button {
+  position: absolute;
+  right: -12px;
+  top: -24px;
+  display: flex;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.discount_all_coupons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.coupon_code_rs {
+  width: 100%;
+  text-align: center;
+  border: dashed;
+  padding: 10px;
+color: var(--primary)  ;; 
+  background: #e5d4fe;
+}
+
+.coupon_code_rs p {
+  font-size: 16px;
+  font-weight: 700;
+  opacity: 66%;
+}
+
+.discount_popup {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.71);
+  padding: 2rem 0;
+}
+
+/* login page */
+.discount_head_rs span {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 46px;
+  font-weight: 900;
+color: var(--primary)  ;
+
+  letter-spacing: 3px;
+}
+
+.discount_head_rs p {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 24px;
+}
+
+.discount_code {
+  background: #ffffff;
+  border-radius: 11px;
+  padding: 1.5rem 1rem;
+  margin: 0 auto;
+  position: relative;
+  max-width: 477px;
+}
+
+.discount_code-live {
+  background: #fff;
+  border-radius: 11px;
+  padding: 1rem 1rem;
+  margin: 0 auto;
+  position: relative;
+  max-width: 477px;
+  /* max-height: 377px; */
+  overflow: auto;
+}
+
+/* .discount_all_coupons .RegisterLoginInputField-os input {
+  border: 1px solid #bcb4b4;
+} */
+
+/* coupons */
+
+.selct_coupon_rs h1 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.all_coupons_rs ul li {
+  border-bottom: 1px solid #d9d6d6;
+  border-radius: 0px;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 0.5rem;
+  background: #fff;
+}
+
+.expiring_coupon_rs {
+  color: red;
+  font-size: 17px;
+}
+
+.coupon_copied {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  cursor: pointer;
+  gap: 3rem;
+}
+
+.coupon_code_name {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.all_coupons_rs ul li:hover {
+  /* background: #b3b2eb; */
+}
+
+.display_coupon {
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.input_error {
+  border: 1px solid red !important;
+}
+
+@media screen and (max-width: 767px) {
+  .display_coupon {
+    font-size: 14px;
+  }
+
+  .expiring_coupon_rs {
+    font-size: 14px;
+  }
+
+  .coupon_code_name {
+    font-size: 14px;
+  }
+}
+
+/* address page all the css */
+.addressPage .form {
+  margin: 1em;
+}
+
+.addressPage .field {
+  position: relative;
+  margin: 1em 0;
+}
+
+.addressPage label {
+  position: absolute;
+  left: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 0.25em;
+  background: white;
+  color: gray;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.addressPage input,
+.addressPage select {
+  width: 100%;
+  padding: 1em 0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.addressPage input:focus,
+.addressPage select:focus {
+  border-color: #007bff;
+}
+
+.addressPage .field.active label {
+  top: -0.5em;
+  font-size: 0.75em;
+  color: #007bff;
+}
+
+.addressPage .clear-button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addressPage .clear-button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  border: 1px solid red !important;
+}
+
+.submit-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--primary); /* Green background */
+  color: white; /* White text */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.submit-button:hover {
+  background-color: #3c2069; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.submit-button:active {
+  background-color: var(--primary); /* Even darker green when clicked */
+  transform: translateY(0); /* Return to normal position */
+}
+
+.submit-button:disabled {
+  background-color: #8e7dab; /* Light green when disabled */
+  color: #a1a1a1; /* Gray text */
+  cursor: not-allowed; /* Disable pointer */
+  box-shadow: none; /* Remove shadow */
+}
+
+.addressPage h1 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+.close_address {
+  display: flex;
+  justify-content: flex-end;
+  color: red;
+  font-weight: 600;
+  cursor: pointer;
+}

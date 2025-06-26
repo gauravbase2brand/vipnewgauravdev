@@ -1,0 +1,96 @@
+.SuggestionFeaturedNumber-heading-os {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+.suggestionFeaturedNumber-row-os > div {
+  width: 21%;
+  margin: 3% 2%;
+}
+.suggestionFeaturedNumber-row-os {
+  display: flex;
+  flex-wrap: wrap;
+}
+.SuggestionFeaturedNumber-selector-data-os {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.9573px;
+  line-height: 19px;
+  text-align: center;
+color: var(--primary)  ;
+  border: 1px solid  var(--primary) ;
+  border-radius: 4px;
+  padding: 12px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.SuggestionFeaturedNumber-selector-data-os select {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17.9573px;
+  line-height: 19px;
+  text-align: center;
+color: var(--primary)  ;
+  background: #f4f4f9;
+  border-radius: 3.14px;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/selectArrow_aaai7f.webp");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+}
+/* .SuggestionFeaturedNumber-selector-os:before {
+      content: "";
+      position: absolute;
+      border-bottom: 8px solid  var(--primary) ;
+      border-left: 8px solid  var(--primary) ;
+      border-top: 8px solid #F4F4F9;
+      border-right: 8px solid #F4F4F9;
+      right: 16px;
+      top: 4px;
+      transform: rotate(-45deg);
+  } */
+.SuggestionFeaturedNumber-selector-os {
+  position: relative;
+}
+.SuggestionFeaturedNumber-section-os {
+  padding-bottom: 6rem;
+}
+
+@media screen and (max-width: 576px) {
+  .SuggestionFeaturedNumber-heading-os {
+    width: 100%;
+    padding-bottom: 2rem;
+  }
+  .SuggestionFeaturedNumber-section-os {
+    padding-bottom: 4rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  .SuggestionFeaturedNumber-heading-os {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .SuggestionFeaturedNumber-selector-row-os {
+    width: 100%;
+    padding-top: 1rem;
+  }
+  .SuggestionFeaturedNumber-selector-data-os {
+    padding: 4px 12px;
+    font-size: 15.9573px;
+  }
+  .SuggestionFeaturedNumber-selector-data-os select {
+    padding: 4px 12px;
+    background-size: 14px 14px;
+  }
+}

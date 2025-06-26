@@ -1,0 +1,355 @@
+.gk-sell-btn,
+.gk-sell-form {
+  position: relative;
+  display: flex;
+}
+
+.KEEPNOTED {
+  padding: 40px;
+  background-color: var(--primary) ;
+  border-radius: 30px;
+  color: #fff;
+}
+.KEEPNOTED h2 {
+  font-size: 32px;
+  text-align: center;
+  padding-bottom: 10px;
+  line-height: 40px;
+}
+.KEEPNOTED p {
+  font-size: 17px;
+  text-align: center;
+  line-height: 30px;
+}
+.sel-to {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+span.tot svg {
+  width: 30px;
+}
+.icon-tot {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.form-call-ico {
+  text-align: left !important;
+  margin-bottom: 10px;
+}
+.form-call-ico h4 {
+  border-bottom: 1.5px solid  var(--primary) ;
+  width: fit-content;
+color: var(--primary)  ;
+  padding-bottom: 3px;
+}
+.form-seller span label {
+  font-size: 16px;
+  line-height: 35px;
+  font-weight: 400;
+}
+
+span.astrick {
+  color: red;
+}
+.gk-sell-btn button {
+  border: none;
+  background: unset;
+color: var(--primary)  ;
+  font-size: 14px;
+}
+.add-more-form {
+  border-bottom: 1.5px solid  var(--primary)  !important;
+  padding-bottom: 3px;
+}
+.gk-sell {
+  width: 100%;
+}
+.seller_image {
+  width: 45%;
+}
+.gk-sell-form {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 45px;
+  padding: 30px;
+}
+.gk-sell-form::after {
+  content: "";
+  width: 68%;
+  position: absolute;
+  box-shadow: 0 4px 15px 0  var(--primary) 26;
+  z-index: -1;
+  height: 100%;
+  right: 0;
+  border-radius: 25px;
+}
+.seller_component {
+  width: 50%;
+  overflow: overlay;
+  padding-right: 20px;
+}
+.gk-sell-btn {
+  align-items: center;
+  top: 0;
+  justify-content: end;
+  gap: 13px;
+}
+.salespage-main {
+  padding: 16px 0;
+}
+.form-seller {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+.sellnum h4 {
+  color: #161616;
+  font-size: 32px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.sellnum p {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.main-form-seller {
+  display: flex;
+  width: 100%;
+  gap: 4px;
+  flex-direction: column;
+}
+.seller-button {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: 0 0/200% 200%  var(--primary) ;
+  border: 2px solid var(--primary) ;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 48px;
+  text-decoration: none;
+  padding: 0 2rem;
+  transition: 0.3s;
+}
+.error-saller-rs {
+  color: red;
+  font-size: 14px;
+}
+.text-white {
+  color: #fff;
+}
+.sell-page-bg h1 {
+  font-size: 54px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 60px;
+  margin-bottom: 10px;
+  width: 50%;
+}
+.sell-page-bg h2 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid #fff !important;
+  width: fit-content;
+  padding-bottom: 6px;
+}
+.sell-page-bg {
+  padding: 20px;
+  border-radius: 25px;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/sellbumber.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--primary);
+}
+@media only screen and (max-width: 768px) {
+  .form-call-ico {
+    text-align: left !important;
+    margin-bottom: 13px;
+    margin-top: 10px;
+  }
+  .icon-tot {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    flex-direction: row;
+  }
+  span.tot svg {
+    width: 30px;
+  }
+  .KEEPNOTED p {
+    font-size: 17px;
+    text-align: center;
+    line-height: 27px;
+  }
+  .seller_component {
+    width: 100%;
+    margin: 2rem auto auto;
+    overflow: overlay;
+    padding-right: 20px;
+  }
+  .seller_image {
+    width: 100%;
+  }
+  .gk-sell-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media only screen and (max-width: 567px) {
+  .sell-page-bg h1,
+  .sell-page-bg h2 {
+    color: #fff;
+    line-height: 38px;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  .sell-page-bg h1 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .sell-page-bg h2 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .error-saller-rs {
+    color: red;
+    font-size: 13px;
+  }
+  .sellnum h4 {
+    margin-bottom: 0.5rem;
+  }
+  .seller_image {
+    padding-top: 20px;
+  }
+  .gk-sell-form {
+    padding: 20px;
+  }
+  .seller_component {
+    margin-top: 1rem;
+  }
+  .form-seller span label {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .form-seller {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  .gk-sell-btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    justify-content: end;
+  }
+  .seller-button {
+    margin-top: 0.5rem;
+  }
+  .salespage-main {
+    padding: 20px 0;
+  }
+  .main-form-seller {
+    gap: 0;
+  }
+  .sellnum p {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+  .sell-modal-main {
+    width: 80% !important;
+    line-height: 30px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .gk-sell-form::after,
+  .sell-page-bg h1 {
+    width: 100%;
+  }
+}
+.sell-display-block {
+  display: flex;
+}
+.sell-modal-rs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+section.sell-modal-main h2 {
+  justify-content: center;
+  display: flex;
+}
+.sell-modal-main {
+  position: fixed;
+  background: #fff;
+  width: 50%;
+  height: auto;
+  padding: 20px;
+  border-radius: 8px;
+  line-height: 32px;
+}
+.sell-modal-cross-button-rs {
+  position: absolute;
+  right: -12px;
+  top: -24px;
+  display: flex;
+  border: none;
+  background: 0 0;
+}
+
+.sell-pageButtons button,
+section.sell-modal-main h3 {
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+}
+section.sell-modal-main h2 {
+  font-style: normal;
+  text-align: center;
+}
+section.sell-modal-main h3 {
+  display: flex;
+  justify-content: center;
+}
+.sell-pageButtons {
+  text-align: center;
+}
+.sell-pageButtons button {
+  font-size: 16px;
+  line-height: 119.5%;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border-radius: 7.60671px;
+  padding: 0.8rem;
+  width: fit-content;
+  border: none;
+  background: var(--primary);  
+  margin: 10px;
+}

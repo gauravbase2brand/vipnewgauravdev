@@ -1,0 +1,289 @@
+.featured-number-row-os > div {
+  display: flex;
+}
+.featured-number-flex {
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tab-category-data {
+  display: flex;
+  justify-content: space-between;
+}
+.splide__slide {
+  width: unset !important;
+}
+.featured-number-row-os {
+  justify-content: flex-start;
+  gap: 16px 20px;
+  padding-bottom: 8px;
+  overflow: hidden;
+}
+
+.featured-number-shopBtn-os {
+  padding-top: 4rem;
+}
+
+.CarHomeBikeLucky-section-os {
+  padding-bottom: 4rem;
+}
+.catSub-Data-rows .featured-number-row-os {
+  width: 100% !important;
+  display: unset !important;
+}
+.featured-number-mobile-data-os {
+  display: none;
+}
+@media screen and (max-width: 1440px) {
+  .featured-number-row-os {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .featured-number-row-os {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  .featured-number-row-os {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .catSub-Data-rows .featured-number-row-os {
+    overflow-x: auto !important;
+    display: grid !important;
+  }
+  .catSub-Data-rows .featured-number-row-os > div {
+    flex-wrap: unset !important;
+  }
+  .featured-number-mobile-data-os .slick-next,
+  .featured-number-mobile-data-os .slick-prev {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+  }
+  .featured-number-row-os {
+    display: grid;
+    overflow: hidden;
+  }
+  .featured-number-mobile-data-os {
+    display: none;
+    overflow: hidden;
+  }
+  .featured-number-mobile-data-os .number-card-os {
+    margin: 0 1rem;
+  }
+  .featured-number-mobile-data-os .slick-prev {
+    background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+    left: -10px;
+  }
+  .featured-number-mobile-data-os .slick-next {
+    background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/download_pwxol8.png");
+    right: -10px;
+  }
+  .featured-number-mobile-data-os .slick-prev:before,
+  .vipNumber-slider-main-row-os .slick-next:before {
+    opacity: 1;
+    color: transparent;
+  }
+  .featured-number-mobile-data-os .slick-slide > div {
+    margin: 0 auto 1.5rem;
+    max-width: 380px;
+    width: 100%;
+    height: auto;
+  }
+  .featured-number-mobile-data-os .slick-dots {
+    bottom: -45px;
+  }
+  .featured-number-mobile-data-os .slick-next:before {
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .featured-number-row-os {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    overflow: hidden;
+    padding-bottom: 0px !important;
+  }
+  .featured-number-mobile-data-os .slick-next:before,
+  .featured-number-mobile-data-os .slick-prev:before {
+    color: transparent;
+  }
+
+  .CarHomeBikeLucky-section-os {
+    padding-bottom: 2rem;
+  }
+
+  .featured-number-mobile-data-os .slick-slide > div {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .featured-number-row-os {
+    justify-content: flex-start;
+    grid-gap: 30px 20px;
+    gap: 14px 10px;
+    padding-bottom: 8px;
+    overflow: auto;
+  }
+}
+.catSub-Data-rows {
+  grid-column: 1/-1;
+}
+.catSub-Data-rows div#fit-budget {
+  .featured-number-row-os > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .featured-number-flex {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tab-category-data {
+    display: flex;
+    justify-content: space-between;
+  }
+  .splide__slide {
+    width: unset !important;
+  }
+  .featured-number-row-os {
+    justify-content: flex-start;
+    gap: 16px 20px;
+    padding-bottom: 8px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .featured-number-shopBtn-os {
+    padding-top: 4rem;
+  }
+
+  .CarHomeBikeLucky-section-os {
+    padding-bottom: 4rem;
+  }
+  .featured-number-mobile-data-os {
+    display: none;
+  }
+  @media screen and (max-width: 1440px) {
+    .featured-number-row-os {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .featured-number-row-os {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .featured-number-row-os {
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .featured-number-mobile-data-os .slick-next,
+    .featured-number-mobile-data-os .slick-prev {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+      z-index: 1;
+      width: 40px;
+      height: 40px;
+    }
+    .featured-number-row-os {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .featured-number-mobile-data-os {
+      display: none;
+      overflow: hidden;
+    }
+    .featured-number-mobile-data-os .number-card-os {
+      margin: 0 1rem;
+    }
+    .featured-number-mobile-data-os .slick-prev {
+      background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+      left: -10px;
+    }
+    .featured-number-mobile-data-os .slick-next {
+      background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/download_pwxol8.png");
+      right: -10px;
+    }
+    .featured-number-mobile-data-os .slick-prev:before,
+    .vipNumber-slider-main-row-os .slick-next:before {
+      opacity: 1;
+      color: transparent;
+    }
+    .featured-number-mobile-data-os .slick-slide > div {
+      margin: 0 auto 1.5rem;
+      max-width: 380px;
+      width: 100%;
+      height: auto;
+    }
+    .featured-number-mobile-data-os .slick-dots {
+      bottom: -45px;
+    }
+    .featured-number-mobile-data-os .slick-next:before {
+      opacity: 0;
+    }
+    .avvv .featured-number-row-os .scroll__slider .slide__flex__data {
+      width: 165px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .featured-number-row-os {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 5px;
+      overflow: hidden;
+      padding-bottom: 6px;
+    }
+    .featured-number-mobile-data-os .slick-next:before,
+    .featured-number-mobile-data-os .slick-prev:before {
+      color: transparent;
+    }
+
+    .CarHomeBikeLucky-section-os {
+      padding-bottom: 2rem;
+    }
+
+    .featured-number-mobile-data-os .slick-slide > div {
+      max-width: 90%;
+    }
+  }
+  @media screen and (max-width: 1600px) {
+    .featured-number-row-os {
+      justify-content: flex-start;
+      grid-gap: 30px 20px;
+      gap: 14px 10px;
+      padding-bottom: 8px;
+      overflow: hidden;
+    }
+  }
+  .catSub-Data-rows {
+    grid-column: 1/-1;
+  }
+  .catSub-Data-rows div#fit-budget {
+    width: 100%;
+  }
+  width: 100%;
+}
+
+.icon-handle-v{
+  color: red;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}

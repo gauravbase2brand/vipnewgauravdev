@@ -1,0 +1,112 @@
+.MobileProfileData-heading-os,
+.MobileProfileData-profile-name-os h3 {
+  
+  font-style: normal;
+  font-weight: 500;
+  line-height: 119.5%;
+  color: #fff;
+}
+ 
+
+.MobileProfileData-heading-os {
+  font-size: 16.678px;
+  text-align: center;
+  background: var(--primary);  
+  padding: 1rem 0;
+}
+.MobileProfileData-profile-name-data-os {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.MobileProfileData-profile-row-1-os {
+  padding: 1rem 0;
+  background: linear-gradient(360deg,  var(--primary)  -32.52%, #f16c19 228.53%);
+}
+.MobileProfileData-profile-data-col-1-os {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+.MobileProfileData-profile-name-os h3 {
+  font-size: 18.8931px;
+}
+.MobileProfileData-location-address-os,
+.MobileProfileData-profile-data-col-2-os button,
+.MobileProfileData-profile-name-os span,
+.MobileProfileData-profile-row-2-os a div,
+.MobileProfileData-profile-row-2-os a p {
+  
+  font-style: normal;
+  font-weight: 400;
+}
+.MobileProfileData-profile-row-2-os img {
+  height: 15px;
+}
+.MobileProfileData-profile-name-os span {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+}
+.MobileProfileData-profile-data-col-2-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  background: #fff;
+}
+.MobileProfileData-location-address-os span,
+.MobileProfileData-profile-row-2-os a p span {
+  display: flex;
+}
+.MobileProfileData-location-address-os {
+  font-size: 15.3943px;
+  line-height: 113.5%;
+  color: #3d3d3d;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.MobileProfileData-profile-data-col-2-os button {
+  font-size: 12px;
+  line-height: 16px;
+color: var(--primary)  ;
+  border: 1px solid  var(--primary) ;
+  border-radius: 4px;
+  background: #fff;
+  padding: 4px 1rem;
+}
+.MobileProfileData-profile-row-2-os a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  border-bottom: 1px solid #c8c8c8;
+  padding: 12px 0;
+}
+.MobileProfileData-profile-row-2-os a p {
+  font-size: 18px;
+  line-height: 34px;
+  color: #434343;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.MobileProfileData-profile-row-2-os a div {
+  font-size: 18px;
+  line-height: 34px;
+color: var(--primary)  ;
+}
+/* .MobileProfileData-section-os {
+  display: none;
+}
+@media screen and (max-width: 1199px) {
+  .MobileProfileData-section-os {
+    display: block;
+  }
+} */

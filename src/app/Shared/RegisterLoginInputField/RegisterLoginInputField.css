@@ -1,0 +1,24 @@
+/* .RegisterLoginInputField-os input {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  background: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 1rem;
+  width: 100%;
+}
+.otp-os:focus {
+  border: 2px solid #97c9ff;
+}
+@media screen and (max-width: 576px) {
+  .RegisterLoginInputField-os input {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0.8rem;
+  }
+}
+ */

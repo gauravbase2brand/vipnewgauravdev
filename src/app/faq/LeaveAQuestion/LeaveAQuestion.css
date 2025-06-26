@@ -1,0 +1,150 @@
+.LeaveAQuestion-subheading-os {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+  color: #333333;
+  text-align: center;
+  padding-top: 4px;
+}
+.LeaveAQuestion-textarea-os textarea {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.7041px;
+  line-height: 141.5%;
+
+  background: #ffffff;
+  border-radius: 14.7781px;
+  width: 100%;
+  display: flex;
+  padding: 1.5rem;
+
+}
+.LeaveAQuestion-textarea-os {
+  padding-bottom: 1rem;
+}
+.LeaveAQuestion-input-data-row-os > div {
+  width: 48%;
+}
+.LeaveAQuestion-input-data-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 4%;
+  padding-bottom: 3rem;
+}
+/* .LeaveAQuestion-input-data-col-1 input {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.7041px;
+  line-height: 141.5%;
+  color: #898989;
+  width: 100%;
+  background: #f3f3f3;
+  border-radius: 14.7781px;
+  border: none;
+  padding: 1rem 2rem;
+} */
+.LeaveAQuestion-input-data-row-os > div {
+  width: 48%;
+}
+.LeaveAQuestion-submit-question-btn-os {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.LeaveAQuestion-submit-question-btn-os button {
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16.7485px;
+  line-height: 119.5%;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #333333;
+  border: 0.985207px solid #333333;
+  border-radius: 9.85207px;
+  padding: 0.8rem 2.5rem;
+  transition: 0.3s;
+}
+.LeaveAQuestion-submit-question-btn-os button:hover {
+  color: #fff;
+  border: 0.985207px solid  var(--primary) ;
+  background-color: var(--primary) ;
+  transition: 0.3s;
+}
+.LeaveAQuestion-form-section-os {
+  padding-bottom: 1rem;
+}
+.LeaveAQuestion-all-form-data-os {
+  padding: 1rem;
+  border-radius: 15px;
+  background: var(--primary);  
+}
+.LeaveAQuestion-form-os {
+  padding: 0.5rem 2rem;
+  background: #fff;
+  border-radius: 15px;
+}
+.LeaveAQuestion-headings-os {
+  padding-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 767px) {
+  .LeaveAQuestion-input-data-row-os > div {
+    width: 100%;
+  }
+  .LeaveAQuestion-form-os {
+    padding: 0.5rem 1rem;
+  }
+  .LeaveAQuestion-subheading-os {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .LeaveAQuestion-textarea-os textarea {
+    font-size: 15px;
+    line-height: 20px;
+    /* margin-bottom: 2rem; */
+    padding: 1rem;
+  }
+  .LeaveAQuestion-input-data-col-1 input {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 1rem;
+  }
+  .LeaveAQuestion-submit-question-btn-os button {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0.8rem 1.5rem;
+  }
+  .LeaveAQuestion-input-data-row-os {
+    padding-bottom: 2rem;
+  }
+  .LeaveAQuestion-all-form-data-os {
+    padding: 0.5rem;
+  }
+  .FaqBanner-search-input-filed-os {
+    width: 85%;
+  }
+  .FaqBanner-search-input-filed-os input {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 1rem;
+  }
+  .FaqBanner-data-row-os p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .FaqBanner-data-heading-os {
+    font-size: 28px;
+    line-height: 37px;
+    padding-bottom: 1rem;
+  }
+  .LeaveAQuestion-form-section-os {
+    padding-bottom: 0.5rem;
+  }
+}

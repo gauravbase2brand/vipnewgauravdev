@@ -1,0 +1,71 @@
+.GoogleBanner-banner-section-os {
+  background: var(--primary);  
+  padding-bottom: 8rem;
+}
+.GoogleBanner-row-os h1 {
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 66px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
+.GoogleBanner-row-os p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1600px) {
+  .GoogleBanner-row-os h1 {
+    font-size: 42px;
+    line-height: 52px;
+  }
+  .GoogleBanner-row-os p {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .GoogleHeader-col-1-os {
+    width: 15%;
+  }
+  .GoogleHeader-desktop-brand-os {
+    display: none;
+  }
+  .GoogleHeader-mobile-brand-os {
+    display: block;
+  }
+  .GoogleHeader-col-1-os a img {
+    max-width: 60px;
+  }
+  .GoogleBanner-row-os h1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .GoogleBanner-row-os p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .GoogleBanner-banner-section-os {
+    padding-bottom: 3rem;
+  }
+  .GoogleBanner-row-os h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .GoogleBanner-row-os p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

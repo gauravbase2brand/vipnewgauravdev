@@ -1,0 +1,140 @@
+/* .QRVipApp-row-os {
+  display: flex;
+  justify-content: center;
+} */
+
+
+
+/* .QRVipApp-col-1-os p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 142.1%;
+  color: #ffffff;
+} */
+
+/* .QRVipApp-section-os .QRVipApp-heading-os {
+  padding-bottom: unset
+} */
+
+/* .QRVipApp-section-os .QRVipApp-row-os {
+  padding: 0.5rem 0;
+} */
+
+/* .more-downloads-rs {
+  margin-top: 7px;
+} */
+
+
+
+/* .QRVipApp-heading-os p {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+} */
+
+.QRVipApp-col-1-os h3 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 37px;
+  color: #ffffff;
+  padding-bottom: 8px;
+}
+
+.QRVipApp-col-1-os {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 30px; */
+}
+
+.QRVipApp-heading-os {
+  padding-bottom: 2rem;
+}
+
+.stores-button-rs {
+  display: flex;
+  gap: 1rem;
+  margin-top: 7px;
+  align-items: center;
+}
+
+.QRVipApp-image-os {
+  padding: 3px;
+  /* background: #ffffff; */
+  border-radius: 10px;
+}
+
+
+
+
+ 
+@media screen and (max-width: 576px) {
+  .QRVipApp-image-os img {
+    /* height: 100px !important; */
+    width: 200px !important;
+    object-fit: contain;
+}
+  .QRVipApp-heading-os {
+    padding-bottom: 1rem;
+  }
+
+  .QRVipApp-row-os>div {
+    width: 100%;
+  }
+
+  .QRVipApp-col-2-os {
+    display: none;
+  }
+
+  .QRVipApp-col-1-os {
+    padding-top: 15px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .QRVipApp-heading-os p {
+    width: 100%;
+    display: none;
+  }
+
+  .QRVipApp-col-1-os h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .QRVipApp-col-1-os p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .QRVipApp-col-2-os img {
+    height: auto;
+    width: 100%;
+  }
+
+  .QRVipApp-row-os {
+    padding: 1rem 0;
+  }
+
+  .QRVipApp-section-os {
+    margin-bottom: 0rem;
+  }
+
+  .QRVipApp-image-os {
+    margin-bottom: 0rem;
+  }
+
+  .QRVipApp-image-os {
+    padding: 3px;
+    /* background: #ffffff; */
+    border-radius: 10px;
+  }
+
+  .QRVipApp-col-1-os {
+    padding: 0;
+  }
+}

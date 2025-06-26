@@ -1,0 +1,33 @@
+.OurCustomers-slider-row-os .slick-slide>div {
+  margin: 20px ;
+}
+.OurCustomers-slider-row-os{
+  padding-bottom: 2rem;
+}
+
+@media screen and (max-width: 1028px) {
+  .OurCustomers-slider-row-os {
+    width: 90%;
+  }
+
+  .OurCustomers-slider-row-os .slick-slide>div {
+    margin: 20px ;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .OurCustomers-slider-row-os .slick-slide>div {
+    margin: 20px ;
+  }
+
+  .OurCustomers-section-os {
+    background-image: unset;
+    padding-bottom: 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .OurCustomers-slider-row-os {
+    width: 100%;
+  }
+}
+

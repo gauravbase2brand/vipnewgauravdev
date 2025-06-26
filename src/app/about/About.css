@@ -1,0 +1,441 @@
+.about-text-proving-part h1:after,
+.text-1-value h2::after {
+  background: var(--primary);
+  position: absolute;
+  content: "";
+  left: -2px;
+}
+.main-about-us-ud {
+  margin: 20px 0;
+}
+.about-page-text-bg-ud {
+  padding: 40px;
+  background-color: var(--primary);
+  border-radius: 25px;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/aboutbg_s9gfut.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.about-page-text-bg-ud h1 {
+  font-weight: 700;
+  font-size: 54px;
+  line-height: 60px;
+  color: #fff;
+  padding-bottom: 2rem;
+}
+.about-us-btn-ud button {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17.8882px;
+  line-height: 21px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 12px 2rem;
+  width: max-content;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background: var(--primary);
+}
+.about-us-btn-ud button:hover {
+  opacity: 0.8;
+}
+.about-us-btn-ud a {
+  text-decoration: none;
+}
+.looking-number-main-ud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 4%;
+}
+.looking-img-part-ud {
+  width: 40%;
+  margin: 0 auto;
+}
+.looking-text-part-ud {
+  width: 56%;
+  margin: 0 auto;
+  padding-right: 5rem;
+}
+.looking-img-part-ud img,
+.our-values-img-part img {
+  width: 100%;
+  max-width: 100%;
+  /* height: auto; */
+}
+.looking-text-part-ud h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-transform: capitalize;
+  color: #333;
+}
+.about-text-proving-part p,
+.looking-text-part-ud p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 38px;
+  color: #000;
+}
+.looking-text-part-ud p {
+  padding: 20px 0;
+}
+.looking-text-part-ud p span {
+  color: var(--primary);
+}
+.about-text-proving-part p {
+  padding: 12px 200px 12px 0;
+}
+.about-text-proving-part h1:after {
+  width: 225px;
+  height: 4px;
+  bottom: -2px;
+  border-radius: 50px;
+}
+.about-text-proving-part h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 50px;
+  text-transform: capitalize;
+  color: #333;
+  padding: 10px 0;
+  position: relative;
+}
+.looking-text-part-ud2 {
+  padding-left: 0;
+}
+.main-proving-text-part-about-ud {
+  background: rgba(233, 222, 255, 0.19);
+}
+.main-proving-text-part-about-ud .about-text-proving-part p span {
+  background-color: var(--primary);
+  color: #fff;
+}
+.our-values-title {
+  padding-bottom: 20px;
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+}
+.our-values-title h1 {
+  font-weight: 700;
+  font-size: 35px;
+  color: #000;
+  padding-bottom: 0.5rem;
+}
+.our-values-title p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  color: #000;
+}
+.main-value-about-img-text-ud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.our-values-img-part {
+  width: 40%;
+}
+.our-values-text-part {
+  width: 60%;
+}
+.text-1-value {
+  padding: 12px 100px;
+}
+.text-1-value h2 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 40px;
+  color: var(--primary);
+  position: relative;
+}
+.btn-preVip {
+  color: var(--primary);
+  border: 3px solid var(--primary);
+  padding: 8px 30px;
+  font-size: 22px;
+  border-radius: 13px;
+  background: #fff;
+}
+.preHeadingVip {
+  color: var(--primary);
+  font-size: 36px;
+}
+.vipPeraQr {
+  font-size: 14px !important;
+}
+.qr-scanCode {
+  width: 40.3%;
+  border: 4px solid var(--primary);
+  border-radius: 11px;
+}
+.text-1-value h2::after {
+  width: 125px;
+  height: 3px;
+  bottom: -1px;
+  border-radius: 50px;
+}
+.text-1-value p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+  padding: 5px 0;
+}
+.about-counter-main-ud {
+  padding: 30px 50px;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 60px !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.about-count-1 {
+  padding: 20px;
+}
+.about-count-1 h3 {
+  font-weight: 700;
+  font-size: 59px;
+  color: #fff;
+}
+.about-count-1 p {
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+}
+.AboutBanner-section-os,
+.AboutImageWithText-section-os,
+.AboutReviews-section-os,
+.YearsOfExperience-section-os {
+  padding-bottom: 1rem;
+}
+.OurValues-section-os {
+  background: #fbf9ff;
+  padding: 1rem 0;
+}
+.AboutVideo-row-os {
+  width: 65%;
+  margin: 2rem auto 0;
+}
+.AboutVideo-row-os iframe {
+  width: 100%;
+  min-height: 500px;
+  height: auto;
+}
+@media only screen and (max-width: 1600px) {
+  .looking-text-part-ud p {
+    line-height: 32px;
+    padding: 14px 0;
+  }
+  .text-1-value {
+    padding: 12px 70px;
+  }
+  .about-counter-main-ud {
+    margin: 60px 12px 0;
+  }
+}
+@media only screen and (max-width: 1030px) {
+  .about-counter-main-ud {
+    margin: 60px 12px 0;
+  }
+  .about-text-proving-part p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    color: #333;
+    padding: 12px 12px 12px 0;
+  }
+  .text-1-value {
+    padding: 1px 40px;
+  }
+  .text-1-value p {
+    line-height: 25px;
+    padding: 5px 0;
+  }
+  .our-values-img-part,
+  .our-values-text-part {
+    width: 50%;
+  }
+  .our-values-text-part {
+    width: 50%;
+    margin-top: 23px;
+  }
+  .AboutVideo-row-os,
+  .container {
+    width: 100%;
+  }
+  .looking-text-part-ud {
+    width: 56%;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+  .AboutVideo-row-os iframe {
+    min-height: 400px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .looking-text-part-ud h2 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+  .looking-text-part-ud p {
+    line-height: 28px;
+    padding: 14px 0;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .our-values-title {
+    width: 80%;
+  }
+  .about-text-proving-part h1 {
+    font-size: 33px;
+    line-height: 40px;
+  }
+  .about-text-proving-part p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .looking-text-part-ud h2 {
+    line-height: 28px;
+    font-size: 24px;
+  }
+  .looking-text-part-ud p {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 0;
+  }
+  .text-1-value {
+    padding: 1px 10px;
+  }
+  .looking-text-part-ud,
+  .our-values-text-part {
+    width: 100%;
+  }
+  .our-values-img-part {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .main-value-about-img-text-ud {
+    display: block;
+    width: 100%;
+  }
+  .about-page-text-bg-ud h1 {
+    font-size: 32px;
+    line-height: 38px;
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+  .about-us-btn-ud button {
+    margin: 0 auto;
+  }
+  .our-values-title h1 {
+    font-size: 33px;
+  }
+  .about-count-1 h3 {
+    font-size: 50px;
+  }
+  .about-text-proving-part h1:after {
+    width: 175px;
+    height: 4px;
+  }
+  .about-counter-main-ud {
+    margin: 0;
+  }
+  .looking-img-part-ud {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .looking-img-part-ud img {
+    max-width: 300px;
+  }
+  .OurValues-section-os {
+    margin-bottom: 0;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .looking-img-part-ud {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .looking-text-part-ud {
+    width: 100%;
+  }
+  .AboutImageWithText-section-os {
+    padding-bottom: 0.5rem;
+  }
+  .AboutVideo-row-os iframe {
+    min-height: 250px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .our-values-title {
+    width: 95%;
+    padding: 10px 0;
+  }
+  .looking-text-part-ud h2 {
+    line-height: 28px;
+    font-size: 24px;
+  }
+  .looking-text-part-ud p {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .about-text-proving-part h1 {
+    line-height: 30px;
+    font-size: 25px;
+  }
+  .about-text-proving-part p,
+  .our-values-title p,
+  .text-1-value p {
+    line-height: 20px;
+    font-size: 13px;
+  }
+  .our-values-title h1 {
+    font-size: 28px;
+  }
+  .text-1-value h2 {
+    font-size: 25px;
+    line-height: 20px;
+    padding: 13px 0;
+  }
+  .about-text-proving-part h1:after {
+    width: 135px;
+    height: 4px;
+  }
+  .about-page-text-bg-ud {
+    padding: 1rem 28px;
+  }
+  .about-count-1 h3 {
+    font-size: 40px;
+  }
+  .about-count-1 p {
+    font-size: 14px;
+  }
+  .about-counter-main-ud {
+    padding: 6px 50px;
+  }
+  .about-count-1 {
+    padding: 20px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .AboutBanner-section-os,
+  .AboutReviews-section-os,
+  .YearsOfExperience-section-os {
+    padding-bottom: 0.5rem;
+  }
+}

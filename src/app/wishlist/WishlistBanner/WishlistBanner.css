@@ -1,0 +1,105 @@
+.WishlistBanner-row-os {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-bg1_jt1ma0.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 10vw;
+  border-radius: 30px;
+  position: relative;
+}
+.WishlistBanner-row-os h1 {
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 54.03px;
+  line-height: 63px;
+  letter-spacing: 0.05em;
+  color:  var(--whitetext);
+  text-align: center;
+}
+.WishlistBanner-buyNow-wishlist-button-os a,
+.WishlistBanner-view-morebtn-os {
+  font-size: 17.8882px;
+  line-height: 21px;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+  font-style: normal;
+  text-align: center;
+}
+.WishlistBanner-view-morebtn-os {
+  font-weight: 400;
+  color: var(--whitetext);
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 2rem;
+  width: max-content;
+  margin: 0.5rem auto 0;
+  border: 1px solid var(--whitetext);
+  border-radius: 30px;
+}
+.WishlistBanner-view-morebtn-os:hover {
+  opacity: 0.8;
+}
+.WishlistBanner-buyNow-wishlist-button-os a {
+  font-weight: 600;
+  justify-content: center;
+  width: 130px;
+  padding: 0.8rem 1.5rem;
+  background: var(--whitetext);
+  color: #424242;
+  border-radius: 35px;
+}
+.WishlistBanner-buyNow-wishlist-button-os {
+  display: flex;
+  align-items: center;
+  background: var(--whitetext);
+  border: 2px solid var(--secondary);
+  border-radius: 35px;
+  position: absolute;
+  bottom: -20px;
+}
+.WishlistBanner-wishList-os.active {
+  background: var(--primary);
+  border: 2px solid  var(--whitetext);
+  border-radius: 0 35px 35px 0;
+  color:  var(--whitetext);
+}
+.WishlistBanner-buyNow-os.active {
+  background: var(--primary);
+  border: 2px solid  var(--whitetext);
+  border-radius: 35px 0 0 35px;
+  color: var(--whitetext);
+}
+.WishlistBanner-row-os p {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  color: var(--whitetext);
+  padding-top: 0.5rem;
+  text-align: center;
+  padding-bottom: 25px;
+}
+.WishlistBanner-section-os {
+  padding-bottom: 1rem;
+}
+@media screen and (max-width: 991px) {
+  .WishlistBanner-buyNow-wishlist-button-os a {
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .WishlistBanner-section-os {
+    padding-bottom: 1.5rem;
+  }
+  .WishlistBanner-row-os p {
+    padding-bottom: unset;
+  }
+}

@@ -1,0 +1,74 @@
+.DeliveryProcessCard-image-os img {
+  width: auto;
+  max-height: 80px;
+  height: auto;
+  margin: 0 auto;
+}
+.DeliveryProcessCard-image-os {
+  padding-bottom: 1rem;
+}
+.DeliveryProcessCard-image-os {
+  width: 100%;
+  max-width: 50px;
+  height: auto;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+}
+
+.DeliveryProcessCard-image-os img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevent distortion */
+}
+.DeliveryProcessCard-col-os h3 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 42px;
+color: var(--primary)  ;
+}
+.DeliveryProcessCard-col-os p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1d1d1d;
+}
+.DeliveryProcessCard-col-os {
+  text-align: center;
+}
+
+@media screen and (max-width: 1028px) {
+  .DeliveryProcessCard-image-os img {
+    max-height: 60px;
+  }
+  .DeliveryProcessCard-col-os h3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .DeliveryProcessCard-col-os p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .DeliveryProcessCard-col-os h3 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .DeliveryProcessCard-col-os p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .DeliveryProcessCard-image-os img {
+    max-height: 80px;
+    width: 50px;
+    
+}
+.DeliveryProcessCard-image-os {
+  padding-bottom: 0.5rem;
+}
+}

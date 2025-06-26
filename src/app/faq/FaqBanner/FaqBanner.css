@@ -1,0 +1,121 @@
+.FaqBanner-data-row-os,
+.FaqBanner-section-os {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.FaqBanner-data-row-os {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/aboutbg_s9gfut.webp");
+  padding: 4rem 0;
+  border-radius: 30px;
+}
+.FaqBanner-data-heading-os {
+  
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 37px;
+  color: #f7f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-bottom: 1rem;
+}
+.FaqBanner-data-row-os p {
+  
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 28px;
+  text-align: center;
+  color: #f7f2ff;
+  width: 32%;
+  margin: 0 auto;
+}
+.FaqBanner-search-input-filed-os input {
+  
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.7041px;
+  line-height: 141.5%;
+  color: #1f1a1a;
+  background: #ffffff;
+  border: 2px solid var(--secondary);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.17);
+  border-radius: 5px;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-bottom: 20px;
+}
+.FaqBanner-search-input-filed-os {
+  width: 50%;
+  margin: -2rem auto 0;
+}
+.FaqBanner-section-os {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/faqs-bg_gvfxos.webp");
+  padding: 1rem 0;
+}
+@media screen and (max-width: 1028px) {
+  .FaqBanner-data-row-os p {
+    width: 100%;
+  }
+  .FaqBanner-search-input-filed-os {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .FaqBanner-search-input-filed-os {
+    width: 85%;
+  }
+  .FaqBanner-search-input-filed-os input {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 1rem;
+  }
+  .FaqBanner-data-row-os p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .FaqBanner-data-heading-os {
+    font-size: 28px;
+    line-height: 37px;
+    padding-bottom: 1rem;
+  }
+  .FaqBanner-section-os {
+    padding: 1rem 0;
+  }
+}
+.FaqBanner-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.FaqBanner-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+.FaqBanner-header p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.FaqBanner-search input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.faq-card {
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+.faq-answer p {
+  line-height: 20px;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.faq-answer {
+  margin-top: 10px;
+}

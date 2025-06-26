@@ -1,0 +1,110 @@
+.FAQs-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 0.5rem;
+  justify-content: center;
+  width: 70%;
+  margin: 1rem auto 0;
+}
+.faq-main-gkb2b {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 55px;
+}
+.faq-main-gkb2b h3 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+}
+.faq-last,
+.first-faq {
+  width: 20%;
+}
+.FAQs-list {
+  width: 60%;
+  margin: 0 auto;
+}
+.FAQs-BuyNow-Btn-os {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+.FAQs-section-os {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/faqs-bg_gvfxos.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 1rem 0;
+}
+.FAQs-section-os .mainHeading-os {
+  justify-content: center !important;
+}
+@media screen and (max-width: 1028px) {
+  .FAQs-row-os {
+    width: 90%;
+  }
+  .faq-card {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 7px;
+  }
+  .faq-main-gkb2b {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 991px) {
+  .FAQs-row-os {
+    width: 100%;
+    gap: 1rem;
+  }
+  .faq-main-gkb2b {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  .FAQs-list {
+    width: 100% !important;
+    margin: 0 auto;
+    padding-top: 25px !important;
+  }
+  .faq-last,
+  .first-faq {
+    display: none;
+  }
+}
+@media screen and (max-width: 576px) {
+  .FAQs-section-os {
+    padding: 0.5rem 0;
+  }
+  .faq-main-gkb2b h3 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .faq-card {
+    padding: 7px 0 !important;
+  }
+  .FAQs-row-os {
+    margin: 1rem auto 0;
+  }
+  .FAQs-BuyNow-Btn-os {
+    padding-top: 1rem;
+    padding-bottom: 0;
+  }
+  .FAQs-list {
+    padding-top: unset !important;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .FAQs-list {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 25px;
+  }
+}

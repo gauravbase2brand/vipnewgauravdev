@@ -1,0 +1,212 @@
+.OrderDeclined-heading-section-os {
+  background-image: url("../../../public/assets/fail-payment.png");
+  background-repeat: no-repeat; /* Prevent image repeat */
+  background-position: center center; /* Center the image */
+  background-size: cover; /* Scale image to fit container */
+  height: 384px;
+}
+.OrderDeclined-heading-section-os h3 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21.6475px;
+  line-height: 25px;
+  text-align: center;
+  color: #f7f2ff;
+  padding: 2rem 0 10rem;
+}
+
+.order-decline-status{
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+/* OrderDeclined data starts */
+.OrderDeclined-status-row-os {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 3rem 2rem 1rem;
+}
+.OrderDeclined-payment-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+}
+.OrderDeclined-main-row-os {
+  background: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 0 0 15px 15px;
+  background: #fff;
+  z-index: 99;
+  position: relative;
+}
+.OrderDeclined-product-row-os h5 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.935px;
+  line-height: 25px;
+  color: #d80027;
+  padding-bottom: 1rem;
+}
+.OrderDeclined-product-row-os {
+  padding: 2rem;
+}
+.OrderDeclined-section-os {
+  margin: -8rem 0 0rem;
+  background-color: #E7DEFA;
+  height: 62vh;
+}
+.OrderDeclined-status-col-2-os p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21.6475px;
+  line-height: 25px;
+  color: #d80027;
+}
+.OrderDeclined-status-col-2-os h5 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21.6475px;
+  line-height: 25px;
+  color: #d80027;
+  padding-bottom: 2px;
+}
+.OrderDeclined-payment-data-os .heading-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.0687px;
+  line-height: 24px;
+  color: #4f5760;
+  padding-bottom: 2px;
+}
+.OrderDeclined-payment-data-os span {
+  display: flex;
+}
+.OrderDeclined-payment-col-1-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+.OrderDeclined-payment-data-os .subHeading-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.07px;
+  line-height: 24px;
+  color: var(--primary);
+}
+.OrderDeclined-payment-col-2-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.0687px;
+  line-height: 24px;
+  color: #4f5760;
+}
+
+@media screen and (max-width: 991px) {
+  .OrderDeclined-status-col-2-os h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclined-status-col-2-os p {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclined-payment-data-os .heading-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclined-payment-data-os .subHeading-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclined-payment-col-2-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclined-payment-col-1-os {
+    gap: 2rem;
+  }
+  .OrderDeclined-product-row-os h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .OrderDeclinedOrderCard-section-os .WishListNumber-premium-tag-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .OrderDeclined-status-row-os {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  .OrderDeclined-payment-data-os .heading-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderDeclined-payment-data-os .subHeading-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderDeclined-payment-col-2-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderDeclinedOrderCard-col-2-os a {
+    font-size: 16px;
+    padding: 1rem;
+  }
+  .OrderDeclined-payment-row-os {
+    padding: 1.5rem;
+  }
+  .OrderDeclined-product-row-os {
+    padding: 1.5rem;
+  }
+  .OrderDeclined-section-os {
+    margin: -3rem 0 0rem;
+    height: 60vh;
+  }
+  .OrderDeclined-status-col-2-os h5 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderDeclined-status-col-2-os p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderDeclined-heading-section-os{
+    height: 250px;
+  }
+  .order-decline-status{
+    top: 60%;
+  }
+}
+
+button.Retry-payment-btn {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: -moz-max-content;
+  width: max-content;
+  height: 43px;
+  margin: 0 auto;
+  text-decoration: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-style: none;
+}

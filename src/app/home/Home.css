@@ -1,0 +1,253 @@
+.home-row-rs a {
+  color: #fff;
+  cursor: pointer;
+}
+
+.homepage-call-chat-icon-os a img {
+  width: 50px;
+  height: auto;
+}
+
+.gk-second-cont .mainHeading-os {
+  justify-content: center !important;
+}
+
+.home-row-rs p:last-child {
+  margin-bottom: 0;
+}
+
+.home-row-rs p {
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.homepage-call-chat-icon-os {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  position: fixed;
+  transform: rotate(90deg);
+  right: 0;
+  bottom: 10%;
+  z-index: 9;
+}
+
+.cross-btn-os {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  padding: 8px;
+  display: flex;
+}
+
+.desktop-only {
+  display: inline;
+}
+
+.Phone_view,
+.mobile-only {
+  display: none;
+}
+
+.home-row-rs a {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  background-color: var(--primary);
+  background-size: 200% 200%;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  height: 48px;
+  margin: 1.5rem auto;
+  text-decoration: none;
+  padding: 0 2rem;
+  transition: 0.3s;
+  animation: 4s infinite gradient-shift;
+}
+
+.subcategory-num-data a {
+  font-family: unset;
+  font-style: unset;
+  font-weight: unset;
+  font-size: unset;
+  line-height: unset;
+  text-align: unset;
+  color: unset;
+  background-color: unset;
+  background-size: unset;
+  border-radius: unset;
+  display: unset;
+  align-items: unset;
+  justify-content: unset;
+  gap: 8px;
+  width: 100%;
+  height: unset;
+  margin: unset;
+  text-decoration: unset;
+  padding: unset;
+  transition: unset;
+  animation: unset;
+  cursor: unset;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .gk-second-cont h2 {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .Category-page-os .default-page-filterTabs-os,
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .home-row-rs p {
+    font-size: 16px !important;
+  }
+
+  .of-Numerology h2 {
+    padding: 2px 10px !important;
+    background: #ffffffbd;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 20px 20px 0 0;
+    font-size: 22px !important;
+    color: var(--primary);
+    font-family: Roboto;
+    font-weight: 600 !important;
+  }
+
+  .home-row-rs {
+    padding: 0.5rem;
+    gap: 0;
+  }
+
+  .home-row-rs a {
+    /* padding: 0 1rem; */
+    margin: 5px auto !important;
+  }
+
+  .cash_back {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-device-width: 1024px) {
+  .home-row-rs a {
+    margin: 10px auto;
+  }
+}
+
+.Numerology-Report {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/NumerologyReport_f5o2qk.webp");
+  height: 220px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.of-Numerology {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  height: 100%;
+}
+
+.of-Numerology h2 {
+  padding: 10px 60px;
+  background: #ffffffbd;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px 20px 0 0;
+  font-size: 32px;
+  color: var(--primary);
+  font-family: Roboto;
+  font-weight: 800;
+}
+
+.gk-second-cont {
+  width: 50%;
+}
+
+.products-Name-rs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+button.button-Name-rs {
+  padding: 10px 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 14px;
+  border: 2px solid transparent;
+  color: var(--primary);
+  line-height: 26px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-image: linear-gradient(#691ede, #ef6b19);
+}
+
+button.button-Name-rs::before {
+  content: "";
+  display: block;
+  background-color: #ede2fb;
+  position: absolute;
+  border-radius: 10px;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .title-animate.Phone_view {
+    display: block !important;
+  }
+
+  .products-Name-rs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+
+  button.button-Name-rs {
+    padding: 8px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    height: 55px;
+  }
+}

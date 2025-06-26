@@ -1,0 +1,43 @@
+/* .home-page-h1,
+.mainHeading-os h2 {
+  font-weight: 600;
+  
+  font-style: normal;
+  font-size: 32px;
+  line-height: 47px;
+  text-align: center;
+  color: #000;
+  margin: 0;
+}
+.mainHeading-os {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+.mainHeading-os span {
+  display: flex;
+}
+@media screen and (max-width: 1028px) {
+  .mainHeading-os h2 {
+    font-size: 26px;
+    line-height: 49px;
+    font-weight: 700;
+    
+  }
+}
+@media only screen and (max-width: 767px) {
+  .home-page-h1,
+  .mainHeading-os h2 {
+    font-size: 17px;
+    line-height: 30px;
+    font-weight: 700;
+    
+    padding: 5px 0;
+    text-align: left;
+  }
+} */
+
+
+/* gaurav comment code */

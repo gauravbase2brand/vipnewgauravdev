@@ -1,0 +1,1022 @@
+.numerology-section-os {
+  padding: 1rem 3rem;
+}
+
+h3.get_disc_price {
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 25px;
+}
+
+.Numerology-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.Numerology-col-1-os {
+  width: 50%;
+}
+
+.birth_data .control-input-num {
+  width: 50%;
+}
+
+.birth_data {
+  display: flex;
+  gap: 2rem;
+}
+
+.select_area {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  background: #ffffff;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 1rem;
+  width: 100%;
+  font-weight: 300;
+  font-size: 20px;
+  margin-bottom: 2rem;
+}
+
+.Numerology-col-1-os img {
+  max-height: 250px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.Numerology-count-1 h2 {
+  color: #ef6b19;
+}
+
+.popup-numerology {
+  padding: 0 2rem;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+}
+
+.modal_ph_view {
+  padding: 0 2rem;
+  background: #ffffff;
+  border-radius: 0 0 20px 20px;
+  padding-bottom: 1rem;
+}
+
+.profile-popup-num {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 1rem;
+  width: 100%;
+  font-weight: 300;
+  font-size: 20px;
+  background: #f7f2ff;
+  margin-top: 2rem;
+}
+
+.NumCalculator-os {
+  background: #f7f2ff;
+  padding: 48px;
+  border-radius: 20px;
+}
+
+.control-input-num {
+  line-height: 42px;
+  margin-bottom: 2rem;
+}
+
+.NumCalculator-heading-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 38px;
+  margin: 0;
+}
+
+.NumCalculatorParagraph-heading-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  opacity: 0.6;
+  filter: invert(0.5);
+}
+
+/* .NumCalculator-os input {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    background: #ffffff;
+    border-radius: 8px;
+    border: none;
+    padding: 12px 1rem;
+    width: 100%;
+    font-weight: 300;
+    font-size: 20px;
+} */
+
+.numerology-button-os {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background: rgb(96, 25, 235);
+  border: 2px solid rgb(241, 108, 25);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  height: 48px;
+  margin: 0px auto;
+  text-decoration: none;
+  padding: 0px 2rem;
+  transition: 0.3s;
+  margin-top: 8px;
+}
+
+.numerology-button-os:hover {
+  border: 2px solid #5701ff;
+  background: rgb(241, 108, 25);
+  color: #fff;
+  flex-direction: row-reverse;
+  transition: 0.3s;
+}
+
+.scrachNumerology-button-os {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background: var(--secondary);
+  border: 2px solid #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  height: 48px;
+  margin: 0px auto;
+  text-decoration: none;
+  padding: 0px 2rem;
+  transition: 0.3s;
+}
+
+.scrachNumerology-button-os:hover {
+  border: 2px solid #5701ff;
+  background: rgb(241, 108, 25);
+  color: #fff;
+  flex-direction: row-reverse;
+  transition: 0.3s;
+}
+
+.num-table {
+  padding: 0 8rem;
+  padding-bottom: 1rem;
+}
+
+.numerology-section-os.main_pt {
+  padding: 0.5rem 3rem;
+}
+
+.numerology-page-bg {
+  padding: 80px;
+  /* background-color: var(--primary)   */
+  border-radius: 25px;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/numerologyy_ruqjfn.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.numerology-table td,
+th {
+  border: 1px solid #000000;
+  line-height: 50px;
+}
+
+.Lucky-number {
+  background-color: #f7f2ff;
+  padding: 1rem 0;
+}
+
+.numerology-table td {
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  font-style: Roboto;
+}
+
+.numerology-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.numerology-table th {
+  background-color: var(--primary);
+  color: #fff;
+  border: 1px solid #000000;
+  font-style: Roboto;
+}
+
+.numerology-page-bg h1 {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 60px;
+  color: #ffffff;
+  padding-bottom: 2rem;
+}
+
+.Numerology-count-1 {
+  padding: 14px;
+}
+
+.Numerology-count-1 h2 {
+  font-weight: 900;
+  font-size: 54px;
+  color: #ef6b19;
+  text-shadow: 2px 2px #ffffff;
+}
+
+.Numerology-count-1 p {
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 50px;
+  text-align: center;
+}
+
+/* .NumCalculator-os label {
+    font-style: roboto;
+    font-weight: 600;
+    font-size: 22.66px;
+    line-height: 27px;
+    color: #2B2B2B;
+} */
+
+/* .numerology-page-bg button {
+ 
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.8882px;
+    line-height: 21px;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    padding: 12px 1rem;
+    width: max-content;
+    border: 1px solid #fff;
+    border-radius: 9px;
+    background:  var(--primary) 00;
+} */
+
+.Numerology-col-2-os {
+  width: 48%;
+  padding-left: 30px;
+}
+
+.Numerology-col-1-os {
+  width: 50%;
+}
+
+.Numerology-col-2-os h2,
+.Numerology-col-2-os p {
+  margin-bottom: 1rem;
+}
+
+.CityButton-button-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--primary);
+  text-decoration: none;
+  border: 2px solid var(--primary);
+  border-radius: 9px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  background: transparent;
+  transition: 0.3s;
+  width: max-content;
+}
+
+.CityButton-button-os:hover {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+.numerology-values-title,
+.ScrachCard-values-title {
+  padding-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.numerology-values-title h2 {
+  font-weight: 600;
+  font-size: 35px;
+  color: #3d3d3d;
+  padding-bottom: 6px;
+}
+
+.numerology-values-title p {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #000;
+}
+
+.Numerology-counter-main-ud {
+  /* padding: 100px 50px; */
+  background: var(--primary);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Numerology-heading-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 42px;
+  color: #3d3d3d;
+  margin: 0;
+}
+
+.NumerologyParagraph-heading-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #2b2b2b;
+}
+
+.Numerology-col-2-os button {
+  margin: inherit;
+}
+
+.Numerology-count-1 p {
+  margin: 0;
+}
+
+.Numerology-count-1 {
+  text-align: center;
+}
+
+/*----Banner-Style-------*/
+
+.ScrachCard-page-bg {
+  position: relative;
+  /* padding: 145px; */
+  /* background-color: var(--primary)   */
+  background-image: url("/assets/cuppondis.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: auto;
+  min-height: 460px;
+}
+
+.banner-price {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  /* margin-top: -20px; */
+}
+
+.numerlogy-popupInputField-os {
+  width: 48%;
+  display: inline-block;
+}
+
+.popup-numerology {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.modal_ph_view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profile-popup-num select.select_area {
+  margin-bottom: 0;
+}
+
+.banner-description {
+  width: auto;
+  float: right;
+  max-width: 450px;
+  position: absolute;
+  top: 60%;
+  right: 90px;
+  transform: translate(0%, -50%);
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  color: #fff;
+  text-align: center;
+}
+@media only screen and (max-width: 1440px) {
+  .ScrachCard-page-bg {
+    min-height: 400px;
+  }
+  .banner-description {
+    right: 50px;
+    top: 60%;
+  }
+  .banner-price h2 {
+    color: var(--darktext);
+    font-size: 60px;
+    line-height: 104px;
+    display: flex;
+    font-weight: 800;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem !important;
+  }
+}
+
+@media only screen and (max-width: 1600px)
+{
+  .banner-price h2 
+  {
+     margin-top: 4rem !important;
+  }
+}
+table.numerology-table tr td {
+  width: 25%;
+}
+
+p.valid_day {
+  cursor: pointer;
+}
+
+.banner-price h2 {
+  color: var(--darktext);
+  font-size: 60px;
+  line-height: 104px;
+  display: flex;
+  font-weight: 800;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12rem;
+  rotate: -5deg;
+}
+
+/* numerlogy-popup */
+.numerlogy-popup-section-os {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 0;
+}
+
+.numerlogy-popup-os {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.numerlogy-popup-page-row-os {
+  max-width: 600px;
+}
+
+.numerlogy-popup-cross-button-os {
+  position: absolute;
+  right: -13px;
+  top: -13px;
+  display: flex;
+  border: none;
+  background: transparent;
+}
+
+.numerlogy-popup-main-heading-os {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 119.5%;
+  text-align: center;
+  color: #fff;
+  padding-bottom: 1rem;
+  background-color: var(--primary);
+}
+
+.submit-numerology {
+  padding: 1rem;
+  display: block;
+  margin: auto;
+}
+
+.numerlogy-popup-page-main-heading-os {
+  font-size: 24px;
+  line-height: 28px;
+  padding: 1rem 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.numerlogy-popup-input-os {
+  /* padding-bottom: 1rem; */
+}
+
+.numerlogy-popup-input-os:last-child {
+  padding-bottom: 0;
+}
+
+.numerlogy-popupInputField-os input {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  background: #f7f2ff;
+  border-radius: 8px;
+  border: none;
+  padding: 12px 1rem;
+  width: 100%;
+}
+
+.numerlogy-popupInputField-os label {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 46px;
+}
+
+.show_only_ph {
+  display: none;
+}
+
+.cashback-row-rs p:last-child {
+  margin-bottom: 0;
+}
+
+.cashback-row-rs {
+  padding-top: 0.5rem;
+}
+
+.cashback-row-rs p {
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+input.ph_single {
+  margin-top: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.ph_view_gift_cart_section {
+  text-align: center;
+  background: var(--primary);
+  color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ScrachCard-page-bg.ph_banner {
+    display: none;
+  }
+
+  .Numerology-col-1-os {
+    width: 100%;
+  }
+
+  .Numerology-col-2-os {
+    width: 100%;
+  }
+
+  .desc_ph_gift p {
+    margin-top: 14px;
+    margin-bottom: 0;
+  }
+
+  .valid_btn {
+    margin-top: 1rem;
+  }
+
+  p.valid_day {
+    font-size: 16px;
+  }
+
+  .numerology-page-bg {
+    padding: 2rem 15px;
+    background-position: right;
+  }
+
+  .numerology-page-bg h1 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* .NumCalculator-os label {
+        font-size: 20px;
+    } */
+}
+
+@media only screen and (max-width: 767px) {
+  .numerlogy-popupInputField-os {
+    width: 100%;
+  }
+
+  .ios_cls {
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .scrachNumerology-button-os {
+    font-size: 14px;
+    padding: 0px 10px !important;
+  }
+
+  input.ph_single {
+    margin-top: 5px !important;
+    margin-bottom: 1rem;
+  }
+
+  .price_ph_view {
+    display: initial !important;
+  }
+
+  .numerology-section-os.main_pt {
+    padding: 1rem 0rem;
+  }
+
+  .Numerology-col-2-os h2 {
+    margin-bottom: 0rem;
+  }
+
+  .numerology-values-title,
+  .ScrachCard-values-title {
+    padding-bottom: 2px;
+    padding-top: 2px;
+  }
+
+  .show_only_ph {
+    display: block;
+  }
+
+  .banner-price {
+    display: none !important;
+  }
+
+  .submit-numerology {
+    padding: 0rem;
+    margin-top: 1rem;
+  }
+
+  .modal_ph_view .submit-numerology {
+    margin-top: unset !important;
+  }
+
+  .numerlogy-popup-main-heading-os {
+    font-size: 18px !important;
+  }
+
+  .submit-button-os button {
+    font-size: 14px;
+  }
+
+  .banner-description .valid_day {
+    display: block;
+    position: absolute;
+    z-index: 9;
+    width: 46%;
+    right: 14px;
+    top: -20px;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .numerology-section-os {
+    padding: 0rem 0px;
+  }
+
+  .banner-description {
+    width: auto;
+    float: inherit;
+    max-width: 100%;
+    position: relative;
+    top: 0%;
+    right: 0px;
+  }
+
+  .banner-price h2 {
+    color: #f16c19;
+    font-size: 24px;
+  }
+
+  .NumCalculator-heading-os {
+    font-size: 20px;
+    margin-bottom: 0rem;
+  }
+
+  .NumCalculatorParagraph-heading-os {
+    font-size: 16px;
+  }
+
+  .NumCalculator-os {
+    padding: 24px;
+  }
+
+  /* .NumCalculator-os label {
+        font-size: 14px;
+    } */
+
+  .birth_data {
+    display: block;
+  }
+
+  .birth_data .control-input-num,
+  .numerlogy-popupInputField-os {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .NumCalculator-os .control-input-num:nth-child(3) {
+    margin-bottom: 20px;
+  }
+
+  .control-input-num {
+    line-height: 42px;
+    margin-bottom: 5px;
+  }
+
+  .select_area {
+    margin-bottom: 1rem;
+  }
+
+  .NumCalculator-os span {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .numerology-values-title,
+  .ScrachCard-values-title {
+    width: 90%;
+  }
+
+  .popup-numerology {
+    height: 70vh;
+    overflow: auto;
+  }
+
+  .numerology-table th {
+    font-size: 14px;
+    padding: 0px 5px;
+  }
+
+  .numerology-table td {
+    font-size: 14px;
+  }
+
+  .numerology-page-bg {
+    background-position: right;
+  }
+
+  .Numerology-col-2-os {
+    text-align: center;
+  }
+
+  .Numerology-col-2-os button {
+    margin: auto;
+    margin-bottom: 6px;
+  }
+
+  .num-table {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* .numerology-page-bg button {
+        font-size: 10px;
+        padding: 7px 1rem;
+    } */
+
+  .numerology-values-title {
+    width: 80%;
+  }
+
+  .Numerology-count-1 h2 {
+    font-size: 50px;
+  }
+
+  .numerology-values-title h2 {
+    font-size: 18px;
+  }
+
+  .Numerology-col-1-os img {
+    max-height: 200px;
+  }
+
+  .Numerology-counter-main-ud {
+    margin: 0;
+  }
+
+  .Numerology-col-1-os {
+    width: 100%;
+    padding-bottom: 6px;
+  }
+
+  .Numerology-heading-os {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .CityButton-button-os {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .control-input-num input,
+  .numerlogy-popupInputField-os input {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    height: 45px !important;
+    text-align: left !important;
+  }
+
+  .numerology-page-bg h1 {
+    font-size: 16px;
+    line-height: 22px;
+    text-align: left;
+  }
+
+  .numerology-page-bg {
+    padding: 1rem 15px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .numerology-button-os {
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    padding: 0 1rem;
+    margin-top: 5px;
+  }
+
+  .numerlogy-popup-page-row-os {
+    max-width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .numerlogy-popup-page-main-heading-os {
+    padding-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+  }
+
+  .numerlogy-popupInputField-os input {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0.8rem;
+  }
+
+  .numerlogy-popup-main-heading-os {
+    font-size: 28px;
+    line-height: 32px;
+    /* margin-bottom: 12px; */
+    padding-bottom: 12px;
+  }
+
+  .numerlogy-popup-os {
+    padding: 1rem;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  /* .NumCalculator-os input {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 0.8rem;
+    } */
+}
+
+@media only screen and (max-width: 480px) {
+  .Numerology-counter-main-ud {
+    padding: 15px 50px;
+  }
+
+  .Numerology-count-1 {
+    padding: 10px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .Numerology-count-1 h2 {
+    font-size: 34px;
+    line-height: 39px;
+  }
+
+  .Numerology-count-1 p {
+    font-size: 14px;
+  }
+
+  .numerology-values-title {
+    width: 95%;
+    padding: 10px 0px;
+  }
+
+  .numerology-values-title h2 {
+    font-size: 18px;
+  }
+
+  .numerology-values-title p {
+    line-height: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .Numerology-heading-os {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .Numerology-col-2-os {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .NumerologyParagraph-heading-os {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .CityButton-button-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .numerlogy-popup-cross-button-os svg {
+    width: 40px;
+  }
+
+  .numerlogy-popup-main-heading-os {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}

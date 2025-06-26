@@ -1,0 +1,118 @@
+.number-display-abc,
+.tag-abc {
+  display: inline-block;
+  font-weight: 700;
+}
+.swiper {
+  width: 100%;
+  /* padding-top: 50px;
+  padding-bottom: 50px; */
+  /* background: var (--primary);  */
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  /* height: 300px; */
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+}
+.card-abc {
+  background-color: #f0e7fd;
+  width: 100%;
+  max-width: 300px;
+  padding: 14px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  height: 100%;
+}
+.card-abc .ViewMoreButton-button-os span {
+  display: none;
+}
+.header-abc h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background-color: #639;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 10px;
+}
+.tag-abc {
+  background-color: #ff5722;
+  color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 0 auto 20px;
+}
+.number-display-abc {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 25px;
+  font-size: 22px;
+  margin: 10px 0;
+  min-width: 270px;
+}
+.price-abc {
+  color: #639;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 15px 0;
+}
+.button-abc {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.button-abc:hover {
+  background-color: #d2451e;
+}
+@media screen and (max-width: 480px) {
+  .card-abc {
+    background-color: #f0e7fd;
+    width: 100%;
+    max-width: 100% !important;
+  }
+  .coverFlow {
+    margin-bottom: 0;
+  }
+}
+.card-abc .ViewMoreButton-button-os {
+  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background-color: var(--primary) ;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  height: 43px;
+  margin: 0 auto;
+  text-decoration: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-style: none;
+}
+.card-abc .ViewMoreButton-button-os:hover {
+  background: var(--secondary);
+  color: #fff;
+}

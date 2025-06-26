@@ -1,0 +1,96 @@
+.wavy-border {
+  position: relative;
+}
+
+.wavy-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/tilt_epqqns.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.Delivery-process-section-os .mainHeading-os h2 {
+  font-size: 20px;
+  padding: unset;
+}
+
+.Delivery-process-section-os .default-heading-os {
+  padding-bottom: 0.5rem;
+}
+
+.Delivery-process-row-os {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.Delivery-process-row-os .DeliveryProcessCard-col-os {
+  width: 30%;
+}
+
+.Delivery-process-section-os {
+ background-color: var(--primary);
+}
+.Delivery-process-section-os {
+  padding: 10px;
+}
+
+.Delivery-process-content-os {
+  max-width: 85%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem;
+  background: #fff;
+  border-radius: 45px;
+}
+
+.Delivery-process-heading-os {
+  padding-bottom: 3rem;
+}
+
+.custom_place_delivery {
+  background-color: var(--primary);
+}
+
+.Delivery-process-section-os.customPropClass {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  margin-bottom: 5rem;
+}
+
+@media screen and (max-width: 1028px) {
+  .Delivery-process-content-os {
+    max-width: 100%;
+    padding: 2rem;
+    border-radius: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .Delivery-process-row-os {
+    padding-bottom: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .Delivery-process-heading-os {
+    padding-bottom: 2rem;
+  }
+
+  .Delivery-process-content-os {
+    padding: 1rem;
+  }
+
+  .Delivery-process-section-os.customPropClass {
+    padding-top: 0;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+  }
+}

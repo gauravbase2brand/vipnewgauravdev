@@ -1,0 +1,91 @@
+.WhyTrustUs-heading {
+  padding-bottom: 1rem;
+}
+.WhyTrustUs-videos-row-os {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 2%;
+}
+
+.WhyTrustUs-videos-col-1-os iframe,
+.WhyTrustUs-videos-col-2-os iframe {
+  border-radius: 10px;
+  width: 650px;
+  min-height: 400px;
+  height: auto;
+}
+
+.WhyTrustUs-videos-col-1-os h5,
+.WhyTrustUs-videos-col-2-os h5 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #000000;
+  padding-top: 1rem;
+}
+
+.WhyTrustUs-videos-col-1-os,
+.WhyTrustUs-videos-col-2-os {
+  background: #f7f2ff;
+  box-shadow: 0px 4px 15px #f0ebeb;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.WhyTrustUs-section-os {
+  padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 1600px) {
+  .WhyTrustUs-videos-col-1-os,
+  .WhyTrustUs-videos-col-2-os {
+    width: 49%;
+  }
+
+  .WhyTrustUs-videos-col-1-os iframe,
+  .WhyTrustUs-videos-col-2-os iframe {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .WhyTrustUs-videos-col-1-os iframe,
+  .WhyTrustUs-videos-col-2-os iframe {
+    width: 100%;
+    min-height: 300px;
+    height: auto;
+  }
+
+  .WhyTrustUs-videos-col-1-os,
+  .WhyTrustUs-videos-col-2-os {
+    width: 49%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .WhyTrustUs-videos-col-1-os,
+  .WhyTrustUs-videos-col-2-os {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .WhyTrustUs-videos-col-1-os,
+  .WhyTrustUs-videos-col-2-os {
+    padding: 0.5rem 1rem;
+  }
+
+  .WhyTrustUs-section-os {
+    padding-bottom: 0.5rem;
+  }
+
+  .WhyTrustUs-heading {
+    padding-bottom: 0.5rem;
+  }
+}

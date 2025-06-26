@@ -1,0 +1,119 @@
+.LogoutModal-content-os {
+  padding-bottom: 1rem;
+}
+.LogoutModal-content-os p {
+  color: #1e1e1e;
+  text-align: center;
+  
+  font-size: 20.26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 60%;
+  margin: 0 auto;
+}
+.LogoutModal-content-os h3 {
+color: var(--primary)  ;
+  
+  font-size: 22.26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* CustomModal.css */
+.yes-logout {
+  width: 49%;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  border: 2px solid #1e1e1e;
+  color: #000;
+  background: #fff;
+  text-align: center;
+  
+  font-size: 22.26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.yes-logout:hover,
+.yes-logout.active {
+  border: 2px solid  var(--primary)  !important;
+  color: #fff !important;
+  background:  var(--primary)  !important;
+}
+.LogoutModal-top-icon-os span {
+  display: flex;
+  width: max-content;
+  padding: 12px;
+  background: var(--primary);  
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.LogoutModal-top-line-os {
+  height: 8px;
+  background: var(--primary);  
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  width: 100%;
+  top: 36%;
+  z-index: 1;
+}
+.LogoutModal-top-icon-os {
+  padding-bottom: 1rem;
+  position: relative;
+}
+.LogoutModal-data-os .ant-modal-content {
+  padding: 2rem;
+}
+.LogoutModal-data-os .ant-modal-close-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bookNow-modal-leftTime-os {
+  color: #d80027;
+  text-align: center;
+  
+  font-size: 19.483px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 119.5%;
+}
+.bookNow-modal-os .LogoutModal-content-os p {
+  width: 90%;
+  margin: 0 auto 1rem;
+}
+@media screen and (max-width: 767px) {
+  .yes-logout {
+    width: 48.5%;
+    height: 40px;
+    font-size: 16px;
+  }
+  .LogoutModal-content-os h3 {
+    font-size: 18px;
+  }
+  .LogoutModal-content-os p {
+    font-size: 16px;
+    width: 70%;
+  }
+  .LogoutModal-top-icon-os span svg {
+    width: 25px;
+    height: 25px;
+  }
+  .bookNow-modal-leftTime-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .yes-logout {
+    width: 48%;
+  }
+}

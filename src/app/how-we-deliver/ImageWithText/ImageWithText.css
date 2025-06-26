@@ -1,0 +1,101 @@
+.ImageWithText-col-2-os {
+  width: 50%;
+}
+
+.ImageWithText-col-1-os {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.ImageWithText-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 9rem;
+  position: relative;
+}
+
+.ImageWithText-col-2-os h2 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 37px;
+  color: #3d3d3d;
+  padding-bottom: 1rem;
+  width: 64%;
+}
+
+.ImageWithText-col-2-os p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #333333;
+}
+
+.ImageWithText-col-1-os img {
+  width: auto;
+  min-height: 500px;
+}
+
+.ImageWithText-line-image-os {
+  position: absolute;
+  bottom: 0;
+  width: 40%;
+  height: auto;
+  left: 23%;
+}
+
+@media screen and (max-width: 1600px) {
+  .ImageWithText-col-2-os h2 {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .ImageWithText-col-2-os p {
+    width: 100%;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .ImageWithText-col-2-os h2 {
+    width: 100%;
+    font-size: 28px;
+    line-height: 35px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .ImageWithText-col-1-os {
+    width: 100%;
+  }
+  .ImageWithText-col-2-os {
+    width: 100%;
+    padding-top: 3rem;
+  }
+  .ImageWithText-line-image-os {
+    display: none;
+  }
+  .ImageWithText-row-os {
+    padding-bottom: 5rem;
+  }
+  .ImageWithText-col-2-os h2 {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+  }
+  .ImageWithText-col-2-os p {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ImageWithText-row-os {
+    padding-bottom: 4rem;
+  }
+}

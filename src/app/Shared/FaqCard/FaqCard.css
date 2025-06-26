@@ -1,0 +1,33 @@
+
+
+.FAQs-subHeading-os {
+  width: 30%;
+  margin: 1rem auto 0;
+}
+
+
+.FAQs-col-os:hover p {
+  max-height: 100vh;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 1028px) {
+  .FAQs-subHeading-os {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .FAQs-subHeading-os {
+    width: 100%;
+  }
+  .FAQs-col-os h3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .FAQs-col-os {
+    width: 100%;
+  }
+}

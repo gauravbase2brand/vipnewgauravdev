@@ -1,0 +1,221 @@
+
+.footer-section-os {
+  border-top: 4px solid  var(--primary) ;
+  border-bottom: 1.04px solid  var(--primary) ;
+}
+
+.NewsLetter-col-2-os,
+.NewsLetter-search-os {
+  padding-top: 2rem;
+}
+.notification-rs {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #4c91af;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+.Base2Brand,
+.Vipz-telecom {
+  font-size: 14px;
+  font-weight: 500;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  background-size: 200% auto;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 2s linear infinite textclip;
+  
+  font-style: normal;
+}
+.Vipz-telecom {
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+}
+.Base2Brand {
+  float: right;
+  background-image: linear-gradient(
+    -225deg,
+    #a3166d 0,
+    #44107a 29%,
+    #13ff52 67%,
+    #68a8c4 100%
+  );
+}
+.footer-section-os ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links-heading-os {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16.6957px;
+  line-height: 20px;
+  text-transform: uppercase;
+color: var(--primary)  ;
+  padding-bottom: 12px;
+}
+.footer-links-row-os ul li, .footer-links-row-os ul li a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  /* text-transform: uppercase; */
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  position: relative; 
+  overflow: hidden; 
+}
+
+.footer-links-row-os ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; 
+  background-color: var(--primary) ; 
+  transition: width 0.3s ease-in-out; 
+}
+
+.footer-links-row-os ul li a:hover::after {
+  width: 100%; 
+}
+
+.footer-categories-links-list-os li a,
+.footer-copyRight-col-2-os span {
+  
+  font-style: normal;
+  font-size: 16.6957px;
+  text-transform: uppercase;
+  color: #333;
+}
+.footer-links-row-os ul li a:hover,
+.footer-links-row-os ul li:hover {
+  color: #000;
+}
+.footer-getInTouch-links-os ul li {
+  line-height: 24px;
+  padding-bottom: 1.5rem;
+  width: 80%;
+}
+.footer-links-subHeading-os {
+  font-weight: 500;
+  padding: 12px 0 4px;
+}
+.footer-brand-image-os a img {
+  display: flex;
+  max-width: 80%;
+}
+.footer-categories-links-list-os li a {
+  font-weight: 500;
+  line-height: 29px;
+  text-decoration: none;
+}
+.footer-categories-links-row-os {
+  padding-top: 10px;
+}
+.footer-copyRight-col-2-os span {
+  font-weight: 400;
+  line-height: 20px;
+}
+.footer-copyRight-col-2-os {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-copyRight-accept-cards-os {
+  display: flex;
+}
+.footer-copyRight-accept-cards-row-os {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-getInTouch-links-os ul li:first-child {
+  padding: 0;
+}
+.footer-col-4-os.footer-termsPolicies-Links-os {
+  display: flex;
+  justify-content: center;
+}
+.desktopFooter-main-os {
+  display: block;
+}
+.footer-getInTouch-address-os {
+  line-height: 24px !important;
+}
+.footer-getInTouch-contact-data-os {
+  padding: 0 !important;
+}
+.footer-getInTouch-phone-email-os span {
+  text-transform: lowercase;
+}
+.footer-categories-links-list-os a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  line-height: 24px;
+}
+.footer-categories-links-list-os a:hover {
+  text-decoration: underline;
+}
+.footer-getInTouch-phone-whats-app-os {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-cities-links-list-os a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+.footer-cities-links-list-os a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  line-height: 24px;
+}
+@media screen and (max-width: 1028px) {
+  .footer-getInTouch-links-os ul li {
+    width: 100%;
+    word-break: break-word;
+  }
+
+}
+@media screen and (max-width: 991px) {
+  .footer-col-4-os.footer-termsPolicies-Links-os {
+    justify-content: flex-start;
+  }
+
+  .footer-links-row-os {
+    gap: 2rem 6%;
+  }
+}
+@media screen and (max-width: 767px) {
+
+  .desktopFooter-main-os,
+  .footer-main-os {
+    display: none;
+  }
+}
+
+.subCategory-rs {
+  color: #000;
+  font-size: 18px;
+  line-height: 24px;
+  cursor: pointer;
+}
+

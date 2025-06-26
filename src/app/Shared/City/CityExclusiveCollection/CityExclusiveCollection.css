@@ -1,0 +1,79 @@
+.CityExclusiveCollection-data-os p {
+    padding-bottom: 1rem;
+    width: 80%
+}
+
+.CityExclusiveCollection-data-os h2 {
+    padding-bottom: 2rem
+}
+
+.CityExclusiveCollection-col-1-os {
+    width: 60%
+}
+
+/* .CityExclusiveCollection-col-2-os {
+    width: 40%
+} */
+
+.CityExclusiveCollection-row-os {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.CityExclusiveCollection-col-2-os img {
+    max-height: 600px;
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+    display: flex
+}
+
+@media screen and (max-width:1600px) {
+    .CityExclusiveCollection-col-2-os img {
+        max-height: 550px
+    }
+
+    .CityExclusiveCollection-data-os p {
+        width: 90%
+    }
+}
+
+@media screen and (max-width:1028px) {
+    .CityExclusiveCollection-data-os p {
+        width: 100%;
+        padding-bottom: 1rem
+    }
+}
+
+@media screen and (max-width:767px) {
+    .CityExclusiveCollection-data-os h2 {
+        padding-bottom: 1rem
+    }
+
+    .CityExclusiveCollection-data-os p {
+        padding-bottom: .5rem
+    }
+
+    .CityExclusiveCollection-col-1-os {
+        width: 100%;
+        text-align: center
+    }
+
+    .CityExclusiveCollection-col-2-os {
+        width: 100%
+    }
+
+    .CityExclusiveCollection-col-1-os a {
+        margin: 0 auto
+    }
+
+    .CityExclusiveCollection-row-os {
+        flex-direction: column-reverse;
+        gap: 1rem 0
+    }
+
+    .CityExclusiveCollection-col-2-os img {
+        max-height: 400px
+    }
+}

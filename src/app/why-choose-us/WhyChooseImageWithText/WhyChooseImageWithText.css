@@ -1,0 +1,83 @@
+.WhyChooseImageWithText-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem 4%;
+}
+.WhyChooseImageWithText-col-1-os,
+.WhyChooseImageWithText-col-2-os {
+  width: 48%;
+}
+.WhyChooseImageWithText-col-1-os h2 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20.3333px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+color: var(--primary)  ;
+}
+.WhyChooseImageWithText-col-1-os h2 a {
+  text-decoration: none;
+color: var(--primary)  ;
+}
+.WhyChooseImageWithText-col-1-os p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  color: #000000;
+  padding-bottom: 1rem;
+}
+.WhyChooseImageWithText-col-1-os h1 {
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 38px;
+  text-transform: capitalize;
+color: var(--primary)  ;
+  padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+  .WhyChooseImageWithText-col-1-os h2 {
+    font-size: 15px;
+    line-height: 28px;
+  }
+  .WhyChooseImageWithText-col-1-os h1 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .WhyChooseImageWithText-col-1-os p {
+    font-size: 15px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .WhyChooseImageWithText-col-1-os {
+    width: 100%;
+  }
+  .WhyChooseImageWithText-col-2-os {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .WhyChooseImageWithText-col-2-os img {
+    width: auto;
+    max-height: 400px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .WhyChooseImageWithText-col-1-os h1 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .WhyChooseImageWithText-col-1-os h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}

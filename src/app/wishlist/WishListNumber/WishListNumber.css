@@ -1,0 +1,129 @@
+.WishListNumber-heading-data-os h1 {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 34.9332px;
+    line-height: 41px;
+  color: var(--primary)  ;
+}
+
+.WishListNumber-main-row-os {
+    padding: 0 3rem;
+}
+
+.WishListNumber-variant-selector-os select {
+    appearance: none;
+    padding: 6px 12px;
+    background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/selectArrow_aaai7f.webp");
+    background-size: 16px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #f4f4f9;
+    border-radius: 3.14px;
+}
+
+.WishListNumber-select-variants-col-os {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 17.9573px;
+    line-height: 19px;
+    text-align: center;
+  color: var(--primary)  ;
+    border: 1px solid var(--primary) ;
+    border-radius: 4px;
+    padding: 12px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+}
+
+.WishListNumber-addtoCart-data-col-1-os a {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22.6598px;
+    line-height: 27px;
+    text-align: center;
+    text-indent: 2px;
+    color: #232323;
+}
+
+.WishListNumber-addtoCart-data-row-os {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}
+
+.WishListNumber-addtoCart-data-col-2-os a {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #ffffff;
+    background: var(--primary);  
+    border: 1.6203px solid #f16c19;
+    border-radius: 4.86091px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    gap: 8px;
+}
+
+.WishListNumber-addtoCart-data-col-2-os a:hover {
+    opacity: 0.8;
+}
+
+.WishListNumber-addtoCart-data-col-2-os {
+    max-width: 250px;
+    width: 100%;
+}
+
+.WishListNumber-section-os {
+    padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 991px) {
+    .WishListNumber-main-row-os {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .WishListNumber-price-os {
+        font-size: 20px;
+        line-height: 24px;
+        width: 40%;
+    }
+
+    .WishListNumber-col-1-list-number-os {
+        font-size: 22px;
+        line-height: 25px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .WishListNumber-addtoCart-data-row-os {
+        justify-content: center;
+        gap: 1rem;
+        padding: 0;
+    }
+
+    .WishListNumber-addtoCart-data-col-1-os a {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .WishListNumber-section-os {
+        padding-bottom: 0.5rem;
+    }
+}

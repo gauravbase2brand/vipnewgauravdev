@@ -1,0 +1,37 @@
+.sub-caty-rs {
+  padding: 10px;
+  margin-bottom: 2rem;
+}
+
+
+
+.sub-caty-slice {
+  border: 1px solid rgb(221, 221, 221);
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
+  height: 35px;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #e4e4e4;
+
+}
+
+.sub-caty-btn {
+  display: block;
+  margin: 20px auto;
+  cursor: pointer;
+  font-size: 16px;
+color: var(--primary)  ;
+  text-align: right;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: var(--primary) ;
+}
+.subCat-btn{
+  background-color: var(--primary) !important;
+  color: white !important;
+}

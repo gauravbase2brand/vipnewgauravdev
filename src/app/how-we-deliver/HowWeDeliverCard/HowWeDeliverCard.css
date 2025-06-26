@@ -1,0 +1,77 @@
+.HowWedeliverCard-row-os > div {
+  width: 23%;
+}
+.HowWedeliverCard-row-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 2%;
+}
+.HowWedeliverCard-row-os > div h3 {
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 23px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #333333;
+  padding: 4px 4px;
+}
+.HowWedeliverCard-row-os > div p {
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  color: #333333;
+  padding: 0 8px;
+}
+.HowWedeliverCard-row-os > div {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/howwedeliver-card-img_tkntm8.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 2rem;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.HowWedeliverCard-section-os {
+  padding-bottom: 5rem;
+}
+
+@media screen and (max-width: 1600px) {
+  .HowWedeliverCard-row-os > div {
+    padding: 4rem 2rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .HowWedeliverCard-row-os > div {
+    width: 32%;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .HowWedeliverCard-row-os > div {
+    width: 49%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .HowWedeliverCard-row-os > div {
+    width: 400px;
+  }
+  .HowWedeliverCard-row-os {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 576px) {
+  .HowWedeliverCard-section-os {
+    padding-bottom: 4rem;
+  }
+}

@@ -1,0 +1,22 @@
+/* 
+
+
+
+
+.numerology-popup-os,
+.register-popup-os,
+.signIn-otp-popup-os,
+.signIn-password-popup-os {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 23;
+  display: none;
+  top: 0;
+}
+.numerology-popup-os.active,
+.register-popup-os.active,
+.signIn-otp-popup-os.active,
+.signIn-password-popup-os.active {
+  display: block;
+} */

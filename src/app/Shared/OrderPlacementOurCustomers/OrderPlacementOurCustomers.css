@@ -1,0 +1,30 @@
+.OrderPlacementOurCustomers-row-os .AwardWinnerCard-col-os {
+  width: 31.5%;
+}
+.OrderPlacementOurCustomers-row-os {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+}
+
+.OrderPlacementOurCustomers-row-os-1 {
+  border-bottom: 1px solid #898989;
+}
+.OrderPlacementOurCustomers-row-os-2 {
+  max-width: 560px;
+  width: 100%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+  .OrderPlacementOurCustomers-row-os-2 {
+    max-width: 330px;
+  }
+  .OrderPlacementOurCustomers-row-os-1 {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .OrderPlacementOurCustomers-row-os {
+    padding-bottom: 1rem;
+  }
+}

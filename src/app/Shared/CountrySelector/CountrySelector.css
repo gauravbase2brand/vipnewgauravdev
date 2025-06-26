@@ -1,0 +1,12 @@
+.main-selector-os > div > div {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  /* border: none; */
+  padding: 4px;
+  border-radius: 8px;
+  color: var(--primary);
+  border-color: var(--primary) !important;
+}

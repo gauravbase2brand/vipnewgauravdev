@@ -1,0 +1,25 @@
+.search-filter-btn-os {
+  width: 100%;
+  height: 54px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10.7379px;
+  line-height: 7px;
+  color: #ffffff;
+  /* background: linear-gradient(90deg,  var(--primary)  4%, #f16c19 108.18%); */
+  background-color: var(--primary);
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none;
+}
+.search-filter-btn-os:hover {
+  opacity: 0.8;
+}

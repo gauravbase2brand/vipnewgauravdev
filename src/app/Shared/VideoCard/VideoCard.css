@@ -1,0 +1,123 @@
+.VideoTestimonial-col-os-1 {
+  display: flex;
+}
+.videoThumbnail-os {
+  width: 95% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: auto;
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.playIcon-os svg {
+  width: 60px;
+}
+.clientVideo-rs {
+  justify-content: space-around;
+}
+button.close-modal.cls__icon {
+  padding: 6px 13px;
+  top: -17px;
+  right: -21px;
+  font-size: 18px;
+}
+.playIcon-os {
+  width: 91px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.modal-content.vip__video__modal {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 80%;
+  background: #000;
+  padding: 10px;
+}
+@media screen and (max-width: 576px) {
+  .catSub-Data-rows .modal-content.vip__video__modal {
+    max-width: 300px !important;
+    height: calc(100vh - 365px) !important;
+  }
+
+  .catSub-Data-rows .modal-overlay {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -66%) !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .videoThumbnail-os {
+    width: 95% !important;
+    margin: 0 auto;
+  }
+  .playIcon-os svg {
+    width: 40px;
+  }
+  .playIcon-os {
+    width: 28px;
+    left: 50% !important;
+  }
+  .client-mainVideo-rs {
+    width: 100%;
+  }
+  .clientVideo-rs {
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+  .modal-content.vip__video__modal {
+    max-width: 300px;
+    height: 60%;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  height: 80%;
+  background: #000;
+  padding: 10px;
+}
+.close-modal,
+.playIcon-os {
+  position: absolute;
+  cursor: pointer;
+}
+.close-modal {
+  top: 10px;
+  right: 10px;
+  background: #ff3d00;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+}
+.playIcon-os {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

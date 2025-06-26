@@ -1,0 +1,69 @@
+.CityHowGetVipNumber-row-os > div {
+  width: 18%;
+}
+
+.Pay-home {
+  background: var(--primary);  
+  padding-top: 20px;
+  /* margin: 0 0 10px; */
+}
+
+@media screen and (max-width: 1028px) {
+  .CityHowGetVipNumber-heading-os h3 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+
+  .Pay-home {
+    display: none !important;
+  }
+
+  .CityHowGetVipNumber-heading-os h3 span:last-child {
+    font-size: 38px;
+    line-height: 42px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .CityHowGetVipNumber-row-os > div {
+    width: 31.6%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .CityHowGetVipNumber-heading-os h3 span:first-child {
+    color: #fd7304;
+  }
+
+  .CityHowGetVipNumber-heading-os h3 {
+    color: #fd7304;
+  }
+
+  .Pay-home {
+    display: none;
+  }
+
+  .CityHowGetVipNumber-row-os > div {
+    width: 48%;
+  }
+
+  .CityHowGetVipNumber-heading-os h3 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .CityHowGetVipNumber-heading-os {
+    padding-bottom: 1rem;
+  }
+
+  .CityHowGetVipNumber-heading-os h3 span:last-child {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .CityHowGetVipNumber-row-os > div {
+    width: 100%;
+  }
+}

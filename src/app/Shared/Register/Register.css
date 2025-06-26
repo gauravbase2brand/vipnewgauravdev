@@ -1,0 +1,194 @@
+.register-heading-os,
+.register-main-heading-os {
+  line-height: 119.5%;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.register-section-os {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.71);
+  padding: 2rem 0;
+}
+.register-checkbox-os,
+.register-input-os {
+  padding-bottom: 1rem;
+}
+.register-input-os:last-child {
+  padding-bottom: 0;
+}
+.register-checkbox-os .container_checkbox-os .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border: 2px solid #fec057;
+  border-radius: 0;
+  background-color: transparent;
+}
+.register-checkbox-os .container_checkbox-os:hover input ~ .checkmark {
+  background-color: transparent;
+  border: 2px solid #fec057;
+  border-radius: 0;
+}
+.register-checkbox-os .container_checkbox-os .checkmark:after {
+  left: 2px;
+  top: 2px;
+  width: 10px;
+  height: 10px;
+  border: unset;
+  border-width: unset;
+  transform: unset;
+  background: #fec057;
+}
+.register-checkbox-os .container_checkbox-os input:checked ~ .checkmark {
+  background-color: transparent;
+  border: 2px solid #fec057;
+  border-radius: unset;
+}
+.register-main-heading-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  color: var(--primary);
+  border-bottom: 0.790473px solid #d7d7d7;
+  margin-bottom: 1rem;
+}
+.already-have-account-os,
+.register-checkbox-os label,
+.register-heading-os {
+  font-weight: 500;
+  color: #1d1d1d;
+  font-style: normal;
+}
+.register-heading-os {
+  font-size: 25px;
+}
+.register-checkbox-os label {
+  font-size: 14px;
+  line-height: 18px;
+}
+.already-have-account-os {
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.already-have-account-os > div {
+  text-decoration: underline;
+  color: var(--primary);
+  cursor: pointer;
+}
+.register-row-os {
+  background: #ffffff;
+  border-radius: 37px;
+  padding: 1.5rem 3rem;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+}
+.register-form-os {
+  padding: 0 2rem;
+}
+.invalid-feedback-os {
+  padding-top: 8px;
+  color: red;
+}
+.register-cross-button-os {
+  position: absolute;
+  right: -12px;
+  top: -24px;
+  display: flex;
+  border: none;
+  background: 0 0;
+}
+.register-input-email-with-postFix-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: #000;
+  background: #fff;
+  padding-right: 1rem;
+}
+.register-input-email-with-postFix-os .RegisterLoginInputField-os {
+  width: 60%;
+}
+.gmail-yahoo-postFix-os {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 12px;
+  width: 40%;
+}
+.gmail-yahoo-postFix-os span {
+  cursor: pointer;
+}
+@media only screen and (max-width: 1600px) {
+  .register-main-heading-os {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .register-heading-os {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .submit-button-os button {
+    margin-bottom: 0.5rem;
+  }
+  .already-have-account-os {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .register-cross-button-os svg {
+    width: 40px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .register-row-os {
+    padding: 1rem;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  .register-main-heading-os {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  }
+  .register-heading-os {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .submit-button-os button {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .already-have-account-os {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .register-popup-os {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+  .gmail-yahoo-postFix-os span:last-child {
+    display: none;
+  }
+}

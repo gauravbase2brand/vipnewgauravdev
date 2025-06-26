@@ -1,0 +1,405 @@
+.Vipz-telecom-mobile,
+.base2brand-coptRight-text-os {
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 2s linear infinite textclip;
+  cursor: pointer;
+  text-align: center;
+}
+span.mobileaj-footer {
+  text-align: center;
+  color: #fff;
+  line-height: 28px;
+  font-size: 16px;
+}
+.main-logo-footer {
+  width: 80%;
+  margin: 0 auto;
+}
+.gk-changes-ft {
+  padding: 12px 0;
+}
+.icon-footer-flex a {
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
+}
+.MobileFooter-gotQuestions-col-2-os h2,
+.Vipz-telecom-mobile,
+.base2brand-coptRight-text-os {
+  font-weight: 500;
+  font-family: Roboto;
+  font-style: normal;
+}
+.icon-footer-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon-footer-flex img {
+  width: 40px;
+  height: auto;
+}
+.ft-gk,
+.menu-Bar-rs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu-Bar-rs img,
+.menu-Bar-rs svg {
+  width: 31px !important;
+  height: 32px !important;
+}
+.gk-footer {
+  text-align: center;
+}
+.MobileFooter-gotQuestions-image-os {
+  min-width: 50px;
+}
+span.gaurav221 {
+  text-align: center;
+  line-height: 32px;
+  color: #fff;
+  font-size: 15px;
+}
+.MobileFooter-links-accordion-body-os a:hover,
+.moda___align .ant-modal-content a {
+  color: #000;
+}
+.footer-gk {
+  text-align: center;
+  color: #fff;
+}
+.moda___align .ant-modal-content {
+  position: fixed !important;
+  bottom: 50px;
+  height: fit-content;
+  left: auto;
+  right: 0;
+  top: auto !important;
+}
+.MobileFooter-gotQuestions-addresses-data-os a,
+.MobileFooter-gotQuestions-addresses-os a {
+  color: #000;
+  text-decoration: none;
+}
+.MobileFooter-gotQuestions-addresses-data-os {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.MobileFooter-gotQuestions-addresses-data-os:last-child {
+  padding: 0;
+}
+.notification-rs {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #4c91af;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+.Vipz-telecom-mobile {
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  background-image: linear-gradient(
+    -225deg,
+    #fff 0,
+    #fff 29%,
+    #f80000 67%,
+    #fff 100%
+  );
+}
+.MobileFooter-gotQuestions-col-2-os img {
+  height: 20px;
+  width: auto;
+}
+.underline-show a {
+  text-decoration-line: underline;
+  text-decoration-color: white;
+}
+.base2brand-coptRight-text-os {
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  background-image: linear-gradient(
+    -225deg,
+    #fff 0,
+    #fff 29%,
+    #00f883 67%,
+    #fff 100%
+  );
+}
+.MobileFooter-gotQuestions-addresses-data-os span {
+  display: flex;
+  font-size: 14px;
+  line-height: 20px;
+}
+.MobileFooter-gotQuestions-row-os {
+  display: flex;
+  padding: 2rem 0;
+}
+.MobileFooter-gotQuestions-col-1-os {
+  width: 20%;
+  padding-right: 1rem;
+}
+.MobileFooter-gotQuestions-col-2-os {
+  width: 80%;
+}
+.MobileFooter-gotQuestions-col-2-os h2 {
+  font-size: 18.3005px;
+  line-height: 141.5%;
+  color: var(--primary);
+  padding-bottom: 12px;
+}
+.MobileFooter-links-accordion-body-os a {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 38px;
+  text-transform: uppercase;
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  transition: 0.3s;
+}
+.MobileFooter-links-accordion-head-os {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16.6957px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.MobileFooter-coptRight-row-os p,
+.MobileFooter-coptRight-text-os,
+.MobileFooter-links-accordion-body-list-os li {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: Roboto;
+  font-style: normal;
+}
+.MobileFooter-links-accordion-head-os span {
+  width: 16px;
+  height: 16px;
+  border-bottom: 3px solid var(--primary);
+  border-left: 3px solid var(--primary);
+  transform: rotate(-45deg);
+  position: relative;
+  bottom: 4px;
+}
+.MobileFooter-links-accordion-section-os {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--primary);
+}
+.MobileFooter-links-accordion-body-os {
+  padding: 0 1.5rem 0.5rem;
+  display: none;
+}
+.MobileFooter-links-accordion-body-os.active {
+  display: block;
+}
+.MobileFooter-links-accordion-col-1-os {
+  border: 1px solid var(--primary);
+  border-radius: 11px;
+  margin-bottom: 1rem;
+}
+.arrow-rotated-os span {
+  transform: rotate(135deg);
+  bottom: -4px;
+}
+a.MobileFooter-socialMedia-link-col-1-os img {
+  width: 40px;
+}
+.MobileFooter-socialMedia-link-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.MobileFooter-socialMedia-section-os {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #424242;
+}
+.MobileFooter-coptRight-row-os {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 12px;
+}
+.MobileFooter-coptRight-row-os p {
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  color: #333;
+}
+.MobileFooter-coptRight-accept-cards-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.MobileFooter-coptRight-data-os {
+  background: var(--primary);
+  padding: 1.5rem 0;
+}
+.MobileFooter-coptRight-text-os {
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  padding: 0 0 5px;
+}
+.MobileFooter-links-accordion-body-list-os:last-child {
+  padding-bottom: 0;
+}
+.MobileFooter-links-accordion-body-list-os li {
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #333;
+  padding-bottom: 12px;
+}
+.working-hours-os {
+  font-size: 16.6957px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  padding: 12px 0 0;
+}
+.mobile-footer-wallet-popup-os {
+  background: #fff;
+  border: 1px solid #c6c6c6;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.19);
+  border-radius: 9px;
+  position: absolute;
+  width: 90%;
+  bottom: 70px;
+  right: 5%;
+  height: auto;
+  padding: 1.5rem 1rem;
+}
+@media screen and (max-width: 1200px) {
+  img.category_icon {
+    width: 30px;
+    background: var(--primary);
+    padding: 5px;
+    border-radius: 5px;
+  }
+  img.profile_icon {
+    width: 15px;
+    object-fit: contain;
+  }
+  .footer_sticky {
+    display: block !important;
+    background: #fff;
+    position: sticky;
+    bottom: 0;
+    padding: 10px 15px;
+    box-shadow: 1px 2px 4px #000;
+    z-index: 99999999999;
+  }
+  .icon_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  span.count_number_mb {
+    position: absolute;
+    color: red;
+    font-weight: 700;
+    top: -9px;
+    left: 22px;
+  }
+}
+@media screen and (max-width: 767px) {
+  footer.MobileFooter-section-os {
+    display: block;
+  }
+  .MobileFooter-socialMedia-section-os {
+    padding-bottom: 10px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .MobileFooter-gotQuestions-col-1-os {
+    width: 30%;
+    padding-right: 1rem;
+  }
+  .MobileFooter-links-accordion-head-os {
+    padding: 10px 1.5rem;
+  }
+  .MobileFooter-coptRight-data-os {
+    padding: 4px 0;
+  }
+  .MobileFooter-gotQuestions-col-2-os {
+    width: 70%;
+  }
+  .MobileFooter-gotQuestions-row-os {
+    padding: 0 0 0.5rem;
+  }
+  .MobileFooter-links-accordion-section-os {
+    padding: 1rem 0;
+  }
+  .icon-footer-flex img {
+    width: 30px;
+  }
+  .MobileFooter-socialMedia-link-row-os a {
+    display: flex;
+    max-width: 40px;
+  }
+  .mobile-NewsLetter-os {
+    padding: 6px 0;
+    background: var(--primary);
+  }
+  .MobileFooter-links-accordion-body-os a {
+    font-size: 14px;
+    line-height: 32px;
+  }
+  .MobileFooter-links-accordion-body-list-os li {
+    font-size: 14px;
+  }
+  .MobileFooter-socialMedia-link-row-os {
+    gap: 1.2rem;
+  }
+}
+.menu-btn-Mobile {
+  padding: 6px 10px;
+  background: var(--primary);
+  color: #fff;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px;
+}
+.menu-Bar-rs p {
+  font-size: 16px;
+  font-weight: 400;
+}
+.moda___align .ant-modal-content {
+  max-width: 300px;
+  display: flex;
+  margin-left: auto;
+  top: 10rem;
+}
+.main-logo-footer img {
+  width: 261px;
+  height: 76px;
+  display: block;
+}

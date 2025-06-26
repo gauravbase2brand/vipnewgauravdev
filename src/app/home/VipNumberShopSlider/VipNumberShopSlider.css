@@ -1,0 +1,219 @@
+.VipNumberSlider-slider-row-os {
+  padding: 10px;
+}
+
+.VipNumberSlider-slider-col-os img {
+  max-width: 96%;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.VipNumberSlider-visit-btn-os {
+  padding-top: 3rem;
+}
+
+.VipNumberSlider-heading-os {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.VipNumberSlider-slider-row-os .slick-dots {
+  bottom: -45px;
+}
+
+.VipNumberSlider-slider-row-os .slick-prev:before,
+.VipNumberSlider-slider-row-os .slick-next:before {
+  opacity: 1;
+  color: transparent;
+}
+
+.VipNumberSlider-slider-row-os .slick-prev {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+}
+
+.VipNumberSlider-slider-row-os .slick-prev {
+  left: -50px;
+}
+
+.VipNumberSlider-slider-row-os .slick-next {
+  right: -50px;
+}
+
+.VipNumberSlider-slider-row-os .slick-next {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-right_d5ztmu.webp");
+}
+
+.VipNumberSlider-slider-row-os .slick-next,
+.VipNumberSlider-slider-row-os .slick-prev {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  border-radius: 30px;
+}
+
+.VipNumberSlider-slider-row-os .slick-prev:hover,
+.VipNumberSlider-slider-row-os .slick-prev:focus {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.VipNumberSlider-slider-row-os .slick-next:hover,
+.VipNumberSlider-slider-row-os .slick-next:focus {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-right_d5ztmu.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 1600px) {
+  .VipNumberSlider-heading-os {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .VipNumberSlider-heading-os {
+    width: fit-content;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .VipNumberSlider-slider-row-os .slick-slide.slick-active {
+    scale: unset;
+    transform: unset;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .VipNumberSlider-slider-row-os .slick-next,
+  .VipNumberSlider-slider-row-os .slick-prev {
+    width: 40px;
+    height: 40px;
+  }
+
+  .VipNumberSlider-slider-row-os .slick-prev {
+    left: -35px;
+  }
+
+  .VipNumberSlider-slider-row-os .slick-next {
+    right: -35px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .VipNumberSlider-heading-os {
+    width: fit-content;
+  }
+
+  .VipNumberSlider-slider-row-os .slick-prev {
+    left: -10px;
+  }
+
+  .VipNumberSlider-slider-row-os .slick-next {
+    right: -10px;
+  }
+}
+
+.wrapper {
+  padding: 70px 0;
+}
+
+/* Default slide */
+.center-slider .slick-slide {
+  background-color: #b32532;
+  color: #fff;
+  height: 200px;
+  margin: 0 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+.center-slider .slick-slide,
+.center-slider
+  .slick-slide[aria-hidden="true"]:not(.slick-cloned)
+  ~ .slick-cloned[aria-hidden="true"] {
+  transform: scale(0.8, 0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Active center slide (You can change anything here for cenetr slide)*/
+.center-slider .slick-center,
+.center-slider
+  .slick-slide[aria-hidden="true"]:not([tabindex="-1"])
+  + .slick-cloned[aria-hidden="true"] {
+  transform: scale(1.1);
+  background-color: #000000;
+}
+
+.center-slider .slick-current.slick-active {
+  transform: scale(1.1);
+  background-color: #000000;
+}
+
+.slick-next,
+.slick-prev {
+  z-index: 5;
+}
+
+.slick-next {
+  right: 15px;
+}
+
+.slick-prev {
+  left: 15px;
+}
+
+
+
+p.catogarys {
+  text-align: center;
+  /* margin: 0 10px; */
+  background: #b1b1b154;
+  padding: 10px;
+  border-radius: 10px;
+  color: #000000;
+  width: max-content;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 576px) {
+  p.catogarys {
+    text-align: center;
+    background: #b1b1b154;
+    padding: 10px;
+    border-radius: 10px;
+    color: #000000;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto;
+    width: 97%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+  }
+  .VipNumberSlider-slider-row-os {
+    padding: 0rem 0 0;
+  }
+
+  .VipNumberSlider-visit-btn-os {
+    padding-top: 1rem;
+  }
+
+  .VipNumberSlider-slider-col-os {
+    padding: 0;
+  }
+
+  .VipNumberSlider-slider-row-os .slick-dots {
+    bottom: -35px;
+  }
+}

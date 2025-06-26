@@ -1,0 +1,32 @@
+.CityFavouriteNumber-data-os {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.CityFavouriteNumber-section-os {
+    padding: 1rem 0;
+    background: #f7f2ff;
+    margin-bottom: .5
+}
+
+
+
+.CityFavouriteNumber-data-os h2 {
+    padding-bottom: 1rem
+}
+
+
+
+@media screen and (max-width:767px) {
+    .CityFavouriteNumber-section-os {
+        padding: .5rem 0
+    }
+
+
+
+    .CityFavouriteNumber-data-os h2 {
+        padding-bottom: .5rem
+    }
+}

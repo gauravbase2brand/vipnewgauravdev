@@ -1,0 +1,98 @@
+.GoogleHeader-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+header.GoogleHeader-section-os {
+  background: var(--primary);  
+}
+.GoogleHeader-col-1-os a img {
+  display: flex;
+  max-width: 290px;
+  width: 100%;
+  height: auto;
+}
+.GoogleHeader-col-2-os {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.GoogleHeader-login-account-os {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.GoogleHeader-col-2-os .loggedOut-name-os span,
+.GoogleHeader-col-2-os .loggedOut-name-os {
+  color: #fff;
+}
+.GoogleHeader-col-2-os .loggedIn-name-os span {
+  color: #fff;
+}
+.GoogleHeader-col-2-os .header-login-logout-arrow-os {
+  border-left: 6px solid #fff;
+  border-bottom: 6px solid #fff;
+}
+.visit-store-button-os1 {
+  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--darktext);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  padding: 0.6rem 1.5rem;
+  transition: 0.3s;
+  background: var(--secondary);
+
+  border-radius: 6px;
+}
+.visit-store-button-os1:hover {
+  color: #fff;
+}
+.visit-store-button-os1 span {
+  display: flex;
+}
+.GoogleHeader-mobile-brand-os {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .GoogleHeader-row-os {
+    padding: 0.5rem 0 2rem;
+  }
+  .GoogleHeader-col-2-os .loggedOut-name-os span {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .GoogleHeader-col-2-os {
+    width: 85%;
+    gap: 12px;
+  }
+  .visit-store-button-os1 {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0.5rem 0.8rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .GoogleHeader-row-os {
+    padding: 0.5rem 0 1rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .GoogleHeader-row-os {
+    padding: 0.5rem 0 1rem;
+  }
+}

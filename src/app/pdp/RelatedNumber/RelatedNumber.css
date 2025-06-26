@@ -1,0 +1,32 @@
+.related-number-row-os > div {
+  width: 22%;
+}
+.related-number-row-os {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem 4%;
+}
+.RelatedNumber-heading-os {
+  padding-bottom: 1rem;
+}
+/* .RelatedNumber-section-os {
+  padding-bottom: 5rem;
+} */
+@media screen and (max-width: 1024px) {
+  .related-number-row-os > div {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .related-number-row-os > div {
+    width: 48%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .related-number-row-os > div {
+    width: 100%;
+  }
+  /* .RelatedNumber-section-os {
+    padding-bottom: 4rem;
+  } */
+}

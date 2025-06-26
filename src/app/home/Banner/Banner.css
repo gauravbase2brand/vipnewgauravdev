@@ -1,0 +1,300 @@
+.banner-col-1-os a,
+.banner-col-1-os p,
+.banner-col-2-os a {
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  
+}
+.banner-col-1-os a,
+.banner-col-2-os a {
+  font-size: 17.8882px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 12px 2rem;
+  width: max-content;
+  margin: 0 auto;
+  border: 1px solid #fff;
+  border-radius: 30px;
+}
+.banner-col-1-os a,
+.banner-col-2-os a:hover {
+  opacity: 0.8;
+}
+.banner-col-1-os p {
+  font-size: 26.9772px;
+  line-height: 32px;
+  padding: 1rem 0 1.5rem;
+}
+.banner-col-1-os h2 {
+  
+  font-style: normal;
+  font-weight: 800;
+  font-size: 54.0319px;
+  line-height: 63px;
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+.banner-col-2-os h1,
+.banner-col-2-os h3 {
+
+  margin: 0;
+  font-style: normal;
+  color: #fff;
+}
+.banner-slider-os .slick-next:before,
+.banner-slider-os .slick-prev:before {
+  opacity: 1;
+  color: transparent;
+}
+.banner-slider-os .slick-prev {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+  left: -26px;
+}
+.banner-slider-os .slick-next {
+  right: -26px;
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-right_d5ztmu.webp");
+}
+.banner-slider-os .slick-next,
+.banner-slider-os .slick-prev {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  border-radius: 30px;
+}
+.banner-slider-os .slick-prev:focus,
+.banner-slider-os .slick-prev:hover {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-left_bfnus1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.banner-slider-os .slick-next:focus,
+.banner-slider-os .slick-next:hover {
+  background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/banner-arrow-right_d5ztmu.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.banner-policies-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 2.5rem;
+}
+.banner-col-2-os h1 {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 58px;
+  padding: 0.5rem 0 2rem;
+}
+.banner-col-2-os h3 {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+}
+.banner-policies-row-os > div {
+  width: 32%;
+}
+.banner-policies-col-1-os,
+.banner-policies-col-2-os {
+  border-right: 2px solid #fff;
+}
+.banner-policies-image-os {
+  display: flex;
+  padding-bottom: 1rem;
+}
+.banner-policies-image-os img {
+  max-width: 55px;
+  width: auto;
+  margin: 0 auto;
+}
+.banner-policies-content-os {
+  
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #fff;
+}
+.banner-policies-content-os span {
+  display: flex;
+  justify-content: center;
+}
+.banner-slider-os .slick-dots {
+  text-align: justify;
+  bottom: 40px !important;
+  position: relative !important;
+  z-index: 6 !important;
+  left: 100px !important;
+  width: 250px;
+}
+.banner-slider-os {
+  padding: 0;
+}
+.banner-col-os img {
+  cursor: pointer;
+  /* height: 600px; */
+  object-fit: cover;
+  object-position: 54% 15%;
+  border-radius: 20px;
+}
+@media only screen and (max-width: 1600px) {
+
+  .banner-col-1-os h2 {
+    font-size: 42px;
+    line-height: 54px;
+  }
+  .banner-col-2-os h1 {
+    font-size: 38px;
+    line-height: 48px;
+  }
+  .banner-col-1-os p {
+    font-size: 24.9772px;
+    line-height: 28px;
+  }
+  .banner-policies-content-os {
+    font-size: 18px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+  .banner-col-2-os h3 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+@media screen and (max-width: 1028px) {
+  .banner-policies-row-os {
+    width: 90%;
+    padding-bottom: 1.5rem;
+  }
+  .banner-col-1-os h2 {
+    font-size: 38px;
+    line-height: 48px;
+  }
+  .banner-col-2-os h1 {
+    font-size: 32px;
+    line-height: 38px;
+    padding: 0.5rem 0 1.5rem;
+  }
+  .banner-col-1-os p {
+    font-size: 20.9772px;
+    line-height: 24px;
+    padding: 12px 0 1rem;
+  }
+  .banner-slider-os {
+    padding: 0;
+  }
+  .banner-col-2-os h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .banner-col-2-os {
+    padding: 2rem 0;
+  }
+  .banner-policies-image-os img {
+    max-width: 40px;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 991px) {
+  .banner-col-2-os h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .banner-col-2-os h1 {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 0.5rem 0 1rem;
+  }
+  .banner-policies-row-os {
+    padding-bottom: 1rem;
+  }
+  .banner-policies-content-os {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .banner-policies-image-os img {
+    max-width: 30px;
+  }
+  .banner-policies-image-os {
+    padding-bottom: 0.5rem;
+  }
+  .banner-col-2-os {
+    padding: 1rem 0;
+  }
+  .banner-col-1-os a,
+  .banner-col-2-os a {
+    padding: 10px 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner-col-1-os h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .banner-col-1-os p {
+    font-size: 18px;
+    padding: 8px 0 0.8rem;
+  }
+  .banner-col-1-os {
+    padding-left: 3rem;
+  }
+  .banner-slider-os .slick-next,
+  .banner-slider-os .slick-prev {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .banner-col-os img {
+    border-radius: 12px;
+    height: auto !important;
+    object-position: 73% 8%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .banner-col-os img {
+    border-radius: 12px;
+    height: auto;
+    object-position: 73% 8%;
+  }
+  .banner-col-1-os {
+    background-image: url("https://d3re4dy3egxmsz.cloudfront.net/assets/img/vip-images/mobile-banner-bg_fkp8mq.webp");
+    height: 50vw;
+  }
+  .banner-col-1-os h2 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .banner-col-1-os p {
+    font-size: 16px;
+    padding: 8px 0 0.8rem;
+  }
+  .banner-col-1-os a,
+  .banner-col-2-os a {
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 1rem;
+  }
+  .banner-slider-os .slick-dots {
+    display: none !important;
+  }
+  .banner-slider-os {
+    padding: 0;
+  }
+}

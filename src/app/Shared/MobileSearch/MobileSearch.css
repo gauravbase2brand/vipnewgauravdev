@@ -1,0 +1,53 @@
+.MobileSearch-filter-familyPack-content-row-os {
+  background: #ffffff;
+  border: 1px solid #b1b1b1;
+  box-shadow: 0px 3.00665px 7.51663px rgb(0 0 0 / 13%);
+  border-radius: 6px;
+}
+
+.MobileSearch-filter-familyPack-content-col-1-os select {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  background: #efefef;
+  border-radius: 7px;
+  border: 1px solid  var(--primary) ;
+  min-height: 40px;
+  width: 100%;
+  min-width: 80px;
+  padding: 0 0.5rem;
+}
+
+.MobileSearch-filter-familyPack-content-col-1-os span {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--primary);
+}
+
+.MobileSearch-filter-familyPack-content-col-1-os {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  gap: 12px;
+}
+
+@media screen and (max-width: 576px) {
+  /* .numurology-div button {
+    width: 100% !important;
+  } */
+
+  .numurology-div {
+    position: relative;
+  }
+
+  .mobile-numurology {
+    position: absolute;
+    top: 41px;
+    left: 4px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,110 @@
+.TabNumberData-description-os {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  padding: 5px;
+  border-bottom: 1px solid #3d3d3d;
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  gap: 1rem;
+}
+.TabNumberData-description-os span {
+  animation: 40s linear infinite marquee;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.pt-10-gk img {
+  height: auto !important;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.pt-10-gk {
+  padding: 5px 0;
+}
+.slide__flex__data {
+  width: 313px;
+}
+.scroll__slider {
+  gap: 10px;
+}
+.featured-number-row-os {
+  overflow-x: auto;
+}
+.featured-number-row-os::-webkit-scrollbar {
+  display: none;
+}
+.view-more-slider-button {
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  margin: auto;
+}
+.slide__flex__data.box__slide {
+  border: 2px solid var(--primary);
+    background:var(--primary);  
+  border-radius: 10px;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 270px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .slide__flex__data.box__slide {
+    width: 185px;
+  }
+  .view-more-slider-button {
+    font-size: 20px;
+  }
+  .slide__flex__data {
+    width: 175px;
+  }
+  .scroll__slider {
+    display: flex;
+    margin-right: 5px;
+  }
+  .featured-number-row-os {
+    overflow-x: auto;
+    overflow-y: hidden;
+    will-change: transform;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .featured-number-row-os::-webkit-scrollbar {
+    display: none;
+  }
+  .TabNumberData-description-os {
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    padding: 3px;
+  }
+  .pt-10-gk {
+    padding: 0 !important;
+  }
+  .pt-10-gk img {
+    height: 200px !important;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+.param221 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

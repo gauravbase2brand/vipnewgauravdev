@@ -1,0 +1,150 @@
+.OrderSubmitData-submitted-row-os {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+}
+.OrderSubmitData-heading-os {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 119.5%;
+  text-align: center;
+  color: #1d1d1d;
+  padding-bottom: 2rem;
+}
+.OrderSubmitData-submitted-col-1-os {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 119.5%;
+  text-align: center;
+  color: #1d1d1d;
+  padding-bottom: 1.5rem;
+}
+.OrderSubmitData-submitted-message-row-os {
+  /* background: #EFE7FF; */
+  opacity: 0.85;
+  border-radius: 14px;
+  padding: 3rem 5rem 0;
+  width: 80%;
+  margin: 0 auto;
+}
+.OrderSubmitData-section-os {
+  padding: 4rem 0 5rem;
+}
+.OrderSubmitData-submitted-message-row-os p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 119.5%;
+  text-align: center;
+  color: #1d1d1d;
+  padding-bottom: 1rem;
+}
+.OrderSubmitData-submitted-message-row-os p span {
+  font-weight: 700;
+}
+.OrderSubmitData-submitted-social-link-row-os a {
+  display: flex;
+}
+.OrderSubmitData-submitted-social-link-row-os a:hover {
+  opacity: 0.8;
+}
+.OrderSubmitData-submitted-social-link-row-os {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 2rem;
+}
+.OrderSubmitData-submitted-col-2-os {
+  display: flex;
+}
+.OrderSubmitData-continue-shopping-os {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 119.5%;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 10px;
+  padding: 1rem 4rem;
+  text-decoration: none;
+  display: flex;
+  width: max-content;
+  margin: 1rem auto 0;
+}
+
+.OrderSubmitData-continue-shopping-os:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+
+.OrderSubmitData-addOn-number-row-os {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  padding-bottom: 2rem;
+}
+.OrderSubmitData-addOn-number-row-os > div {
+  width: 49%;
+}
+
+@media screen and (max-width: 1600px) {
+  .OrderSubmitData-submitted-message-row-os {
+    width: 80%;
+    padding: 3rem 3rem 0;
+  }
+}
+
+@media screen and (max-width: 1028px) {
+  .OrderSubmitData-submitted-message-row-os {
+    width: 100%;
+  }
+  .OrderSubmitData-section-os {
+    padding: 4rem 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .OrderSubmitData-submitted-message-row-os p {
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .OrderSubmitData-heading-os {
+    font-size: 18px;
+    line-height: 24px;
+    padding-bottom: 1rem;
+  }
+  .OrderSubmitData-submitted-col-1-os {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .OrderSubmitData-submitted-message-row-os {
+    padding: 1rem 2rem 0;
+  }
+  .OrderSubmitData-submitted-message-row-os p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .OrderSubmitData-submitted-social-link-row-os {
+    padding-top: 1rem;
+  }
+  .OrderSubmitData-submitted-social-link-row-os a svg {
+    width: 35px;
+    height: auto;
+  }
+  .OrderSubmitData-section-os {
+    padding: 1rem 0;
+  }
+  .OrderSubmitData-addOn-number-row-os > div {
+    width: 100%;
+  }
+}

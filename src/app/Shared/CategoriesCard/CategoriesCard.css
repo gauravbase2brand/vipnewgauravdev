@@ -1,0 +1,84 @@
+.CategoriesCard-col-os h3 {
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 27.5348px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 0.768073px dashed #e9deff;
+}
+
+.CategoriesCard-col-os .CategoriesCard-number-os {
+
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 42px;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.CategoriesCard-col-os {
+  border-radius: 30px;
+  border: 1px dashed #ffffff;
+  padding: 3rem 1.5rem;
+  /* background: radial-gradient(
+        74.61% 86.32% at -11.72% 2.73%,
+        #9561fc 0%,
+         var(--primary)  100%
+      ) */
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.CategoriesCard-os {
+  padding: 4px;
+  border-radius: 30px;
+  /* background: radial-gradient(
+        74.61% 86.32% at -11.72% 2.73%,
+        #9561fc 0%,
+         var(--primary)  100%
+      ) */
+  /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */
+}
+
+@media only screen and (max-width: 1600px) {
+  .CategoriesCard-col-os h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .CategoriesCard-col-os .CategoriesCard-number-os {
+    font-size: 28px;
+    line-height: 35px;
+  }
+}
+
+@media only screen and (max-width: 1028px) {
+}
+
+@media only screen and (max-width: 767px) {
+  .CategoriesCard-col-os {
+    min-height: auto;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .CategoriesCard-col-os h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .CategoriesCard-col-os .CategoriesCard-number-os {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

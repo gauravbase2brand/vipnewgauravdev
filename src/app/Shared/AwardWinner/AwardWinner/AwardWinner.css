@@ -1,0 +1,22 @@
+.Award-winner-row-os {
+  display: flex;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #898989;
+  gap: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.Award-winner-section-os {
+
+}
+@media screen and (max-width: 767px) {
+  .Award-winner-row-os {
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
