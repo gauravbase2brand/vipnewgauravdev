@@ -84,7 +84,7 @@ export default function Fpbusbarcom() {
   ]
   return (
     <div className="container-os">
-      <div className="text-center md:pt-12 md:pb-8 py-6">
+      <div className="text-center pt-12 pb-8">
         <h2 className="font-semibold text-[26px] md:text-[32px] 2xl:text-[38px] lg:text-[35px] text-HeadingText text-center w-[90%] md:w-[80%] lg:w-[70%] mx-auto leading-[1.3] lg:leading-[1.2] mb-4 lg:mb-6">
           Memorable Numbers for
           <span className=" bg-no-repeat bg-center bg-contain text-primary font-bold px-2">

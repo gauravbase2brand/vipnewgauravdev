@@ -97,8 +97,7 @@ const NumerologyPage = () => {
       <NumerologyBanner />
       {isMobile && <NewMobileSearch queryParams={queryParams} />}
       <div
-        className={`bg-[url("/assets/filter.webp")] bg-cover bg-no-repeat bg-center py-8 hidden md:block
-             `}
+        className={`bg-[url("/assets/filter.webp")] bg-cover bg-no-repeat bg-center py-8 hidden md:block`}
       >
         <div className="container-os  ">
           <Search />

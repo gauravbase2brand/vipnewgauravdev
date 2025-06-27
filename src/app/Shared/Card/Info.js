@@ -6,8 +6,6 @@ const Info = ({ unitPrice, compareAtPrice, setHovered, timeString }) => {
   const pathName = usePathname();
   const categoryTab = pathName.split("/category")[0] + "/category";
   const subCatTab = pathName === "/subcategory";
-  console.log("categoryTab", categoryTab);
-  console.log("subCatTab", subCatTab);
 
   //   useEffect(() => {
   //     setTimeout(() => {

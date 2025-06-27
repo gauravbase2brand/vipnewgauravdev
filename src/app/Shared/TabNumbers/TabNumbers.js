@@ -29,69 +29,80 @@ const TabNumbers = () => {
   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
   // const panelImg = process.env.NEXT_PUBLIC_IMAGES;
   const [isMobile, setIsMobile] = useState(false);
-  // const [categoriesTop, setCategoriesTop] = useState([]);
-  // const [categoriesMiddle, setCategoriesMiddle] = useState([]);
-  // const [categoriesBottom, setCategoriesBottom] = useState([]);
-  // const [selectedCategoryTop, setSelectedCategoryTop] = useState(null);
-  // const [selectedCategoryMiddle, setSelectedCategoryMiddle] = useState(null);
-  // const [selectedCategoryBottom, setSelectedCategoryBottom] = useState(null);
-  // const [productIndexes, setProductIndexes] = useState({});
-  // const [viewingProduct, setViewingProduct] = useState({});
+  const [categoriesTop, setCategoriesTop] = useState([]);
+  const [categoriesMiddle, setCategoriesMiddle] = useState([]);
+  const [categoriesBottom, setCategoriesBottom] = useState([]);
+  const [selectedCategoryTop, setSelectedCategoryTop] = useState(null);
+  const [selectedCategoryMiddle, setSelectedCategoryMiddle] = useState(null);
+  const [selectedCategoryBottom, setSelectedCategoryBottom] = useState(null);
+  const [productIndexes, setProductIndexes] = useState({});
+  const [viewingProduct, setViewingProduct] = useState({});
   // const [currentIndex, setCurrentIndex] = useState(0);
 
   // const [loadingNextData, setLoadingNextData] = useState(false);
-  // useEffect(() => {
-  //   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
-  //   axios
-  //     .get(`${apiUrl}/web/numbers/homecategories`)
-  //     .then((response) => {
-  //       const { top, middle, bottom } = response.data;
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
+    axios
+      .get(`${apiUrl}/web/numbers/homecategories`)
+      .then((response) => {
+        const { top, middle, bottom } = response.data;
+        // const transformData = (data) =>
+        //   Object.keys(data).map((key) => ({
+        //     tabName: key,
+        //     items: data[key],
+        //   }));
+        const transformData = (data) => {
+          if (data && typeof data === "object") {
+            return Object.keys(data).map((key) => ({
+              tabName: key,
+              items: data[key],
+            }));
+          }
+          return []; // Return an empty array if data is null or undefined
+        };
 
-  //       const transformData = (data) =>
-  //         Object.keys(data).map((key) => ({
-  //           tabName: key,
-  //           items: data[key],
-  //         }));
+        setCategoriesTop(transformData(top));
+        setCategoriesMiddle(transformData(middle));
+        setCategoriesBottom(transformData(bottom));
 
-  //       setCategoriesTop(transformData(top));
-  //       setCategoriesMiddle(transformData(middle));
-  //       setCategoriesBottom(transformData(bottom));
+        if (transformData(top).length > 0)
+          setSelectedCategoryTop(transformData(top)[0]);
+        if (transformData(middle).length > 0)
+          setSelectedCategoryMiddle(transformData(middle)[0]);
+        if (transformData(bottom).length > 0)
+          setSelectedCategoryBottom(transformData(bottom)[0]);
 
-  //       if (transformData(top).length > 0) setSelectedCategoryTop(transformData(top)[0]);
-  //       if (transformData(middle).length > 0) setSelectedCategoryMiddle(transformData(middle)[0]);
-  //       if (transformData(bottom).length > 0) setSelectedCategoryBottom(transformData(bottom)[0]);
+        const initializeIndexes = (data) => {
+          const initialIndexes = {};
+          const initialViewingProduct = {};
+          data.forEach((category) => {
+            category.items.forEach((item) => {
+              initialIndexes[item.id] = 0;
+              initialViewingProduct[item.id] = false;
+            });
+          });
+          return { initialIndexes, initialViewingProduct };
+        };
 
-  //       const initializeIndexes = (data) => {
-  //         const initialIndexes = {};
-  //         const initialViewingProduct = {};
-  //         data.forEach((category) => {
-  //           category.items.forEach((item) => {
-  //             initialIndexes[item.id] = 0;
-  //             initialViewingProduct[item.id] = false;
-  //           });
-  //         });
-  //         return { initialIndexes, initialViewingProduct };
-  //       };
+        const topInit = initializeIndexes(transformData(top));
+        const middleInit = initializeIndexes(transformData(middle));
+        const bottomInit = initializeIndexes(transformData(bottom));
 
-  //       const topInit = initializeIndexes(transformData(top));
-  //       const middleInit = initializeIndexes(transformData(middle));
-  //       const bottomInit = initializeIndexes(transformData(bottom));
-
-  //       setProductIndexes({
-  //         ...topInit.initialIndexes,
-  //         ...middleInit.initialIndexes,
-  //         ...bottomInit.initialIndexes,
-  //       });
-  //       setViewingProduct({
-  //         ...topInit.initialViewingProduct,
-  //         ...middleInit.initialViewingProduct,
-  //         ...bottomInit.initialViewingProduct,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
-  // }, []);
+        setProductIndexes({
+          ...topInit.initialIndexes,
+          ...middleInit.initialIndexes,
+          ...bottomInit.initialIndexes,
+        });
+        setViewingProduct({
+          ...topInit.initialViewingProduct,
+          ...middleInit.initialViewingProduct,
+          ...bottomInit.initialViewingProduct,
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     axios
@@ -168,7 +179,7 @@ const TabNumbers = () => {
               link={item?.link}
               description={item?.description}
             />
-            {/* {(index === 0 && selectedCategoryTop?.items?.length > 0) && (
+            {index === 0 && selectedCategoryTop?.items?.length > 0 && (
               <NetedCategory
                 viewingProduct={viewingProduct}
                 productIndexes={productIndexes}
@@ -178,13 +189,13 @@ const TabNumbers = () => {
                 setViewingProduct={setViewingProduct}
                 setSelectedCategory={setSelectedCategoryTop}
               />
-            )} */}
+            )}
 
             {index === 1 && <ClientVideo />}
             {index === 2 && <FamilyPack counter={2} />}
             {index === 3 && <Benefits />}
             {index === 4 && <QRVipApp />}
-            {/* {(index === 5 && selectedCategoryMiddle?.items?.length > 0) && (
+            {(index === 5 && selectedCategoryMiddle?.items?.length > 0) && (
               <NetedCategory
                 viewingProduct={viewingProduct}
                 productIndexes={productIndexes}
@@ -194,7 +205,7 @@ const TabNumbers = () => {
                 setViewingProduct={setViewingProduct}
                 setSelectedCategory={setSelectedCategoryMiddle}
               />
-            )} */}
+            )}
             {index === 6 && <FamilyPack counter={3} />}
             {index === 7 && !isMobile && (
               <CityHowGetVipNumber
@@ -217,7 +228,7 @@ const TabNumbers = () => {
             {index === 10 && dataSlider?.length !== 0 && (
               <SliderView setDataSlider={setDataSlider} />
             )} */}
-            {/* {(index === 10 && selectedCategoryBottom?.items?.length > 0) && (
+            {(index === 10 && selectedCategoryBottom?.items?.length > 0) && (
               <NetedCategory
                 viewingProduct={viewingProduct}
                 productIndexes={productIndexes}
@@ -227,7 +238,7 @@ const TabNumbers = () => {
                 setViewingProduct={setViewingProduct}
                 setSelectedCategory={setSelectedCategoryBottom}
               />
-            )} */}
+            )}
             {/* {index === 10 && <TrustPoint />} */}
             {/* {index === 15 && (
               <>
@@ -241,8 +252,8 @@ const TabNumbers = () => {
           </div>
         ))}
       {isLoading && (
-      // <CardLoder  />
-      <CardLoder columns={5} gridItems={60} />
+        // <CardLoder  />
+        <CardLoder columns={5} gridItems={60} />
       )}
     </div>
   );

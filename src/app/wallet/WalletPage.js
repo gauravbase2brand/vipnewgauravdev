@@ -42,8 +42,31 @@ const WalletPage = ({
   setUpi,
   setUpiError,
   upiError,
+  isFastPayment,
+  handleCheckboxChange,
+  setWithdrawal,
+  transferPayment,
+  handleCheckboxTransfer,
+  setTransferPayment,
+  setIsFastPayment,
+  mobileValid,defaultAcc,trasferLoading
 }) => {
   const panelImg = process.env.NEXT_PUBLIC_IMAGES;
+  const clearAllFields = () => {
+    setWithdrawal((prev) => ({
+      ...prev,
+      airtel: "",
+      paytm: "",
+      phonePay: "",
+      bhim: "",
+      googlePay: "",
+      cardName: "",
+      bankName: "",
+      accountNumber: "",
+      ifscCode: "",
+      description: "",
+    }));
+  };
   return (
     <div className="container-os">
       <div className="wallet-page-row-os">
@@ -382,9 +405,38 @@ const WalletPage = ({
 
           {activeBankDetails && (
             <div className="payment-radio-buttons-os withdrawal-paymentInfo-all-data-os">
-              {amountTowithDraw <= 25000 && (
+              <div class="relative flex items-start">
+                <div class="flex items-center h-5 mt-1">
+                  <input
+                    id="hs-checkbox-fast-payment"
+                    name="hs-checkbox-fast-payment"
+                    type="checkbox"
+                    class="w-4 h-4 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800 cursor-pointer"
+                    aria-describedby="hs-checkbox-fast-payment-description"
+                    checked={isFastPayment}
+                    onChange={(e) => {
+                      handleCheckboxChange(e);
+                      clearAllFields();
+                      setTransferPayment(false);
+                    }}
+                    disabled={defaultAcc === null}
+                  />
+                </div>
+                <label for="hs-checkbox-fast-payment" class="ms-3">
+                  <span class="text-lg font-semibold text-gray-800">
+                    {`For Fast Payment. (For Vendor only)`}
+                  </span>
+                  <span
+                    id="hs-checkbox-fast-payment-description"
+                    class="block text-sm dark:text-neutral-500 cursor-pointer text-red-600"
+                  >
+                    {`Enable to prioritize faster payment processing. (Contact your Account Manager)`}
+                  </span>
+                </label>
+              </div>
+              {amountTowithDraw <= 18000 && !isFastPayment && (
                 <div>
-                  <div className="withdrawal-paymentInfo-heading-os">
+                  <div className="text-lg font-semibold text-gray-800">
                     Please Input the account detail to withdraw amount.
                   </div>
                   <div className="withdrawal-account-details-input-row-os">
@@ -397,6 +449,7 @@ const WalletPage = ({
                           placeholder="Phone pay"
                           value={withdrawal.phonePay}
                           onChange={handleWithdrawaInput}
+                          disabled={transferPayment}
                         />
                         <span
                           className="crossing-data"
@@ -415,6 +468,7 @@ const WalletPage = ({
                           placeholder="Bhim upi"
                           value={withdrawal.bhim}
                           onChange={handleWithdrawaInput}
+                          disabled={transferPayment}
                         />
                         <span
                           className="crossing-data"
@@ -431,133 +485,194 @@ const WalletPage = ({
                 </div>
               )}
               <div className="OrderPlacement-paymentInfo-method-col-2-os">
-                <div className="withdrawal-paymentInfo-heading-os">
-                  Bank Account Details
-                </div>
-                <div className="withdrawal-account-details-input-row-os">
-                  <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-1-os">
-                    <label>Acc. Name</label>
-                    <div className="withdrawal-account-details-input-col-os-1">
-                      <input
-                        type="text"
-                        name="cardName"
-                        value={withdrawal.cardName}
-                        onChange={handleWithdrawaInput}
-                        placeholder="Acc. Name"
-                      />
-                      <span
-                        className="crossing-data"
-                        onClick={() => handleClearField("cardName")}
-                      >
-                        ×
-                      </span>
-                      {error.cardName && (
-                        <div className="error-message">{error.cardName}</div>
-                      )}
+                {!isFastPayment && (
+                  <>
+                    <div className="text-lg font-semibold text-gray-800">
+                      Bank Account Details
                     </div>
-                  </div>
-                  <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-2-os">
-                    <label>Bank Name</label>
-                    <div className="withdrawal-account-details-input-col-os-1">
-                      <input
-                        type="text"
-                        name="bankName"
-                        value={withdrawal.bankName}
-                        onChange={handleWithdrawaInput}
-                        placeholder="Bank Name"
-                      />
-                      <span
-                        className="crossing-data"
-                        onClick={() => handleClearField("bankName")}
-                      >
-                        ×
-                      </span>
-                      {error.bankName && (
-                        <div className="error-message">{error.bankName}</div>
-                      )}
+                    <div className="withdrawal-account-details-input-row-os">
+                      <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-1-os">
+                        <label>Acc. Name</label>
+                        <div className="withdrawal-account-details-input-col-os-1">
+                          <input
+                            type="text"
+                            name="cardName"
+                            value={withdrawal.cardName}
+                            onChange={handleWithdrawaInput}
+                            placeholder="Acc. Name"
+                            disabled={transferPayment}
+                          />
+                          <span
+                            className="crossing-data"
+                            onClick={() => handleClearField("cardName")}
+                          >
+                            ×
+                          </span>
+                          {error.cardName && (
+                            <div className="error-message">
+                              {error.cardName}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-2-os">
+                        <label>Bank Name</label>
+                        <div className="withdrawal-account-details-input-col-os-1">
+                          <input
+                            type="text"
+                            name="bankName"
+                            value={withdrawal.bankName}
+                            onChange={handleWithdrawaInput}
+                            placeholder="Bank Name"
+                            disabled={transferPayment}
+                          />
+                          <span
+                            className="crossing-data"
+                            onClick={() => handleClearField("bankName")}
+                          >
+                            ×
+                          </span>
+                          {error.bankName && (
+                            <div className="error-message">
+                              {error.bankName}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-3-os">
+                        <label>Acc. No</label>
+                        <div className="withdrawal-account-details-input-col-os-1">
+                          <input
+                            type="text"
+                            name="accountNumber"
+                            value={withdrawal.accountNumber}
+                            onChange={handleWithdrawaInput}
+                            placeholder="Enter Account Number"
+                            disabled={transferPayment}
+                          />
+                          <span
+                            className="crossing-data"
+                            onClick={() => handleClearField("accountNumber")}
+                          >
+                            ×
+                          </span>
+                          {error.accountNumber && (
+                            <div className="error-message">
+                              {error.accountNumber}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-4-os">
+                        <label>Ifsc Code</label>
+                        <div className="withdrawal-account-details-input-col-os-1">
+                          <input
+                            type="text"
+                            name="ifscCode"
+                            value={withdrawal.ifscCode}
+                            onChange={handleWithdrawaInput}
+                            placeholder="Enter IFSC Code"
+                            disabled={transferPayment}
+                          />
+                          <span
+                            className="crossing-data"
+                            onClick={() => handleClearField("ifscCode")}
+                          >
+                            ×
+                          </span>
+                          {error.ifscCode && (
+                            <div className="error-message">
+                              {error.ifscCode}
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-3-os">
-                    <label>Acc. No</label>
-                    <div className="withdrawal-account-details-input-col-os-1">
-                      <input
-                        type="text"
-                        name="accountNumber"
-                        value={withdrawal.accountNumber}
+                    {selectedPaymentType === "bank" &&
+                      validationSubmit &&
+                      (!nameOnCard || !bankname || !account || !ifsc) && (
+                        <p
+                          className="price-warning-message"
+                          style={{ color: "red" }}
+                        >
+                          Please Enter Bank Details
+                        </p>
+                      )}
+                    <div className="wallet-input-field-rs">
+                      <textarea
+                        cols="30"
+                        rows="5"
+                        name="description"
+                        placeholder="Remarks(optional)*"
+                        value={withdrawal.description}
                         onChange={handleWithdrawaInput}
-                        placeholder="Enter Account Number"
-                      />
+                        disabled={transferPayment}
+                      ></textarea>
                       <span
                         className="crossing-data"
-                        onClick={() => handleClearField("accountNumber")}
+                        onClick={() => handleClearField("description")}
                       >
                         ×
                       </span>
-                      {error.accountNumber && (
-                        <div className="error-message">
-                          {error.accountNumber}
+                    </div>
+                    <div className="withdrawal-alert-message-os">
+                      1-3 Business days
+                    </div>
+
+                    <div className="mt-4">
+                      <div class="flex items-center">
+                        <input
+                          id="default-checkbox"
+                          type="checkbox"
+                          value=""
+                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
+                          checked={transferPayment}
+                          onChange={(e) => {
+                            handleCheckboxTransfer(e);
+                            clearAllFields();
+                            setIsFastPayment(false);
+                          }}
+                        />
+                        <label
+                          for="default-checkbox"
+                          class="ms-2 text-lg font-semibold text-gray-800 dark:text-gray-300 cursor-pointer"
+                        >
+                          Transfer Balance To other account
+                        </label>
+                      </div>
+                      {transferPayment && (
+                        <div className="withdrawal-account-details-input-row-os">
+                          <div className="withdrawal-account-details-input-col-os">
+                            <label>Mobile Number</label>
+                            <div className="withdrawal-account-details-input-col-os-1">
+                              <input
+                                className={mobileValid ? "" : "error-border"}
+                                type="number"
+                                name="mobileNumber"
+                                placeholder="Mobile Number"
+                                value={withdrawal.mobileNumber}
+                                onChange={handleWithdrawaInput}
+                              />
+                              <span
+                                className="crossing-data"
+                                onClick={() => handleClearField("mobileNumber")}
+                              >
+                                ×
+                              </span>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
-                  </div>
-                  <div className="withdrawal-account-details-input-col-os withdrawal-account-details-input-col-4-os">
-                    <label>Ifsc Code</label>
-                    <div className="withdrawal-account-details-input-col-os-1">
-                      <input
-                        type="text"
-                        name="ifscCode"
-                        value={withdrawal.ifscCode}
-                        onChange={handleWithdrawaInput}
-                        placeholder="Enter IFSC Code"
-                      />
-                      <span
-                        className="crossing-data"
-                        onClick={() => handleClearField("ifscCode")}
-                      >
-                        ×
-                      </span>
-                      {error.ifscCode && (
-                        <div className="error-message">{error.ifscCode}</div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                {selectedPaymentType === "bank" &&
-                  validationSubmit &&
-                  (!nameOnCard || !bankname || !account || !ifsc) && (
-                    <p
-                      className="price-warning-message"
-                      style={{ color: "red" }}
-                    >
-                      Please Enter Bank Details
-                    </p>
-                  )}
-                <div className="wallet-input-field-rs">
-                  <textarea
-                    cols="30"
-                    rows="5"
-                    name="description"
-                    placeholder="Remarks(optional)*"
-                    value={withdrawal.description}
-                    onChange={handleWithdrawaInput}
-                  ></textarea>
-                  <span
-                    className="crossing-data"
-                    onClick={() => handleClearField("description")}
-                  >
-                    ×
-                  </span>
-                </div>
-                <div className="withdrawal-alert-message-os">
-                  1-3 Business days
-                </div>
+                  </>
+                )}
                 <button
                   onClick={handleWithdrawSubmit}
                   className="withdrawal-account-details-submit-btn-os"
                   disabled={!validationSubmit}
                   aria-label="Submit"
                 >
-                  {loading ? "Submitting..." : "Submit"}
+                  {loading || trasferLoading ? "Submitting..." : "Submit"}
                 </button>
               </div>
             </div>

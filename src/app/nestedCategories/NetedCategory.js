@@ -49,6 +49,9 @@ export const NetedCategory = ({
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState("");
+  const imgUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
+  console.log("imgUrl",imgUrl);
+  
   // Assuming you want to store all the products in an array of arrays
   const categoryItems = useMemo(() => {
     return selectedCategory?.items || [];
@@ -559,7 +562,7 @@ export const NetedCategory = ({
                   {bannerVisibility[item.id] !== false && currentIndex === 0 ? (
                     // Show Banner
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}${item.banner}`}
+                      src={`${imgUrl}${item.banner}`}
                       alt="sub Category"
                       height={300}
                       width={1000}

@@ -16,7 +16,11 @@ const Wallet = () => {
     tab,
     setWalletBalance,
     setUserProfile,
+    wBalance,
+    setWBalance,
   } = useContext(AppStateContext);
+  const GreaterWallet = userProfile?.contact_cf?.wallet_balance;
+  const defaultAcc = userProfile?.contact_cf?.default_account;
   const tabChange = localStorage.getItem("wallet");
   const [walletActive, setWalletActive] = useState(tabChange || tab);
   const [amountTowithDraw, setAmountTowithDraw] = useState(0);
@@ -26,7 +30,6 @@ const Wallet = () => {
   const [bankname, setbankname] = useState();
   const [ifsc, setIfsc] = useState();
   const [upi, setUpi] = useState();
-  const [wBalance, setWBalance] = useState(0);
   const [nwBalance, setNwBalance] = useState(0);
   const [priceWarning, setPriceWarning] = useState(false);
   const [validationSubmit, setValidationSubmit] = useState(false);
@@ -37,6 +40,7 @@ const Wallet = () => {
   const [failedNumbers, setFailedNumbers] = useState([]);
   const [loadApi, setLoadApi] = useState(false);
   const [rechargeBtn, setRechargeBtn] = useState(false);
+  const [trasferLoading, setTransferLoading] = useState(false);
   const [error, setError] = useState({
     cardName: "",
     bankName: "",
@@ -61,8 +65,18 @@ const Wallet = () => {
     accountNumber: "",
     ifscCode: "",
     description: "",
+    mobileNumber: "",
   });
-
+  const [mobileValid, setMobileValid] = useState(true);
+  const [isFastPayment, setIsFastPayment] = useState(false);
+  const [transferPayment, setTransferPayment] = useState(false);
+  const handleCheckboxChange = (event) => {
+    setIsFastPayment(event.target.checked);
+    setTransferPayment(false);
+  };
+  const handleCheckboxTransfer = (event) => {
+    setTransferPayment(event.target.checked);
+  };
   const showModal = () => {
     setShow(true);
   };
@@ -104,10 +118,12 @@ const Wallet = () => {
       withdrawal.phonePay.trim().length > 0 ||
       withdrawal.bhim.trim().length > 0 ||
       withdrawal.googlePay.trim().length > 0 ||
-      withdrawal.description.trim().length > 0;
+      withdrawal.description.trim().length > 0 ||
+      withdrawal.mobileNumber.trim().length > 0;
 
     // Check if all fields are empty
-    const areAllFieldsEmpty = !isBankDetailsFilled && !isOtherDetailsFilled;
+    const areAllFieldsEmpty =
+      !isBankDetailsFilled && !isOtherDetailsFilled && !isFastPayment;
 
     if (areAllFieldsEmpty) {
       // If all bank fields are empty, disable submit and show error message
@@ -143,7 +159,7 @@ const Wallet = () => {
 
   useEffect(() => {
     getProfile(user?.token)?.then((res) => {
-      setWBalance(parseInt(res?.contact_cf?.with_drawn_balance));
+      setWBalance(parseInt(res?.contact_cf?.wallet_balance));
       setNwBalance(parseInt(res?.contact_cf?.non_with_drawn_balance));
       setUserName(res);
       setUserProfile(res);
@@ -161,9 +177,118 @@ const Wallet = () => {
     //     console.log(error);
     //   });
   }, [loadApi]);
+  const handleTransferSubmit = async () => {
+    if (trasferLoading) return;
+    if (GreaterWallet < amountTowithDraw) {
+      toast.error("please check your Balance");
+      return;
+    }
+
+    if (isFastPayment || !transferPayment) return;
+    setTransferLoading(true);
+    const url = `${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}/web/capture`;
+    const todayDate = new Date().toISOString().split("T")[0];
+
+    // Use regular JavaScript objects instead of URLSearchParams
+    const payload1 = {
+      name: userProfile?.firstname,
+      cf_2161: userProfile?.mobile,
+      cf_2163: amountTowithDraw,
+      cf_2165: "Debit",
+      cf_2167: `Transfer to ${withdrawal?.mobileNumber}`,
+      cf_2169: "1",
+      cf_2171: todayDate,
+      cf_2173: "Release",
+      cf_2175: "1",
+    };
+
+    const payload2 = {
+      name: "Transfer Entry",
+      cf_2161: withdrawal?.mobileNumber,
+      cf_2163: amountTowithDraw,
+      cf_2165: "Credit",
+      cf_2167: `Transfer from ${userProfile?.firstname}-${userProfile?.mobile}`,
+      cf_2169: "1",
+      cf_2171: todayDate,
+      cf_2173: "Release",
+      cf_2175: "1",
+    };
+
+    try {
+      // First API call
+      const response1 = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(payload1), // Send JSON payload
+      });
+
+      // Check if the first API call was successful
+      if (!response1.ok) {
+        throw new Error("Error in the first API call");
+      }
+
+      // Second API call
+      const response2 = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(payload2), // Send JSON payload
+      });
+
+      // Check if the second API call was successful
+      if (!response2.ok) {
+        throw new Error("Error in the second API call");
+      }
+
+      setTransferPayment(false);
+      setWithdrawal({
+        airtel: "",
+        paytm: "",
+        phonePay: "",
+        bhim: "",
+        googlePay: "",
+        cardName: "",
+        bankName: "",
+        accountNumber: "",
+        ifscCode: "",
+        description: "",
+        mobileNumber: "",
+      });
+
+      toast.success(
+        `₹${amountTowithDraw} successfully transferred to account number ${withdrawal?.mobileNumber}.`
+      );
+      setLoadApi(true);
+      setTransferLoading(true);
+    } catch (error) {
+      console.error("Error in API calls:", error);
+      toast.error("There was an error processing the transfer.");
+    } finally {
+      setTransferLoading(false); // Re-enable the button after the request is completed
+    }
+  };
 
   const handleWithdrawaInput = (e) => {
     const { value, name } = e.target;
+    if (name === "mobileNumber") {
+      if (!/^\d*$/.test(value)) return; // Allow only digits
+      if (value.length > 10) return; // Max 10 digits
+
+      // Set form state
+      setWithdrawal((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+
+      // Validate: starts with 6-9 and 10 digits
+      const isValid = /^[6-9]\d{9}$/.test(value);
+      setMobileValid(isValid || value.length < 10); // Show error only after full length
+    }
     setWithdrawal((prevState) => ({
       ...prevState,
       [name]: value,
@@ -175,7 +300,35 @@ const Wallet = () => {
   };
 
   const handleWithdrawSubmit = () => {
+    if (!mobileValid) return;
+    if (withdrawal.mobileNumber.length !== 10 && transferPayment) {
+      setMobileValid(false); // Show error if length is not 10
+      return;
+    } else {
+      handleTransferSubmit();
+    }
     if (loading) return;
+    if (transferPayment) return;
+
+    const storedReferId = localStorage.getItem("referId");
+    const commonPayload = {
+      airtel_number: withdrawal.airtel,
+      paytm_number: withdrawal.paytm,
+      bhim_number: withdrawal.bhim,
+      phone_pe_number: withdrawal.phonePay,
+      g_pay_number: withdrawal.googlePay,
+      mobile_number: user?.user?.mobile,
+      bank_account_name: withdrawal.cardName,
+      bank_name: withdrawal.bankName,
+      bank_ifsc_code: withdrawal.ifscCode,
+      bank_account_number: withdrawal.accountNumber,
+      amount_requested_remarks: withdrawal.description,
+      amount_requested: amountTowithDraw,
+      action: isFastPayment ? "Fast Money Requested" : "Money Requested",
+      ...(storedReferId && {
+        refer_id: storedReferId === "undefined" ? "" : storedReferId,
+      }),
+    };
     let isValid = true;
     const isBankDetailsFilled =
       withdrawal.cardName.trim().length > 0 ||
@@ -189,7 +342,8 @@ const Wallet = () => {
       withdrawal.phonePay.trim().length > 0 ||
       withdrawal.bhim.trim().length > 0 ||
       withdrawal.googlePay.trim().length > 0 ||
-      withdrawal.description.trim().length > 0;
+      withdrawal.description.trim().length > 0 ||
+      withdrawal.mobileNumber.trim().length > 0;
 
     if (isBankDetailsFilled) {
       // If any bank details field is filled, ensure all bank details fields are filled
@@ -222,31 +376,10 @@ const Wallet = () => {
       }
     }
 
-    if (!isBankDetailsFilled && isOtherDetailsFilled) {
+    if (!isBankDetailsFilled && isOtherDetailsFilled && !isFastPayment) {
       // If non-bank details are filled, call API function
       setLoading(true);
-      const storedReferId = localStorage.getItem("referId");
-      WithDrawMoney(
-        {
-          airtel_number: withdrawal.airtel,
-          paytm_number: withdrawal.paytm,
-          bhim_number: withdrawal.bhim,
-          phone_pe_number: withdrawal.phonePay,
-          g_pay_number: withdrawal.googlePay,
-          mobile_number: user?.user?.mobile,
-          bank_account_name: withdrawal.cardName,
-          bank_name: withdrawal.bankName,
-          bank_ifsc_code: withdrawal.ifscCode,
-          bank_account_number: withdrawal.accountNumber,
-          amount_requested_remarks: withdrawal.description,
-          amount_requested: amountTowithDraw,
-          action: "Money Requested",
-          ...(storedReferId && {
-            refer_id: storedReferId === "undefined" ? "" : storedReferId,
-          }),
-        },
-        user?.token
-      ).then((res) => {
+      WithDrawMoney(commonPayload, user?.token).then((res) => {
         setLoading(false);
         setValidationSubmit(false);
         setNameOnCard("");
@@ -260,28 +393,7 @@ const Wallet = () => {
     // If bank details are filled correctly, call API function
     if (isValid && isBankDetailsFilled) {
       setLoading(true);
-      const storedReferId = localStorage.getItem("referId");
-      WithDrawMoney(
-        {
-          airtel_number: withdrawal.airtel,
-          paytm_number: withdrawal.paytm,
-          bhim_number: withdrawal.bhim,
-          phone_pe_number: withdrawal.phonePay,
-          g_pay_number: withdrawal.googlePay,
-          mobile_number: user?.user?.mobile,
-          bank_account_name: withdrawal.cardName,
-          bank_name: withdrawal.bankName,
-          bank_ifsc_code: withdrawal.ifscCode,
-          bank_account_number: withdrawal.accountNumber,
-          amount_requested_remarks: withdrawal.description,
-          amount_requested: amountTowithDraw,
-          action: "Money Requested",
-          ...(storedReferId && {
-            refer_id: storedReferId === "undefined" ? "" : storedReferId,
-          }),
-        },
-        user?.token
-      ).then((res) => {
+      WithDrawMoney(commonPayload, user?.token).then((res) => {
         setLoading(false);
         setValidationSubmit(false);
         setNameOnCard("");
@@ -289,6 +401,19 @@ const Wallet = () => {
         setAccount("");
         setIfsc("");
         setSelectedPaymentType(null);
+      });
+    }
+    if (isFastPayment) {
+      setLoading(true);
+      WithDrawMoney(commonPayload, user?.token).then((res) => {
+        setLoading(false);
+        setValidationSubmit(false);
+        setNameOnCard("");
+        setbankname("");
+        setAccount("");
+        setIfsc("");
+        setSelectedPaymentType(null);
+        setIsFastPayment(false);
       });
     }
   };
@@ -498,6 +623,16 @@ const Wallet = () => {
           setUpi={setUpi}
           setUpiError={setUpiError}
           upiError={upiError}
+          isFastPayment={isFastPayment}
+          handleCheckboxChange={handleCheckboxChange}
+          setWithdrawal={setWithdrawal}
+          transferPayment={transferPayment}
+          handleCheckboxTransfer={handleCheckboxTransfer}
+          setIsFastPayment={setIsFastPayment}
+          setTransferPayment={setTransferPayment}
+          mobileValid={mobileValid}
+          defaultAcc={defaultAcc}
+          trasferLoading={trasferLoading}
         />
       </section>
     </>

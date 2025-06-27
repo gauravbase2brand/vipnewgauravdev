@@ -351,71 +351,80 @@ const PdpProduct = (props) => {
                     <h1 className="font-semibold md:text-2xl text-xl text-[var(--darktext)]">
                       {product?.productname}
                     </h1>
-                    <button
-                      onClick={() => {
-                        if (getName()) {
-                          addToWishList({
-                            ...product,
-                            product_id: product?.productid,
-                          });
-                        } else {
-                          setActiveSignInWithOtp(true);
-                        }
-                      }}
-                      className={
-                        product?.product_status === "sold"
-                          ? "PDP-product-wishlist-button-os disabled"
-                          : wishListItem?.some(
-                              (item) =>
-                                item.productname === product?.productname
-                            )
-                          ? "PDP-product-wishlist-button-os active"
-                          : "PDP-product-wishlist-button-os"
-                      }
-                      disabled={product?.product_status === "sold"}
-                      aria-label="wishlist"
-                    >
-                      <FontAwesomeIcon
-                        icon={faHeartRegular}
-                        className="outlined-heart"
-                      />
-                    </button>
+                    {product?.seller_status === "ACTIVE" &&
+                      product?.product_status === "Active" && (
+                        <button
+                          onClick={() => {
+                            if (getName()) {
+                              addToWishList({
+                                ...product,
+                                product_id: product?.productid,
+                              });
+                            } else {
+                              setActiveSignInWithOtp(true);
+                            }
+                          }}
+                          className={
+                            product?.product_status === "sold"
+                              ? "PDP-product-wishlist-button-os disabled"
+                              : wishListItem?.some(
+                                  (item) =>
+                                    item.productname === product?.productname
+                                )
+                              ? "PDP-product-wishlist-button-os active"
+                              : "PDP-product-wishlist-button-os"
+                          }
+                          disabled={product?.product_status === "sold"}
+                          aria-label="wishlist"
+                        >
+                          <FontAwesomeIcon
+                            icon={faHeartRegular}
+                            className="outlined-heart"
+                          />
+                        </button>
+                      )}
                   </div>
                 </div>
-                <div className="flex items-center justify-between flex-wrap gap-y-[4px] gap-x-0">
-                  <>
-                    <div className="flex items-center gap-[8px]">
-                      <span className="font-semibold md:text-[23px] text-[20px] md:leading-[41px] leading-[30px] text-[var(--darktext)]">
-                        {`Rs.${parseFloat(product?.unit_price).toLocaleString(
-                          "en-IN",
-                          {
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 2,
-                          }
-                        )}`}
-                      </span>
-                      <span className="font-medium text-[14px] leading-[47px] text-[var(--darktext)] line-through">
-                        Rs. {compareAtPrice}
-                      </span>
-                      <span className="font-normal text-[11.7881px] leading-[18px] text-white bg-primary rounded-[20px] py-[4px] px-[16px]">
-                        Discount
-                      </span>
-                    </div>
-                    {/* <div className="PDP-product-price-data-col-2-os">
+                {product?.seller_status === "ACTIVE" &&
+                product?.product_status === "Active" ? (
+                  <div className="flex items-center justify-between flex-wrap gap-y-[4px] gap-x-0">
+                    <>
+                      <div className="flex items-center gap-[8px]">
+                        <span className="font-semibold md:text-[23px] text-[20px] md:leading-[41px] leading-[30px] text-[var(--darktext)]">
+                          {`Rs.${parseFloat(product?.unit_price).toLocaleString(
+                            "en-IN",
+                            {
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 2,
+                            }
+                          )}`}
+                        </span>
+                        <span className="font-medium text-[14px] leading-[47px] text-[var(--darktext)] line-through">
+                          Rs. {compareAtPrice}
+                        </span>
+                        <span className="font-normal text-[11.7881px] leading-[18px] text-white bg-primary rounded-[20px] py-[4px] px-[16px]">
+                          Discount
+                        </span>
+                      </div>
+                      {/* <div className="PDP-product-price-data-col-2-os">
                    <span>{getStarIcons(product?.rating)}</span>
                    <div className="PDP-product-review-text-os">
                      123 Reviews
                    </div>
                  </div> */}
-                  </>
-                </div>
-
+                    </>
+                  </div>
+                ) : (
+                  <span className="font-semibold md:text-[23px] text-[20px] md:leading-[41px] leading-[30px] text-red-600">
+                    Sold
+                  </span>
+                )}
                 <div className="border-t-[0.589404px] border-b-[0.589404px] border-solid border-[var(--darktext)] py-[1.5rem] mt-[1rem] mb-[1.5rem]">
                   <div className="bg-white border-[1.17881px] border-dashed border-[var(--primary)] rounded-[9.43046px] mb-[1rem]">
                     <div className="font-semibold md:text-[17px] text-[14px] md:leading-[24px] text-[#333] py-[8px] px-[1rem] border-b-[1.17881px] border-dashed border-[var(--primary)] flex justify-around">
                       <span> Features</span>
                       {rtpDate && (
-                          <span className="text-red-500 text-[12px] sm:text-[14px] md:text-[16px] blink-zoom">
+                        <span className="text-red-500 text-[12px] sm:text-[14px] md:text-[16px] blink-zoom">
                           It will be available on ({rtpDate})
                         </span>
                       )}
@@ -450,72 +459,79 @@ const PdpProduct = (props) => {
                 </div>
 
                 <div className="flex items-center  xl:gap-[2rem] gap-2 ">
-                  {product?.product_status === "sold" ? (
-                    <button
-                      className="PDP-product-buyNow-btn-os sold"
-                      disabled={product?.product_status === "sold"}
-                      aria-label="Sold"
-                    >
-                      Sold
-                    </button>
-                  ) : (
-                    <button
-                      className="font-medium text-[17px] leading-[27px] flex items-center justify-center md:p-3 p-2 gap-[1rem] rounded-[5px] text-[var(--primary)] bg-white border-[2px] border-[var(--primary)] transition-all duration-[300ms] hover:bg-primary hover:text-white"
-                      onClick={() => {
-                        setPdp(true);
-                        if (!checkUser()) {
-                          setActiveSignInWithOtp(true);
-                          setRedirectTo("/details");
-                          setPdp(false);
-                        } else {
-                          if (
-                            cartItems?.some(
-                              (obj) => obj.number === props?.number
-                            )
-                          ) {
-                            setPdp(false);
-                            Router.push("/details");
-                          } else {
-                            addToCart(
-                              {
-                                ...product,
-                                number: product?.number,
-                                product_id: product?.productid,
-                                tag: "new",
-                              },
-                              () => {
+                  {product?.seller_status === "ACTIVE" &&
+                  product?.product_status === "Active" ? (
+                    <>
+                      {product?.product_status === "sold" ? (
+                        <button
+                          className="PDP-product-buyNow-btn-os sold"
+                          disabled={product?.product_status === "sold"}
+                          aria-label="Sold"
+                        >
+                          Sold
+                        </button>
+                      ) : (
+                        <button
+                          className="font-medium text-[17px] leading-[27px] flex items-center justify-center md:p-3 p-2 gap-[1rem] rounded-[5px] text-[var(--primary)] bg-white border-[2px] border-[var(--primary)] transition-all duration-[300ms] hover:bg-primary hover:text-white"
+                          onClick={() => {
+                            setPdp(true);
+                            if (!checkUser()) {
+                              setActiveSignInWithOtp(true);
+                              setRedirectTo("/details");
+                              setPdp(false);
+                            } else {
+                              if (
+                                cartItems?.some(
+                                  (obj) => obj.number === props?.number
+                                )
+                              ) {
+                                setPdp(false);
                                 Router.push("/details");
+                              } else {
+                                addToCart(
+                                  {
+                                    ...product,
+                                    number: product?.number,
+                                    product_id: product?.productid,
+                                    tag: "new",
+                                  },
+                                  () => {
+                                    Router.push("/details");
+                                  }
+                                );
                               }
-                            );
-                          }
+                            }
+                          }}
+                          disabled={pdp}
+                          aria-label="Buy Now"
+                        >
+                          Buy Now
+                          <RiShoppingCart2Line />
+                        </button>
+                      )}
+                      <button
+                        className={
+                          product?.product_status === "sold"
+                            ? "PDP-product-addTocart-btn-os disabled"
+                            : "font-medium text-[17px] leading-[27px] flex items-center justify-center md:p-3 p-2 gap-[1rem] rounded-[5px] text-white bg-primary border-[2px] border-[var(--primary)] transition-all duration-[300ms] hover:bg-white hover:text-primary"
                         }
-                      }}
-                      disabled={pdp}
-                      aria-label="Buy Now"
-                    >
-                      Buy Now
-                      <RiShoppingCart2Line />
-                    </button>
-                  )}
-                  <button
-                    className={
-                      product?.product_status === "sold"
-                        ? "PDP-product-addTocart-btn-os disabled"
-                        : "font-medium text-[17px] leading-[27px] flex items-center justify-center md:p-3 p-2 gap-[1rem] rounded-[5px] text-white bg-primary border-[2px] border-[var(--primary)] transition-all duration-[300ms] hover:bg-white hover:text-primary"
-                    }
-                    onClick={() => {
-                      handleAddToCart();
-                    }}
-                    disabled={product?.product_status === "sold"}
-                    aria-label="addTocart"
-                  >
-                    {product?.product_status === "sold"
-                      ? "Add to Cart"
-                      : cartItems?.some((obj) => obj.number === product?.number)
-                      ? "Moved to Cart"
-                      : "Add to Cart"}
-                    <RiShoppingCart2Line />
-                  </button>
+                        onClick={() => {
+                          handleAddToCart();
+                        }}
+                        disabled={product?.product_status === "sold"}
+                        aria-label="addTocart"
+                      >
+                        {product?.product_status === "sold"
+                          ? "Add to Cart"
+                          : cartItems?.some(
+                              (obj) => obj.number === product?.number
+                            )
+                          ? "Moved to Cart"
+                          : "Add to Cart"}
+                        <RiShoppingCart2Line />
+                      </button>
+                    </>
+                  ) : null}
                   {product?.product_status === "sold" && (
                     <button
                       className="PDP-product-sold-button"

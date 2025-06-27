@@ -365,7 +365,7 @@
   flex-wrap: wrap;
   gap: 1rem 4%;
   width: 65%;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   align-items: start;
 }
 .withdrawal-account-details-submit-btn-os {
@@ -375,7 +375,7 @@
   border: 1px solid var(--primary);;
   border-radius: 2.26804px;
   padding: 0.8rem 4rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .upi-id-input-os input,
 .withdrawal-alert-message-os {

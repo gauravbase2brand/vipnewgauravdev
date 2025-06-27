@@ -453,7 +453,7 @@ const NewMobileSearch = ({ queryParams }) => {
             : "MobileSearch-section-os gk-new-filter"
         }`}
       >
-        <div className="MobileSearch-filter-content-data-os active mb-3">
+        <div className="MobileSearch-filter-content-data-os active">
           <div className="MobileSearch-filter-search-by-digits-row-os">
             <div className="MobileSearch-filter-search-by-digits-heading-os">
               <div>

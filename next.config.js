@@ -16,10 +16,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.vipnumbershop.com",
       },
-      // {
-      //   protocol: "https",
-      //   hostname: "admin.leafymango.com",
-      // },
+      {
+        protocol: "https",
+        hostname: "staging.leafymango.com",
+      },
+      {
+        protocol: "https",
+        hostname: "admin.fancymobilenumber.in",
+      },
       {
         protocol: "https",
         hostname: "newadmin.leafymango.com",

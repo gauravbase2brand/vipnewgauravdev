@@ -637,7 +637,7 @@ button.MobileSearch-filter-button-1-os.active {
   width: 100%;
 }
 .MobileSearch-filter-search-by-digits-filter-1-os {
-  /* padding-top: 1.5rem; */
+  padding-top: 1.5rem;
   display: none;
 }
 .search-filter-search-number-btn-os {
@@ -651,8 +651,8 @@ button.MobileSearch-filter-button-1-os.active {
 }
 .MobileSearch-filter-search-by-digits-row-os {
   background: #fff;
-  /* border: 1px solid #b1b1b1;
-  box-shadow: 0 3.00665px 7.51663px rgb(0 0 0 / 13%); */
+  border: 1px solid #b1b1b1;
+  box-shadow: 0 3.00665px 7.51663px rgb(0 0 0 / 13%);
   border-radius: 6.0133px 6.0133px 0 0;
   padding: 1.5rem 1rem;
 }

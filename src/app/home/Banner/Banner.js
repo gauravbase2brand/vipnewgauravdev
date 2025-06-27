@@ -153,8 +153,8 @@ const Banner = () => {
                         alt={items?.alt}
                         width={isMobile ? 854 : 1920}
                         height={isMobile ? 780 : 761}
-                        quality={80}
-                        priority={index === 0 ? true : false}
+                        // quality={80}
+                        // priority={index === 0 ? true : false}
                         className="cursor-pointer rounded-tl-[20px] rounded-tr-[20px] rounded-bl-none rounded-br-none object-[54%_15%]  sm:object-[73%_8%]  md:h-auto xl:h-[500px] lg:h-[300px] 2xl:h-[550px]"
                       />
                     </div>

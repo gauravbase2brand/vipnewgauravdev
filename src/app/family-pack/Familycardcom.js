@@ -148,7 +148,7 @@ export default function Familycardcom() {
                 },
               ].map((data, index) => (
                 <Link href={data.btn_link} target='_blank' key={index}>
-                <div  className="w-[95%] m-auto">
+                <div className="w-[95%] m-auto">
                   <div
                     className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer group"
                     style={{ backgroundImage: `url(${data.fp_cardbg})` }}
