@@ -79,54 +79,56 @@ const NumerlogyArticlesBlog = () => {
         {/* Blog List (Shows Only 5 Articles) */}
         <div className="grid md:gap-6 gap-10">
           {articles.map((post, index) => (
-            <div
-              key={post.id}
-              className="flex flex-col lg:flex-row bg-white shadow-md rounded-lg"
-            >
-              {/* Blog Image */}
+            <>
+              <Link href={`/blogs/${post.img_url}`}>
+                <div
+                  key={post.id}
+                  className="flex flex-col lg:flex-row bg-white shadow-md rounded-lg"
+                >
+                  {/* Blog Image */}
 
-              <div className="relative w-full lg:w-1/3 md:h-[240px] h-[171px]">
-                <Link href={`/blogs/${post.img_url}`}>
-                  <Image
-                    src={post.mainImage || "/assets/default-image.png"} // ✅ Uses correct API field
-                    alt={post.mainHeading}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-t-lg lg:rounded-l-lg lg:rounded-t-none  object-contain md:h-[240px] h-[171px]"
-                  />
-                </Link>
-              </div>
+                  <div className="relative w-full lg:w-1/3 md:h-[240px] h-[171px]">
+                    <Link href={`/blogs/${post.img_url}`}>
+                      <Image
+                        src={post.mainImage || "/assets/default-image.png"} // ✅ Uses correct API field
+                        alt={post.mainHeading}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-lg lg:rounded-l-lg lg:rounded-t-none  object-contain md:h-[240px] h-[171px]"
+                      />
+                    </Link>
+                  </div>
 
-              {/* Blog Content */}
-              <div className="p-5 flex flex-col w-full lg:w-2/3">
-                {/* <p className="text-sm text-gray-500">
+                  {/* Blog Content */}
+                  <div className="p-5 flex flex-col w-full lg:w-2/3">
+                    {/* <p className="text-sm text-gray-500">
                   {post.Date || "No Date"}
                 </p> */}
-                <Link href={`/blogs/${post.img_url}`}>
-                  <h3 className="text-lg font-semibold">
-                    {/* <span className="text-primary">{index + 1}. </span>{" "} */}
-                    {/* ✅ Numbering */}
-                    {post.mainHeading}
-                  </h3>
-                </Link>
-                <p className="font-normal text-[16px] leading-[24px] md:text-[17px] md:leading-[30px] text-darktext">
-                  {truncateWords(
-                    post.mainDescriptionNoHtml.replace(/(<([^>]+)>)/gi, ""),
-                    isMobile ? 25 : 60
-                  )}
-                </p>
-              </div>
+                    <h3 className="text-lg font-semibold">
+                      {/* <span className="text-primary">{index + 1}. </span>{" "} */}
+                      {/* ✅ Numbering */}
+                      {post.mainHeading}
+                    </h3>
+                    <p className="font-normal text-[16px] leading-[24px] md:text-[17px] md:leading-[30px] text-darktext">
+                      {truncateWords(
+                        post.mainDescriptionNoHtml.replace(/(<([^>]+)>)/gi, ""),
+                        isMobile ? 25 : 60
+                      )}
+                    </p>
+                  </div>
 
-              {/* Arrow Button */}
-              <div className="flex items-center justify-center px-6 relative">
-                <Link
-                  href={`/blogs/${post.img_url}`} // ✅ Ensures valid link to blog post
-                  className="bg-primary text-white p-3 absolute md:left-[20px] md:right-auto right-0"
-                >
-                  <FiArrowRight size={20} />
-                </Link>
-              </div>
-            </div>
+                  {/* Arrow Button */}
+                  <div className="flex items-center justify-center px-6 relative">
+                    <Link
+                      href={`/blogs/${post.img_url}`} // ✅ Ensures valid link to blog post
+                      className="bg-primary text-white p-3 absolute md:left-[20px] md:right-auto right-0"
+                    >
+                      <FiArrowRight size={20} />
+                    </Link>
+                  </div>
+                </div>
+              </Link>
+            </>
           ))}
         </div>
       </div>
