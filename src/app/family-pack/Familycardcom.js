@@ -59,8 +59,8 @@ export default function Familycardcom() {
                     btn_link:"/search-results?type=family_pack&searchBy=family_pack&fp_total=4&callCount=0"
                 },
               ].map((data, index) => (
-                <Link href={data.btn_link} target='_blank'>
-                <div key={index} className="w-[95%] m-auto">
+                <Link href={data.btn_link} target='_blank' key={index}>
+                <div  className="w-[95%] m-auto">
                   <div
                     className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer group"
                     style={{ backgroundImage: `url(${data.fp_cardbg})` }}
@@ -147,8 +147,8 @@ export default function Familycardcom() {
                   btn_link:"/search-results?type=family_pack&searchBy=family_pack&fp_total=7&callCount=0"
                 },
               ].map((data, index) => (
-                <Link href={data.btn_link} target='_blank'>
-                <div key={index} className="w-[95%] m-auto">
+                <Link href={data.btn_link} target='_blank' key={index}>
+                <div  className="w-[95%] m-auto">
                   <div
                     className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer group"
                     style={{ backgroundImage: `url(${data.fp_cardbg})` }}

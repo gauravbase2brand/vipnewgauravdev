@@ -3,13 +3,17 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
+import { usePathname } from "next/navigation";
 
 const NumerlogyArticlesBlog = () => {
   const [articles, setArticles] = useState([]); // State to hold API data
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-
+  const pathname = usePathname();
+  const api = `https://leafymango.com/blogs.php?perPageLimit=10&recordStartFrom=0&type=${
+    pathname === "/family-pack" ? "FamilyPack" : "Numerology"
+  }`;
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768); // Treat <= 768px as mobile
@@ -25,9 +29,7 @@ const NumerlogyArticlesBlog = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch(
-          `https://leafymango.com/blogs.php?perPageLimit=10&recordStartFrom=0&type=Numerology`
-        );
+        const response = await fetch(api);
         const data = await response.json();
         setArticles(data?.blogs);
       } catch (error) {
@@ -109,8 +111,8 @@ const NumerlogyArticlesBlog = () => {
                 </Link>
                 <p className="font-normal text-[16px] leading-[24px] md:text-[17px] md:leading-[30px] text-darktext">
                   {truncateWords(
-                    post.mainDescriptionNoHtml.replace(/(<([^>]+)>)/gi, ""),
-                    isMobile ? 25 : 60
+                    post.mainShortDescription.replace(/(<([^>]+)>)/gi, ""),
+                    isMobile ? 40 : 60
                   )}
                 </p>
               </div>
