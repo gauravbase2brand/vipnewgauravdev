@@ -111,8 +111,8 @@ const NumerlogyArticlesBlog = () => {
                 </Link>
                 <p className="font-normal text-[16px] leading-[24px] md:text-[17px] md:leading-[30px] text-darktext">
                   {truncateWords(
-                    post.mainShortDescription.replace(/(<([^>]+)>)/gi, ""),
-                    isMobile ? 40 : 60
+                    post.mainDescriptionNoHtml.replace(/(<([^>]+)>)/gi, ""),
+                    isMobile ? 25 : 60
                   )}
                 </p>
               </div>
