@@ -207,13 +207,13 @@ const MobileSearchFilters = ({
         >
           <div
             className={`text-center flex items-center justify-center gap-2 ${
-              pathname === "/numerology" || pathname === "/family-pack"
+              pathname === "/numerology"
                 ? "font-bold text-[26px] lg:text-[32px] text-HeadingText leading-[35px] lg:leading-[40px] tracking-wide mb-4"
                 : "search-filter-advance-search-heading-os"
             }`}
           >
             <span className="text-xl">
-              {pathname === "/numerology" || pathname === "/family-pack" ? (
+              {pathname === "/numerology" ? (
                 <span>
                   Advance <span className="text-yellow-500">Numerology</span>{" "}
                   Search

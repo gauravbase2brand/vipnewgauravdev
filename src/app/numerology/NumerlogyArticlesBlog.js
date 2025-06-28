@@ -65,7 +65,7 @@ const NumerlogyArticlesBlog = () => {
           <h2 className="text-3xl font-semibold">
             Articles &{" "}
             <span className="inline-block bg-[url('/assets/118.webp')] bg-no-repeat bg-center bg-contain text-primary font-bold px-2">
-              Blog
+              Blogs
             </span>
           </h2>
           <Link
@@ -88,15 +88,13 @@ const NumerlogyArticlesBlog = () => {
                   {/* Blog Image */}
 
                   <div className="relative w-full lg:w-1/3 md:h-[240px] h-[171px]">
-                    <Link href={`/blogs/${post.img_url}`}>
-                      <Image
-                        src={post.mainImage || "/assets/default-image.png"} // ✅ Uses correct API field
-                        alt={post.mainHeading}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-t-lg lg:rounded-l-lg lg:rounded-t-none  object-contain md:h-[240px] h-[171px]"
-                      />
-                    </Link>
+                    <Image
+                      src={post.mainImage || "/assets/default-image.png"} // ✅ Uses correct API field
+                      alt={post.mainHeading}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-t-lg lg:rounded-l-lg lg:rounded-t-none  object-contain md:h-[240px] h-[171px]"
+                    />
                   </div>
 
                   {/* Blog Content */}
@@ -119,12 +117,9 @@ const NumerlogyArticlesBlog = () => {
 
                   {/* Arrow Button */}
                   <div className="flex items-center justify-center px-6 relative">
-                    <Link
-                      href={`/blogs/${post.img_url}`} // ✅ Ensures valid link to blog post
-                      className="bg-primary text-white p-3 absolute md:left-[20px] md:right-auto right-0"
-                    >
+                    <button className="bg-primary text-white p-3 absolute md:left-[20px] md:right-auto right-0">
                       <FiArrowRight size={20} />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </Link>

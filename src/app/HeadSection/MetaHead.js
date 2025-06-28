@@ -23,11 +23,11 @@ const MetaHead = () => {
       <meta property="og:type" content="website" />
       <meta
         property="og:title"
-        content="VIP Number Shop - Buy VIP Number | VIP Mobile Number"
+        content="Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years"
       />
       <meta
         property="og:description"
-        content="Get exclusive VIP Number, Fancy mobile numbers at VIP Number Shop. Choose your lucky number today from India’s top-rated provider with millions of happy customers!"
+        content="Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop."
       />
       <meta property="og:url" content="https://www.vipnumbershop.com" />
       <meta property="og:site_name" content="VIP Number Shop" />
@@ -44,11 +44,11 @@ const MetaHead = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:title"
-        content="VIP Number Shop - Buy VIP Number | VIP Mobile Number"
+        content="Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years"
       />
       <meta
         name="twitter:description"
-        content="Get exclusive VIP Number, Fancy mobile numbers at VIP Number Shop. Choose your lucky number today from India’s top-rated provider with millions of happy customers!"
+        content="Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop."
       />
       <meta
         name="twitter:image"

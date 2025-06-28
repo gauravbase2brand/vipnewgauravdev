@@ -45,7 +45,7 @@ const CarHomeBikeLucky = ({
   const [nextURL, setnextURL] = useState();
   const [userDetails, setUserDetails] = useState({});
   const panelImg = process.env.NEXT_PUBLIC_IMAGES;
-  const itemsPerPage = 36;
+  const itemsPerPage = 60;
   const handleValues = (key, value) => {
     const formattedValue = value
       .split(/,+/) // Split by consecutive commas

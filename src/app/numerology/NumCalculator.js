@@ -898,6 +898,13 @@ const NumCalculator = () => {
                 />
               )}
             </div>
+            <div className="text-center">
+                <span className="mb-2 text-darktext text-center font-medium md:text-[18px] text-[15px]    w-full">
+            Get <span className=" text-secondary"> 1,500</span> Cashback with your Numerology Report. <br/>
+
+            Cashback valid for 30 days only.
+          </span> 
+            </div>
           </div>
         </div>
       </div>

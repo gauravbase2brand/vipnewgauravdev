@@ -18,7 +18,7 @@ export default function Familypacksearch() {
     // const repeatedText2 = Array(100).fill(text2).join(" ");
     useEffect(() => {
         setFilters({
-            type: "advanced",
+            type: "family_pack",
         });
     }, []);
     return (

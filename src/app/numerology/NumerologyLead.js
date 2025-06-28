@@ -18,7 +18,7 @@ const NumerologyLead = ({ title1, para1, title, titleClass }) => {
   return (
     <section className={`md:p-8 p-3`}>
       <div className="container-os">
-        <div className="space-y-2">
+        <div className="space-y-2 text-center">
           <h2
             className={`font-semibold text-[20px] lg:leading-[40px] leading-[28px] text-[#3D3D3D]  md:text-[32px] lg:text-[35px] text-center xl:w-9/12 md:w-9/12 w-full m-auto 2xl:text-[38px] tracking-wide  ${titleClass}`}
           >
@@ -28,8 +28,15 @@ const NumerologyLead = ({ title1, para1, title, titleClass }) => {
           <p className="font-normal text-[16px] leading-[24px]  md:text-[17px] md:leading-[30px] text-darktext text-center">
             {para1}
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-4">
             <NumerologyBtn title={title} onClick={handleOpen} />
+          </div>
+          <div className="mt-4">
+            <span className="mb-2 text-darktext text-center font-medium md:text-[18px] text-[15px]    w-full">
+            Get <span className=" text-secondary"> 1,500</span> Cashback with your Numerology Report. <br/>
+
+            Cashback valid for 30 days only.
+          </span>
           </div>
         </div>
       </div>

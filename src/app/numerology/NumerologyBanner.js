@@ -82,7 +82,7 @@ const NumerologyBanner = () => {
     //           Get <span className=" text-secondary">1,500 </span>
     //           Cashback with your Numerology Report.
     //         </p>
-    //         <p className=" mb-2 text-center font-medium md:text-[18px] text-[15px]">  Cash back valid for 30 days only.</p>
+    //         <p className=" mb-2 text-center font-medium md:text-[18px] text-[15px]">  Cashback valid for 30 days only.</p>
     //         <p className="mb-2 text-center font-medium md:text-[18px] text-[15px]">
     //           Cashback can be used only on www.vip
     //           <span className=" text-secondary">number</span>
@@ -107,8 +107,8 @@ const NumerologyBanner = () => {
     //   `}</style>
     // </div>
     <div
-      className={`bg-[url("/assets/numerologybanner.webp")] bg-cover bg-no-repeat bg-center 
-              w-full h-[190px] md:h-[400px] lg:h-[400px] xl:h-[85vh] 2xl:h-[85vh] relative overflow-hidden`}
+      className={`bg-[url("/assets/nimrologyaph.webp")] md:bg-[url("/assets/numerologybanner.webp")] bg-cover bg-no-repeat bg-center 
+              w-full h-[70vh] md:h-[400px] lg:h-[400px] xl:h-[85vh] 2xl:h-[85vh] relative overflow-hidden`}
     >
       <style jsx>{`
         @keyframes custom-spin {

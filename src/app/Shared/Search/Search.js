@@ -241,7 +241,8 @@ const Search = ({ queryParams }) => {
     setShowPopup,
     familyPackValue,
     setFamilyPackValue,
-    setCurrentPage,dataLoading
+    setCurrentPage,
+    dataLoading,
   } = useContext(AppStateContext);
   const router = useRouter();
   const [callCount, setCallCount] = useState(0);
@@ -310,11 +311,17 @@ const Search = ({ queryParams }) => {
 
   // on component mount
   useEffect(() => {
-    if (pathname === "/numerology" || pathname=== "/family-pack") {
+    if (pathname === "/numerology") {
       setFilters({
         type: "advanced",
         searchBy: "digit",
       });
+    } else if (pathname === "/family-pack") {
+      setFilters({
+        searchBy: "family_pack",
+        min_price: 0,
+      });
+      setSearchBy("family_pack");
     } else {
       setSearchBy("digit");
       setFilters({
@@ -1561,13 +1568,13 @@ const Search = ({ queryParams }) => {
                     >
                       <div
                         className={`text-center flex items-center gap-[1rem] justify-center  ${
-                          pathname === "/numerology" || pathname === "/family-pack"
+                          pathname === "/numerology"
                             ? "font-bold text-[26px] lg:text-[32px] text-HeadingText leading-[35px] lg:leading-[40px] tracking-wide mb-4 2xl:text-[38px]"
                             : "search-filter-advance-search-heading-os"
                         }`}
                       >
                         <span>
-                          {pathname === "/numerology" || pathname === "/family-pack" ? (
+                          {pathname === "/numerology" ? (
                             <span>
                               Advance{" "}
                               <span className="inline-block bg-[url('/assets/118.webp')] bg-no-repeat bg-center bg-contain text-[#5c469c] font-bold px-2">
@@ -2205,7 +2212,10 @@ const Search = ({ queryParams }) => {
                     </div>
 
                     <div className="search-by-price-filter-col-3-os">
-                      <SearchFilterButton onClick={priceSunmit} dataLoading={dataLoading}/>
+                      <SearchFilterButton
+                        onClick={priceSunmit}
+                        dataLoading={dataLoading}
+                      />
                     </div>
                   </form>
                   {priceWarning && (

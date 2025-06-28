@@ -242,10 +242,10 @@ const NewMobileSearch = ({ queryParams }) => {
     //   filters?.max_price >= 0 && // Ensure both prices are positive
     //   filters?.max_price > filters?.min_price // Ensure max_price is greater than or equal to min_price
     // ) {
-      setPriceWarning(false); // No warning if prices are valid
-      getSearchResultsData(); // Fetch the search results
-      setLoaderCat(false); // Hide loader
-    // } 
+    setPriceWarning(false); // No warning if prices are valid
+    getSearchResultsData(); // Fetch the search results
+    setLoaderCat(false); // Hide loader
+    // }
     // else {
     //   // If max_price is smaller than min_price
     //   setPriceWarning(true); // Show warning
@@ -311,7 +311,7 @@ const NewMobileSearch = ({ queryParams }) => {
       case "basic":
         if (
           filters?.start_with &&
-          !["9", "8", "7", "6","*"]?.includes(filters?.start_with?.charAt(0))
+          !["9", "8", "7", "6", "*"]?.includes(filters?.start_with?.charAt(0))
         ) {
           return false;
         }
@@ -346,7 +346,7 @@ const NewMobileSearch = ({ queryParams }) => {
         }
         if (
           filters?.start_with &&
-          !["9", "8", "7", "6","*"]?.includes(filters?.start_with?.charAt(0))
+          !["9", "8", "7", "6", "*"]?.includes(filters?.start_with?.charAt(0))
         ) {
           return false;
         }
@@ -514,30 +514,32 @@ const NewMobileSearch = ({ queryParams }) => {
             />
           </div>
           {/* changes */}
-          <div className="newgk px-4">
-            {filters.type !== "price" && !priceFamily && (
-              <button
-                type="button"
-                onClick={() => {
-                  handleMobileSearch();
-                }}
-                className={`search-filter-search-number-btn-os ${
-                  dataLoading ? "loading-padding" : ""
-                }`}
-                aria-label="Search Number"
-              >
-                {/* {!dataLoading ? ( */}
-                <span>Search Number</span>
-                {/* ) : (
+          {pathname !== "/family-pack" && (
+            <div className="newgk px-4">
+              {filters.type !== "price" && !priceFamily && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    handleMobileSearch();
+                  }}
+                  className={`search-filter-search-number-btn-os ${
+                    dataLoading ? "loading-padding" : ""
+                  }`}
+                  aria-label="Search Number"
+                >
+                  {/* {!dataLoading ? ( */}
+                  <span>Search Number</span>
+                  {/* ) : (
                   <span className="dot-loader ml-2 flex">
                     <span className="dot animate-bounce delay-0 bg-white h-2 w-2 rounded-full"></span>
                     <span className="dot animate-bounce delay-200 bg-white h-2 w-2 rounded-full mx-1"></span>
                     <span className="dot animate-bounce delay-400 bg-white h-2 w-2 rounded-full"></span>
                   </span>
                 )} */}
-              </button>
-            )}
-          </div>
+                </button>
+              )}
+            </div>
+          )}
           <AppliedTags queryParams={queryParams} />
         </div>
         {pathname === "/search" && <AllSubCategory />}

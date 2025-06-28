@@ -43,10 +43,17 @@ const NumerologyLuckyNumber = ({
                 lucky mobile numbers for a sense of security and positivity,
                 believing they can attract good fortune and ward off negativity.
               </p>
+              <div className="mb-4">
               <NumerologyBtn
                 title="Pay 1,999 For Numerology Report"
                 onClick={handleOpen}
               />
+              </div>
+              <span className="mb-2 text-darktext text-center md:text-[18px] text-[15px]    w-full">
+                Get <span className=" text-secondary"> 1,500</span> Cashback
+                with your Numerology Report. <br />
+                Cashback valid for 30 days only.
+              </span>
             </div>
           </div>
         </div>

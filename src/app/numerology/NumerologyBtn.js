@@ -22,7 +22,7 @@
 //             Get <span className=" text-secondary">1,500 </span>
 //             Cashback with your Numerology Report.
 //           </p>
-//           <p className=" mb-2 text-center font-medium md:text-[18px] text-[15px]">  Cash back valid for 30 days only.</p>
+//           <p className=" mb-2 text-center font-medium md:text-[18px] text-[15px]">  Cashback valid for 30 days only.</p>
 //           <p className="mb-2 text-center font-medium md:text-[18px] text-[15px]">
 //             Cashback can be used only on www.vip
 //             <span className=" text-secondary">number</span>

@@ -1,12 +1,14 @@
-import React from "react";
+"ue client";
 import Image from "next/image";
 import fillarrow from "../../../public/assets/fillarrow.svg";
 import blankarrow from "../../../public/assets/blankarrow.svg";
-
+import React, { useContext } from "react";
 import para1 from "../../../public/assets/para1.svg";
 import para12 from "../../../public/assets/para12.svg";
 import para13 from "../../../public/assets/para13.svg";
 import para14 from "../../../public/assets/para14.svg";
+import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
+import { MyRegisterSignInContext } from "../contexts/MyRegisterSignInContext/MyRegisterSignInContext";
 
 const data = [
   {
@@ -33,6 +35,17 @@ const data = [
 ];
 
 const NumerologyExplore = () => {
+  const { setNumerologyPop, user } = useContext(AppStateContext);
+  const { setActiveSignInWithOtp } = useContext(MyRegisterSignInContext);
+  const handleOpen = () => {
+    if (!user?.token) {
+      setActiveSignInWithOtp(true);
+      localStorage.setItem("Lead-Page", "Numurology");
+    } else {
+      setNumerologyPop(true);
+      localStorage.setItem("Lead-Page", "Numurology");
+    }
+  };
   const text1 =
     "✶ We have partnered with India's leading Numerologists and Astrologers to provide you with a personalized report based ✶";
   const text2 =
@@ -65,7 +78,10 @@ const NumerologyExplore = () => {
 
               {/* Button & arrows */}
               <div className="flex items-center justify-center gap-4">
-                <button className="bg-white text-purple-700 px-5 py-1.5 rounded shadow-sm hover:bg-gray-200 transition">
+                <button
+                  className="bg-white text-purple-700 px-5 py-1.5 rounded shadow-sm hover:bg-gray-200 transition"
+                  onClick={handleOpen}
+                >
                   Explore Now
                 </button>
                 <div className="flex space-x-1">
@@ -128,10 +144,10 @@ const NumerologyExplore = () => {
                 {repeatedText1}
               </h4>
             </div>
- 
+
             {/* Bottom Static/Decorative Banner */}
             <div className=" h-[48px] text-white font-semibold text-center transform rotate-3 mt-2 z-1 absolute top-0 w-[100%]">
-             <h4 className="text-white text-2xl font-semibold text-nowrap animate-marquee bg-primary  py-2">
+              <h4 className="text-white text-2xl font-semibold text-nowrap animate-marquee bg-primary  py-2">
                 {repeatedText1}
               </h4>
             </div>
@@ -139,7 +155,7 @@ const NumerologyExplore = () => {
         </div>
       </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .clip-arrow {
           clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
           margin-right: 2px;
@@ -159,15 +175,14 @@ const NumerologyExplore = () => {
           animation: marquee 5000s linear infinite;
           white-space: nowrap;
         }
-        .bar_card_h{
-         height:18rem;
-        } 
-         @media screen and (max-width:1650px)
-         {
-         .bar_card_h{
-         height:15rem;
-        } 
-         }
+        .bar_card_h {
+          height: 18rem;
+        }
+        @media screen and (max-width: 1650px) {
+          .bar_card_h {
+            height: 15rem;
+          }
+        }
       `}</style>
     </div>
   );

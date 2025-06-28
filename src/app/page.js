@@ -1,9 +1,9 @@
 import Homepage from "./home/Homepage";
 
 export const metadata = {
-  title: "VIP Number Shop - Buy VIP Number | VIP Mobile Number",
+  title: "Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years",
   description:
-    "Get exclusive VIP Number, Fancy mobile numbers at VIP Number Shop. Choose your lucky number today from India’s top-rated provider with millions of happy customers!",
+    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop.",
 };
 
 export default function Home() {

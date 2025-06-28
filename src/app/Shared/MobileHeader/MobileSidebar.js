@@ -384,6 +384,7 @@ const MobileSidebar = ({
                     </Link>
                   </li>
                   <li>
+                   <Link href="/family-pack" onClick={mobileToggleInactive}>
                     <div className="font-medium text-[16px] leading-[20px] text-[#333333] flex items-center gap-4 no-underline w-full relative">
                       <MdOutlineFamilyRestroom
                         fontSize={30}
@@ -391,6 +392,7 @@ const MobileSidebar = ({
                       />
                       <span>Family Pack</span>
                     </div>
+                   </Link>
                     <div>
                       <select
                         onChange={(e) => {

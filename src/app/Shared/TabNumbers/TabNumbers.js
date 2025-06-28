@@ -37,9 +37,9 @@ const TabNumbers = () => {
   const [selectedCategoryBottom, setSelectedCategoryBottom] = useState(null);
   const [productIndexes, setProductIndexes] = useState({});
   const [viewingProduct, setViewingProduct] = useState({});
-  // const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  // const [loadingNextData, setLoadingNextData] = useState(false);
+  const [loadingNextData, setLoadingNextData] = useState(false);
   useEffect(() => {
     const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
     axios

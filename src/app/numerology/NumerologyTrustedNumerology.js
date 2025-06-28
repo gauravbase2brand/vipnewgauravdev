@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 export default function NumerologyTrustedNumerology({ title, sliderData }) {
   const apiData = process.env.NEXT_PUBLIC_IMAGES;
   const [slideitem, setSlideItem] = useState(3);
@@ -70,6 +71,7 @@ export default function NumerologyTrustedNumerology({ title, sliderData }) {
                     : "scale-90 opacity-90"
                     }`}
                 >
+                  <Link href = "/suggestion-for-you">
                   <Image
                     src={pathname === "/family-pack" ? item.leftimg  : `${apiData}${item.leftimg}`}
                     alt={`Slide ${index + 1}`}
@@ -77,6 +79,7 @@ export default function NumerologyTrustedNumerology({ title, sliderData }) {
                     height={300}
                     className={`transition-all duration-500  object-cover ${pathname === "/family-pack" ? 'h-[300px] lg:h-[500px]': "h-[500px]"} `}
                   />
+                  </Link>
                   {
                     pathname === "/family-pack" ?
                       <div className="bg-secondary rounded-br-[15px] rounded-bl-[15px]">

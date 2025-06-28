@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { GoArrowRight } from "react-icons/go";
 
 export default function Familycardcom() {
   const text1 =
@@ -65,23 +66,35 @@ export default function Familycardcom() {
                     className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer group"
                     style={{ backgroundImage: `url(${data.fp_cardbg})` }}
                   >
-                    <div className="py-[10px] px-[40px] bg-[linear-gradient(90deg,_rgba(255,233,139,1)_0%,_rgba(255,206,0,1)_40%)] flex items-center absolute w-[90%] bottom-0 rounded-tr-2xl flex-col max-h-[80%] overflow-hidden h-[24%] group-hover:h-[80%] transition-[height] duration-500 ease-in-out">
-                      <div className="w-full flex items-center">
-                        <h5 className="rounded-full text-2xl font-semibold bg-primary w-[40px] h-[40px] flex text-white">
-                          <span className="m-auto">{data.fp_people}</span>
+                    <div className="py-[10px] md:px-[40px] px-3 bg-[linear-gradient(90deg,_rgba(255,233,139,1)_0%,_rgba(255,206,0,1)_40%)] flex items-center absolute w-[90%] bottom-0 rounded-tr-2xl flex-col max-h-[80%] overflow-hidden h-[24%]  group-hover:md:h-[70%] transition-[height] duration-500 ease-in-out">
+                      <div className="w-full flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                           <h5 className="text-base lg:text-xl font-medium  familypackfor">
+                          Family Pack for
                         </h5>
-                        <h5 className="text-xl lg:text-2xl font-medium ps-[10%]">
-                          Family Pack
-                        </h5>
-                        <Image
+
+                          <span className="p-4 bg-primary rounded-full w-[24px] h-[24px] flex items-center justify-center text-white font-semibold">{data.fp_people}</span>
+                          <span className='text-base lg:text-xl font-medium  familypackfor'>
+                            Members
+                          </span>
+                        
+                        
+                       
+                        </div>
+                       
+                        {/* <Image
                           src="/assets/fpuparrow.webp"
                           alt="arrow"
                           width={1000}
                           height={100}
                           className="w-[12%] ml-auto"
-                        />
+                        /> */}
+                        <div className='p-4 bg-primary rounded-full w-auto h-[24px] flex items-center justify-center text-white font-semibold '>
+                          Go
+                          <GoArrowRight />
+                        </div>
                       </div>
-                      <div className="py-3 border-t-[2px] border-[#565656] mt-3">
+                      <div className="py-3 border-t-[2px] border-[#565656] mt-3 w-full">
                         <p>{data.fp_carddes}</p>
                         <button className="text-primary pt-[10px] flex items-center">
                           Book Now
@@ -150,26 +163,27 @@ export default function Familycardcom() {
                 <Link href={data.btn_link} target='_blank' key={index}>
                 <div className="w-[95%] m-auto">
                   <div
-                    className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer group"
+                    className="bar_card_h bg-cover bg-no-repeat rounded-xl relative cursor-pointer  group"
                     style={{ backgroundImage: `url(${data.fp_cardbg})` }}
                   >
-                    <div className="py-[10px] px-[40px] bg-[linear-gradient(90deg,_rgba(255,233,139,1)_0%,_rgba(255,206,0,1)_40%)] flex items-center absolute w-[90%] bottom-0 rounded-tr-2xl flex-col max-h-[80%] overflow-hidden h-[24%] group-hover:h-[80%] transition-[height] duration-500 ease-in-out">
-                      <div className="w-full flex items-center">
-                        <h5 className="rounded-full text-2xl font-semibold bg-primary w-[40px] h-[40px] flex text-white">
-                          <span className="m-auto">{data.fp_people}</span>
+                    <div className="py-[10px] md:px-[40px] px-3 bg-[linear-gradient(90deg,_rgba(255,233,139,1)_0%,_rgba(255,206,0,1)_40%)] flex items-center absolute w-[90%] bottom-0 rounded-tr-2xl flex-col max-h-[80%] overflow-hidden h-[24%] group-hover:md:h-[70%] transition-[height] duration-500 ease-in-out">
+                      <div className="w-full flex items-center justify-between">
+                        <div className='flex items-center gap-2'>
+                         
+                        <h5 className="text-base lg:text-xl font-medium  ">
+                         Business Pack for
                         </h5>
-                        <h5 className="text-xl lg:text-2xl font-medium ps-[10%]">
-                          Family Pack
-                        </h5>
-                        <Image
-                          src="/assets/fpuparrow.webp"
-                          alt="arrow"
-                          width={1000}
-                          height={100}
-                          className="w-[12%] ml-auto"
-                        />
+                         <span className="p-4 bg-primary rounded-full w-[24px] h-[24px] flex items-center justify-center text-white font-semibold">{data.fp_people}</span>
+                         <span className='text-base lg:text-xl font-medium'>Members</span>
+                        
+                        </div>
+                      
+                       <div className='p-4 bg-primary rounded-full w-auto h-[24px] flex items-center justify-center text-white font-semibold'>
+                          Go
+                          <GoArrowRight />
+                        </div>
                       </div>
-                      <div className="py-3 border-t-[2px] border-[#565656] mt-3 w-full">
+                      <div className="py-3 border-t-[2px] border-[#565656] mt-3  w-full">
                         <p>{data.fp_carddes}</p>
                         
                         <button className="text-primary pt-[10px] flex items-center">

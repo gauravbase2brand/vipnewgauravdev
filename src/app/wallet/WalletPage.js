@@ -419,7 +419,7 @@ const WalletPage = ({
                       clearAllFields();
                       setTransferPayment(false);
                     }}
-                    disabled={defaultAcc === null}
+                    disabled={defaultAcc === null || defaultAcc === ""}
                   />
                 </div>
                 <label for="hs-checkbox-fast-payment" class="ms-3">

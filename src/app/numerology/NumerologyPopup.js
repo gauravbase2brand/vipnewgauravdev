@@ -498,7 +498,7 @@ const NumerologyPopup = () => {
               // className="popup-numerology modal_ph_view"
               className={`${
                 user?.token
-                  ? "grid lg:grid-cols-1 gap-2 p-2 grid-cols-1 items-baseline"
+                  ? "grid lg:grid-cols-1 gap-2 p-4 grid-cols-1 items-baseline "
                   : "modal_ph_view"
               }`}
             >
@@ -697,7 +697,7 @@ const NumerologyPopup = () => {
                   onClick={handleSubmit}
                 />
               )}
-              <div className="cashback-row-rs">
+              <div className="text-sm text-center mt-2">
                 <p>
                   Get<span style={{ color: "red" }}> 1,500</span> Cashback with
                   your Numerology Report.
