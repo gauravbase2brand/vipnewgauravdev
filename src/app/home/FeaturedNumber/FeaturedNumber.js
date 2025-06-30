@@ -61,7 +61,7 @@ const FeaturedNumber = () => {
       "/search-results?searchBy=price&min_price=1500&max_price=1500000"
     );
   };
-
+  if (platinumData.length === 0) return;
   return (
     <>
       {platinumData.length > 0 && !isLoading ? (
