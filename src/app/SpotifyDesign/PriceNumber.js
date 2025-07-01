@@ -114,7 +114,7 @@ function PriceNumber() {
   return (
     <div id="fit-budget" className="mb-3">
       <div className="bg-primary  text-white text-center py-3 font-bold relative mt-2">
-        <h2 className="text-xl sm:text-2xl">Get VIP Number in your Budget</h2>
+        <h2 className="text-xl sm:text-2xl">VIP Number in Budget</h2>
       </div>
 
       <div className="">
