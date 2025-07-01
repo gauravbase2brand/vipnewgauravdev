@@ -37,12 +37,12 @@ const HomeDeliveryPop = () => {
           tabIndex="-1"
           className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
-          <div className="relative p-4 w-full max-w-[280px] md:max-w-2xl max-h-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="relative bg-white rounded-[50px] shadow-sm dark:bg-gray-700">
+          <div className="relative w-full max-w-[350px] md:max-w-2xl max-h-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="relative bg-white rounded-[25px] md:rounded-[50px] shadow-sm dark:bg-gray-700">
               <button
                 type="button"
                 onClick={closeModal}
-                className="absolute top-3 right-2.5 text-red-600 bg-transparent bg-white hover:text-red-600 rounded-full text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="absolute top-3 right-2.5 md:text-red-600 text-white  bg-black md:bg-white hover:text-red-600 rounded-full text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 <svg
                   className="w-3 h-3"
@@ -62,7 +62,7 @@ const HomeDeliveryPop = () => {
                 <span className="sr-only">Close modal</span>
               </button>
               <div
-                className="p-4 md:p-5 text-center object-cover rounded-[50px] md:h-[283px] h-[376px]"
+                className="p-4 md:p-5 text-center object-cover rounded-[50px] md:h-[283px] h-[418px]"
                 style={{
                   backgroundImage: `url(${imageSrc.src})`,
                   backgroundPosition: "center",
