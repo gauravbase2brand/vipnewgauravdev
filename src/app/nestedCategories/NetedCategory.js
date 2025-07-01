@@ -50,8 +50,7 @@ export const NetedCategory = ({
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState("");
   const imgUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
-  console.log("imgUrl",imgUrl);
-  
+
   // Assuming you want to store all the products in an array of arrays
   const categoryItems = useMemo(() => {
     return selectedCategory?.items || [];

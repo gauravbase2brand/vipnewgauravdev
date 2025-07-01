@@ -49,7 +49,9 @@ const WalletPage = ({
   handleCheckboxTransfer,
   setTransferPayment,
   setIsFastPayment,
-  mobileValid,defaultAcc,trasferLoading
+  mobileValid,
+  defaultAcc,
+  trasferLoading,
 }) => {
   const panelImg = process.env.NEXT_PUBLIC_IMAGES;
   const clearAllFields = () => {
@@ -430,7 +432,9 @@ const WalletPage = ({
                     id="hs-checkbox-fast-payment-description"
                     class="block text-sm dark:text-neutral-500 cursor-pointer text-red-600"
                   >
-                    {`Enable to prioritize faster payment processing. (Contact your Account Manager)`}
+                    {defaultAcc === null || defaultAcc === ""
+                      ? `Enable to prioritize faster payment processing. (Contact your Account Manager)`
+                      : defaultAcc}
                   </span>
                 </label>
               </div>
@@ -479,9 +483,9 @@ const WalletPage = ({
                       </div>
                     </div>
                   </div>
-                  <span className="fast-payments">
+                  {/* <span className="fast-payments">
                     Recommended For Fast Payment
-                  </span>
+                  </span> */}
                 </div>
               )}
               <div className="OrderPlacement-paymentInfo-method-col-2-os">
@@ -637,7 +641,7 @@ const WalletPage = ({
                           for="default-checkbox"
                           class="ms-2 text-lg font-semibold text-gray-800 dark:text-gray-300 cursor-pointer"
                         >
-                          Transfer Balance To other account
+                          Transfer Balance To other account / other vendor
                         </label>
                       </div>
                       {transferPayment && (

@@ -1,7 +1,7 @@
 import { AppStateContext } from "@/app/contexts/AppStateContext/AppStateContext";
 import React, { useContext, useEffect, useState } from "react";
 
-const DeliveryAvailable = () => {
+const DeliveryAvailable = ({ setDelivery }) => {
   const { userProfile, user } = useContext(AppStateContext);
   const zipCode = userProfile?.address?.zip_code;
   const [charges, setCharges] = useState(null);
@@ -22,6 +22,7 @@ const DeliveryAvailable = () => {
       const data = await response.json();
       if (data.result) {
         setCharges(data.result[0]); // Set charges if available
+        setDelivery(data.result[0]);
       }
     } catch (error) {
       console.error("Error fetching data:", error);

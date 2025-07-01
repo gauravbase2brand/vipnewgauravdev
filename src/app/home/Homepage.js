@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, createContext, useEffect} from "react";
+import React, { useState, createContext, useEffect } from "react";
 import "./Home.css";
 import VIPNumberSlider from "./VIPNumberSlider/VIPNumberSlider";
 import FeaturedNumber from "./FeaturedNumber/FeaturedNumber";
@@ -18,11 +18,14 @@ import FAQs from "../Shared/FAQs/FAQs";
 import OurCustomers from "../Shared/OurCustomers/OurCustomers";
 import PressRelesed from "../SwiperSlider/PressRelesed";
 import DeliveryAvailable from "./Banner/DeliveryAvailable";
+import HomeDeliveryPop from "./Banner/HomeDeliveryPop";
 export const SearchContext = createContext(null);
 
 const Homepage = () => {
   // register popup context
   const [isMobile, setIsMobile] = useState(false);
+  const [delivery, setDelivery] = useState();
+
   useEffect(() => {
     const trackingData = {
       event: "page_view", // Custom event name for GTM
@@ -50,7 +53,8 @@ const Homepage = () => {
   return (
     <div className="relative">
       <Banner />
-      <DeliveryAvailable/>
+      <DeliveryAvailable setDelivery={setDelivery} />
+      {delivery?.cf_2913 && <HomeDeliveryPop />}
       {/* <SearchContext.Provider
         value={{ searchResults, seracPrice, besSeach, digit, most, getAdvance }}
       > */}
@@ -68,7 +72,7 @@ const Homepage = () => {
       <VipNumberShopSliderImages1 />
       <TabNumbers />
       <VIPNumberSlider />
-      <PressRelesed/>
+      <PressRelesed />
       <FeaturedNumber />
       {/* <RegisterVipNumber
           image={`${panelImg}/assets/img/vip-images/vip-number-register-img_lcehxl.webp`}
@@ -86,7 +90,6 @@ const Homepage = () => {
       <FAQs />
       <OurCustomers />
       {/* </SearchContext.Provider> */}
-      
     </div>
   );
 };

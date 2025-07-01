@@ -160,11 +160,17 @@ const FeaturedNumber = () => {
                             <span style={{ marginLeft: "5px" }}>
                               <FontAwesomeIcon
                                 icon={faGreaterThan}
-                                style={{ color: "var(--secondary)", fontSize: "15px" }}
+                                style={{
+                                  color: "var(--secondary)",
+                                  fontSize: "15px",
+                                }}
                               />
                               <FontAwesomeIcon
                                 icon={faGreaterThan}
-                                style={{ color: "var(--secondary)", fontSize: "15px" }}
+                                style={{
+                                  color: "var(--secondary)",
+                                  fontSize: "15px",
+                                }}
                               />
                             </span>
                           </a>
@@ -269,11 +275,17 @@ const FeaturedNumber = () => {
                               <span style={{ marginLeft: "5px" }}>
                                 <FontAwesomeIcon
                                   icon={faGreaterThan}
-                                  style={{ color: "var(--secondary)", fontSize: "15px" }}
+                                  style={{
+                                    color: "var(--secondary)",
+                                    fontSize: "15px",
+                                  }}
                                 />
                                 <FontAwesomeIcon
                                   icon={faGreaterThan}
-                                  style={{ color: "var(--secondary)", fontSize: "15px" }}
+                                  style={{
+                                    color: "var(--secondary)",
+                                    fontSize: "15px",
+                                  }}
                                 />
                               </span>
                             </a>

@@ -159,9 +159,9 @@ function PriceNumber() {
                           )}
                         </div>
                       </div> */}
-                       <span className="absolute bottom-0  underline font-medium blink-zoom bg-white text-black p-1 rounded text-[12px]">
+                       {/* <span className="absolute bottom-0  underline font-medium blink-zoom bg-white text-black p-1 rounded text-[12px]">
                         Click Here
-                      </span>
+                      </span> */}
                     </div>
                   </Link>
                 </div>
@@ -224,9 +224,9 @@ function PriceNumber() {
                           )}
                         </div>
                       </div> */}
-                      <span className="absolute bottom-0 bg-white underline font-medium blink-zoom text-black p-1 rounded text-[12px]">
+                      {/* <span className="absolute bottom-0 bg-white underline font-medium blink-zoom text-black p-1 rounded text-[12px]">
                         Click Here
-                      </span>
+                      </span> */}
                     </div>
                   </Link>
                 </SplideSlide>
