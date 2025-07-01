@@ -21,6 +21,7 @@ const Wallet = () => {
   } = useContext(AppStateContext);
   const GreaterWallet = userProfile?.contact_cf?.wallet_balance;
   const defaultAcc = userProfile?.contact_cf?.default_account;
+  const userNumber = userProfile?.mobile;
   const tabChange = localStorage.getItem("wallet");
   const [walletActive, setWalletActive] = useState(tabChange || tab);
   const [amountTowithDraw, setAmountTowithDraw] = useState(0);
@@ -300,6 +301,10 @@ const Wallet = () => {
   };
 
   const handleWithdrawSubmit = () => {
+    if(userNumber === withdrawal.mobileNumber){
+      toast.success("You cannot transfer your wallet balance to your own account.");
+      return;
+    }
     if (!mobileValid) return;
     if (withdrawal.mobileNumber.length !== 10 && transferPayment) {
       setMobileValid(false); // Show error if length is not 10

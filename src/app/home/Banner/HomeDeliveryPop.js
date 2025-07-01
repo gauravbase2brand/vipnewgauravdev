@@ -38,7 +38,7 @@ const HomeDeliveryPop = () => {
           className="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
         >
           <div className="relative w-full max-w-[350px] md:max-w-2xl max-h-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="relative bg-white rounded-[25px] md:rounded-[50px] shadow-sm dark:bg-gray-700">
+            <div className="relative md:bg-white bg-primary rounded-[25px] md:rounded-[50px] shadow-sm dark:bg-gray-700">
               <button
                 type="button"
                 onClick={closeModal}
