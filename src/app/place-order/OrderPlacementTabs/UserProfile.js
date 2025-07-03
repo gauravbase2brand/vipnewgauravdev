@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -22,10 +23,11 @@ const UserProfile = ({
   setNameUpdate,
   checkValidations,
   setLeadUpdate,
-  userProfile
+  userProfile,
 }) => {
   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleProfile = async () => {
     if (loading) return;
     const invalidNames = [
@@ -87,6 +89,7 @@ const UserProfile = ({
         }
       );
       setNameUpdate(true);
+      router.push("/place-order");
     } catch (error) {
       console.error("Error during API request:", error);
       setLoading(false);
@@ -426,73 +429,75 @@ const UserProfile = ({
               )}
             </>
           )}
-          {postOffices.length === 0 && !userProfile?.contact_cf?.district.trim() && !userProfile?.address?.state.trim() && (
-            <>
-              <div className="relative ">
-                <input
-                  id="districtInput"
-                  type="text"
-                  placeholder=" "
-                  name="district"
-                  value={formData.district}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={`peer w-full p-3 text-gray-800  rounded-md border ${
-                    !formData.district.trim() && error.district
-                      ? "border-red-500"
-                      : "border-primary"
-                  } focus:outline-none focus:ring-1 focus:ring-primary `}
-                />
-                <label
-                  htmlFor="districtInput"
-                  className={`absolute left-3 transition-all transform origin-left text-primary ${
-                    formData.district.trim()
-                      ? "-top-2 text-sm text-primary scale-90 bg-white"
-                      : "top-[14px] text-primary bg-white"
-                  } peer-focus:-top-2 peer-focus:text-sm peer-focus:text-primary peer-focus:scale-90 px-[4px] `}
-                >
-                  District
-                </label>
+          {postOffices.length === 0 &&
+            !userProfile?.contact_cf?.district.trim() &&
+            !userProfile?.address?.state.trim() && (
+              <>
+                <div className="relative ">
+                  <input
+                    id="districtInput"
+                    type="text"
+                    placeholder=" "
+                    name="district"
+                    value={formData.district}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`peer w-full p-3 text-gray-800  rounded-md border ${
+                      !formData.district.trim() && error.district
+                        ? "border-red-500"
+                        : "border-primary"
+                    } focus:outline-none focus:ring-1 focus:ring-primary `}
+                  />
+                  <label
+                    htmlFor="districtInput"
+                    className={`absolute left-3 transition-all transform origin-left text-primary ${
+                      formData.district.trim()
+                        ? "-top-2 text-sm text-primary scale-90 bg-white"
+                        : "top-[14px] text-primary bg-white"
+                    } peer-focus:-top-2 peer-focus:text-sm peer-focus:text-primary peer-focus:scale-90 px-[4px] `}
+                  >
+                    District
+                  </label>
 
-                {!formData.district.trim() && error.district && (
-                  <div className="error-message text-red-500 text-sm mt-1">
-                    {error.district}
-                  </div>
-                )}
-              </div>
-              <div className="relative ">
-                <input
-                  id="stateInput"
-                  type="text"
-                  placeholder=" "
-                  name="state"
-                  value={formData.state}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={`peer w-full p-3 text-gray-800  rounded-md border ${
-                    !formData.state.trim() && error.state
-                      ? "border-red-500"
-                      : "border-primary"
-                  } focus:outline-none focus:ring-1 focus:ring-primary `}
-                />
-                <label
-                  htmlFor="stateInput"
-                  className={`absolute left-3 transition-all transform origin-left text-primary ${
-                    formData.state.trim()
-                      ? "-top-2 text-sm text-primary scale-90 bg-white"
-                      : "top-[14px] text-primary bg-white"
-                  } peer-focus:-top-2 peer-focus:text-sm peer-focus:text-primary peer-focus:scale-90 px-[4px] `}
-                >
-                  State
-                </label>
-                {!formData.state.trim() && error.state && (
-                  <div className="error-message text-red-500 text-sm mt-1">
-                    {error.state}
-                  </div>
-                )}
-              </div>
-            </>
-          )}
+                  {!formData.district.trim() && error.district && (
+                    <div className="error-message text-red-500 text-sm mt-1">
+                      {error.district}
+                    </div>
+                  )}
+                </div>
+                <div className="relative ">
+                  <input
+                    id="stateInput"
+                    type="text"
+                    placeholder=" "
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={`peer w-full p-3 text-gray-800  rounded-md border ${
+                      !formData.state.trim() && error.state
+                        ? "border-red-500"
+                        : "border-primary"
+                    } focus:outline-none focus:ring-1 focus:ring-primary `}
+                  />
+                  <label
+                    htmlFor="stateInput"
+                    className={`absolute left-3 transition-all transform origin-left text-primary ${
+                      formData.state.trim()
+                        ? "-top-2 text-sm text-primary scale-90 bg-white"
+                        : "top-[14px] text-primary bg-white"
+                    } peer-focus:-top-2 peer-focus:text-sm peer-focus:text-primary peer-focus:scale-90 px-[4px] `}
+                  >
+                    State
+                  </label>
+                  {!formData.state.trim() && error.state && (
+                    <div className="error-message text-red-500 text-sm mt-1">
+                      {error.state}
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
         </>
       </div>
       <button

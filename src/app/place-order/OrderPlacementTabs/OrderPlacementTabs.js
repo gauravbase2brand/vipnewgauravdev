@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { getOrderId, getProfile, phonePayOrder } from "../../Services/Services";
-import { usePathname, useRouter } from "next/navigation";
+import {useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useCallback } from "react";
 import { useGetQueryParams } from "../../utils";
@@ -27,7 +27,6 @@ import PaymentGate from "./PaymentGate";
 
 const OrderPlacementTabs = () => {
   const { queryParams } = useGetQueryParams();
-  const pathname = usePathname();
   const {
     cartItems,
     setCartItems,
