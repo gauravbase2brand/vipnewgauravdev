@@ -104,7 +104,7 @@ const SubCatFilterData = () => {
       }
       queryParams.set("star_status", true);
       const apiUrl = `${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}/web/categories/search?${queryParams.toString()}`;
-      const dynamicApiUrl = `https://leafymango.com/getSubCategoriesDetails.php?id=${id}`;
+      const dynamicApiUrl = `https://fancymobilenumber.in/getSubCategoriesDetails.php?id=${id}`;
 
       try {
         const response = await fetch(apiUrl);

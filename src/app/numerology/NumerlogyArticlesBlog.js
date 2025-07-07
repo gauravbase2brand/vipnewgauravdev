@@ -11,7 +11,7 @@ const NumerlogyArticlesBlog = () => {
   const [error, setError] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
-  const api = `https://leafymango.com/blogs.php?perPageLimit=10&recordStartFrom=0&type=${
+  const api = `https://fancymobilenumber.in/blogs.php?perPageLimit=10&recordStartFrom=0&type=${
     pathname === "/family-pack" ? "FamilyPack" : "Numerology"
   }`;
   useEffect(() => {

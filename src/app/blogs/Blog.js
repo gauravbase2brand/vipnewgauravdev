@@ -12,7 +12,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const recordStartFrom = (currentPage - 1) * itemsPerPage; // Calculate offset
-      const apiUrl = `https://leafymango.com/blogs.php?perPageLimit=${itemsPerPage}&recordStartFrom=${recordStartFrom}`;
+      const apiUrl = `https://fancymobilenumber.in/blogs.php?perPageLimit=${itemsPerPage}&recordStartFrom=${recordStartFrom}`;
       try {
         const response = await fetch(apiUrl);
         const result = await response.json();

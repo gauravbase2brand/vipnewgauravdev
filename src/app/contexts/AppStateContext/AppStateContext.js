@@ -128,7 +128,7 @@ const AppStateContextProvider = ({ children }) => {
     const apiUrl = `${
       process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL
     }/web/categories/search?${queryParams.toString()}`;
-    const dynamicApiUrl = `https://leafymango.com/getSubCategoriesDetails.php?id=${id}`;
+    const dynamicApiUrl = `https://fancymobilenumber.in/getSubCategoriesDetails.php?id=${id}`;
     try {
       // Hit the API
       const response = await fetch(apiUrl);

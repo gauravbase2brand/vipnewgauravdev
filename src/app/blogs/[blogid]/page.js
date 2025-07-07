@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   let cachedBlogs = null;
   try {
     const res = await fetch(
-      `https://leafymango.com/blogDetails.php?img_url=${blogid}`
+      `https://fancymobilenumber.in/blogDetails.php?img_url=${blogid}`
     );
     if (!res.ok) {
       throw new Error("Failed to fetch blog data");

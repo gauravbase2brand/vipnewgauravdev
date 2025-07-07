@@ -2,7 +2,7 @@ import CategoryPage from "./CategoryPage";
 export async function generateMetadata({ params }) {
   const { subcategory } = await params; // Await the params object directly
 
-  const res = await fetch("https://leafymango.com/getCategories.php", {
+  const res = await fetch("https://fancymobilenumber.in/getCategories.php", {
     cache: "no-store",
   });
   const data = await res.json();

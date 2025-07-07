@@ -95,7 +95,7 @@ const CategoryPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("https://leafymango.com/blogs.php");
+        const response = await fetch("https://fancymobilenumber.in/blogs.php");
         const data = await response.json();
         const shuffledBlogs = shuffleArray(data.blogs); // Shuffle the blogs
         setBlogsData(shuffledBlogs.slice(0, 3)); // Take first 3 from the shuffled array

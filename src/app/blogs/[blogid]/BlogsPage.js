@@ -23,7 +23,7 @@ const BlogsPage = () => {
       if (isBlogPath) {
         try {
           const response = await fetch(
-            `https://leafymango.com/blogDetails.php?img_url=${articleUrl}`
+            `https://fancymobilenumber.in/blogDetails.php?img_url=${articleUrl}`
           );
           const data = await response.json();
           setArticle(data);
@@ -43,7 +43,7 @@ const BlogsPage = () => {
       const recordStartFrom = 0;
       try {
         const response = await fetch(
-          `https://leafymango.com/blogs.php?perPageLimit=${itemsPerPage}&recordStartFrom=${recordStartFrom}`
+          `https://fancymobilenumber.in/blogs.php?perPageLimit=${itemsPerPage}&recordStartFrom=${recordStartFrom}`
         );
         const data = await response.json();
         setRecentArticles(data.blogs.reverse());

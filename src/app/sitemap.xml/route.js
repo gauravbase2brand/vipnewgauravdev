@@ -150,7 +150,7 @@ export async function GET(req) {
 
   // Fetch dynamic URLs from APIs
   // const blogUrls = await fetchDynamicUrls(
-  //   "https://leafymango.com/blogs.php?perPageLimit=1000&recordStartFrom=0",
+  //   "https://fancymobilenumber.in/blogs.php?perPageLimit=1000&recordStartFrom=0",
   //   "blogs"
   // );
   // const imageUrls = await fetchDynamicUrls(`${apiUrl}/web/images`, "images");

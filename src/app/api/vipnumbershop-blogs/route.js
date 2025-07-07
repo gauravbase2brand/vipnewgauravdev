@@ -46,7 +46,7 @@ export async function GET(req) {
 
   // Fetch dynamic URLs from APIs
   const blogUrls = await fetchDynamicUrls(
-    "https://leafymango.com/test3hook.php",
+    "https://fancymobilenumber.in/test3hook.php",
     "blogs"
   );
 

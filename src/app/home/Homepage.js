@@ -19,6 +19,7 @@ import OurCustomers from "../Shared/OurCustomers/OurCustomers";
 import PressRelesed from "../SwiperSlider/PressRelesed";
 import DeliveryAvailable from "./Banner/DeliveryAvailable";
 import HomeDeliveryPop from "./Banner/HomeDeliveryPop";
+import FamilyPack from "./FamilyPack/FamilyPack";
 export const SearchContext = createContext(null);
 
 const Homepage = () => {
@@ -70,6 +71,7 @@ const Homepage = () => {
           </div>
         )} */}
       <VipNumberShopSliderImages1 />
+      <FamilyPack counter={2} />
       <TabNumbers />
       <VIPNumberSlider />
       <PressRelesed />

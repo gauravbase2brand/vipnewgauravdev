@@ -192,7 +192,7 @@ const TabNumbers = () => {
             )}
 
             {index === 1 && <ClientVideo />}
-            {index === 2 && <FamilyPack counter={2} />}
+            {index === 2 && <FamilyPack counter={4} />}
             {index === 3 && <Benefits />}
             {index === 4 && <QRVipApp />}
             {(index === 5 && selectedCategoryMiddle?.items?.length > 0) && (

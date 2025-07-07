@@ -302,3 +302,188 @@ export const NetworkIdeaFaqs = [
       "We prioritize customer satisfaction and provide dedicated customer support to assist you with any issues you may face with your Idea VIP number. Feel free to contact our support team for assistance.",
   },
 ];
+
+
+// choice page faq
+export const Choicebsnlfaq = [
+  {
+    id: 0,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "What is a BSNL Choice Number?",
+    paragraph:
+      "A BSNL Choice Number lets you select a unique or fancy mobile number with repeating digits, patterns, or lucky numbers of your preference.",
+  },
+  {
+    id: 1,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "How can I buy a BSNL Choice Number online?",
+    paragraph:
+      "Visit VIP Number Shop, browse available BSNL numbers, make payment, receive your UPC, and complete porting through your nearest SIM retailer or BSNL store.",
+  },
+  {
+    id: 2,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "What is the delivery process for Idea fancy numbers?",
+    paragraph:
+      "Our delivery process is hassle-free. After you've selected your desired number and completed the payment, we'll promptly deliver it to your specified location.",
+  },
+  {
+    id: 3,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "How long does it take to activate my new BSNL number?",
+    paragraph:
+      "After submitting the UPC at your local store, your new BSNL SIM is usually activated within 4 to 5 working days.",
+  },
+  {
+    id: 4,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "What if the UPC code doesn't work?",
+    paragraph:
+      "If there's any issue with the UPC, we offer a 100% refund policy, ensuring you don’t lose your money or the number.",
+  },
+  {
+    id: 5,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Can I use this number for business purposes?",
+    paragraph:
+      "Yes, BSNL Choice Numbers are perfect for business, branding, or personal use, offering easy recall and a professional identity to customers or contacts.",
+  },
+  {
+    id: 6,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "Is the number valid across all states in India?",
+    paragraph:
+      "Yes, BSNL Choice Numbers are valid pan-India. You can port and use them in any Indian state without network restrictions or limitations",
+  },
+  {
+    id: 7,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "Are there different pricing tiers for choice numbers?",
+    paragraph:
+      "Yes, prices vary based on the pattern, rarity, and popularity of the number. Premium patterns usually cost more than regular choice numbers.",
+  },
+  {
+    id: 8,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "What documents are required for SIM activation?",
+    paragraph:
+      "You'll need standard KYC documents like Aadhaar or Voter ID and a passport-sized photo at the BSNL retailer for completing the MNP process.",
+  },
+];
+
+// vip-mobile-number  route
+export const vipmobilenumberfaq = [
+  {
+    id: 0,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "What makes a number a VIP number?",
+    paragraph:
+      "A VIP number includes unique or easily memorable digit combinations like 0000, 786, or patterns like 1212 or 9999.",
+  },
+  {
+    id: 1,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "How do I buy a VIP mobile number online?",
+    paragraph:
+      "Select a number, pay online, receive the UPC code, and complete MNP at your local mobile store.",
+  },
+  {
+    id: 2,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Are these numbers available for both Prepaid and Postpaid?",
+    paragraph:
+      "Yes, most numbers are available in both formats, depending on your chosen telecom provider.",
+  },
+  {
+    id: 3,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Can I use my existing SIM with a VIP number?",
+    paragraph:
+      "No, you will receive a new SIM as part of the Mobile Number Portability process.",
+  },
+  {
+    id: 4,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Is there a delivery charge?",
+    paragraph:
+      "Not at all. All orders come with free delivery across India.",
+  },
+  {
+    id: 5,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "What if my UPC code doesn’t work?",
+    paragraph:
+      "We provide a 100% refund if the UPC fails or you encounter any activation issue.",
+  },
+  {
+    id: 6,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "Is the number valid across all states in India?",
+    paragraph:
+      "Yes, BSNL Choice Numbers are valid pan-India. You can port and use them in any Indian state without network restrictions or limitations",
+  }
+];
+
+//vip-number route faq
+export const vipnumberfaq = [
+  {
+    id: 0,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "What is a VIP mobile number?",
+    paragraph:
+      "A VIP mobile number is a premium phone number with an easy-to-remember or attractive sequence. These are often used for personal branding or business recognition.",
+  },
+  {
+    id: 1,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "How can I get a VIP mobile number?",
+    paragraph:
+      "You can buy one from our online listing. Simply select your preferred number, make payment, and follow the porting process.",
+  },
+  {
+    id: 2,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Are VIP numbers more expensive?",
+    paragraph:
+      "Yes, VIP numbers usually cost more than regular numbers. The price depends on the number’s pattern and uniqueness.",
+  },
+  {
+    id: 3,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Can I choose my VIP number?",
+    paragraph:
+      "Yes! You can select from available options. Some high-demand numbers may have limited availability.",
+  },
+  {
+    id: 4,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Are there any benefits to having a VIP number?",
+    paragraph:
+      "VIP numbers are easy to remember, enhance personal or business image, and are often seen as a status symbol.",
+  },
+  {
+    id: 5,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading: "Can I upgrade my current number to a VIP number?",
+    paragraph:
+      "Yes, you can use the Mobile Number Portability (MNP) process to switch from your current number to a VIP number.",
+  },
+  {
+    id: 6,
+    image: `${panelImg}/assets/img/vip-images/faqs-icon-1_skexjf.svg`,
+    heading:
+      "Is delivery available across India?",
+    paragraph:
+      "Absolutely! We deliver VIP numbers and porting details anywhere in India, free of charge.",
+  }
+];

@@ -120,7 +120,7 @@ export default function MarineLifeSwiper({ setDataUrl }) {
       >
         {data.map((item, index) => (
           <SwiperSlide key={index}>
-            {/* <img src={`https://leafymango.com/${item.path}${item.attachmentsid}_${item.imagename}`} alt={`Slide ${index}`} onClick={() => handleBookNowClick(item)} /> */}
+            {/* <img src={`https://fancymobilenumber.in/${item.path}${item.attachmentsid}_${item.imagename}`} alt={`Slide ${index}`} onClick={() => handleBookNowClick(item)} /> */}
             <div className="card-abc">
               <div className="header-abc">
                 <h2>VIP MOBILE NUMBER</h2>

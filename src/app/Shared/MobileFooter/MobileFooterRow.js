@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import OutsideClickHandler from "react-outside-click-handler";
 import WalletPopup from "../WalletPopup/WalletPopup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo} from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import ChatBot from "@/app/chat/ChatBot";
 import ClientVideo from "@/app/ClientVideo/ClientVideo";
 import { LiaUserAstronautSolid } from "react-icons/lia";
+import { FcSimCard } from "react-icons/fc";
 const MobileFooterRow = ({
   getName,
   setActiveSignInWithOtp,
@@ -29,9 +30,21 @@ const MobileFooterRow = ({
   cartItems,
   setDiscountPop,
   voucher,
-  user
+  user,
 }) => {
   const panelImg = process.env.NEXT_PUBLIC_IMAGES;
+  const [isModalVis, setIsModalVis] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Handle opening of modal
+  const showModal = () => {
+    setIsModalVis(true);
+  };
+
+  // Handle closing of modal
+  const handleCancel = () => {
+    setIsModalVis(false);
+  };
   const BasicInfo = () => {
     const target = document.getElementById("delivery-video");
     const offset = 12 * 30; // 3rem in pixels (assuming 1rem = 16px)
@@ -281,7 +294,19 @@ const MobileFooterRow = ({
         >
           Menu
         </button>
-        <ChatBot />
+        {/* <ChatBot /> */}
+        <span
+          className="widget-icon"
+          style={{ padding: "4px" }}
+          onClick={showModal}
+        >
+          <Image
+            src="https://assets.orufy.com/live_Chat_68d5be723f_79778dac51.svg"
+            height="20"
+            width="20"
+            alt="widget"
+          />
+        </span>
       </div>
       <Modal open={menubtn} footer={null} className="moda___align">
         {/* <style jsx global>{`
@@ -725,7 +750,91 @@ const MobileFooterRow = ({
           </div>
         )}
       </Modal>
+      <Modal
+        open={isModalVis}
+        onCancel={handleCancel}
+        footer={null}
+        className="moda___align"
+      >
+        {/* Content inside the modal */}
+        <div>
+          <div
+            className="menu-Bar-rs mb-[7px]"
+            onClick={() => {
+              const target = document.getElementById("delivery-video");
+              const offset = 12 * 22; // 3rem in pixels (assuming 1rem = 16px)
 
+              if (target) {
+                const targetPosition =
+                  target.getBoundingClientRect().top + window.pageYOffset;
+                const scrollToPosition = targetPosition - offset;
+
+                window.scrollTo({
+                  top: scrollToPosition,
+                  behavior: "smooth",
+                });
+              }
+              window.activeVideoId = 1; // Set video ID to open
+              window.dispatchEvent(new Event("openVideo"));
+              setMenuBtn(false);
+            }}
+          >
+            <span>
+              <Image
+                src={`${panelImg}/assets/img/vip-images/Group707480509_lri9sc.webp`}
+                alt="Delivery image"
+                width={84}
+                height={86}
+                priority="true"
+              />
+            </span>
+            <span>
+              <p>Delivery Process</p>
+            </span>
+          </div>
+          <div className="menu-Bar-rs mb-[7px]" onClick={() => BasicInfo()}>
+            <span>
+              <FontAwesomeIcon
+                icon={faCircleInfo}
+                style={{ color: "#63E6BE", width: "30px", height: "30px" }}
+              />
+            </span>
+            <span>
+              <p>Basic Information</p>
+            </span>
+          </div>
+          <div
+            className="menu-Bar-rs mb-[7px]"
+            onClick={() => setShowPopup(true)}
+          >
+            <span>
+              <FcSimCard />
+            </span>
+            <span>
+              <p>Prepaid/Postpaid</p>
+            </span>
+          </div>
+          <hr></hr>
+          <ChatBot setIsModalVis={setIsModalVis} />
+        </div>
+      </Modal>
+      {showPopup && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75 z-50">
+          <div className="bg-white p-4 md:p-6 rounded-lg max-w-lg  shadow-lg m-[10px]">
+            <p className="text-gray-600 text-sm md:text-[16px]">
+              Our any number is Portable (can be activated) to any state, any
+              operator and any nature (Prepaid/Postpaid) as customer choice
+              through MNP process.
+            </p>
+            <button
+              className="mt-4 px-4 py-2 bg-primary text-white rounded hover:bg-secondary hover:text-darktext float-right"
+              onClick={() => setShowPopup(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       {window.location.pathname !== "/" &&
         window.location.pathname !== "/subcategory" &&
         window.location.pathname.split("/")[1] !== "category" && (

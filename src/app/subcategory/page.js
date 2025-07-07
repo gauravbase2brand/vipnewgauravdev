@@ -6,7 +6,7 @@ export async function generateMetadata({ searchParams }) {
 
   try {
     // Fetch the categories data
-    const res = await fetch("https://leafymango.com/getSubCategories.php", {
+    const res = await fetch("https://fancymobilenumber.in/getSubCategories.php", {
       cache: "no-store", // Adjust cache strategy as needed
     });
 

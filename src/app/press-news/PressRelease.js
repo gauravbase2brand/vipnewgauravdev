@@ -17,12 +17,12 @@ const PressRelesed = () => {
     try {
       setLoading(true);
       // const response = await axios.get(
-      //   `https://leafymango.com/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=${
+      //   `https://fancymobilenumber.in/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=${
       //     (currentPage - 1) * perPageLimit
       //   }&type=NEWS`
       // );
       const response = await axios.get(
-        `https://leafymango.com/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=0&type=NEWS`
+        `https://fancymobilenumber.in/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=0&type=NEWS`
       );
       setBlogs(response.data.blogs || []);
       setTotalPages(Math.ceil(response.data.count / perPageLimit));

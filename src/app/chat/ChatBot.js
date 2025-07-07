@@ -1,10 +1,10 @@
 "use client";
 import "./chatbot.css";
-import { PiChatCircleDotsFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import ChatIcon from "@mui/icons-material/Chat";
 
-const ChatBot = () => {
+const ChatBot = ({ setIsModalVis }) => {
   const [isWidgetOpen, setIsWidgetOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -75,14 +75,28 @@ const ChatBot = () => {
     <>
       {isMobile ? (
         // <PiChatCircleDotsFill onClick={toggleWidget} style={{ color: "#691EDE", fontSize: "30px" }}/>
-        <span className="widget-icon" onClick={toggleWidget} style={{padding:'4px'}}>
-          <Image
-            src="https://assets.orufy.com/live_Chat_68d5be723f_79778dac51.svg"
-            height="20"
-            width="20"
-            alt="widget"
-          />
-        </span>
+        // <span className="widget-icon" onClick={toggleWidget} style={{padding:'4px'}}>
+        //   <Image
+        //     src="https://assets.orufy.com/live_Chat_68d5be723f_79778dac51.svg"
+        //     height="20"
+        //     width="20"
+        //     alt="widget"
+        //   />
+        // </span>
+        <div
+          className="menu-Bar-rs mb-[7px]"
+          onClick={() => {
+            toggleWidget();
+            setIsModalVis(false);
+          }}
+        >
+          <span>
+            <ChatIcon />
+          </span>
+          <span>
+            <p>Chat</p>
+          </span>
+        </div>
       ) : (
         <footer className="chat-button">
           <button onClick={toggleWidget} className="widget-icon">

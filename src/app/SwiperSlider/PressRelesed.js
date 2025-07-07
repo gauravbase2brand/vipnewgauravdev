@@ -51,7 +51,7 @@ const PressRelesed = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://leafymango.com/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=0&type=NEWS`
+        `https://fancymobilenumber.in/blogs.php?perPageLimit=${perPageLimit}&recordStartFrom=0&type=NEWS`
       );
       setBlogs(response.data.blogs || []);
     } catch (error) {

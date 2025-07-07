@@ -90,6 +90,7 @@ const NumerologyExplore = () => {
                       src={fillarrow}
                       key={`filled-${i}`}
                       className="w-4 h-4  inline-block"
+                      alt="fill arrow"
                     />
                   ))}
                   {[...Array(emptyArrows)].map((_, i) => (
@@ -97,6 +98,7 @@ const NumerologyExplore = () => {
                       src={blankarrow}
                       key={`empty-${i}`}
                       className="w-4 h-4 inline-block"
+                      alt="blank arrow"
                     />
                   ))}
                 </div>
