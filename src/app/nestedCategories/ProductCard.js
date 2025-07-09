@@ -36,7 +36,7 @@ export const ProductCard = React.memo(({ product, setTimer }) => {
 
   return (
     <div className="absolute lg:top-8 lg:left-5 left-[5px] top-[31px] bg-secondary  text-white md:font-semibold font-semibold text-xs text-center rounded-full border-[1px] p-[0px_3px] border-white shadow-md md:px-4 md:py-1 transform -rotate-3">
-      <span>{timeLeft} Left</span>
+      <span className="text-darktext">{timeLeft} Left</span>
     </div>
   );
 });

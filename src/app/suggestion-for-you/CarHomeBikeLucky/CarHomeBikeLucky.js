@@ -61,9 +61,8 @@ const CarHomeBikeLucky = ({
   };
 
   useEffect(() => {
-    setLoading(true); // Show loader when the API request starts
-
     if (user?.token) {
+      setLoading(true); // Show loader when the API request starts
       getProfile(user?.token)?.then((res) => {
         setProfile(res?.contact_cf);
         setUserDetails(res);

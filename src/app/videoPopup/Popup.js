@@ -19,9 +19,9 @@ const Popup = ({ isModalOpen, closeModal, activeVideo, videoCard }) => {
               allowFullScreen
               autoPlay
             ></iframe>
-            <button className="close-modal cls__icon" onClick={closeModal} aria-label="cross">
+            {/* <button className="close-modal cls__icon" onClick={closeModal} aria-label="cross">
               x
-            </button>
+            </button> */}
           </div>
         </div>
       )}

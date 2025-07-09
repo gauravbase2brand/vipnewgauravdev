@@ -8,6 +8,7 @@ import Image from "next/image";
 import AllSubCategory from "@/app/subcategory/AllSubCategory";
 import MobileSearchFilters from "./MobileSearchFilters";
 import MobileSearchTabs from "./MobileSearchTabs";
+import Budget from "@/app/Budget";
 
 const NewMobileSearch = ({ queryParams }) => {
   const router = useRouter();
@@ -24,13 +25,14 @@ const NewMobileSearch = ({ queryParams }) => {
     deliveryIsOpen,
     setDeliveryIsOpen,
     deliveryCloseModal,
+    searchBy,
+    setSearchBy,
   } = useContext(AppStateContext);
   // register popup context
   const [priceWarning, setPriceWarning] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showCheckboxWarning, setShowCheckboxWarning] = useState(false);
   const [callCount, setCallCount] = useState(0);
-  const [searchBy, setSearchBy] = useState("digit");
   // const [filters, setFilters] = useState({
   //   type: "global",
   // });
@@ -543,6 +545,8 @@ const NewMobileSearch = ({ queryParams }) => {
           <AppliedTags queryParams={queryParams} />
         </div>
         {pathname === "/search" && <AllSubCategory />}
+        <hr/>
+        {searchBy === "price" && <Budget />}
       </section>
     </div>
   );

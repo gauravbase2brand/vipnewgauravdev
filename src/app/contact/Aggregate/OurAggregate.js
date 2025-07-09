@@ -123,7 +123,7 @@ const OurAggregate = () => {
               key={index}
               className="bg-white rounded-xl shadow-2xl transform transition hover:-translate-y-2 hover:shadow-purple-500"
             >
-              <section className="p-6 animated-border">
+              <section className="p-6 animated-border h-[240px] overflow-auto">
                 <article className="mb-2">
                   <p className="text-gray-800 font-semibold text-lg">
                     {item?.trusteeaddress_tks_businessnam}

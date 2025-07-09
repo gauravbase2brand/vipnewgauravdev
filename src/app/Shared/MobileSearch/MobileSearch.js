@@ -8,14 +8,13 @@ import Image from "next/image";
 
 const MobileSearch = ({ queryParams }) => {
   const router = useRouter();
-  const { user, setFilterHide , filters, setFilters} = useContext(AppStateContext);
+  const { user, setFilterHide, filters, setFilters, searchBy, setSearchBy } = useContext(AppStateContext);
   // register popup context
   const [priceWarning, setPriceWarning] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showCheckboxWarning, setShowCheckboxWarning] = useState(false);
   const [familyPackValue, setFamilyPackValue] = useState();
   const [callCount, setCallCount] = useState(0);
-  const [searchBy, setSearchBy] = useState("digit");
   const [selectedOption, setSelectedOption] = useState(() => {
     return localStorage.getItem("selectedOption") || "any_where";
   });
@@ -152,7 +151,9 @@ const MobileSearch = ({ queryParams }) => {
       ...type,
     });
     const queryString = params.toString(); // Get the query string
-    router.push(`/search-results?${queryString}&comingsoon=yes`, { shallow: true });
+    router.push(`/search-results?${queryString}&comingsoon=yes`, {
+      shallow: true,
+    });
   };
 
   const handleFiltersResults = (key, value) => {

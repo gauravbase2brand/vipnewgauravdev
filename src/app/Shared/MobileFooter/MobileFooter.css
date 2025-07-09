@@ -218,9 +218,9 @@ span.gaurav221 {
   transform: rotate(135deg);
   bottom: -4px;
 }
-a.MobileFooter-socialMedia-link-col-1-os img {
+/* a.MobileFooter-socialMedia-link-col-1-os img {
   width: 40px;
-}
+} */
 .MobileFooter-socialMedia-link-row-os {
   display: flex;
   align-items: center;

@@ -107,6 +107,8 @@ const AppStateContextProvider = ({ children }) => {
   const [deliveryIsOpen, setDeliveryIsOpen] = useState(false);
   const [starRating, setStarRating] = useState(0);
   const [openFeed, setOpenFeed] = useState(false);
+  const [searchBy, setSearchBy] = useState("digit");
+
   // OnClick Handler
   const handleSubCat = async (subCategory) => {
     setSimilarLoader(true);
@@ -281,8 +283,6 @@ const AppStateContextProvider = ({ children }) => {
     return true;
   };
 
-
-  
   useEffect(() => {
     if (user?.token) {
       updateCart(() => {});
@@ -322,7 +322,7 @@ const AppStateContextProvider = ({ children }) => {
         setProfileUpdate(false);
       });
     }
-  }, [user, nameUpdate, profileUpdate,pathName]);
+  }, [user, nameUpdate, profileUpdate, pathName]);
 
   useEffect(() => {
     if (user?.token && walletBalance) {
@@ -853,6 +853,8 @@ const AppStateContextProvider = ({ children }) => {
         setStarRating,
         openFeed,
         setOpenFeed,
+        searchBy,
+        setSearchBy,
       }}
     >
       {children}

@@ -9,6 +9,7 @@ import { AppStateContext } from "../../contexts/AppStateContext/AppStateContext"
 import Image from "next/image";
 import { BsInfoCircleFill } from "react-icons/bs";
 import Information from "./Information";
+import Budget from "@/app/Budget";
 
 const Tag = ({ value, onClick }) => {
   return (
@@ -243,6 +244,8 @@ const Search = ({ queryParams }) => {
     setFamilyPackValue,
     setCurrentPage,
     dataLoading,
+    searchBy,
+    setSearchBy,
   } = useContext(AppStateContext);
   const router = useRouter();
   const [callCount, setCallCount] = useState(0);
@@ -253,7 +256,6 @@ const Search = ({ queryParams }) => {
   // const [searchBy, setSearchBy] = useState(
   //   router.pathname === "/search-your-number" ? "digit" : "price"
   // );
-  const [searchBy, setSearchBy] = useState("digit");
   const [filters, setFilters] = useState({});
   const [selectedOption, setSelectedOption] = useState(() => {
     return localStorage.getItem("selectedOption") || "any_where";
@@ -283,8 +285,6 @@ const Search = ({ queryParams }) => {
   useEffect(() => {
     inputRef?.current?.focus();
   }, []);
-
-  // gaurav changes
 
   useEffect(() => {
     // Set the initial value from queryParams.fp_total when component rendor
@@ -2227,7 +2227,7 @@ const Search = ({ queryParams }) => {
                     </p>
                   )}
                 </div>
-
+                {searchBy === "price" && <Budget />}
                 <div
                   className={`search-filter-data-os ${
                     searchBy === "family_pack"
