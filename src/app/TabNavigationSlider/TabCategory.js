@@ -19,7 +19,6 @@ const TabCategory = ({
 }) => {
   const splideRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth <= 768); // Mobile breakpoint
@@ -40,12 +39,14 @@ const TabCategory = ({
 
     // grab the built-in prev arrow
     const prev = splide.root.querySelector(".splide__arrow--prev");
-    if (!prev) return;
+    const next = splide.root.querySelector(".splide__arrow--next");
+    if (!prev || !next) return;
 
     // whenever the slide index changes...
     const update = (idx) => {
       // hide at 0, show otherwise
       prev.style.visibility = idx > 0 ? "visible" : "hidden";
+      next.style.visibility = idx < splide.length - 5 ? "visible" : "hidden";
     };
 
     // run once for initial state
