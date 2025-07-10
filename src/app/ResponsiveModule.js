@@ -48,13 +48,12 @@ export function ResponsiveHeader() {
   const route = pathName === "/influencer";
   const cart = pathName === "/place-order";
   const details = pathName === "/details";
-   const qrcode = pathName === "/qr-stands";
 
   if (isMobile) {
-    if (route || cart || details || qrcode) return null;
+    if (route || cart || details) return null;
     return <MobileHeader />;
   } else {
-    if (route || qrcode) return null;
+    if (route) return null;
     return <Header />;
   }
 }
@@ -66,9 +65,8 @@ export function ResponsiveFooter() {
   const cart = pathName === "/place-order";
   const declined = pathName === "/payment-declined";
   const thankyou = pathName === "/thank-you";
-    const qrcode = pathName === "/qr-stands";
 
-  if (cart || declined || thankyou || qrcode) return null;
+  if (cart || declined || thankyou) return null;
 
   return isMobile ? <MobileFooter /> : <Footer />;
 }

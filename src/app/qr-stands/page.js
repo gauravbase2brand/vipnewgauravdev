@@ -178,7 +178,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-green-700 text-white py-3">
+      {/* <header className="bg-green-700 text-white py-3">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center">
             <Link href="/">
@@ -186,7 +186,7 @@ function App() {
             </Link>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="md:container mx-auto px-4 py-3 md:py-8">

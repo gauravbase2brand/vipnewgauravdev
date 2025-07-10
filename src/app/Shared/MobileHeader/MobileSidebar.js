@@ -6,10 +6,7 @@ import { PiHandshake } from "react-icons/pi";
 import React, { useState } from "react";
 import { GoHome } from "react-icons/go";
 import { VscAccount } from "react-icons/vsc";
-import {
-  MdOutlineFamilyRestroom,
-  MdOutlineSell,
-} from "react-icons/md";
+import { MdOutlineFamilyRestroom, MdOutlineSell } from "react-icons/md";
 import OutsideClickHandler from "react-outside-click-handler";
 import { FaAddressCard, FaRegChartBar } from "react-icons/fa";
 import Avatar from "react-avatar";
@@ -18,6 +15,7 @@ import Image from "next/image";
 import { IoIosContact } from "react-icons/io";
 
 import DaynamicMobileno from "@/app/DaynamicMobileno/DaynamicMobileno";
+import { IoQrCodeSharp } from "react-icons/io5";
 const MobileSidebar = ({
   setActiveNavbar,
   activeNavbar,
@@ -384,15 +382,27 @@ const MobileSidebar = ({
                     </Link>
                   </li>
                   <li>
-                   <Link href="/family-pack" onClick={mobileToggleInactive}>
-                    <div className="font-medium text-[16px] leading-[20px] text-[#333333] flex items-center gap-4 no-underline w-full relative">
-                      <MdOutlineFamilyRestroom
-                        fontSize={30}
-                        color=" var(--primary)"
-                      />
-                      <span>Family Pack</span>
-                    </div>
-                   </Link>
+                    <Link
+                      className="font-medium text-[16px] leading-[20px] text-[#333333] flex items-center gap-4 no-underline w-full relative"
+                      href="/qr-stands"
+                      onClick={mobileToggleInactive}
+                    >
+                      <span className="flex items-center  h-[35px] w-[35px]">
+                        <IoQrCodeSharp fontSize={33} color=" var(--primary) " />
+                      </span>
+                      Qr Code
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/family-pack" onClick={mobileToggleInactive}>
+                      <div className="font-medium text-[16px] leading-[20px] text-[#333333] flex items-center gap-4 no-underline w-full relative">
+                        <MdOutlineFamilyRestroom
+                          fontSize={30}
+                          color=" var(--primary)"
+                        />
+                        <span>Family Pack</span>
+                      </div>
+                    </Link>
                     <div>
                       <select
                         onChange={(e) => {
