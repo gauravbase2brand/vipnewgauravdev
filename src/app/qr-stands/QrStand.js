@@ -234,7 +234,7 @@ function QrStand() {
       </header> */}
 
       {/* Main Content */}
-      <main className="md:container mx-auto px-4 py-3 md:pt-1">
+      <main className="md:container mx-auto px-4 py-3 md:pt-1 container-os">
         {/* Product Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Product Images */}
@@ -252,7 +252,7 @@ function QrStand() {
             <Splide
               options={{
                 type: "loop", // Make it loop infinitely
-                perPage: 4, // Show only 1 thumbnail at a time
+                perPage: 5, // Show only 1 thumbnail at a time
                 gap: "5px", // No gap between thumbnails
                 focus: "center", // Center the active thumbnail
                 pagination: false, // Disable pagination
@@ -269,6 +269,9 @@ function QrStand() {
                   },
                   1024: {
                     perPage: 3,
+                  },
+                  1440: {
+                    perPage: 4,
                   },
                 },
               }}
@@ -287,7 +290,7 @@ function QrStand() {
               {images.map((image, index) => (
                 <SplideSlide key={index}>
                   <div
-                    className="h-[130px] w-[130px] bg-gray-200 rounded border-2 border-gray-300 hover:border-green-500 cursor-pointer"
+                    className="h-[130px] w-[130px] bg-gray-200 rounded border-2 border-gray-300 hover:border-primary cursor-pointer"
                     onClick={() => handleThumbnailClick(image, index)} // Set main image on thumbnail click
                   >
                     <Image
@@ -305,18 +308,18 @@ function QrStand() {
           {/* Product Details */}
           <div className="space-y-2">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900 mb-1">
+              <h1 className="text-2xl text-gray-800 mb-1">
                 Customizable Table Stands with QR Codes
               </h1>
               <div className="flex flex-col md:flex-row gap-2 md:gap-0 justify-between">
                 <div className="grid">
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 text-[15px]">
                     SKU:{" "}
                     <span className="font-bold text-gray-900">
                       {selectedPrice.SKU}
                     </span>
                   </span>
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 text-[15px]">
                     Brand:{" "}
                     <span className="font-bold text-gray-900">
                       Customizable Table Stands with QR Code
@@ -324,11 +327,11 @@ function QrStand() {
                   </span>
                 </div>
                 <div className="grid">
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 text-[15px]">
                     Availability:{" "}
-                    <span className="text-green-800 font-bold">In Stock</span>
+                    <span className="text-primary font-bold">In Stock</span>
                   </span>
-                  <span className="text-gray-600">
+                  <span className="text-gray-600 text-[15px]">
                     Category:{" "}
                     <span className="font-bold text-gray-900">
                       QR Code Stand
@@ -341,20 +344,20 @@ function QrStand() {
             {/* Pricing */}
             <div className="flex items-center gap-3 ">
               {/* Render prices dynamically based on the selected QR option */}
-              <span className="text-gray-500 line-through">
+              <span className="text-gray-500 line-through text-[18px]">
                 Rs. {selectedPrice.originalPrice}
               </span>
               <span className="text-2xl font-bold text-red-600">
-                Rs. {selectedPrice.discountedPrice}
+                Rs. {selectedPrice.discountedPrice}.00
               </span>
-              <span className="bg-yellow-500 text-black-600 px-2 py-1 rounded text-sm font-medium">
+              <span className="bg-secondary text-black-600 px-2 py-1  text-sm font-medium">
                 {selectedPrice.discount}% off
               </span>
             </div>
             <hr />
             {/* QR Code Options */}
             <div>
-              <h3 className="font-normal  mb-1 text-xl">
+              <h3 className="font-bold text-gray-700  mb-1 text-xl">
                 Available in 1, 2, or 3 QR Codes
               </h3>
               <div className="space-y-2">
@@ -372,15 +375,15 @@ function QrStand() {
                       className="hidden" // Hide the default radio button
                     />
                     <span
-                      className={`w-6 h-6 rounded-full border-4 ${
+                      className={`w-5 h-5 rounded-full border-4 ${
                         selectedQR === item.qrCount
-                          ? "bg-green-800 border-green-800" // Green circle and green border when selected
+                          ? "bg-primary border-primary" // Green circle and green border when selected
                           : "bg-white border-gray-300" // Default circle color when not selected
                       } transition-all duration-300 flex items-center justify-center`}
                     >
                       {/* Inner circle (fully green when selected) */}
                       {selectedQR === item.qrCount && (
-                        <span className="w-4 h-4 bg-green-800 rounded-full"></span> // Fully green inner circle when selected
+                        <span className="w-4 h-4 bg-primary rounded-full"></span> // Fully green inner circle when selected
                       )}
                     </span>
                     <span>
@@ -394,8 +397,9 @@ function QrStand() {
             <hr />
             {/* Platform Selection */}
             <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
-                Select Any 2
+              <h3 className="text-gray-900 mb-1 flex items-center gap-2">
+                <span className="text-base">Select Any</span>
+                <span className="font-bold text-xl">{selectedQR}</span>
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2">
                 {[
@@ -421,14 +425,14 @@ function QrStand() {
                         <Image
                           src={item.src}
                           alt={item.label}
-                          className="rounded-lg shadow-lg h-5 w-5"
+                          className="shadow-lg h-5 w-5"
                         />
                         <span className="text-xs 2xl:text-sm">
                           {item.label}
                         </span>
                         <input
                           type="checkbox"
-                          className="text-green-500 w-3 h-3 transform scale-150"
+                          className="text-primary w-3 h-3 transform scale-150"
                           checked={selectedOptions[index]}
                           onChange={() => handleCheckboxChange(index)}
                         />
@@ -463,6 +467,7 @@ function QrStand() {
               <button
                 className="bg-primary text-white px-6 py-2 rounded hover:bg-primary-900 flex-1 max-w-[250px]"
                 onClick={handleCheckout}
+                disabled={qrCheckout}
               >
                 {qrCheckout ? "Loading..." : "Proceed to checkout"}
               </button>
@@ -479,7 +484,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-green-800 font-bold text-[15px]">
+                  <div className="text-primary font-bold text-[15px]">
                     Free Delivery
                   </div>
                   <div className="text-sm text-gray-500">
@@ -496,7 +501,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-green-800 font-bold">
+                  <div className="text-primary font-bold">
                     100% Quality Warranty
                   </div>
                   <div className="text-sm text-gray-500">
@@ -513,7 +518,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-green-800 font-bold">COD Available</div>
+                  <div className="text-primary font-bold">COD Available</div>
                   <div className="text-xs text-gray-500">Cash on delivery</div>
                 </div>
               </div>
@@ -521,7 +526,7 @@ function QrStand() {
 
             {/* Payment Methods */}
             <div>
-              <div className="text-lg font-medium mb-1">
+              <div className="text-base font-medium mb-1">
                 100% Guarantee Safe Checkout
               </div>
               <div className="flex items-center gap-6">
@@ -585,23 +590,23 @@ function QrStand() {
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Feature</h2>
             <ul className=" text-gray-700">
               <li className="flex items-center gap-1 md:gap-3">
-                <span className="text-green-500 text-[25px]">•</span>
+                <span className="text-primary text-[25px]">•</span>
                 <span>Available in 1, 2, or 3 QR codes</span>
               </li>
               <li className="flex items-center gap-1 md:gap-3">
-                <span className="text-green-500 text-[25px]">•</span>
+                <span className="text-primary text-[25px]">•</span>
                 <span>Premium and durable design</span>
               </li>
               <li className="flex items-center gap-1 md:gap-3">
-                <span className="text-green-500 text-[25px]">•</span>
+                <span className="text-primary text-[25px]">•</span>
                 <span>Customizable QR code links</span>
               </li>
               <li className="flex items-center gap-1 md:gap-3">
-                <span className="text-green-500 text-[25px]">•</span>
+                <span className="text-primary text-[25px]">•</span>
                 <span>Supports multiple platform connections</span>
               </li>
               <li className="flex items-center gap-1 md:gap-3">
-                <span className="text-green-500 text-[25px]">•</span>
+                <span className="text-primary text-[25px]">•</span>
                 <span>Boost customer engagement instantly</span>
               </li>
             </ul>
@@ -621,7 +626,7 @@ function QrStand() {
               <div className="flex justify-center mb-2">
                 <div className="flex items-center">
                   <svg
-                    className="w-4 h-4 text-yellow-600 ms-1"
+                    className="w-4 h-4 text-secondary ms-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -630,7 +635,7 @@ function QrStand() {
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
                   <svg
-                    className="w-4 h-4 text-yellow-600 ms-1"
+                    className="w-4 h-4 text-secondary ms-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -639,7 +644,7 @@ function QrStand() {
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
                   <svg
-                    className="w-4 h-4 text-yellow-600 ms-1"
+                    className="w-4 h-4 text-secondary ms-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -648,7 +653,7 @@ function QrStand() {
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
                   <svg
-                    className="w-4 h-4 text-yellow-600 ms-1"
+                    className="w-4 h-4 text-secondary ms-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -657,7 +662,7 @@ function QrStand() {
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
                   <svg
-                    className="w-4 h-4 text-yellow-600 ms-1"
+                    className="w-4 h-4 text-secondary ms-1"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -691,7 +696,7 @@ function QrStand() {
                     >
                       <div className="flex-1 bg-gray-200 rounded-full h-2">
                         <div
-                          className="bg-yellow-400 h-2 rounded-full"
+                          className="bg-secondary h-2 rounded-full"
                           style={{ width: `${ratingPercentage}%` }} // Adjust width based on hardcoded percentage
                         ></div>
                       </div>
@@ -702,7 +707,7 @@ function QrStand() {
                             key={index}
                             className={`w-4 h-4 ${
                               index < ratingStars && ratingPercentage > 0
-                                ? "text-yellow-600"
+                                ? "text-secondary"
                                 : "text-gray-300"
                             }`}
                             xmlns="http://www.w3.org/2000/svg"
@@ -745,7 +750,7 @@ function QrStand() {
                       <div className="flex mb-2">
                         <div className="flex items-center">
                           <svg
-                            className="w-4 h-4 text-yellow-600 ms-1"
+                            className="w-4 h-4 text-secondary ms-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -754,7 +759,7 @@ function QrStand() {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                           </svg>
                           <svg
-                            className="w-4 h-4 text-yellow-600 ms-1"
+                            className="w-4 h-4 text-secondary ms-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -763,7 +768,7 @@ function QrStand() {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                           </svg>
                           <svg
-                            className="w-4 h-4 text-yellow-600 ms-1"
+                            className="w-4 h-4 text-secondary ms-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -772,7 +777,7 @@ function QrStand() {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                           </svg>
                           <svg
-                            className="w-4 h-4 text-yellow-600 ms-1"
+                            className="w-4 h-4 text-secondary ms-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -781,7 +786,7 @@ function QrStand() {
                             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                           </svg>
                           <svg
-                            className="w-4 h-4 text-yellow-600 ms-1"
+                            className="w-4 h-4 text-secondary ms-1"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -803,7 +808,7 @@ function QrStand() {
                         <div
                           className={`dislike-btn flex items-center justify-center w-7 h-7 rounded-full cursor-pointer transition duration-300 ease-in-out ${
                             review.disliked
-                              ? "bg-green-500 text-white transform scale-110 rotate-180"
+                              ? "bg-primary text-white transform scale-110 rotate-180"
                               : "bg-gray-200 text-gray-500"
                           }`}
                           onClick={() => handleDislike(review.id)}
