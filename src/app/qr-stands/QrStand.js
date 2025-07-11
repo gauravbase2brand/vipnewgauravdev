@@ -227,7 +227,7 @@ function QrStand() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center">
             <Link href="/">
-              <h1 className="text-xl font-bold">VIP NUMBER SHOP</h1>
+              <h1 className="text-xl font-black">VIP NUMBER SHOP</h1>
             </Link>
           </div>
         </div>
@@ -238,12 +238,12 @@ function QrStand() {
         {/* Product Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Product Images */}
-          <div className="space-y-4 arrow-handle">
+          <div className="space-y-4 arrow-handle md:w-[92%]">
             <div className="relative">
               <Image
                 src={currentImage} // Set the dynamically selected image as the main image
                 alt="Customizable Table Stand"
-                className="w-full rounded-lg shadow-lg"
+                className="w-full  rounded-lg shadow-lg"
               />
             </div>
 
@@ -315,13 +315,13 @@ function QrStand() {
                 <div className="grid">
                   <span className="text-gray-600 text-[15px]">
                     SKU:{" "}
-                    <span className="font-bold text-gray-900">
+                    <span className="font-black text-gray-900">
                       {selectedPrice.SKU}
                     </span>
                   </span>
                   <span className="text-gray-600 text-[15px]">
                     Brand:{" "}
-                    <span className="font-bold text-gray-900">
+                    <span className="font-black text-gray-900">
                       Customizable Table Stands with QR Code
                     </span>
                   </span>
@@ -329,11 +329,11 @@ function QrStand() {
                 <div className="grid">
                   <span className="text-gray-600 text-[15px]">
                     Availability:{" "}
-                    <span className="text-primary font-bold">In Stock</span>
+                    <span className="text-primary font-black">In Stock</span>
                   </span>
                   <span className="text-gray-600 text-[15px]">
                     Category:{" "}
-                    <span className="font-bold text-gray-900">
+                    <span className="font-black text-gray-900">
                       QR Code Stand
                     </span>
                   </span>
@@ -347,7 +347,7 @@ function QrStand() {
               <span className="text-gray-500 line-through text-[18px]">
                 Rs. {selectedPrice.originalPrice}
               </span>
-              <span className="text-2xl font-bold text-red-600">
+              <span className="text-2xl font-black text-red-600">
                 Rs. {selectedPrice.discountedPrice}.00
               </span>
               <span className="bg-secondary text-black-600 px-2 py-1  text-sm font-medium">
@@ -357,7 +357,7 @@ function QrStand() {
             <hr />
             {/* QR Code Options */}
             <div>
-              <h3 className="font-bold text-gray-700  mb-1 text-xl">
+              <h3 className="font-black text-gray-700  mb-1 text-xl">
                 Available in 1, 2, or 3 QR Codes
               </h3>
               <div className="space-y-2">
@@ -399,7 +399,7 @@ function QrStand() {
             <div>
               <h3 className="text-gray-900 mb-1 flex items-center gap-2">
                 <span className="text-base">Select Any</span>
-                <span className="font-bold text-xl">{selectedQR}</span>
+                <span className="font-black text-xl">{selectedQR}</span>
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-2">
                 {[
@@ -484,7 +484,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-primary font-bold text-[15px]">
+                  <div className="text-primary font-black text-[15px]">
                     Free Delivery
                   </div>
                   <div className="text-sm text-gray-500">
@@ -501,7 +501,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-primary font-bold">
+                  <div className="text-primary font-black">
                     100% Quality Warranty
                   </div>
                   <div className="text-sm text-gray-500">
@@ -518,7 +518,7 @@ function QrStand() {
                   width={20}
                 />
                 <div>
-                  <div className="text-primary font-bold">COD Available</div>
+                  <div className="text-primary font-black">COD Available</div>
                   <div className="text-xs text-gray-500">Cash on delivery</div>
                 </div>
               </div>
@@ -568,7 +568,7 @@ function QrStand() {
         {/* Description and Features */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md-4 md:mb-12">
           <div className="lg:pe-7 lg:border-r-2 border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-black text-gray-900 mb-2">
               Description
             </h2>
             <p className="text-gray-700 leading-relaxed">
@@ -587,7 +587,7 @@ function QrStand() {
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Feature</h2>
+            <h2 className="text-2xl font-black text-gray-900 mb-2">Feature</h2>
             <ul className=" text-gray-700">
               <li className="flex items-center gap-1 md:gap-3">
                 <span className="text-primary text-[25px]">•</span>
@@ -615,14 +615,14 @@ function QrStand() {
 
         {/* Customer Feedback */}
         <div className="lg:w-[80%] 2xl:w-[70%]">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">
+          <h2 className="text-3xl font-black text-gray-900 mb-2 text-center">
             Customer Feedback
           </h2>
 
           <div className="flex flex-col md:flex-row gap-8 mb-8 pt-4">
             {/* Rating Summary */}
             <div className="text-center py-[5%] px-[6%] w-[60%] m-auto md:w-[30%] border-2 border-black rounded-2xl">
-              <div className="text-6xl font-bold mb-2">4.9</div>
+              <div className="text-6xl font-black mb-2">4.9</div>
               <div className="flex justify-center mb-2">
                 <div className="flex items-center">
                   <svg
