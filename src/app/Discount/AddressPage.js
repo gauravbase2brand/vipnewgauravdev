@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "./couponDiscount.css";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import { usePathname } from "next/navigation";
-import { handleQrCheckout } from "../Services/Services";
+import { handleQrCheckout, qrSendMail } from "../Services/Services";
 
 const AddressPage = ({ setDiscountPop }) => {
   const { user, userProfile, setNameUpdate, qrData, setQrCheckout } =
@@ -154,7 +154,9 @@ const AddressPage = ({ setDiscountPop }) => {
         image: `${panelImg}/assets/img/vip-images/VIP-icon-2_iyiaaj.webp`,
         order_id: res?.data?.data?.orderData?.order_id,
         handler: function (response) {
-          ajaxRequest(response, false);
+          if (response.razorpay_order_id) {
+           qrSendMail(qrData, token,response.razorpay_order_id)
+          }
         },
         prefill: {
           name: userProfile.firstname + " " + userProfile.lastname,
@@ -171,93 +173,12 @@ const AddressPage = ({ setDiscountPop }) => {
       };
       const rzp1 = new window.Razorpay(options);
       rzp1.on("payment.failed", function (response) {
-        ajaxRequest(response, true);
       });
       rzp1 && rzp1.open();
     });
   }
 
-  function ajaxRequest(response, orderdeclined) {
-    let data;
-    let leadPayload = {};
-    if (response.error) {
-      data = {
-        payment_status: 0,
-        amount: razarAmount,
-        user_id: 613,
-        razorpay_payment_id: response.error.metadata.payment_id,
-        razorpay_order_id: response.error.metadata.order_id,
-        error_code: response.error.code,
-        error_description: response.error.description,
-        error_source: response.error.source,
-        error_step: response.error.step,
-        error_reason: response.error.reason,
-      };
-      leadPayload.payment_status = "failed";
-      leadPayload.payment_id = response.error.metadata.payment_id; // Add payment_id to leadPayload
-    } else {
-      data = {
-        payment_status: 1,
-        amount: razarAmount,
-        user_id: 613,
-        razorpay_payment_id: response.razorpay_payment_id,
-        razorpay_order_id: response.razorpay_order_id,
-        razorpay_signature: response.razorpay_signature,
-      };
-      leadPayload.payment_status = "success";
-      leadPayload.payment_id = response.razorpay_payment_id; // Add payment_id to leadPayload
-    }
-    const token = user?.token; // get the user's token data
-    const orderId =
-      response.razorpay_order_id || response.error.metadata.order_id;
-    fetch(`${apiUrl}/web/transaction/create`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // use the user's token data
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Response is successful
-          response.json().then(() => {
-            if (orderdeclined) {
-              localStorage.setItem("vipDeclined", true);
-              Router.push("/payment-declined?orderId=" + orderId);
-            } else {
-              toast.success(
-                "Thanks for your payment Please check your WhatsApp for QR Payment report."
-              );
-              try {
-                axios.post(
-                  `${apiUrl}/web/profile/update`,
-                  {
-                    action: "QR Payment",
-                  },
-                  {
-                    headers: {
-                      Authorization: `Bearer ${user?.token}`,
-                    },
-                  }
-                );
-              } catch (error) {
-                console.error("Error during second update:", error);
-              }
-            }
-          });
-        } else {
-          // Response is not successful
-          response.json().then((data) => {
-            toast.error(data.message);
-            localStorage.setItem("vipDeclined", true);
-            Router.push("/payment-declined");
-            console.error(data);
-          });
-        }
-      })
-      .catch((error) => console.error(error));
-  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

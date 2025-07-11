@@ -415,6 +415,27 @@ export const handleQrCheckout = async (qrData, token, setQrCheckout) => {
     setQrCheckout(false);
   }
 };
+export const qrSendMail = async (qrData, token, orderId) => {
+  try {
+    // Make POST request with Axios
+    const payload = {
+      ...qrData, // existing data
+      order_id: orderId, // add the order_id here
+    };
+    const response = await axios.post(
+      `${apiUrl}/web/qrStands/send-mail`,
+      payload,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.error("Error during payment:", error);
+  }
+};
 export const getSubCategories = async (id, params) => {
   try {
     const response = await axios.get(`${apiUrl}/web/category/search?id=` + id, {
