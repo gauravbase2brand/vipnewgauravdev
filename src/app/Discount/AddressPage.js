@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 import "./couponDiscount.css";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
-import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
+import { handleQrCheckout } from "../Services/Services";
 
 const AddressPage = ({ setDiscountPop }) => {
-  const { user, userProfile, setNameUpdate } = useContext(AppStateContext);
+  const { user, userProfile, setNameUpdate, qrData, setQrCheckout } =
+    useContext(AppStateContext);
   const [nameActive, setNameActive] = useState(false);
   const [area, setArea] = useState([]);
   const [emailActive, setEmailActive] = useState(false);
@@ -19,6 +21,7 @@ const AddressPage = ({ setDiscountPop }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(true);
   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
+  const panelImg = process.env.NEXT_PUBLIC_IMAGES;
   const lead_page = localStorage.getItem("Lead-Page");
   const invalidNames = [
     "loged-in",
@@ -94,11 +97,21 @@ const AddressPage = ({ setDiscountPop }) => {
   }, [userProfile]);
 
   const isValidInstagramLink = (link) => {
-    const regex = /^(https?:\/\/)?(www\.)?(instagram\.com)\/([a-zA-Z0-9_\.]+)\/?(\?[\w=&]+)?$/;
+    const regex =
+      /^(https?:\/\/)?(www\.)?(instagram\.com)\/([a-zA-Z0-9_\.]+)\/?(\?[\w=&]+)?$/;
     return regex.test(link);
   };
-  
-    
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.body.appendChild(script);
+    script.onload = async () => {};
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, [user]);
 
   const handleFocus = (setActive) => {
     setActive(true);
@@ -129,6 +142,122 @@ const AddressPage = ({ setDiscountPop }) => {
     setData({ ...data, [name]: value });
     setFormErrors({ ...formErrors, [name]: false }); // Clear error on change
   };
+
+  function handleRzpClick(qrData) {
+    const token = user?.token; // get the user's token data
+    handleQrCheckout(qrData, token,setQrCheckout).then((res) => {
+      // Create Razorpay options for the payment form
+      const options = {
+        key: "rzp_live_mMfqxRhCpzrpog",
+        name: "VIP NUMBER SHOP",
+        description: "Payment for VIP Mobile Number",
+        image: `${panelImg}/assets/img/vip-images/VIP-icon-2_iyiaaj.webp`,
+        order_id: res?.data?.data?.orderData?.order_id,
+        handler: function (response) {
+          ajaxRequest(response, false);
+        },
+        prefill: {
+          name: userProfile.firstname + " " + userProfile.lastname,
+          email: userProfile.email,
+          contact: userProfile.mobile,
+        },
+        notes: {
+          address: userProfile.address.address,
+        },
+        theme: {
+          color: "#3399cc",
+        },
+        method: "upi",
+      };
+      const rzp1 = new window.Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        ajaxRequest(response, true);
+      });
+      rzp1 && rzp1.open();
+    });
+  }
+
+  function ajaxRequest(response, orderdeclined) {
+    let data;
+    let leadPayload = {};
+    if (response.error) {
+      data = {
+        payment_status: 0,
+        amount: razarAmount,
+        user_id: 613,
+        razorpay_payment_id: response.error.metadata.payment_id,
+        razorpay_order_id: response.error.metadata.order_id,
+        error_code: response.error.code,
+        error_description: response.error.description,
+        error_source: response.error.source,
+        error_step: response.error.step,
+        error_reason: response.error.reason,
+      };
+      leadPayload.payment_status = "failed";
+      leadPayload.payment_id = response.error.metadata.payment_id; // Add payment_id to leadPayload
+    } else {
+      data = {
+        payment_status: 1,
+        amount: razarAmount,
+        user_id: 613,
+        razorpay_payment_id: response.razorpay_payment_id,
+        razorpay_order_id: response.razorpay_order_id,
+        razorpay_signature: response.razorpay_signature,
+      };
+      leadPayload.payment_status = "success";
+      leadPayload.payment_id = response.razorpay_payment_id; // Add payment_id to leadPayload
+    }
+    const token = user?.token; // get the user's token data
+    const orderId =
+      response.razorpay_order_id || response.error.metadata.order_id;
+    fetch(`${apiUrl}/web/transaction/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // use the user's token data
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Response is successful
+          response.json().then(() => {
+            if (orderdeclined) {
+              localStorage.setItem("vipDeclined", true);
+              Router.push("/payment-declined?orderId=" + orderId);
+            } else {
+              toast.success(
+                "Thanks for your payment Please check your WhatsApp for QR Payment report."
+              );
+              try {
+                axios.post(
+                  `${apiUrl}/web/profile/update`,
+                  {
+                    action: "QR Payment",
+                  },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${user?.token}`,
+                    },
+                  }
+                );
+              } catch (error) {
+                console.error("Error during second update:", error);
+              }
+            }
+          });
+        } else {
+          // Response is not successful
+          response.json().then((data) => {
+            toast.error(data.message);
+            localStorage.setItem("vipDeclined", true);
+            Router.push("/payment-declined");
+            console.error(data);
+          });
+        }
+      })
+      .catch((error) => console.error(error));
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -235,6 +364,10 @@ const AddressPage = ({ setDiscountPop }) => {
           },
         }
       );
+      if (lead_page === "qr-codes") {
+        handleRzpClick(qrData);
+        setDiscountPop(false);
+      }
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -515,7 +648,7 @@ const AddressPage = ({ setDiscountPop }) => {
                         : "top-[17px] peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:scale-90"
                     }`}
                   >
-                    Instagram Handle 
+                    Instagram Handle
                   </label>
                 </div>
               </div>

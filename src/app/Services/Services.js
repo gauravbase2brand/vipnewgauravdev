@@ -235,7 +235,6 @@ export const SearchAdvanceAPI = async (
 //   }
 // };
 
-
 export const SearchAPI = async (
   key,
   params,
@@ -263,15 +262,10 @@ export const SearchAPI = async (
           const finalParams = {
             ...params,
             seller:
-              params.seller !== "BASIC,PREMIUM"
-                ? sellerParam
-                : params.seller,
+              params.seller !== "BASIC,PREMIUM" ? sellerParam : params.seller,
             id: userProfile?.contactid,
           };
-          return [
-            category,
-            axios.get(endpoint, { params: finalParams }),
-          ];
+          return [category, axios.get(endpoint, { params: finalParams })];
         })
       );
 
@@ -290,14 +284,14 @@ export const SearchAPI = async (
           nextURLs[category] = data.nextURL;
 
           // push into React state in the right order
-          setSearchResults(prev => ({
+          setSearchResults((prev) => ({
             ...prev,
             [category]: data,
           }));
         } catch (err) {
           // on error, at least clear that category
           results[category] = { data: [], nextURL: null };
-          setSearchResults(prev => ({
+          setSearchResults((prev) => ({
             ...prev,
             [category]: { data: [] },
           }));
@@ -312,8 +306,7 @@ export const SearchAPI = async (
       }
 
       return results;
-    }
-    else {
+    } else {
       try {
         setLoadingState(key); //Start loader for current API
 
@@ -401,6 +394,27 @@ export const postCart = async (
   }
 };
 
+export const handleQrCheckout = async (qrData, token, setQrCheckout) => {
+  try {
+    setQrCheckout(true);
+
+    // Make POST request with Axios
+    const response = await axios.post(
+      `${apiUrl}/web/razorpay/qrStands/businessPayment`,
+      qrData,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    setQrCheckout(false);
+    return response;
+  } catch (error) {
+    console.error("Error during payment:", error);
+    setQrCheckout(false);
+  }
+};
 export const getSubCategories = async (id, params) => {
   try {
     const response = await axios.get(`${apiUrl}/web/category/search?id=` + id, {

@@ -108,7 +108,13 @@ const AppStateContextProvider = ({ children }) => {
   const [starRating, setStarRating] = useState(0);
   const [openFeed, setOpenFeed] = useState(false);
   const [searchBy, setSearchBy] = useState("digit");
-
+  const [qrData, setQrData] = useState({
+    amount: "",
+    currency: "INR",
+    qrcode: "",
+    social: "",
+  });
+  const [qrCheckout, setQrCheckout] = useState(false);
   // OnClick Handler
   const handleSubCat = async (subCategory) => {
     setSimilarLoader(true);
@@ -855,6 +861,8 @@ const AppStateContextProvider = ({ children }) => {
         setOpenFeed,
         searchBy,
         setSearchBy,
+        qrData,
+        setQrData,qrCheckout, setQrCheckout
       }}
     >
       {children}

@@ -775,3 +775,13 @@ color: var(--primary)  ;
   background-color: var(--primary) !important;
   color: white !important;
 }
+.arrow-handle .splide__arrow--prev {
+    height: 18px;
+    width: 18px;
+    left: -15px;
+}
+.arrow-handle .splide__arrow--next {
+    height: 18px;
+    width: 18px;
+    right: -18px;
+}
