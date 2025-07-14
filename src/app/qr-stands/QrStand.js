@@ -410,7 +410,7 @@ function QrStand() {
                   { src: whatsapp, label: "Whatsapp" },
                   { src: youtube, label: "YouTube" },
                   { src: contact, label: "Save Contact" },
-                  { src: payQr, label: "Payment QR" },
+                  // { src: payQr, label: "Payment QR" },
                 ].map((item, index) => {
                   const isSpecialItem =
                     item.label === "Google Reviews" ||
@@ -445,7 +445,7 @@ function QrStand() {
 
             {/* Quantity and Add to Cart */}
             <div className="flex items-center space-x-4">
-              <div className="flex items-center border rounded">
+              {/* <div className="flex items-center border rounded">
                 <button
                   className="px-3 py-2 hover:bg-gray-100"
                   onClick={() => {
@@ -463,7 +463,7 @@ function QrStand() {
                 >
                   +
                 </button>
-              </div>
+              </div> */}
               <button
                 className="bg-primary text-white px-6 py-2 rounded hover:bg-primary-900 flex-1 max-w-[250px]"
                 onClick={handleCheckout}
