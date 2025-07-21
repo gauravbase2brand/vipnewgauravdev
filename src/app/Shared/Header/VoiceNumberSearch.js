@@ -7,32 +7,31 @@ import { CiMicrophoneOn, CiMicrophoneOff } from 'react-icons/ci';
 
 export default function VoiceNumberSearch() {
   const [lang, setLang] = useState('en-IN');
-  const [listeningActive, setListeningActive] = useState(false);
+  const [active, setActive] = useState(false);
   const router = useRouter();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
   const debounceRef = useRef();
 
-  const parseParams = (text) => {
-    const t = text.toLowerCase();
-    const start_with  = (t.match(/start(?:s)? with\s*(\d+)/))?.[1]    || '';
-    const end_with    = (t.match(/end(?:s)? with\s*(\d+)/))?.[1]      || '';
-    const contains    = (t.match(/contain(?:s)?\s*(\d+)/))?.[1]      || '';
-    const not_contain = (t.match(/not contain(?:s)?\s*(\d+)/))?.[1] || '';
-
+  // parse your filters
+  const parseParams = (t) => {
+    t = t.toLowerCase();
+    const start_with  = (t.match(/start(?:s)? with\s*(\d+)/)    || [])[1] || '';
+    const end_with    = (t.match(/end(?:s)? with\s*(\d+)/)      || [])[1] || '';
+    const contains    = (t.match(/contain(?:s)?\s*(\d+)/)      || [])[1] || '';
+    const not_contain = (t.match(/not contain(?:s)?\s*(\d+)/) || [])[1] || '';
     let any_where = '';
     if (!start_with && !end_with && !contains && !not_contain) {
-      const allDigits = t.match(/\d+/g);
-      any_where = allDigits ? allDigits.join('') : '';
+      const all = t.match(/\d+/g);
+      any_where = all ? all.join('') : '';
     }
-
     return { start_with, end_with, contains, not_contain, any_where };
   };
 
-  // Debounce so we wait 1s after you stop talking
+  // whenever final transcript changes, debounce then fire URL
   useEffect(() => {
     if (!transcript) return;
     clearTimeout(debounceRef.current);
-    debounceRef.current = window.setTimeout(() => {
+    debounceRef.current = setTimeout(() => {
       const { start_with, end_with, contains, not_contain, any_where } = parseParams(transcript);
       if (start_with || end_with || contains || not_contain || any_where) {
         const q = new URLSearchParams({
@@ -49,85 +48,79 @@ export default function VoiceNumberSearch() {
         }).toString();
         router.push(`/search-results?${q}`);
       }
-      SpeechRecognition.stopListening();
-      setListeningActive(false);
+      // reset for next phrase
       resetTranscript();
-    }, 1000);
-
+    }, 800);
     return () => clearTimeout(debounceRef.current);
   }, [transcript, router, resetTranscript]);
 
-  // If the browser auto-stops (silence) without firing above, just hide loader
+  // When listening stops, immediately restart if we’re “active”
   useEffect(() => {
-    if (!listening && listeningActive) {
-      clearTimeout(debounceRef.current);
-      setListeningActive(false);
-      resetTranscript();
-    }
-  }, [listening, listeningActive, resetTranscript]);
-
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return <p className="text-red-600">Your browser does not support voice search.</p>;
-  }
-
-  const toggleListening = () => {
-    if (listening) {
-      SpeechRecognition.stopListening();
-      clearTimeout(debounceRef.current);
-      setListeningActive(false);
-    } else {
-      resetTranscript();
+    if (!listening && active) {
       SpeechRecognition.startListening({
-        continuous:     true,  // allows full-phrase capture
-        interimResults: false, // final only
+        continuous:     true,
+        interimResults: false,
         language:       lang,
       });
-      setListeningActive(true);
     }
+  }, [listening, active, lang]);
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return <p className="text-red-600">Your browser doesn’t support voice search.</p>;
+  }
+
+  // Called only once: initial tap to grant permission & kick off continuous listening
+  const activateVoice = () => {
+    resetTranscript();
+    SpeechRecognition.startListening({
+      continuous:     true,
+      interimResults: false,
+      language:       lang,
+    });
+    setActive(true);
   };
 
   const barColors = ['#30FFAE','#2AB7EC','#FF2AE0','#FFAB00','#8A2BE2'];
 
   return (
     <>
-      {listeningActive && (
+      {/* Loader whenever actually listening */}
+      {listening && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
           <div className="flex items-end space-x-1">
             {barColors.map((c,i) => (
               <span
                 key={i}
                 className="block w-2 rounded-full animate-wave"
-                style={{ backgroundColor: c, animationDelay: `${i*120}ms`, height: '1rem' }}
+                style={{ backgroundColor: c, animationDelay: `${i*120}ms`, height:'1rem' }}
               />
             ))}
           </div>
         </div>
       )}
 
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white shadow-xl rounded-full px-4 py-2 flex items-center space-x-3">
-        <select
-          value={lang}
-          onChange={e => setLang(e.target.value)}
-          className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
-        >
-          <option value="en-IN">English</option>
-          <option value="hi-IN">हिन्दी</option>
-        </select>
+      {/* One-time activation button */}
+      {!active && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2">
+          <button
+            onClick={activateVoice}
+            className="bg-[#ffce00] p-4 rounded-full shadow-lg hover:scale-105 transition"
+            aria-label="Enable voice search"
+          >
+            <CiMicrophoneOn className="text-white text-3xl" />
+          </button>
+        </div>
+      )}
 
-        <button
-          onClick={toggleListening}
-          className={`flex items-center justify-center w-12 h-12 rounded-full transition-transform ${
-            listening
-              ? 'bg-gradient-to-br from-indigo-500 to-purple-600 scale-110'
-              : 'bg-[#ffce00] hover:scale-105'
-          }`}
-          aria-label={listening ? 'Stop listening' : 'Start voice search'}
-        >
-          {listening
-            ? <CiMicrophoneOn className="text-white text-2xl" />
-            : <CiMicrophoneOff className="text-white text-2xl" />}
-        </button>
-      </div>
+      {/* Language selector (optional) */}
+      <select
+        value={lang}
+        onChange={(e) => setLang(e.target.value)}
+        className="fixed bottom-6 right-6 border border-gray-300 rounded px-2 py-1 bg-white"
+      >
+        <option value="en-IN">English</option>
+        <option value="hi-IN">हिन्दी</option>
+      </select>
 
       <style jsx>{`
         @keyframes wave {
