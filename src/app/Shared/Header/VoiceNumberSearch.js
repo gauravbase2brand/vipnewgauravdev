@@ -44,7 +44,7 @@ export default function VoiceNumberSearch() {
                  (_, w) => word2digit[w]);
 
       // 3️⃣ Show alert with exactly what we’ll parse
-      alert(`You said: "${normalized}"`);
+      // alert(`You said: "${normalized}"`);
 
       // 4️⃣ Parse filters from the normalized text
       const t = normalized;
@@ -160,13 +160,13 @@ export default function VoiceNumberSearch() {
         </button>
       </div>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         @keyframes wave {
           0%,100% { transform: scaleY(0.5); }
           50%      { transform: scaleY(1.8); }
         }
         .animate-wave { animation: wave 600ms ease-in-out infinite; }
-      `}</style>
+      `}</style> */}
     </>
   );
 }
