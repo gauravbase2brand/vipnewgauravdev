@@ -10,43 +10,44 @@ export default function VoiceNumberSearch() {
   const [listeningActive, setListeningActive] = useState(false);
   const router = useRouter();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
-  const debounceRef = useRef(null);
+  const debounceRef = useRef();
 
   const parseParams = (text) => {
     const t = text.toLowerCase();
-    const start_with  = (t.match(/start with\s*(\d+)/))?.[1]    || '';
-    const end_with    = (t.match(/end with\s*(\d+)/))?.[1]      || '';
-    const contains    = (t.match(/contain(?:s)?\s*(\d+)/))?.[1] || '';
+    const start_with  = (t.match(/start(?:s)? with\s*(\d+)/))?.[1]    || '';
+    const end_with    = (t.match(/end(?:s)? with\s*(\d+)/))?.[1]      || '';
+    const contains    = (t.match(/contain(?:s)?\s*(\d+)/))?.[1]      || '';
     const not_contain = (t.match(/not contain(?:s)?\s*(\d+)/))?.[1] || '';
+
     let any_where = '';
     if (!start_with && !end_with && !contains && !not_contain) {
       const allDigits = t.match(/\d+/g);
       any_where = allDigits ? allDigits.join('') : '';
     }
+
     return { start_with, end_with, contains, not_contain, any_where };
   };
 
-  // Debounced processing: wait for 1s of silence after last transcript update
+  // Debounce so we wait 1s after you stop talking
   useEffect(() => {
     if (!transcript) return;
     clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
+    debounceRef.current = window.setTimeout(() => {
       const { start_with, end_with, contains, not_contain, any_where } = parseParams(transcript);
-      const hasFilter = start_with || end_with || contains || not_contain || any_where;
-      if (hasFilter) {
-        const query = new URLSearchParams({
-          type: 'advanced',
+      if (start_with || end_with || contains || not_contain || any_where) {
+        const q = new URLSearchParams({
+          type:        'advanced',
           start_with,
           any_where,
           end_with,
           contains,
           not_contain,
-          callCount: '0',
-          searchBy: 'digit',
-          comingsoon: 'yes',
-          star_status: 'true'
+          callCount:   '0',
+          searchBy:    'digit',
+          comingsoon:  'yes',
+          star_status: 'true',
         }).toString();
-        router.push(`/search-results?${query}`);
+        router.push(`/search-results?${q}`);
       }
       SpeechRecognition.stopListening();
       setListeningActive(false);
@@ -56,12 +57,12 @@ export default function VoiceNumberSearch() {
     return () => clearTimeout(debounceRef.current);
   }, [transcript, router, resetTranscript]);
 
-  // Ensure loader hides if user clicks stop or recognition ends
+  // If the browser auto-stops (silence) without firing above, just hide loader
   useEffect(() => {
     if (!listening && listeningActive) {
+      clearTimeout(debounceRef.current);
       setListeningActive(false);
       resetTranscript();
-      clearTimeout(debounceRef.current);
     }
   }, [listening, listeningActive, resetTranscript]);
 
@@ -72,13 +73,13 @@ export default function VoiceNumberSearch() {
   const toggleListening = () => {
     if (listening) {
       SpeechRecognition.stopListening();
-      setListeningActive(false);
       clearTimeout(debounceRef.current);
+      setListeningActive(false);
     } else {
       resetTranscript();
       SpeechRecognition.startListening({
-        continuous:     true,  // keep going until we stop
-        interimResults: false, // we only care about final transcripts
+        continuous:     true,  // allows full-phrase capture
+        interimResults: false, // final only
         language:       lang,
       });
       setListeningActive(true);
@@ -96,7 +97,7 @@ export default function VoiceNumberSearch() {
               <span
                 key={i}
                 className="block w-2 rounded-full animate-wave"
-                style={{ backgroundColor: c, animationDelay: `${i*100}ms`, height: '1rem' }}
+                style={{ backgroundColor: c, animationDelay: `${i*120}ms`, height: '1rem' }}
               />
             ))}
           </div>
