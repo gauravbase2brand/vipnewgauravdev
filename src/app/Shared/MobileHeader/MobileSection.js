@@ -311,7 +311,7 @@ const MobileSection = ({
                           }}
                         />
                         <button
-                          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gradient-to-r from-secondary to-secondary hover:from-purple-600 hover:to-indigo-600 text-white rounded-full p-[5px] shadow-lg transition duration-300 ease hover:scale-105"
+                          className="absolute top-1/2 right-[165px] transform -translate-y-1/2 bg-gradient-to-r from-secondary to-secondary hover:from-purple-600 hover:to-indigo-600 text-white rounded-full p-[5px] shadow-lg transition duration-300 ease hover:scale-105"
                           onClick={() => {
                             // setSearchPopup(!searchPopup);
                             setShowPopup(false);
@@ -340,7 +340,9 @@ const MobileSection = ({
                               <FilterTabsCat />
                             </div>
                           )}
-                          <VoiceNumberSearch/>
+                        {window.location.pathname === "/" && (
+                          <VoiceNumberSearch />
+                        )}
                       </div>
                     </>
                   )}

@@ -23,7 +23,8 @@ const HeaderList = ({
   handleSearchClick,
   type,
   flterHide,
-  categoryTab,user
+  categoryTab,
+  user,
 }) => {
   const panelImg = process.env.NEXT_PUBLIC_IMAGES;
   const { setActiveSignInWithOtp } = useContext(MyRegisterSignInContext);
@@ -55,18 +56,18 @@ const HeaderList = ({
             <button
               className="discount_btn"
               onClick={() => {
-                if (!user?.token){
+                if (!user?.token) {
                   setActiveSignInWithOtp(true);
                   localStorage.setItem("Lead-Page", "Get-Discount");
-                }else{
-                setDiscountPop(true);
-                localStorage.setItem("Lead-Page", "Get-Discount");
+                } else {
+                  setDiscountPop(true);
+                  localStorage.setItem("Lead-Page", "Get-Discount");
                 }
               }}
               aria-label="Get Discount"
             >
               <span>
-              <RiDiscountPercentFill color="var(--secondary)" fontSize={25}/>
+                <RiDiscountPercentFill color="var(--secondary)" fontSize={25} />
               </span>
               Get Discount
             </button>
@@ -134,7 +135,7 @@ const HeaderList = ({
                     Numerology Report
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
-                   <Link
+                  <Link
                     href="/family-pack"
                     className="relative group hover:text-primary  hover:font-medium "
                     onClick={() => {
@@ -231,7 +232,7 @@ const HeaderList = ({
                     Influencer Program
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
-                   <Link
+                  <Link
                     href="/qr-stands"
                     className="relative group hover:text-primary "
                     onClick={() => setAboutUs(false)}
@@ -287,7 +288,7 @@ const HeaderList = ({
           </button>
         </div> */}
 
-        <div className="w-full mr-1">
+        <div className="w-full mr-1 flex items-center">
           <div className="relative">
             <input
               id="searchQuery"
@@ -302,10 +303,11 @@ const HeaderList = ({
             />
             <label
               htmlFor="searchQuery"
-              className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${searchQuery
+              className={`absolute cursor-text bg-white px-1 left-2.5 transition-all transform origin-left capitalize text-[16px] leading-4 ${
+                searchQuery
                   ? "-top-2 left-2.5 text-xs text-primary scale-90"
                   : "top-[11px] text-primary peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-primary peer-focus:scale-90"
-                }`}
+              }`}
             >
               Search
             </label>
@@ -317,7 +319,7 @@ const HeaderList = ({
               <CiSearch color="black" />
             </button>
           </div>
-          <VoiceNumberSearch/>
+          {window.location.pathname === "/" && <VoiceNumberSearch />}
         </div>
 
         {type !== "family_pack" && (
