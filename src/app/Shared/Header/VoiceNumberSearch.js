@@ -11,28 +11,37 @@ export default function VoiceNumberSearch() {
   const router = useRouter();
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
 
+  // Split on “and”/“aur”/commas, then detect each filter
   const parseParams = (text) => {
     const t = text.toLowerCase();
-    const start_with  = (t.match(/start with.*?(\d+)/)    || [])[1] || '';
-    const end_with    = (t.match(/end with.*?(\d+)/)      || [])[1] || '';
-    const contains    = (t.match(/contain(?:s)?.*?(\d+)/) || [])[1] || '';
-    const not_contain = (t.match(/not contain(?:s)?.*?(\d+)/) || [])[1] || '';
-    let any_where = '';
-    if (!start_with && !end_with && !contains && !not_contain) {
-      const allDigits = t.match(/\d+/g);
-      any_where = allDigits ? allDigits.join('') : '';
-    }
+    let start_with = '', end_with = '', contains = '', not_contain = '', any_where = '';
+    const segments = t.split(/\s+and\s+|\s+aur\s+|,/);
+
+    segments.forEach(seg => {
+      let m;
+      if (!start_with && (m = seg.match(/start with.*?(\d+)/))) {
+        start_with = m[1];
+      } else if (!end_with && (m = seg.match(/end with.*?(\d+)/))) {
+        end_with = m[1];
+      } else if (!contains && (m = seg.match(/contain(?:s)?.*?(\d+)/))) {
+        contains = m[1];
+      } else if (!not_contain && (m = seg.match(/not contain(?:s)?.*?(\d+)/))) {
+        not_contain = m[1];
+      } else if (!any_where && (m = seg.match(/\d+/g))) {
+        any_where = m.join('');
+      }
+    });
+
     return { start_with, end_with, contains, not_contain, any_where };
   };
 
-  // Handle transcript: if we have any param, search; otherwise do nothing here
+  // On transcript update → parse, navigate if any filter, then clean up
   useEffect(() => {
     if (!transcript) return;
-
     const { start_with, end_with, contains, not_contain, any_where } = parseParams(transcript);
-    const hasParam = start_with || end_with || contains || not_contain || any_where;
+    const hasFilter = start_with || end_with || contains || not_contain || any_where;
 
-    if (hasParam) {
+    if (hasFilter) {
       const query = new URLSearchParams({
         type:        'advanced',
         start_with,
@@ -48,23 +57,20 @@ export default function VoiceNumberSearch() {
 
       router.push(`/search-results?${query}`);
     }
-    // whether or not we navigated, stop & reset
+
+    // always stop listening & hide loader
     SpeechRecognition.stopListening();
     setListeningActive(false);
     resetTranscript();
   }, [transcript, router, resetTranscript]);
 
-  // If listening stops without any valid transcript params, show error
+  // If listening stops (on silence) without a transcript match, hide loader
   useEffect(() => {
     if (!listening && listeningActive) {
-      // If transcript was empty or contained no digits/keywords:
-      if (!transcript.trim()) {
-        alert('Technical error: could not recognize a number. Please try again.');
-      }
       setListeningActive(false);
       resetTranscript();
     }
-  }, [listening, listeningActive, transcript, resetTranscript]);
+  }, [listening, listeningActive, resetTranscript]);
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return <p className="text-red-600">Your browser does not support voice search.</p>;
@@ -85,11 +91,12 @@ export default function VoiceNumberSearch() {
     }
   };
 
+  // Siri-style gradient bars
   const barColors = ['#30FFAE','#2AB7EC','#FF2AE0','#FFAB00','#8A2BE2'];
 
   return (
     <>
-      {/* Siri-style loader */}
+      {/* Loader overlay */}
       {listeningActive && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 pointer-events-none">
           <div className="flex items-end space-x-1">
@@ -97,22 +104,18 @@ export default function VoiceNumberSearch() {
               <span
                 key={i}
                 className="block w-2 rounded-full animate-wave"
-                style={{
-                  backgroundColor: c,
-                  animationDelay:   `${i * 120}ms`,
-                  height:           '1rem',
-                }}
+                style={{ backgroundColor: c, animationDelay: `${i * 120}ms`, height: '1rem' }}
               />
             ))}
           </div>
         </div>
       )}
 
-      {/* Control Bar */}
+      {/* Control pill */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-white shadow-xl rounded-full px-4 py-2 flex items-center space-x-3">
         <select
           value={lang}
-          onChange={(e) => setLang(e.target.value)}
+          onChange={e => setLang(e.target.value)}
           className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
         >
           <option value="en-IN">English</option>
