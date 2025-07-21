@@ -390,7 +390,7 @@ const MobileSidebar = ({
                       <span className="flex items-center  h-[35px] w-[35px]">
                         <IoQrCodeSharp fontSize={33} color=" var(--primary) " />
                       </span>
-                      Qr Code
+                      Buy QRCode
                     </Link>
                   </li>
                   <li>

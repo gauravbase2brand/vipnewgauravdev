@@ -5,6 +5,7 @@ import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import NumerologyBtn from "./NumerologyBtn";
 import { MyRegisterSignInContext } from "../contexts/MyRegisterSignInContext/MyRegisterSignInContext";
 import Image from "next/image";
+import Link from "next/link";
 const NumerologyLeadReport = ({ title1, para1, title, titleClass }) => {
   const { setNumerologyPop, user } = useContext(AppStateContext);
   const { setActiveSignInWithOtp } = useContext(MyRegisterSignInContext);
@@ -55,11 +56,18 @@ const NumerologyLeadReport = ({ title1, para1, title, titleClass }) => {
             secondary={true}
             />
           </div>
-            <span className="mb-2 text-white text-center font-medium md:text-[18px] text-[15px]    w-full">
-            Get <span className=" text-secondary"> 1,500</span> Cashback with your Numerology Report. <br/>
-
-            Cashback valid for 30 days only.
-          </span>
+            <span className="mb-2 text-white text-center md:text-[18px] text-[15px]    w-full">
+                Get <span className="text-secondary">1,500 Cashback</span> with
+                your Numerology Report.
+                <br />
+                Cashback valid for 30 days only.
+                <br />
+                Cashback can be used only on{" "}
+                <Link href="/" className="text-secondary">
+                  www.vipnumbershop.com{" "}
+                  <span className="text-white">(For buying a Number)</span>
+                </Link>
+              </span>
         </div>
         
       </div>

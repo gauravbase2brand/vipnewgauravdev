@@ -36,7 +36,7 @@ const PaymentGate = ({
     //   return payment >= 5000 ? "PhonePe" : "RazorPay";
     // }
     if (option === "UPI") {
-      return "RazorPay";
+      return "PhonePe";
     }
 
     if (["Wallet", "Credit Card", "Debit Card"].includes(option)) {
@@ -52,7 +52,7 @@ const PaymentGate = ({
 
   const handleSelect = (option) => {
     setPaySelected(option);
-    localStorage.setItem("selectPayments", option);
+    localStorage.setItem("selectPayment", option);
 
     const gateway = getGateway(option);
     setGatewayName(gateway);
@@ -60,7 +60,7 @@ const PaymentGate = ({
   };
 
   useEffect(() => {
-    const storedOption = localStorage.getItem("selectPayments");
+    const storedOption = localStorage.getItem("selectPayment");
     if (storedOption) {
       setPaySelected(storedOption);
       setGatewayName(getGateway(storedOption));

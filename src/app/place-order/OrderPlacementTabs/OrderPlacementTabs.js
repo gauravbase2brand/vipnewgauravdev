@@ -138,7 +138,7 @@ const OrderPlacementTabs = () => {
   const [deliveryCharges, setDeliveryCharges] = useState(0); // State for delivery charges
   const [deliveryIsOpen, setDeliveryIsOpen] = useState(false);
   const [paySelected, setPaySelected] = useState("UPI");
-  const [gatewayName, setGatewayName] = useState("RazorPay");
+  const [gatewayName, setGatewayName] = useState("PhonePe");
   
   const [finalAmount, setFinalAmount] = useState();
   const [leadUpdate, setLeadUpdate] = useState(false);

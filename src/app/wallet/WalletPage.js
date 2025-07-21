@@ -428,14 +428,14 @@ const WalletPage = ({
                   <span class="text-lg font-semibold text-gray-800">
                     {`For Fast Payment. (For Vendor only)`}
                   </span>
-                  <span
+                  <pre
                     id="hs-checkbox-fast-payment-description"
                     class="block text-sm dark:text-neutral-500 cursor-pointer text-red-600"
                   >
                     {defaultAcc === null || defaultAcc === ""
                       ? `Enable to prioritize faster payment processing. (Contact your Account Manager)`
                       : defaultAcc}
-                  </span>
+                  </pre>
                 </label>
               </div>
               {amountTowithDraw <= 18000 && !isFastPayment && (

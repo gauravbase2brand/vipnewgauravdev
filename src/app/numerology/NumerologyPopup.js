@@ -704,7 +704,7 @@ const NumerologyPopup = () => {
                 </p>
                 <p>
                   Cashback can be used only on www.vip
-                  <span style={{ color: "red" }}>number</span>shop.com
+                  <span style={{ color: "red" }}>number</span>shop.com <br/>(For buying a Number)
                 </p>
               </div>
             </div>

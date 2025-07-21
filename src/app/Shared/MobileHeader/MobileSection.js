@@ -15,6 +15,7 @@ import TabNavigationSlider from "@/app/TabNavigationSlider/TabNavigationSlider";
 import { CiSearch } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import CatSkull from "@/app/TabNavigationSlider/CatSkull";
+import VoiceNumberSearch from "../Header/VoiceNumberSearch";
 
 const MobileSection = ({
   arrayOfArrays,
@@ -339,6 +340,7 @@ const MobileSection = ({
                               <FilterTabsCat />
                             </div>
                           )}
+                          <VoiceNumberSearch/>
                       </div>
                     </>
                   )}

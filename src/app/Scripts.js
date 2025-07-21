@@ -3,11 +3,11 @@ import Script from "next/script";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
   url: "https://vipnumbershop.com/",
   telephone: "06009160092",
   description:
-    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop.",
+    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 2 Lakhs+ happy customers. Get your VIP number today at VIP Number Shop.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "SCO #62, ITI College Rd",
@@ -37,10 +37,10 @@ const jsonLd = {
 const jsonLd2 = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
   url: "https://www.vipnumbershop.com/",
   description:
-    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop.",
+    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 2 Lakhs+ happy customers. Get your VIP number today at VIP Number Shop.",
   image:
     "https://www.vipnumbershop.com/_next/static/media/VIP-logo-1.1b6160e3.svg",
 };
@@ -50,7 +50,7 @@ const jsonLd3 = {
   "@type": "Review",
   itemReviewed: {
     "@type": "LocalBusiness",
-    name: "Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years",
+    name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
     image:
       "https://www.vipnumbershop.com/_next/static/media/VIP-logo-1.1b6160e3.svg",
     url: "https://www.vipnumbershop.com/",
@@ -74,10 +74,10 @@ const jsonLd3 = {
 const jsonLd4 = {
   "@context": "https://schema.org/",
   "@type": "Product",
-  name: "Buy VIP Numbers | VIP Mobile Number | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
   image: "https://www.vipnumbershop.com/path/to/product-image.svg",
   description:
-    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 1000+ happy customers. Get your VIP number today at VIP Number Shop.",
+    "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 2 Lakhs+ happy customers. Get your VIP number today at VIP Number Shop.",
   brand: {
     "@type": "Brand",
     name: "VIP Number Shop",

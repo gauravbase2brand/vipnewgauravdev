@@ -7,6 +7,7 @@ import FilterTabsCat from "../FilterTabs/FilterTabsCat";
 import { CiSearch } from "react-icons/ci";
 import { RiDiscountPercentFill } from "react-icons/ri";
 import { MyRegisterSignInContext } from "@/app/contexts/MyRegisterSignInContext/MyRegisterSignInContext";
+import VoiceNumberSearch from "./VoiceNumberSearch";
 
 const HeaderList = ({
   showBrandLogo,
@@ -235,7 +236,7 @@ const HeaderList = ({
                     className="relative group hover:text-primary "
                     onClick={() => setAboutUs(false)}
                   >
-                    QR Code
+                    Buy QRCode
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </div>
@@ -316,6 +317,7 @@ const HeaderList = ({
               <CiSearch color="black" />
             </button>
           </div>
+          <VoiceNumberSearch/>
         </div>
 
         {type !== "family_pack" && (
