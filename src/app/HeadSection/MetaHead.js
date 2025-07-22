@@ -23,7 +23,7 @@ const MetaHead = () => {
       <meta property="og:type" content="website" />
       <meta
         property="og:title"
-        content="VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years"
+        content="VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number"
       />
       <meta
         property="og:description"
@@ -44,7 +44,7 @@ const MetaHead = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:title"
-        content="VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years"
+        content="VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number"
       />
       <meta
         name="twitter:description"

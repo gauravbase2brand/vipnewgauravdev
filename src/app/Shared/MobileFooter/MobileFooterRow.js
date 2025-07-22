@@ -577,7 +577,7 @@ const MobileFooterRow = ({
                 </span>
               </div>
             </Link>
-            {/* <Link href="https://qrstand.vipnumbershop.com/" >
+            {/* <Link href="/qr-stands" >
               <div className="menu-Bar-rs">
                 <span>
                   <Image

@@ -568,7 +568,7 @@ export const NetedCategory = ({
                       onClick={() => handleButtonClick(item.id)}
                       style={{ cursor: "pointer" }}
                       priority="true"
-                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] object-cover w-full transition-transform duration-300 ease-in-out hover:scale-110"
+                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] w-full transition-transform duration-300 ease-in-out hover:scale-110"
                     />
                   ) : currentIndex < item.product_id[0].length ? (
                     // Show Number Details

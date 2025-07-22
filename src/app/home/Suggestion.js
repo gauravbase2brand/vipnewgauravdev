@@ -124,7 +124,7 @@ const Suggestion = () => {
                   Vip Number Store
                 </button>
               </Link>
-              <Link href="https://qrstand.vipnumbershop.com/">
+              <Link href="/qr-stands">
                 <button
                   className="relative z-10 w-full h-full rounded-lg overflow-hidden px-4 py-3 font-roboto font-bold  lg:text-base text-[13px] text-primary border-2 border-transparent bg-gradient-to-r from-[#691ede] to-[#ef6b19] hover:opacity-90"
                   aria-label="QR-Stand for your Business"

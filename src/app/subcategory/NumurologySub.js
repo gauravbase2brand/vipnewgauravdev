@@ -50,7 +50,7 @@ const NumurologySub = ({user,setActiveSignInWithOtp,setNumerologyPop}) => {
                   Vip Number Store
                 </button>
               </Link>
-              <Link href="https://qrstand.vipnumbershop.com/">
+              <Link href="/qr-stands">
                 <button
                   className="button-Name-rs"
                   aria-label="QR-Stand for your Business"

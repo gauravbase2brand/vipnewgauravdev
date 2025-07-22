@@ -3,8 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import image from "../../../public/assets/blogfirst.png";
-import fpcardimg3 from "../../../public/assets/fpcardimg3.webp";
 import delivery from "../../../public/assets/delivery.svg";
 import shield from "../../../public/assets/shield.svg";
 import cod from "../../../public/assets/cod.svg";
@@ -15,14 +13,11 @@ import www from "../../../public/assets/four-w.svg";
 import whatsapp from "../../../public/assets/w-five.svg";
 import youtube from "../../../public/assets/y-six.svg";
 import contact from "../../../public/assets/c-seven.svg";
-import payQr from "../../../public/assets/pay-eight.svg";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/dist/css/splide.min.css";
+import Slider from "react-slick";
 import oneqrcode from "../../../public/assets/oneqrcode.jpg";
 import twoqrcode from "../../../public/assets/twoqrcode.jpg";
 import threeqrcode from "../../../public/assets/threeqrcode.webp";
 import { toast } from "react-toastify";
-import Link from "next/link";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import { MyRegisterSignInContext } from "../contexts/MyRegisterSignInContext/MyRegisterSignInContext";
 function QrStand() {
@@ -54,7 +49,6 @@ function QrStand() {
   ];
   const [selectedQR, setSelectedQR] = useState(1); // Default QR option is 1 QR
   const [currentImage, setCurrentImage] = useState(oneqrcode);
-  const [count, setCount] = useState(1);
   // Get the selected QR price details from the array
   const selectedPrice = qrPrices.find((item) => item.qrCount === selectedQR);
   const [selectedNames, setSelectedNames] = useState("");
@@ -221,6 +215,41 @@ function QrStand() {
       }));
     }
   };
+  const settings = {
+    infinite: true, // Ensures the carousel will loop infinitely
+    slidesToShow: 3, // Show 3 images at a time
+    slidesToScroll: 1, // Scroll one image at a time
+    centerMode: true, // Center the current image
+    arrows: true,
+    focusOnSelect: true, // Ensure the selected image is focused
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2, // Show 1 image on smaller screens
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3, // Show 2 images on medium screens
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3, // Show 1 image on smaller screens
+        },
+      },
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 3, // Show 2 images on medium screens
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* <header className="bg-green-700 text-white py-3">
@@ -249,59 +278,21 @@ function QrStand() {
 
             {/* Thumbnail Images */}
             {/* <div className="flex space-x-2"> */}
-            <Splide
-              options={{
-                type: "loop", // Make it loop infinitely
-                perPage: 5, // Show only 1 thumbnail at a time
-                gap: "5px", // No gap between thumbnails
-                focus: "center", // Center the active thumbnail
-                pagination: false, // Disable pagination
-                arrows: true, // Enable arrows to slide
-                loop: true, // Enable looping of the slider
-                breakpoints: {
-                  500: {
-                    perPage: 3, // On mobile, show only 1 image
-                    gap: "30px",
-                  },
-                  768: {
-                    perPage: 5, // On mobile, show only 1 image
-                    gap: "30px",
-                  },
-                  1024: {
-                    perPage: 3,
-                  },
-                  1440: {
-                    perPage: 4,
-                  },
-                },
-              }}
-              onMove={(splide) => {
-                // Update the currentImage and active slide when dragging the slider
-                setCurrentImage(images[splide.index]);
-                setSelectedQR(splide.index + 1);
-              }}
-              onClick={(splide) => {
-                // This will ensure the click sets the image correctly even with loop mode
-                const index = splide.index;
-                setCurrentImage(images[index]);
-                setSelectedQR(splide.index + 1);
-              }}
-            >
+            <Slider {...settings}>
               {images.map((image, index) => (
-                <SplideSlide key={index}>
-                  <div
-                    className="h-[130px] w-[130px] bg-gray-200 rounded border-2 border-gray-300 hover:border-primary cursor-pointer"
-                    onClick={() => handleThumbnailClick(image, index)} // Set main image on thumbnail click
-                  >
-                    <Image
-                      src={image}
-                      alt={`Product view ${index + 1}`}
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                </SplideSlide>
+                <div
+                  key={index}
+                  className="h-[130px] w-[130px] bg-gray-200 rounded border-2 border-gray-300 hover:border-primary cursor-pointer"
+                  onClick={() => handleThumbnailClick(image, index)}
+                >
+                  <Image
+                    src={image}
+                    alt={`Product view ${index + 1}`}
+                    className="w-full h-full object-cover rounded"
+                  />
+                </div>
               ))}
-            </Splide>
+            </Slider>
             {/* </div> */}
           </div>
 

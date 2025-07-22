@@ -96,7 +96,7 @@ const FAQs = () => {
 
           {/* Another Video for large screens */}
           <div className="lg:block hidden">
-            <Link href="https://qrstand.vipnumbershop.com/" target="_blank">
+            <Link href="/qr-stands" target="_blank">
               <video
                 src="/assets/Leading Digital Marketing Agency (1).mp4"
                 width={300}

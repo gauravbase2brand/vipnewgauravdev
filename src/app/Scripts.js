@@ -3,7 +3,7 @@ import Script from "next/script";
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number",
   url: "https://vipnumbershop.com/",
   telephone: "06009160092",
   description:
@@ -37,7 +37,7 @@ const jsonLd = {
 const jsonLd2 = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number",
   url: "https://www.vipnumbershop.com/",
   description:
     "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 2 Lakhs+ happy customers. Get your VIP number today at VIP Number Shop.",
@@ -50,7 +50,7 @@ const jsonLd3 = {
   "@type": "Review",
   itemReviewed: {
     "@type": "LocalBusiness",
-    name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
+    name: "VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number",
     image:
       "https://www.vipnumbershop.com/_next/static/media/VIP-logo-1.1b6160e3.svg",
     url: "https://www.vipnumbershop.com/",
@@ -74,7 +74,7 @@ const jsonLd3 = {
 const jsonLd4 = {
   "@context": "https://schema.org/",
   "@type": "Product",
-  name: "VIP Number Shop | Buy VIP Mobile Numbers | Trusted for 18 Years",
+  name: "VIP Number Shop | Buy VIP Mobile Numbers | Buy VIP Number",
   image: "https://www.vipnumbershop.com/path/to/product-image.svg",
   description:
     "Choose your lucky VIP mobile number from India’s trusted provider. 18 years of service and 2 Lakhs+ happy customers. Get your VIP number today at VIP Number Shop.",

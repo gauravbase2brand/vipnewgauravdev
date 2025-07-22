@@ -28,6 +28,9 @@ const FamilyPack_Search = ({ family_Search }) => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" && window.innerWidth <= 767
   );
+  const [sortOrder, setSortOrder] = useState("");
+  console.log("sortOrder",sortOrder);
+  
   const router = useRouter();
   const [familyLoad, setFamilyLoad] = useState(false);
   useEffect(() => {
@@ -51,18 +54,22 @@ const FamilyPack_Search = ({ family_Search }) => {
       if (currentPage === 1) {
         setIsLoading(true);
       }
+      let apiUrlWithParams = `${apiUrl}/web/familypack?start_with=${
+        family_Search?.start_with || ""
+      }&end_with=${family_Search?.end_with || ""}&any_where=${
+        family_Search?.any_where || ""
+      }&contains=${family_Search?.contains || ""}&not_contain=${
+        family_Search?.not_contain || ""
+      }&search_string=${
+        family_Search?.number || family_Search?.search_string || ""
+      }&fp_total=${
+        family_Search?.fp_total || ""
+      }&page=${currentPage}`;
+      if (sortOrder) {
+        apiUrlWithParams += `&sort=${sortOrder}`;
+      }
       axios
-        .get(
-          `${apiUrl}/web/familypack?start_with=${
-            family_Search?.start_with || ""
-          }&end_with=${family_Search?.end_with || ""}&any_where=${
-            family_Search?.any_where || ""
-          }&contains=${family_Search?.contains || ""}&not_contain=${
-            family_Search?.not_contain || ""
-          }&search_string=${
-            family_Search?.number || family_Search?.search_string || ""
-          }&fp_total=${family_Search?.fp_total || ""}&page=${currentPage}`
-        )
+        .get(apiUrlWithParams)
         .then((response) => {
           setHideBtn(response);
           const filteredData = Object.fromEntries(
@@ -87,7 +94,7 @@ const FamilyPack_Search = ({ family_Search }) => {
           console.error("Error fetching data:", error);
         });
     }
-  }, [family_Search, currentPage]);
+  }, [family_Search, currentPage, sortOrder]);
 
   const apiDataArray = Object.values(apiData);
   const hasValidData = apiDataArray.some((groupItems) => groupItems.length > 1);
@@ -135,30 +142,70 @@ const FamilyPack_Search = ({ family_Search }) => {
                       </select>
                       <IoIosArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-darktext pointer-events-none" />
                     </div>
+                    <div className="FamilyPack-variant-selector-os">
+                      <select
+                        className="appearance-none bg-secondary text-darktext px-4 py-2 rounded-lg pr-10 cursor-pointer outline-none font-semibold"
+                        value={sortOrder}
+                        onChange={(e) => {
+                          const selectedSort = e.target.value;
+                          setSortOrder(selectedSort); // Save the sort order in state
+                          setCurrentPage(1);
+                          // router.push(
+                          //   `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&callCount=0`
+                          // );
+                        }}
+                      >
+                        <option value="">Sort by Price</option>
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
+                      </select>
+                      <IoIosArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-darktext pointer-events-none" />
+                    </div>
                   </div>
                 </div>
                 <MainSubHeading MainSubHeadingText="VIP Numbers are available for Two to Nine family or Business members" />
                 {isMobile && (
-                  <div className="FamilyPack-select-variants-col-os">
-                    Family pack of
+                  <div className="flex items-center gap-1">
+                    <div className="FamilyPack-select-variants-col-os">
+                      Family pack of
+                      <div className="FamilyPack-variant-selector-os">
+                        <select
+                          value={count}
+                          onChange={(e) => {
+                            const selectedValue = Number(e?.target?.value);
+                            setCount(selectedValue);
+                            setCurrentPage(1);
+                            router.push(
+                              `/search-results?type=${"family_pack"}&searchBy=${"family_pack"}&fp_total=${selectedValue}&callCount=0`
+                            );
+                          }}
+                        >
+                          {Array.from({ length: 6 }, (_, i) => (
+                            <option key={i + 2} value={i + 2}>
+                              {i + 2}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
                     <div className="FamilyPack-variant-selector-os">
                       <select
-                        value={count}
+                        className="appearance-none bg-secondary text-darktext px-4 py-2 rounded-lg pr-10 cursor-pointer outline-none font-semibold"
+                        value={sortOrder}
                         onChange={(e) => {
-                          const selectedValue = Number(e?.target?.value);
-                          setCount(selectedValue);
+                          const selectedSort = e.target.value;
+                          setSortOrder(selectedSort); // Save the sort order in state
                           setCurrentPage(1);
-                          router.push(
-                            `/search-results?type=${"family_pack"}&searchBy=${"family_pack"}&fp_total=${selectedValue}&callCount=0`
-                          );
+                          // router.push(
+                          //   `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&sort=${selectedSort}&callCount=0`
+                          // );
                         }}
                       >
-                        {Array.from({ length: 6 }, (_, i) => (
-                          <option key={i + 2} value={i + 2}>
-                            {i + 2}
-                          </option>
-                        ))}
+                        <option value="">Sort by Price</option>
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
                       </select>
+                      <IoIosArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-darktext pointer-events-none" />
                     </div>
                   </div>
                 )}
