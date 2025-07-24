@@ -275,6 +275,26 @@ const Search = ({ queryParams }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const startWith = urlParams.get("start_with");
+    const anyWhere = urlParams.get("any_where");
+    const endWith = urlParams.get("end_with");
+
+    // Set selected option based on which parameter has a value
+    if (startWith) {
+      setSelectedOption("start_with");
+    } else if (anyWhere) {
+      setSelectedOption("any_where");
+    } else if (endWith) {
+      setSelectedOption("end_with");
+    }
+
+    // Store selectedOption in localStorage
+    localStorage.setItem("selectedOption", selectedOption);
+  }, [router.query]);
+
+  useEffect(() => {
     localStorage.setItem("selectedOption", selectedOption);
   }, [selectedOption]);
 

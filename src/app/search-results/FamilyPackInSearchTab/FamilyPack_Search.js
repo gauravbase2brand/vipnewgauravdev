@@ -29,8 +29,6 @@ const FamilyPack_Search = ({ family_Search }) => {
     typeof window !== "undefined" && window.innerWidth <= 767
   );
   const [sortOrder, setSortOrder] = useState("");
-  console.log("sortOrder",sortOrder);
-  
   const router = useRouter();
   const [familyLoad, setFamilyLoad] = useState(false);
   useEffect(() => {

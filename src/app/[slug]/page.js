@@ -389,7 +389,7 @@ export default async function CityPage({ params }) {
   const meta = await params;
   const config = cityConfigs[meta.slug.toLowerCase()];
   if (!config) {
-    return <div>City page not found</div>;
+    return <div>Page not found</div>;
   }
   const CityComponent = config.component;
   return <CityComponent />;
