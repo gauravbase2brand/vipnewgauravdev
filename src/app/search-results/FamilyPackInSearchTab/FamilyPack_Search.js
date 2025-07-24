@@ -94,7 +94,9 @@ const FamilyPack_Search = ({ family_Search }) => {
     }
   }, [family_Search, currentPage, sortOrder]);
 
-  const apiDataArray = Object.values(apiData);
+  // const apiDataArray = Object.values(apiData);
+  const apiDataArray = sortOrder === "desc" ? Object.values(apiData).reverse() : Object.values(apiData);
+
   const hasValidData = apiDataArray.some((groupItems) => groupItems.length > 1);
 
   // Check if there are more items to load
