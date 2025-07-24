@@ -328,7 +328,9 @@ span.number-card-compareAt-price-os {
     font-weight: 400 !important;
     line-height: 15px !important;
   }
-
+  .alreadyincart{
+    font-size: 12px;
+  }
   .wishlist-heart-os {
     right: 0;
     opacity: 1;

@@ -831,12 +831,14 @@ export const NetedCategory = ({
                                     }
                                     className={`preBook-button-os`}
                                   >
-                                    {cartItems?.some(
-                                      (obj) =>
-                                        obj.number === currentProduct?.number
-                                    )
-                                      ? "Already in Cart"
-                                      : "Pre-Book"}
+                                    <span className="alreadyincart">
+                                      {cartItems?.some(
+                                        (obj) =>
+                                          obj.number === currentProduct?.number
+                                      )
+                                        ? "Already in Cart"
+                                        : "Pre-Book"}
+                                    </span>
                                   </div>
 
                                   <div className="pree-date">
