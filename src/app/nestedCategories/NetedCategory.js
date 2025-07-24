@@ -547,7 +547,7 @@ export const NetedCategory = ({
                 {/* Previous Button */}
                 {bannerVisibility[item.id] === false && currentIndex >= 0 && (
                   <button
-                    className="absolute lg:left-[-16px] left-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition"
+                    className="absolute lg:left-[-16px] left-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
                     onClick={() => handlePrev(item.id)}
                     aria-label="Prev"
                   >
@@ -568,7 +568,7 @@ export const NetedCategory = ({
                       onClick={() => handleButtonClick(item.id)}
                       style={{ cursor: "pointer" }}
                       priority="true"
-                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] w-full transition-transform duration-300 ease-in-out hover:scale-110"
+                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] w-full transition-transform duration-300 ease-in-out hover:scale-110 border-2 border-secondary"
                     />
                   ) : currentIndex < item.product_id[0].length ? (
                     // Show Number Details
@@ -1004,7 +1004,7 @@ export const NetedCategory = ({
                 {/* Next Button */}
                 {bannerVisibility[item.id] !== false && currentIndex === 0 ? (
                   <button
-                    className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2  backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition"
+                    className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2  backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
                     onClick={() => handleButtonClick(item.id)}
                     aria-label="right"
                   >
@@ -1029,7 +1029,7 @@ export const NetedCategory = ({
                   // Next Button (When Banner is Hidden)
                   currentIndex < item.product_id[0].length && (
                     <button
-                      className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition"
+                      className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
                       onClick={() => handleNext(item.id)}
                       aria-label="Next btn"
                     >
