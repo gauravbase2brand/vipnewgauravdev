@@ -95,7 +95,7 @@ const Budget = () => {
   }, [searchParams]); // Re-run whenever the search params change
 
   return (
-    <div className="sub-caty-rs" style={{marginBottom:"2rem"}}>
+    <div className="sub-caty-rs" style={{marginBottom:"8rem"}}>
       <div className="flex justify-center items-center flex-wrap gap-2">
         {playlists.map((item, index) => {
           const isSelected = selectedBudget === item.id;
