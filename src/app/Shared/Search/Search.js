@@ -10,6 +10,7 @@ import Image from "next/image";
 import { BsInfoCircleFill } from "react-icons/bs";
 import Information from "./Information";
 import Budget from "@/app/Budget";
+import NumuroTag from "./NumuroTag";
 
 const Tag = ({ value, onClick }) => {
   return (
@@ -1792,6 +1793,7 @@ const Search = ({ queryParams }) => {
                           </p>
                         )}
                       </div>
+                      <NumuroTag/>
                     </div>
 
                     <div

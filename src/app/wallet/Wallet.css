@@ -368,6 +368,15 @@
   padding-top: 1rem;
   align-items: start;
 }
+.footer-sticky {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; /* Or any color you want */
+  padding: 10px;
+  z-index: 1000;
+}
 .withdrawal-account-details-submit-btn-os {
   font-size: 18.3917px;
   line-height: 22px;
@@ -517,6 +526,9 @@ color: var(--primary)  ;
 @media screen and (max-width: 768px) {
   .wallet-page-row-os {
     width: 100%;
+  }
+  .footer-sticky {
+    bottom: 40px;
   }
 }
 @media screen and (max-width: 767px) {

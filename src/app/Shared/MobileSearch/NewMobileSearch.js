@@ -9,6 +9,7 @@ import AllSubCategory from "@/app/subcategory/AllSubCategory";
 import MobileSearchFilters from "./MobileSearchFilters";
 import MobileSearchTabs from "./MobileSearchTabs";
 import Budget from "@/app/Budget";
+import NumuroTag from "../Search/NumuroTag";
 
 const NewMobileSearch = ({ queryParams }) => {
   const router = useRouter();
@@ -545,8 +546,9 @@ const NewMobileSearch = ({ queryParams }) => {
           <AppliedTags queryParams={queryParams} />
         </div>
         {pathname === "/search" && <AllSubCategory />}
-        <hr/>
+        <hr />
         {searchBy === "price" && <Budget />}
+        {filters.type === "advanced" && <NumuroTag />}
       </section>
     </div>
   );

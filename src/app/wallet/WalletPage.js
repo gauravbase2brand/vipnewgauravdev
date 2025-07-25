@@ -428,14 +428,20 @@ const WalletPage = ({
                   <span class="text-lg font-semibold text-gray-800">
                     {`For Fast Payment. (For Vendor only)`}
                   </span>
-                  <pre
+                  <span
                     id="hs-checkbox-fast-payment-description"
                     class="block text-sm dark:text-neutral-500 cursor-pointer text-red-600"
                   >
-                    {defaultAcc === null || defaultAcc === ""
-                      ? `Enable to prioritize faster payment processing. (Contact your Account Manager)`
-                      : defaultAcc}
-                  </pre>
+                    {defaultAcc === null || defaultAcc === "" ? (
+                      `Enable to prioritize faster payment processing. (Contact your Account Manager)`
+                    ) : (
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: defaultAcc.replace(/\n/g, "<br />"),
+                        }}
+                      />
+                    )}
+                  </span>
                 </label>
               </div>
               {amountTowithDraw <= 18000 && !isFastPayment && (
@@ -670,6 +676,7 @@ const WalletPage = ({
                     </div>
                   </>
                 )}
+                <div className="footer-sticky">
                 <button
                   onClick={handleWithdrawSubmit}
                   className="withdrawal-account-details-submit-btn-os"
@@ -678,6 +685,7 @@ const WalletPage = ({
                 >
                   {loading || trasferLoading ? "Submitting..." : "Submit"}
                 </button>
+                </div>
               </div>
             </div>
           )}
