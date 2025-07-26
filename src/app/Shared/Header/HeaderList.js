@@ -159,6 +159,14 @@ const HeaderList = ({
                     Numerology Numbers
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
+                  <Link
+                    href="/qr-stands"
+                    className="relative group hover:text-primary "
+                    onClick={() => setAboutUs(false)}
+                  >
+                    Buy QRCode
+                    <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
                 </div>
               </section>
             )}
@@ -228,14 +236,6 @@ const HeaderList = ({
                     onClick={() => setAboutUs(false)}
                   >
                     Influencer Program
-                    <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                  </Link>
-                   <Link
-                    href="/qr-stands"
-                    className="relative group hover:text-primary "
-                    onClick={() => setAboutUs(false)}
-                  >
-                    Buy QRCode
                     <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 </div>
