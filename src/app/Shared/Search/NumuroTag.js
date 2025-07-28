@@ -51,7 +51,7 @@ const NumuroTag = () => {
               prefetch={true}
               key={index}
               onClick={() => setSelectedLink(item.id)} // Update the selected budget on click
-              className={`sub-caty-slice flex items-center`} // Apply selected styles
+              className={`text-center p-3 bg-[#e4e4e4] text-xs rounded-full font-semibold`} // Apply selected styles
               style={{
                 backgroundColor: isSelected ? "black" : "",
                 color: isSelected ? "white" : "",
