@@ -115,6 +115,7 @@ const AppStateContextProvider = ({ children }) => {
     social: "",
   });
   const [qrCheckout, setQrCheckout] = useState(false);
+  const [sortOrder, setSortOrder] = useState("");
   // OnClick Handler
   const handleSubCat = async (subCategory) => {
     setSimilarLoader(true);
@@ -862,7 +863,11 @@ const AppStateContextProvider = ({ children }) => {
         searchBy,
         setSearchBy,
         qrData,
-        setQrData,qrCheckout, setQrCheckout
+        setQrData,
+        qrCheckout,
+        setQrCheckout,
+        sortOrder,
+        setSortOrder,
       }}
     >
       {children}

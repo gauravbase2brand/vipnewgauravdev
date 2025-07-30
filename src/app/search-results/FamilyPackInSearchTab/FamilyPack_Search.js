@@ -10,14 +10,15 @@ import "../../Shared/TabNumbers/TabNumberData/TabNumberData.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { IoIosArrowDown } from "react-icons/io";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { AppStateContext } from "@/app/contexts/AppStateContext/AppStateContext";
 import CardLoder from "@/app/CardLoder/CardLoder";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 const FamilyPack_Search = ({ family_Search }) => {
-  const { currentPage, setCurrentPage } = useContext(AppStateContext);
+  const { currentPage, setCurrentPage, sortOrder, setSortOrder } =
+    useContext(AppStateContext);
   const [apiData, setApiData] = useState({});
   const [count, setCount] = useState();
   const [hidebtn, setHideBtn] = useState();
@@ -28,8 +29,8 @@ const FamilyPack_Search = ({ family_Search }) => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" && window.innerWidth <= 767
   );
-  const [sortOrder, setSortOrder] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [familyLoad, setFamilyLoad] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -49,6 +50,8 @@ const FamilyPack_Search = ({ family_Search }) => {
   //Api data structure
   useEffect(() => {
     if (family_Search) {
+      const sortQuery = searchParams.get("sort") || "";
+      setSortOrder(sortQuery);
       if (currentPage === 1) {
         setIsLoading(true);
       }
@@ -62,10 +65,7 @@ const FamilyPack_Search = ({ family_Search }) => {
         family_Search?.number || family_Search?.search_string || ""
       }&fp_total=${
         family_Search?.fp_total || ""
-      }&page=${currentPage}`;
-      if (sortOrder) {
-        apiUrlWithParams += `&sort=${sortOrder}`;
-      }
+      }&sort=${sortQuery}&page=${currentPage}`;
       axios
         .get(apiUrlWithParams)
         .then((response) => {
@@ -92,10 +92,13 @@ const FamilyPack_Search = ({ family_Search }) => {
           console.error("Error fetching data:", error);
         });
     }
-  }, [family_Search, currentPage, sortOrder]);
+  }, [family_Search, currentPage]);
 
   // const apiDataArray = Object.values(apiData);
-  const apiDataArray = sortOrder === "desc" ? Object.values(apiData).reverse() : Object.values(apiData);
+  const apiDataArray =
+    sortOrder === "desc"
+      ? Object.values(apiData).reverse()
+      : Object.values(apiData);
 
   const hasValidData = apiDataArray.some((groupItems) => groupItems.length > 1);
 
@@ -150,9 +153,9 @@ const FamilyPack_Search = ({ family_Search }) => {
                           const selectedSort = e.target.value;
                           setSortOrder(selectedSort); // Save the sort order in state
                           setCurrentPage(1);
-                          // router.push(
-                          //   `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&callCount=0`
-                          // );
+                          router.push(
+                            `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&sort=${selectedSort}&callCount=0`
+                          );
                         }}
                       >
                         <option value="">Sort by Price</option>
@@ -196,9 +199,9 @@ const FamilyPack_Search = ({ family_Search }) => {
                           const selectedSort = e.target.value;
                           setSortOrder(selectedSort); // Save the sort order in state
                           setCurrentPage(1);
-                          // router.push(
-                          //   `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&sort=${selectedSort}&callCount=0`
-                          // );
+                          router.push(
+                            `/search-results?type=family_pack&searchBy=family_pack&fp_total=${count}&sort=${selectedSort}&callCount=0`
+                          );
                         }}
                       >
                         <option value="">Sort by Price</option>
