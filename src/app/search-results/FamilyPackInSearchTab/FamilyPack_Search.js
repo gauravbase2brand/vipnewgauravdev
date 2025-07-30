@@ -95,10 +95,7 @@ const FamilyPack_Search = ({ family_Search }) => {
   }, [family_Search, currentPage]);
 
   // const apiDataArray = Object.values(apiData);
-  const apiDataArray =
-    sortOrder === "desc"
-      ? Object.values(apiData).reverse()
-      : Object.values(apiData);
+  const apiDataArray =Object.values(apiData);
 
   const hasValidData = apiDataArray.some((groupItems) => groupItems.length > 1);
 
