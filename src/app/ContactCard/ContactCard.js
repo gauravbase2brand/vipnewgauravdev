@@ -1,9 +1,49 @@
 "use client";
+import { FaShareAlt, FaPlus, FaMinus } from "react-icons/fa";
+import { CiSaveUp2 } from "react-icons/ci";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { RWebShare } from "react-web-share";
+
+const Accordion = ({ title, children, icon }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="bg-white rounded-2xl mb-3 shadow-sm border border-gray-100 overflow-hidden">
+      <button
+        className="flex justify-between items-center w-full p-2 text-left hover:shadow-md  transition-all duration-300 active:shadow-sm cursor-pointer"
+        onClick={toggleAccordion}
+      >
+        <div className="flex items-center">
+          <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+            {icon}
+          </div>
+          <span className="text-sm font-medium text-gray-700">{title}</span>
+        </div>
+        <div className="mr-4">
+          {isOpen ? (
+            <FaMinus className="text-gray-500" />
+          ) : (
+            <FaPlus className="text-gray-500" />
+          )}
+        </div>
+      </button>
+      {isOpen && (
+        <div className="px-2 pb-4 border-t border-gray-100 bg-gray-50 transition-all duration-300 ease-in-out">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const ContactCard = () => {
   const [showCrackers, setShowCrackers] = useState(true);
-
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
   useEffect(() => {
     // Hide crackers after 4 seconds
     const timer = setTimeout(() => {
@@ -103,18 +143,21 @@ const ContactCard = () => {
       )}
       <div className="bg-secondary rounded-3xl shadow-2xl overflow-hidden w-full max-w-sm animate-[slideUp_0.6s_ease-out]">
         {/* Profile Section */}
-        <div className="bg-white text-center p-2 rounded-2xl mb-3">
+        <div className="bg-white text-center p-2 rounded-2xl mb-3 relative">
           <div className="w-28 h-28 mx-auto mb-5 rounded-full border-4 border-purple-600 overflow-hidden">
             <img
               src="/assets/crawn-user.png"
-              alt="Aahil Sharma"
+              alt="Ramnish Thakur"
               className="w-full h-full object-cover"
             />
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Aahil Sharma
+            Ramnish Thakur
           </h2>
-          <p className="text-gray-600 font-medium">Project Manager</p>
+          <p className="text-gray-600 font-medium">Chamba</p>
+          <span className="absolute top-[10%] right-[25px]">
+            <CiSaveUp2 fontSize={25} />
+          </span>
         </div>
 
         {/* Contact Information */}
@@ -272,10 +315,109 @@ const ContactCard = () => {
               <span className="text-sm text-gray-700">Punjab 144022</span>
             </div>
           </Link>
+          <Accordion
+            title="Account Details"
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="800px"
+                height="800px"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 8H12C13.1046 8 14 8.89543 14 10V11.1429C14 12.2474 13.1046 13.1429 12 13.1429H9.33333L13.3333 17"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M8 8L16 8"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 10.5718L16 10.5718"
+                  stroke="#000000"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            }
+          >
+            <div className="pt-3 space-y-4">
+              {/* Bank Details */}
+              <div className="bg-white rounded-xl p-4 shadow-sm">
+                <h4 className="font-semibold text-gray-800 mb-3 text-sm">
+                  Bank Details
+                </h4>
+                <div className="space-y-2 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Account Name:</span>
+                    <span className="font-medium text-gray-800">
+                      VIP Number Shop
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Account Number:</span>
+                    <span className="font-medium text-gray-800">
+                      1234567890123456
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">IFSC Code:</span>
+                    <span className="font-medium text-gray-800">
+                      HDFC0001234
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Bank Name:</span>
+                    <span className="font-medium text-gray-800">HDFC Bank</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Branch:</span>
+                    <span className="font-medium text-gray-800">
+                      Jalandhar Urban Estate
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* QR Code */}
+              <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                <h4 className="font-semibold text-gray-800 mb-3 text-sm">
+                  Scan to Pay
+                </h4>
+                <div className="flex justify-center">
+                  <img
+                    src="/assets/qr-code.png"
+                    alt="Payment QR Code"
+                    className="w-24 h-24 border border-gray-200 rounded-lg"
+                  />
+                </div>
+                <p className="text-xs text-gray-600 mt-2">
+                  Scan this QR code with any UPI app to make payment
+                </p>
+              </div>
+            </div>
+          </Accordion>
         </div>
 
         {/* Social Media Section */}
-        <div className="bg-white rounded-2xl p-5 mx-5 mb-5 text-center shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-3 mx-5 mb-5 text-center shadow-sm border border-gray-100">
           <h3 className="text-base font-semibold text-gray-700 mb-4">
             Follow Us:
           </h3>
@@ -411,6 +553,20 @@ const ContactCard = () => {
                 />
               </svg>
             </Link>
+          </div>
+          <div className="mt-5">
+            <RWebShare
+              data={{
+                text: "Check out Ramnish Thakur's contact card",
+                url: currentUrl,
+                title: "Ramnish Thakur - Project Manager",
+              }}
+            >
+              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full flex items-center justify-center gap-2 mx-auto hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0">
+                <FaShareAlt />
+                <span className="text-sm font-medium">Share Contact</span>
+              </button>
+            </RWebShare>
           </div>
         </div>
 
