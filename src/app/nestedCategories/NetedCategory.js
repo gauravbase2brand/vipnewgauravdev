@@ -513,75 +513,76 @@ export const NetedCategory = ({
     }
   };
   return (
-    <section className="main-back mt-2">
-      <div className="container-os">
-        <div className="category-section">
-          <div className="container-buttons">
-            {categories.map((item, index) => (
-              <div
-                key={index}
-                className={`${
-                  selectedCategory.tabName === item.tabName
-                    ? "highlighted"
-                    : "category-button"
-                }`}
-                onClick={() => setSelectedCategory(item)}
-              >
-                <div className="button-content">
-                  <h2>{item.tabName}</h2>
-                </div>
+    <>
+      <div className="container-os category-section">
+        <div className="container-buttons">
+          {categories.map((item, index) => (
+            <div
+              key={index}
+              className={`${
+                selectedCategory.tabName === item.tabName
+                  ? "highlighted"
+                  : "category-button"
+              }`}
+              onClick={() => setSelectedCategory(item)}
+            >
+              <div className="button-content">
+                <h2>{item.tabName}</h2>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+      </div>
+      <section className="container-os main-back">
+        <div className="container-os">
+          <div className="grid xl:grid-cols-4 grid-cols-2 xl:gap-[60px] lg:gap-[40px] gap-[12px] ">
+            {categoryItems?.map((item, index) => {
+              // const currentIndex = productIndexes[item.id] || -1; // Default to -1 for the banner
+              // const currentProduct = currentIndex >= 0 && currentIndex < item.product_id[0].length ? item.product_id[0][currentIndex] : null;
+              const currentIndex = productIndexes[item.id] || 0; // Default to 0 if undefined
+              const currentProduct = item.product_id[0][currentIndex];
 
-        <div className="grid xl:grid-cols-4 grid-cols-2 xl:gap-[60px] lg:gap-[40px] gap-[12px] ">
-          {categoryItems?.map((item, index) => {
-            // const currentIndex = productIndexes[item.id] || -1; // Default to -1 for the banner
-            // const currentProduct = currentIndex >= 0 && currentIndex < item.product_id[0].length ? item.product_id[0][currentIndex] : null;
-            const currentIndex = productIndexes[item.id] || 0; // Default to 0 if undefined
-            const currentProduct = item.product_id[0][currentIndex];
+              return (
+                <div className="relative" key={item.id}>
+                  {/* Previous Button */}
+                  {bannerVisibility[item.id] === false && currentIndex >= 0 && (
+                    <button
+                      className="absolute lg:left-[-16px] left-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
+                      onClick={() => handlePrev(item.id)}
+                      aria-label="Prev"
+                    >
+                      <IoIosArrowBack color="white" />
+                    </button>
+                  )}
 
-            return (
-              <div className="relative" key={item.id}>
-                {/* Previous Button */}
-                {bannerVisibility[item.id] === false && currentIndex >= 0 && (
-                  <button
-                    className="absolute lg:left-[-16px] left-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
-                    onClick={() => handlePrev(item.id)}
-                    aria-label="Prev"
-                  >
-                    <IoIosArrowBack color="white" />
-                  </button>
-                )}
-
-                {/* Display Logic */}
-                <div className="">
-                  {/* <div className="product-display"> */}
-                  {bannerVisibility[item.id] !== false && currentIndex === 0 ? (
-                    // Show Banner
-                    <Image
-                      src={`${imgUrl}${item.banner}`}
-                      alt="sub Category"
-                      height={300}
-                      width={1000}
-                      onClick={() => handleButtonClick(item.id)}
-                      style={{ cursor: "pointer" }}
-                      priority="true"
-                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] w-full transition-transform duration-300 ease-in-out hover:scale-110 border-2 border-secondary"
-                    />
-                  ) : currentIndex < item.product_id[0].length ? (
-                    // Show Number Details
-                    <div className="nested-cat-card">
-                      <div
-                        className="number-card-os"
-                        style={{
-                          paddingTop: "0rem",
-                        }}
-                      >
-                        <div className="bg-white rounded-[17px] p-0 relative w-full flex flex-col justify-between">
-                          <div className="relative w-full bg-primary  lg:p-[10px] p-[6px]  rounded-[10px_10px_0_0] flex justify-between items-center  gap-2">
-                            {/* {currentProduct.rtp_date && (
+                  {/* Display Logic */}
+                  <div className="">
+                    {/* <div className="product-display"> */}
+                    {bannerVisibility[item.id] !== false &&
+                    currentIndex === 0 ? (
+                      // Show Banner
+                      <Image
+                        src={`${imgUrl}${item.banner}`}
+                        alt="sub Category"
+                        height={300}
+                        width={1000}
+                        onClick={() => handleButtonClick(item.id)}
+                        style={{ cursor: "pointer" }}
+                        priority="true"
+                        className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[20px] w-full transition-transform duration-300 ease-in-out hover:scale-110 border-2 border-secondary"
+                      />
+                    ) : currentIndex < item.product_id[0].length ? (
+                      // Show Number Details
+                      <div className="nested-cat-card">
+                        <div
+                          className="number-card-os"
+                          style={{
+                            paddingTop: "0rem",
+                          }}
+                        >
+                          <div className="bg-white rounded-[17px] p-0 relative w-full flex flex-col justify-between">
+                            <div className="relative w-full bg-primary  lg:p-[10px] p-[6px]  rounded-[10px_10px_0_0] flex justify-between items-center  gap-2">
+                              {/* {currentProduct.rtp_date && (
                               <div className="">
                                 <span className="text-white font-medium md:text-lg md:leading-3  text-[12px] xs:text-[10px] leading-2 flex ">
                                   {`Save ${Math.round(
@@ -602,322 +603,250 @@ export const NetedCategory = ({
                               </div>
                             )} */}
 
-                            {currentProduct.rtp_date && (
-                              <div className="w-full">
-                                <span className="text-white font-medium md:text-lg md:leading-3 text-[12px] xs:text-[10px] leading-2 inline-flex items-center whitespace-nowrap">
-                                  {`Save ${Math.round(
-                                    (parseFloat(
-                                      currentProduct?.compare_at_price?.replace(
-                                        /,/g,
-                                        ""
-                                      )
-                                    ) || 0) -
+                              {currentProduct.rtp_date && (
+                                <div className="w-full">
+                                  <span className="text-white font-medium md:text-lg md:leading-3 text-[12px] xs:text-[10px] leading-2 inline-flex items-center whitespace-nowrap">
+                                    {`Save ${Math.round(
                                       (parseFloat(
-                                        currentProduct?.unit_price?.replace(
+                                        currentProduct?.compare_at_price?.replace(
                                           /,/g,
                                           ""
                                         )
-                                      ) || 0)
-                                  )}/-`}
-                                </span>
-                              </div>
-                            )}
+                                      ) || 0) -
+                                        (parseFloat(
+                                          currentProduct?.unit_price?.replace(
+                                            /,/g,
+                                            ""
+                                          )
+                                        ) || 0)
+                                    )}/-`}
+                                  </span>
+                                </div>
+                              )}
 
-                            <div
-                              className="flex flex-col gap-1"
-                              style={{
-                                width: !timer ? "100%" : "auto",
-                                flexDirection: !timer
-                                  ? "row-reverse"
-                                  : "initial",
-                              }}
-                            >
-                              <button
-                                type="button"
-                                className="bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px] cursor-pointer"
-                                aria-label="crown"
-                              >
-                                <span>
-                                  <FontAwesomeIcon
-                                    icon={faCrown}
-                                    fontSize={13}
-                                    style={{ color: "#F16C19" }}
-                                  />
-                                </span>
-                              </button>
-                              <button
-                                type="button"
-                                className="bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px] cursor-pointer active:fill-primary"
-                                onClick={() =>
-                                  handleBookNowThroughBookNowIcon(
-                                    currentProduct
-                                  )
-                                }
-                                aria-label="card-crown"
-                              >
-                                <span>
-                                  <FontAwesomeIcon
-                                    fontSize={13}
-                                    icon={faCartShopping}
-                                    style={{ color: " var(--primary) " }}
-                                  />
-                                </span>
-                              </button>
-                              <button
-                                type="button"
-                                className={`bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px]  cursor-pointer active:fill-[ var(--primary) ] ${
-                                  wishListItem?.some(
-                                    (item) =>
-                                      item.productname ===
-                                      currentProduct?.productname
-                                  )
-                                    ? "active"
-                                    : ""
-                                }`}
-                                onClick={() => {
-                                  if (!isProcessing) {
-                                    if (getName()) {
-                                      addToWishList({
-                                        ...currentProduct,
-                                        product_id: currentProduct?.productid,
-                                      });
-                                    } else {
-                                      setActiveSignInWithOtp(true);
-                                      localStorage.setItem(
-                                        "Lead-Page",
-                                        "Wishlist"
-                                      );
-                                    }
-                                  }
+                              <div
+                                className="flex flex-col gap-1"
+                                style={{
+                                  width: !timer ? "100%" : "auto",
+                                  flexDirection: !timer
+                                    ? "row-reverse"
+                                    : "initial",
                                 }}
-                                disabled={isProcessing}
-                                aria-label="wishlist"
                               >
-                                <span>
-                                  <FontAwesomeIcon
-                                    fontSize={13}
-                                    icon={faHeartRegular}
-                                    className={`${
-                                      wishListItem?.some(
-                                        (item) =>
-                                          item.productname ===
-                                          currentProduct?.productname
-                                      )
-                                        ? "outlined-heart-fill"
-                                        : "outlined-heart"
-                                    }`}
-                                  />
-                                </span>
-                              </button>
-                            </div>
-                          </div>
-                          {currentProduct.rtp_date && (
-                            <ProductCard
-                              key={currentProduct.productid}
-                              product={currentProduct}
-                              setTimer={setTimer}
-                            />
-                          )}
-                          <div className="flex items-center justify-between lg:p-[10px_15px] flex-wrap  md:p-[10px_15px] p-[5px] flex-row-reverse gap-[10px]">
-                            <div className="flex flex-col gap-2">
-                              <div className="md:text-[16px] font-bold  text-sm">
-                                Total-{currentProduct?.total}
+                                <button
+                                  type="button"
+                                  className="bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px] cursor-pointer"
+                                  aria-label="crown"
+                                >
+                                  <span>
+                                    <FontAwesomeIcon
+                                      icon={faCrown}
+                                      fontSize={13}
+                                      style={{ color: "#F16C19" }}
+                                    />
+                                  </span>
+                                </button>
+                                <button
+                                  type="button"
+                                  className="bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px] cursor-pointer active:fill-primary"
+                                  onClick={() =>
+                                    handleBookNowThroughBookNowIcon(
+                                      currentProduct
+                                    )
+                                  }
+                                  aria-label="card-crown"
+                                >
+                                  <span>
+                                    <FontAwesomeIcon
+                                      fontSize={13}
+                                      icon={faCartShopping}
+                                      style={{ color: " var(--primary) " }}
+                                    />
+                                  </span>
+                                </button>
+                                <button
+                                  type="button"
+                                  className={`bg-white rounded-[7px] md:p-[0px_5px] p-[0px_3px]  cursor-pointer active:fill-[ var(--primary) ] ${
+                                    wishListItem?.some(
+                                      (item) =>
+                                        item.productname ===
+                                        currentProduct?.productname
+                                    )
+                                      ? "active"
+                                      : ""
+                                  }`}
+                                  onClick={() => {
+                                    if (!isProcessing) {
+                                      if (getName()) {
+                                        addToWishList({
+                                          ...currentProduct,
+                                          product_id: currentProduct?.productid,
+                                        });
+                                      } else {
+                                        setActiveSignInWithOtp(true);
+                                        localStorage.setItem(
+                                          "Lead-Page",
+                                          "Wishlist"
+                                        );
+                                      }
+                                    }
+                                  }}
+                                  disabled={isProcessing}
+                                  aria-label="wishlist"
+                                >
+                                  <span>
+                                    <FontAwesomeIcon
+                                      fontSize={13}
+                                      icon={faHeartRegular}
+                                      className={`${
+                                        wishListItem?.some(
+                                          (item) =>
+                                            item.productname ===
+                                            currentProduct?.productname
+                                        )
+                                          ? "outlined-heart-fill"
+                                          : "outlined-heart"
+                                      }`}
+                                    />
+                                  </span>
+                                </button>
                               </div>
-                              <div className="md:text-[16px] font-bold  text-sm">
-                                Sum-{currentProduct?.sum}
-                              </div>
                             </div>
-                            {/* <div className="gk-similar-numbers">
+                            {currentProduct.rtp_date && (
+                              <ProductCard
+                                key={currentProduct.productid}
+                                product={currentProduct}
+                                setTimer={setTimer}
+                              />
+                            )}
+                            <div className="flex items-center justify-between lg:p-[10px_15px] flex-wrap  md:p-[10px_15px] p-[5px] flex-row-reverse gap-[10px]">
+                              <div className="flex flex-col gap-2">
+                                <div className="md:text-[16px] font-bold  text-sm">
+                                  Total-{currentProduct?.total}
+                                </div>
+                                <div className="md:text-[16px] font-bold  text-sm">
+                                  Sum-{currentProduct?.sum}
+                                </div>
+                              </div>
+                              {/* <div className="gk-similar-numbers">
                               <span className="text-primary font-semibold border-b border-b-primary  cursor-pointer font-roboto lg:text-[16px]  text-[12px]">
                                 Similar Numbers
                               </span>
                             </div> */}
-                          </div>
-                          <div
-                            className={
-                              currentProduct?.productname?.length > 15
-                                ? "lg:text-[33px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
-                                : currentProduct?.productname?.length > 13
-                                ? "lg:text-[31px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
-                                : "lg:text-[34px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
-                            }
-                          >
-                            {currentProduct?.productname}
-                          </div>
-                          <span className="speciality-text"></span>
-                          <div className="flex justify-between lg:p-[10px_15px] items-center flex-wrap  md:p-[10px_15px] p-[5px]">
-                            <div className="number-card-price-review-stars-os">
-                              <div className="number-card-price-data-os11">
-                                <div className="number-card-price-review-stars-os">
-                                  <div className="number-card-price-os">
-                                    {/* &#8377;{" "} */}
-                                    {parseFloat(
-                                      currentProduct?.unit_price
-                                    ).toLocaleString("en-IN", {
-                                      minimumFractionDigits: 0,
-                                      maximumFractionDigits: 2,
-                                    })}
-                                    /-
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="number-card-review-star-os">
-                                <span>
-                                  <svg
-                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
-                                    focusable="false"
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    data-testid="StarIcon"
-                                  >
-                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg
-                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
-                                    focusable="false"
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    data-testid="StarIcon"
-                                  >
-                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg
-                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
-                                    focusable="false"
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    data-testid="StarIcon"
-                                  >
-                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg
-                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
-                                    focusable="false"
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    data-testid="StarIcon"
-                                  >
-                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>
-                                  <svg
-                                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
-                                    focusable="false"
-                                    aria-hidden="true"
-                                    viewBox="0 0 24 24"
-                                    data-testid="StarIcon"
-                                  >
-                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-                                  </svg>{" "}
-                                </span>
-                              </div>
-                              <div className="md:text-lg font-bold line-through text-sm xs:text-[12px]">
-                                {parseFloat(
-                                  currentProduct?.compare_at_price
-                                ).toLocaleString("en-IN", {
-                                  minimumFractionDigits: 0,
-                                  maximumFractionDigits: 0,
-                                })}
-                                /-
-                              </div>
                             </div>
-                            <div className="number-card-buy-now-os">
-                              {currentProduct?.comingsoon === "NO" &&
-                              currentProduct?.seller_type === "PREMIUM" &&
-                              currentProduct.comingsoon_date ? (
-                                <>
-                                  <div
-                                    onClick={() =>
-                                      handleBookNowClick(currentProduct)
-                                    }
-                                    className={`preBook-button-os`}
-                                  >
-                                    <span className="alreadyincart">
-                                      {cartItems?.some(
-                                        (obj) =>
-                                          obj.number === currentProduct?.number
-                                      )
-                                        ? "Already in Cart"
-                                        : "Pre-Book"}
-                                    </span>
+                            <div
+                              className={
+                                currentProduct?.productname?.length > 15
+                                  ? "lg:text-[33px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
+                                  : currentProduct?.productname?.length > 13
+                                  ? "lg:text-[31px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
+                                  : "lg:text-[34px] text-lg lg:p-3 p-[5px] text-center font-extrabold cursor-pointer"
+                              }
+                            >
+                              {currentProduct?.productname}
+                            </div>
+                            <span className="speciality-text"></span>
+                            <div className="flex justify-between lg:p-[10px_15px] items-center flex-wrap  md:p-[10px_15px] p-[5px]">
+                              <div className="number-card-price-review-stars-os">
+                                <div className="number-card-price-data-os11">
+                                  <div className="number-card-price-review-stars-os">
+                                    <div className="number-card-price-os">
+                                      {/* &#8377;{" "} */}
+                                      {parseFloat(
+                                        currentProduct?.unit_price
+                                      ).toLocaleString("en-IN", {
+                                        minimumFractionDigits: 0,
+                                        maximumFractionDigits: 2,
+                                      })}
+                                      /-
+                                    </div>
                                   </div>
-
-                                  <div className="pree-date">
-                                    {(() => {
-                                      const date = new Date(
-                                        currentProduct.rtp_date
-                                      );
-                                      const day = String(
-                                        date.getDate()
-                                      ).padStart(2, "0");
-                                      const month = String(
-                                        date.getMonth() + 1
-                                      ).padStart(2, "0"); // Months are 0-based
-                                      const year = date.getFullYear();
-                                      return `${day}-${month}-${year}`;
-                                    })()}
-                                  </div>
-                                </>
-                              ) : (
-                                <div
-                                  onClick={() =>
-                                    handleBookNowClick(currentProduct)
-                                  }
-                                  className={`cursor-pointer text-center md:text-[16px] leading-5 bg-primary  rounded-md text-white lg:p-3 lg:font-bold  p-1  text-[13px] font-medium hover:bg-secondary  hover:text-white flex items-center justify-center"`}
-                                >
-                                  <span>
-                                    {cartItems?.some(
-                                      (obj) =>
-                                        obj.number === currentProduct?.number
-                                    )
-                                      ? "Already in Cart"
-                                      : "Book Now"}
-                                  </span>
-                                  {loading && (
-                                    <span className="dot-loader ml-2 flex">
-                                      <span className="dot animate-bounce delay-0 bg-white h-2 w-2 rounded-full"></span>
-                                      <span className="dot animate-bounce delay-200 bg-white h-2 w-2 rounded-full mx-1"></span>
-                                    </span>
-                                  )}
                                 </div>
-                              )}
+                                <div className="number-card-review-star-os">
+                                  <span>
+                                    <svg
+                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      viewBox="0 0 24 24"
+                                      data-testid="StarIcon"
+                                    >
+                                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>
+                                    <svg
+                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      viewBox="0 0 24 24"
+                                      data-testid="StarIcon"
+                                    >
+                                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>
+                                    <svg
+                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      viewBox="0 0 24 24"
+                                      data-testid="StarIcon"
+                                    >
+                                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>
+                                    <svg
+                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      viewBox="0 0 24 24"
+                                      data-testid="StarIcon"
+                                    >
+                                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>
+                                    <svg
+                                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dtzujy-MuiSvgIcon-root"
+                                      focusable="false"
+                                      aria-hidden="true"
+                                      viewBox="0 0 24 24"
+                                      data-testid="StarIcon"
+                                    >
+                                      <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                                    </svg>{" "}
+                                  </span>
+                                </div>
+                                <div className="md:text-lg font-bold line-through text-sm xs:text-[12px]">
+                                  {parseFloat(
+                                    currentProduct?.compare_at_price
+                                  ).toLocaleString("en-IN", {
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0,
+                                  })}
+                                  /-
+                                </div>
+                              </div>
+                              <div className="number-card-buy-now-os">
+                                {currentProduct?.comingsoon === "NO" &&
+                                currentProduct?.seller_type === "PREMIUM" &&
+                                currentProduct.comingsoon_date ? (
+                                  <>
+                                    <div
+                                      onClick={() =>
+                                        handleBookNowClick(currentProduct)
+                                      }
+                                      className={`preBook-button-os`}
+                                    >
+                                      <span className="alreadyincart">
+                                        {cartItems?.some(
+                                          (obj) =>
+                                            obj.number ===
+                                            currentProduct?.number
+                                        )
+                                          ? "Already in Cart"
+                                          : "Pre-Book"}
+                                      </span>
+                                    </div>
 
-                              <Modal
-                                className="bookNow-modal-os LogoutModal-data-os"
-                                open={showModal}
-                                onCancel={handleNoClick}
-                                footer={[
-                                  <button
-                                    key="no"
-                                    className="yes-logout"
-                                    onClick={handleNoClick}
-                                    aria-label="Cancel"
-                                  >
-                                    Cancel
-                                  </button>,
-                                  <button
-                                    key="yes"
-                                    className="yes-logout"
-                                    onClick={() =>
-                                      handleYesClick(selectedProduct)
-                                    }
-                                    aria-label="Proceed"
-                                  >
-                                    Proceed
-                                  </button>,
-                                ]}
-                              >
-                                {selectedProduct && (
-                                  <div className="LogoutModal-content-os">
-                                    <p>
-                                      Are you sure you want to proceed with the
-                                      purchase of
-                                    </p>
-                                    <h3>{selectedProduct?.productname}?</h3>
-                                    <p>It will be available on</p>
-                                    <div className="bookNow-modal-leftTime-os">
+                                    <div className="pree-date">
                                       {(() => {
                                         const date = new Date(
-                                          selectedProduct.rtp_date
+                                          currentProduct.rtp_date
                                         );
                                         const day = String(
                                           date.getDate()
@@ -929,14 +858,87 @@ export const NetedCategory = ({
                                         return `${day}-${month}-${year}`;
                                       })()}
                                     </div>
+                                  </>
+                                ) : (
+                                  <div
+                                    onClick={() =>
+                                      handleBookNowClick(currentProduct)
+                                    }
+                                    className={`cursor-pointer text-center md:text-[16px] leading-5 bg-primary  rounded-md text-white lg:p-3 lg:font-bold  p-1  text-[13px] font-medium hover:bg-secondary  hover:text-white flex items-center justify-center"`}
+                                  >
+                                    <span>
+                                      {cartItems?.some(
+                                        (obj) =>
+                                          obj.number === currentProduct?.number
+                                      )
+                                        ? "Already in Cart"
+                                        : "Book Now"}
+                                    </span>
+                                    {loading && (
+                                      <span className="dot-loader ml-2 flex">
+                                        <span className="dot animate-bounce delay-0 bg-white h-2 w-2 rounded-full"></span>
+                                        <span className="dot animate-bounce delay-200 bg-white h-2 w-2 rounded-full mx-1"></span>
+                                      </span>
+                                    )}
                                   </div>
                                 )}
-                              </Modal>
+
+                                <Modal
+                                  className="bookNow-modal-os LogoutModal-data-os"
+                                  open={showModal}
+                                  onCancel={handleNoClick}
+                                  footer={[
+                                    <button
+                                      key="no"
+                                      className="yes-logout"
+                                      onClick={handleNoClick}
+                                      aria-label="Cancel"
+                                    >
+                                      Cancel
+                                    </button>,
+                                    <button
+                                      key="yes"
+                                      className="yes-logout"
+                                      onClick={() =>
+                                        handleYesClick(selectedProduct)
+                                      }
+                                      aria-label="Proceed"
+                                    >
+                                      Proceed
+                                    </button>,
+                                  ]}
+                                >
+                                  {selectedProduct && (
+                                    <div className="LogoutModal-content-os">
+                                      <p>
+                                        Are you sure you want to proceed with
+                                        the purchase of
+                                      </p>
+                                      <h3>{selectedProduct?.productname}?</h3>
+                                      <p>It will be available on</p>
+                                      <div className="bookNow-modal-leftTime-os">
+                                        {(() => {
+                                          const date = new Date(
+                                            selectedProduct.rtp_date
+                                          );
+                                          const day = String(
+                                            date.getDate()
+                                          ).padStart(2, "0");
+                                          const month = String(
+                                            date.getMonth() + 1
+                                          ).padStart(2, "0"); // Months are 0-based
+                                          const year = date.getFullYear();
+                                          return `${day}-${month}-${year}`;
+                                        })()}
+                                      </div>
+                                    </div>
+                                  )}
+                                </Modal>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      {/* <div className="nested-cat-header">
+                        {/* <div className="nested-cat-header">
                         <h2>VIP MOBILE NUMBER</h2>
                       </div>
                       <div className="nested-cat-tag">
@@ -958,13 +960,13 @@ export const NetedCategory = ({
                         title={"Book Now"}
                         onClick={() => handleBookNowClick(currentProduct)}
                       />*/}
-                    </div>
-                  ) : (
-                    <div
-                      div
-                      className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[17px] object-cover w-full border-2 border-white "
-                    >
-                      {/* <Image
+                      </div>
+                    ) : (
+                      <div
+                        div
+                        className="xl:h-[241px] md:h-[236px] h-[190px] rounded-[17px] object-cover w-full border-2 border-white "
+                      >
+                        {/* <Image
                         src={`${panelImg}/assets/img/vip-images/download_g3g7vd.png`}
                         alt="sub Category"
                         height={400}
@@ -973,17 +975,17 @@ export const NetedCategory = ({
                         priority="true"
 
                       /> */}
-                      <div className=" flex justify-center gap-2 items-center flex-col h-full">
-                        <h2 className="text-white md:text-lg text-[12px]">
-                          {item.title}
-                        </h2>
-                        <button
-                          className="flex text-white gap-2 items-center"
-                          onClick={() => handleViewMore(item.link)}
-                          aria-label="View More"
-                        >
-                          View More
-                          {/* <svg
+                        <div className=" flex justify-center gap-2 items-center flex-col h-full">
+                          <h2 className="text-white md:text-lg text-[12px]">
+                            {item.title}
+                          </h2>
+                          <button
+                            className="flex text-white gap-2 items-center"
+                            onClick={() => handleViewMore(item.link)}
+                            aria-label="View More"
+                          >
+                            View More
+                            {/* <svg
                             width="37"
                             height="11"
                             viewBox="0 0 37 11"
@@ -996,21 +998,21 @@ export const NetedCategory = ({
                               fill="white"
                             />
                           </svg> */}
-                          <GoArrowUpRight />
-                        </button>
+                            <GoArrowUpRight />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
+                    )}
+                  </div>
 
-                {/* Next Button */}
-                {bannerVisibility[item.id] !== false && currentIndex === 0 ? (
-                  <button
-                    className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2  backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
-                    onClick={() => handleButtonClick(item.id)}
-                    aria-label="right"
-                  >
-                    {/* <svg
+                  {/* Next Button */}
+                  {bannerVisibility[item.id] !== false && currentIndex === 0 ? (
+                    <button
+                      className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2  backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
+                      onClick={() => handleButtonClick(item.id)}
+                      aria-label="right"
+                    >
+                      {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="11"
                       height="18"
@@ -1025,17 +1027,17 @@ export const NetedCategory = ({
                         strokeLinejoin="round"
                       />
                     </svg> */}
-                    <IoIosArrowForward color="white" />
-                  </button>
-                ) : (
-                  // Next Button (When Banner is Hidden)
-                  currentIndex < item.product_id[0].length && (
-                    <button
-                      className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
-                      onClick={() => handleNext(item.id)}
-                      aria-label="Next btn"
-                    >
-                      {/* <svg
+                      <IoIosArrowForward color="white" />
+                    </button>
+                  ) : (
+                    // Next Button (When Banner is Hidden)
+                    currentIndex < item.product_id[0].length && (
+                      <button
+                        className="absolute lg:right-[-16px] right-[-4px] top-1/2 -translate-y-1/2 backdrop-blur-md md:p-[17px_8px] p-[5px_4px] rounded-md shadow-md z-10 flex items-center justify-center  transition bg-black"
+                        onClick={() => handleNext(item.id)}
+                        aria-label="Next btn"
+                      >
+                        {/* <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="11"
                         height="18"
@@ -1050,15 +1052,16 @@ export const NetedCategory = ({
                           strokeLinejoin="round"
                         />
                       </svg> */}
-                      <IoIosArrowForward color="white" />
-                    </button>
-                  )
-                )}
-              </div>
-            );
-          })}
+                        <IoIosArrowForward color="white" />
+                      </button>
+                    )
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

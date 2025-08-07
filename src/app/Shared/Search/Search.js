@@ -615,7 +615,8 @@ const Search = ({ queryParams }) => {
         (!filters?.contains || filters?.contains === "") &&
         (!filters?.not_contain || filters?.not_contain === "") &&
         (!filters?.total || filters?.total === "") &&
-        (!filters?.sum || filters?.sum === "")
+        (!filters?.sum || filters?.sum === "") &&
+        (!filters?.max_contain || filters?.max_contain === "")
       ) {
         setShowAdvancedWarning(true);
       } else {
@@ -1742,7 +1743,7 @@ const Search = ({ queryParams }) => {
                       </div>
 
                       <div className="search-filter-advance-search-row-1-os">
-                        <div className="search-filter-advance-search-col-6-os">
+                        <div className="search-filter-advance-search-col-1-os">
                           <SearchFilterInput
                             inputLabel="Total"
                             inputType="text"
@@ -1757,7 +1758,7 @@ const Search = ({ queryParams }) => {
                             }}
                           />
                         </div>
-                        <div className="search-filter-advance-search-col-7-os">
+                        <div className="search-filter-advance-search-col-1-os">
                           <SearchFilterInput
                             inputLabel="Sum"
                             inputType="text"
@@ -1769,6 +1770,21 @@ const Search = ({ queryParams }) => {
                                 ""
                               );
                               handleFilters("sum", filteredValue);
+                            }}
+                          />
+                        </div>
+                        <div className="search-filter-advance-search-col-1-os">
+                          <SearchFilterInput
+                            inputLabel="Max-Contain"
+                            inputType="text"
+                            placeHolder="e.g: 9"
+                            inputValue={filters?.max_contain}
+                            inputOnChange={(e) => {
+                              const filteredValue = e.target.value.replace(
+                                /[^0-9,=/]/g,
+                                ""
+                              );
+                              handleFilters("max_contain", filteredValue);
                             }}
                           />
                         </div>
@@ -1793,7 +1809,7 @@ const Search = ({ queryParams }) => {
                           </p>
                         )}
                       </div>
-                      <NumuroTag/>
+                      <NumuroTag />
                     </div>
 
                     <div

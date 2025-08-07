@@ -325,7 +325,8 @@ const NewMobileSearch = ({ queryParams }) => {
           (!filters?.contains || filters?.contains === "") &&
           (!filters?.not_contain || filters?.not_contain === "") &&
           (!filters?.total || filters?.total === "") &&
-          (!filters?.sum || filters?.sum === "")
+          (!filters?.sum || filters?.sum === "") &&
+          (!filters?.max_contain || filters?.max_contain === "")
         ) {
           setShowAdvancedWarning(true);
         } else {
@@ -360,7 +361,8 @@ const NewMobileSearch = ({ queryParams }) => {
           (!filters?.contains || filters?.contains === "") &&
           (!filters?.not_contain || filters?.not_contain === "") &&
           (!filters?.total || filters?.total === "") &&
-          (!filters?.sum || filters?.sum === "")
+          (!filters?.sum || filters?.sum === "") &&
+          (!filters?.max_contain || filters?.max_contain === "")
         ) {
           setShowAdvancedWarning(true);
         } else {

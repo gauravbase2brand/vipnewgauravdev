@@ -71,7 +71,7 @@ const Homepage = () => {
           </div>
         )} */}
       <VipNumberShopSliderImages1 />
-      <FamilyPack counter={2} />
+      <FamilyPack counter={3} />
       <TabNumbers />
       <VIPNumberSlider />
       <PressRelesed />

@@ -158,14 +158,14 @@ const CategoryPage = () => {
             window.location.pathname.split("/")[1] === "category" ? (
               <CategoryWithSubCategories
                 apiData={apiData}
-                category={apiData[0]?.category}
+                category={apiData[1]?.category}
               />
             ) : (
               <CategoryWithSubCategories
                 apiData={apiData}
                 category={
                   subCatDetail?.title === null
-                    ? apiData[0]?.sub_category
+                    ? apiData[1]?.sub_category
                     : subCatDetail?.title
                 }
               />

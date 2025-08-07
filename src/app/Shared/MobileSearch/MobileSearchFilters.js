@@ -360,8 +360,8 @@ const MobileSearchFilters = ({
             Total/Sum
           </span>
 
-          <div className="search-filter-advance-search-row-1-os">
-            <div className="search-filter-advance-search-col-6-os">
+          <div className="grid grid-cols-3 gap-2 mb-2">
+            <div className="w-full">
               <SearchFilterInput
                 inputLabel="Total"
                 inputType="text"
@@ -373,7 +373,7 @@ const MobileSearchFilters = ({
                 }}
               />
             </div>
-            <div className="search-filter-advance-search-col-7-os">
+            <div className="w-full">
               <SearchFilterInput
                 inputLabel="Sum"
                 inputType="text"
@@ -382,6 +382,18 @@ const MobileSearchFilters = ({
                 inputOnChange={(e) => {
                   const filteredValue = e.target.value.replace(/[^0-9,]/g, "");
                   handleFiltersResults("sum", filteredValue);
+                }}
+              />
+            </div>
+            <div className="w-full">
+              <SearchFilterInput
+                inputLabel="Max-Contain"
+                inputType="text"
+                placeHolder="e.g: 9"
+                inputValue={filters?.max_contain}
+                inputOnChange={(e) => {
+                  const filteredValue = e.target.value.replace(/[^0-9,=/]/g, "");
+                  handleFiltersResults("max_contain", filteredValue);
                 }}
               />
             </div>
