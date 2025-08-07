@@ -62,10 +62,13 @@ button.right-btn-gk {
   align-items: center;
   /* border: 2px solid var(--primary); */
   /* border-radius: 8px; */
-  background-color: var(--secondary);
+  background-color: #E7E2E2;
   color: #000;
 }
-.category-button:hover,
+.category-button:hover {
+  background: var(--secondary);
+  color: black;
+}
 .highlighted {
   background: var(--primary);
   color: #fff;
