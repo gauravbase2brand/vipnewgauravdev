@@ -132,7 +132,7 @@ button.right-btn-gk {
   /* } */
   .category-section {
     padding: 3px 0 0;
-    justify-items: center;
+    /* justify-items: center; */
   }
   .button-content h2 {
     font-size: 12px;

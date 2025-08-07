@@ -180,6 +180,7 @@ const TabNumbers = () => {
               description={item?.description}
             />
             {index === 0 && selectedCategoryTop?.items?.length > 0 && (
+              <>
               <NetedCategory
                 viewingProduct={viewingProduct}
                 productIndexes={productIndexes}
@@ -189,13 +190,6 @@ const TabNumbers = () => {
                 setViewingProduct={setViewingProduct}
                 setSelectedCategory={setSelectedCategoryTop}
               />
-            )}
-
-            {index === 1 && <ClientVideo />}
-            {index === 2 && <FamilyPack counter={4} />}
-            {index === 3 && <Benefits />}
-            {index === 4 && <QRVipApp />}
-            {(index === 5 && selectedCategoryMiddle?.items?.length > 0) && (
               <NetedCategory
                 viewingProduct={viewingProduct}
                 productIndexes={productIndexes}
@@ -205,7 +199,24 @@ const TabNumbers = () => {
                 setViewingProduct={setViewingProduct}
                 setSelectedCategory={setSelectedCategoryMiddle}
               />
+              </>
             )}
+
+            {index === 1 && <ClientVideo />}
+            {index === 2 && <FamilyPack counter={4} />}
+            {index === 3 && <Benefits />}
+            {index === 4 && <QRVipApp />}
+            {/* {(index === 5 && selectedCategoryMiddle?.items?.length > 0) && (
+              <NetedCategory
+                viewingProduct={viewingProduct}
+                productIndexes={productIndexes}
+                selectedCategory={selectedCategoryMiddle}
+                categories={categoriesMiddle}
+                setProductIndexes={setProductIndexes}
+                setViewingProduct={setViewingProduct}
+                setSelectedCategory={setSelectedCategoryMiddle}
+              />
+            )} */}
             {index === 6 && <FamilyPack counter={3} />}
             {index === 7 && !isMobile && (
               <CityHowGetVipNumber
