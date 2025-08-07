@@ -45,15 +45,16 @@ function useIsMobile(breakpoint = 768, debounceDelay = 200) {
 export function ResponsiveHeader() {
   const isMobile = useIsMobile();
   const pathName = usePathname();
+  const isTenDigitNumber = /^\d{10}$/.test(pathName.split("/").pop());
   const route = pathName === "/influencer";
   const cart = pathName === "/place-order";
   const details = pathName === "/details";
 
   if (isMobile) {
-    if (route || cart || details) return null;
+    if (isTenDigitNumber || route || cart || details) return null;
     return <MobileHeader />;
   } else {
-    if (route) return null;
+    if (route || isTenDigitNumber) return null;
     return <Header />;
   }
 }
@@ -65,8 +66,8 @@ export function ResponsiveFooter() {
   const cart = pathName === "/place-order";
   const declined = pathName === "/payment-declined";
   const thankyou = pathName === "/thank-you";
-
-  if (cart || declined || thankyou) return null;
+  const isTenDigitNumber = /^\d{10}$/.test(pathName.split("/").pop());
+  if (isTenDigitNumber || cart || declined || thankyou) return null;
 
   return isMobile ? <MobileFooter /> : <Footer />;
 }

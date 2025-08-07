@@ -1,5 +1,6 @@
 // app/[slug]/page.js
 import dynamic from "next/dynamic";
+import ContactCard from "../ContactCard/ContactCard";
 
 const cityConfigs = {
   "vip-mobile-number-in-ahmedabad": {
@@ -388,6 +389,11 @@ export async function generateMetadata({ params }) {
 export default async function CityPage({ params }) {
   const meta = await params;
   const config = cityConfigs[meta.slug.toLowerCase()];
+  const isTenDigitNumber = /^\d{10}$/.test(meta.slug);
+
+  if (isTenDigitNumber) {
+    return <ContactCard/>;
+  }
   if (!config) {
     return <div>Page not found</div>;
   }
