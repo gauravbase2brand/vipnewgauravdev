@@ -7,7 +7,8 @@ import { AppStateContext } from "@/app/contexts/AppStateContext/AppStateContext"
 
 const FilterTabs = ({ selectedFilter, id }) => {
   const { queryParams } = useGetQueryParams();
-  const { selectedNumbers, setSelectedNumbers,dataLoading } = useContext(AppStateContext);
+  const { selectedNumbers, setSelectedNumbers, dataLoading } =
+    useContext(AppStateContext);
   const pathname = usePathname();
   const Router = useRouter();
   const [appliedFiltersCounts, setAppliedFiltersCounts] = useState(0);
@@ -90,10 +91,16 @@ const FilterTabs = ({ selectedFilter, id }) => {
     }));
 
     // Set selected numbers
-    if (urlParams.get("start_with")) {
-      setSelectedNumbers(urlParams.get("start_with").split(","));
-    }
+    // if (urlParams.get("start_with")) {
+    //   setSelectedNumbers(urlParams.get("start_with").split(","));
+    // }
 
+    const sw = (urlParams.get("start_with") || "").trim();
+    if (sw) {
+      setSelectedNumbers(sw.split(",").filter(Boolean));
+    } else {
+      setSelectedNumbers([]); // << IMPORTANT
+    }
     // Set checked items for premium and basic sellers
     setCheckedItems({
       premium: urlParams.get("seller")?.includes("PREMIUM"),
@@ -122,10 +129,9 @@ const FilterTabs = ({ selectedFilter, id }) => {
   //   updateAppliedFiltersCount();
   // };
 
-
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-  
+
     setCheckedItems((prevState) => {
       const updated = {
         ...prevState,
@@ -134,10 +140,10 @@ const FilterTabs = ({ selectedFilter, id }) => {
       };
       return updated;
     });
-  
+
     updateAppliedFiltersCount();
   };
-  
+
   const handleSelectFilter = (activeFilter) => {
     setSelectFilter(activeFilter);
     updateAppliedFiltersCount();
@@ -264,7 +270,7 @@ const FilterTabs = ({ selectedFilter, id }) => {
         (num) => !existingStartWith.includes(num)
       );
       filterObj["start_with"] = [
-        ...existingStartWith,
+        ...existingStartWith.filter((n) => selectedNumbers.includes(n)),
         ...newSelectedNumbers,
       ].join(",");
     } else {
@@ -295,7 +301,7 @@ const FilterTabs = ({ selectedFilter, id }) => {
         (num) => !existingStartWith.includes(num)
       );
       filterObj["start_with"] = [
-        ...existingStartWith,
+        ...existingStartWith.filter((n) => selectedNumbers.includes(n)),
         ...newSelectedNumbers,
       ].join(",");
     }
@@ -408,7 +414,11 @@ const FilterTabs = ({ selectedFilter, id }) => {
         setActiveFilter(false);
       }}
     >
-      <div className={`multiple-filters-row-os ${dataLoading ? "pointer-events-none opacity-50" : ""}`}>
+      <div
+        className={`multiple-filters-row-os ${
+          dataLoading ? "pointer-events-none opacity-50" : ""
+        }`}
+      >
         <div className="multiple-filters-col-os" onClick={handleFilterShow}>
           {/* <div className="multiple-filters-count-os">
             {appliedFiltersCounts}
