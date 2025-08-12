@@ -7,7 +7,7 @@ import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import { useRouter } from "next/navigation";
 
 const DigitalForm = () => {
-  const { userProfile } = useContext(AppStateContext);
+  const { userProfile,user } = useContext(AppStateContext);
   const mobileNumber = userProfile?.mobile;
   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
   const router = useRouter();
@@ -42,6 +42,7 @@ const DigitalForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,7 +52,13 @@ const DigitalForm = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `${apiUrl}/web/digital/visiting/card/${mobileNumber}`
+          `${apiUrl}/web/digital/visiting/card/${mobileNumber}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,  // Add Bearer token here
+          },
+        }
         );
 
         if (response.data.status && response.data.data) {
@@ -113,6 +120,12 @@ const DigitalForm = () => {
     return emailRegex.test(email);
   };
 
+  const validateName = (name) => {
+    // Regex to allow only alphabets and spaces
+    const nameRegex = /^[A-Za-z\s]+$/;
+    return nameRegex.test(name);
+  };
+
   const validateMobile = (mobile) => {
     const mobileRegex = /^(\+91-)?[6-9]\d{9}$/;
     return mobileRegex.test(mobile);
@@ -158,14 +171,107 @@ const DigitalForm = () => {
     }));
 
     // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
+    // if (errors[name]) {
+    //   setErrors((prev) => ({
+    //     ...prev,
+    //     [name]: "",
+    //   }));
+    // }
+    validateField(name, value);
   };
+  const validateField = (name, value) => {
+    const newErrors = { ...errors }; // Clone the existing errors state to avoid mutation
 
+    // Field-specific validation
+    switch (name) {
+      case "name":
+        if (!value.trim()) {
+          newErrors[name] = "Full name is required";
+        } else if (!validateName(value)) {
+          newErrors[name] = "Full name must only contain letters and spaces";
+        } else {
+          delete newErrors[name]; // Clear error if valid
+        }
+        break;
+      case "mobile":
+        if (!value.trim()) {
+          newErrors.mobile = "Mobile number is required";
+        } else if (!validateMobile(value)) {
+          newErrors.mobile =
+            "Please enter a valid mobile number (format: +91-9876543210 or 9876543210)";
+        } else {
+          delete newErrors.mobile; // Remove the error if valid
+        }
+        break;
+
+         case "whatsapp_phone":
+        if (!value.trim()) {
+          newErrors.whatsapp_phone = "Mobile number is required";
+        } else if (!validateMobile(value)) {
+          newErrors.whatsapp_phone =
+            "Please enter a valid number (format: +91-9876543210 or 9876543210)";
+        } else {
+          delete newErrors.whatsapp_phone; // Remove the error if valid
+        }
+        break;
+         case "whatsapp_mobile":
+        if (!value.trim()) {
+          newErrors.whatsapp_mobile = "Mobile number is required";
+        } else if (!validateMobile(value)) {
+          newErrors.whatsapp_mobile =
+            "Please enter a valid  number (format: +91-9876543210 or 9876543210)";
+        } else {
+          delete newErrors.whatsapp_mobile; // Remove the error if valid
+        }
+        break;
+         case "primary_phone":
+        if (!value.trim()) {
+          newErrors.primary_phone = "Mobile number is required";
+        } else if (!validateMobile(value)) {
+          newErrors.primary_phone =
+            "Please enter a valid  number (format: +91-9876543210 or 9876543210)";
+        } else {
+          delete newErrors.primary_phone; // Remove the error if valid
+        }
+        break;
+
+      case "email":
+        if (!value.trim()) {
+          newErrors.email = "Email is required";
+        } else if (!validateEmail(value)) {
+          newErrors.email = "Please enter a valid email address";
+        } else {
+          delete newErrors.email; // Remove the error if valid
+        }
+        break;
+
+      case "postal_code":
+        if (!value.trim()) {
+          newErrors.postal_code = "Postal code is required";
+        } else if (!validatePostalCode(value)) {
+          newErrors.postal_code = "Please enter a valid 6-digit postal code";
+        } else {
+          delete newErrors.postal_code; // Remove the error if valid
+        }
+        break;
+
+      case "name":
+        if (!value.trim()) {
+          newErrors.name = "Name is required";
+        } else {
+          delete newErrors.name; // Remove the error if valid
+        }
+        break;
+
+      // You can add cases for other fields similarly
+      // Add more fields as needed
+
+      default:
+        break;
+    }
+
+    setErrors(newErrors); // Set errors to trigger UI re-render
+  };
   // Validate form
   const validateForm = () => {
     const newErrors = {};
@@ -290,6 +396,7 @@ const DigitalForm = () => {
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`, 
           },
         }
       );
@@ -387,7 +494,7 @@ const DigitalForm = () => {
                       : "border-gray-300"
                   }`}
                   placeholder="+91-9876543210"
-                  disabled={formData.mobile.length === 10}
+                  // disabled={formData.mobile.length === 10}
                 />
                 {errors.mobile && (
                   <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>

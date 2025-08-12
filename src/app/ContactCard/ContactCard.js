@@ -2,11 +2,12 @@
 import { FaShareAlt, FaPlus, FaMinus } from "react-icons/fa";
 import { CiSaveUp2 } from "react-icons/ci";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { RWebShare } from "react-web-share";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,13 +80,19 @@ const ContactCard = () => {
     location: "",
   });
   const [isLoading, setIsLoading] = useState(true);
-
+  const { user } = useContext(AppStateContext);
   useEffect(() => {
     const fetchExistingData = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `${apiUrl}/web/digital/visiting/card/${mobileNumber}`
+          `${apiUrl}/web/digital/visiting/card/${mobileNumber}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.token}`, // Add Bearer token here
+            },
+          }
         );
 
         if (response.data.status && response.data.data) {
@@ -262,9 +269,9 @@ const ContactCard = () => {
           {formData.company && (
             <p className="text-gray-600 font-medium">{formData.company}</p>
           )}
-          <span className="absolute top-[10%] right-[25px]">
+          {/* <span className="absolute top-[10%] right-[25px]">
             <CiSaveUp2 fontSize={25} />
-          </span>
+          </span> */}
         </div>
 
         {/* Contact Information */}
