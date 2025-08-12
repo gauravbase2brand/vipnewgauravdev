@@ -48,7 +48,9 @@ export async function GET() {
     "https://www.vipnumbershop.com/postpaid-fancy-numbers",
     "https://www.vipnumbershop.com/bsnl-choice-number",
     "https://www.vipnumbershop.com/vip-number",
-    "https://www.vipnumbershop.com/vip-mobile-number"
+    "https://www.vipnumbershop.com/vip-mobile-number",
+    "https://www.vipnumbershop.com/qr-stands",
+    "https://www.vipnumbershop.com/digital-card"
   ];
 
   const allUrls = [...staticUrls];

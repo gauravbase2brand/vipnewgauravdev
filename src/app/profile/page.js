@@ -11,14 +11,13 @@ import axios from "axios";
 import { getProfile, updateProfile } from "../Services/Services";
 import LogoutModal from "../Shared/LogoutModal/LogoutModal";
 import DeleteModal from "../Shared/DeleteModal/DeleteModal";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 // Add these imports
 import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import en from "date-fns/locale/en-US";
 import { FaAddressCard, FaRegUser } from "react-icons/fa";
-import { TbPasswordMobilePhone } from "react-icons/tb";
 import { AiOutlineLogout } from "react-icons/ai";
+import { FcAddressBook } from "react-icons/fc";
 registerLocale("en-US", en);
 
 const Profile = () => {
@@ -33,7 +32,8 @@ const Profile = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useRouter();
-  const { logout, user, setUserProfile,setProfileUpdate } = useContext(AppStateContext);
+  const { logout, user, setUserProfile, setProfileUpdate } =
+    useContext(AppStateContext);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [showConfirmationModalss, setShowConfirmationModalss] = useState(false);
   const [profileActive, setProfileActive] = useState("tab1");
@@ -506,6 +506,15 @@ const Profile = () => {
                   <FaAddressCard fontSize={25} color="var(--primary)" />
                   Address
                 </button>
+                <Link href="digital-card">
+                <button
+                  className="profile-tab-os flex items-center gap-[5px]  flex-col"
+                  aria-label="Digital visiting card"
+                >
+                  <FcAddressBook  fontSize={25} color="var(--primary)" />
+                  Digital visiting card
+                </button>
+                </Link>
                 <button
                   onClick={handleLogout}
                   className={
@@ -519,7 +528,7 @@ const Profile = () => {
                   <AiOutlineLogout fontSize={25} color="var(--primary)" />
                   Logout
                 </button>
-
+                
                 {isMobile && (
                   <button
                     type="button"
@@ -948,7 +957,7 @@ const Profile = () => {
                         onClick={handleSaveAddress}
                         aria-label="Save"
                       >
-                       {!addressData ? (
+                        {!addressData ? (
                           "Save"
                         ) : (
                           <span className="dot-loader ml-2 flex">
