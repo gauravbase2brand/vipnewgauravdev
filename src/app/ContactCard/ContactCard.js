@@ -513,24 +513,30 @@ const ContactCard = () => {
                         />
                       </span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">UPI:</span>
-                      <span className="font-medium text-gray-800">
-                        {formData.upi_id}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Payment Number:</span>
-                      <span className="font-medium text-gray-800">
-                        {formData.payment_number}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">GST No:</span>
-                      <span className="font-medium text-gray-800">
-                        {formData.gst_number}
-                      </span>
-                    </div>
+                    {formData.upi_id && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">UPI:</span>
+                        <span className="font-medium text-gray-800">
+                          {formData.upi_id}
+                        </span>
+                      </div>
+                    )}
+                    {formData.payment_number && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Payment Number:</span>
+                        <span className="font-medium text-gray-800">
+                          {formData.payment_number}
+                        </span>
+                      </div>
+                    )}
+                    {formData.gst_number && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">GST No:</span>
+                        <span className="font-medium text-gray-800">
+                          {formData.gst_number}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -683,8 +689,8 @@ const ContactCard = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
-                  width="800px"
-                  height="800px"
+                  width="60px"
+                  height="60px"
                   viewBox="147.353 39.286 514.631 514.631"
                   version="1.1"
                   id="Layer_1"
