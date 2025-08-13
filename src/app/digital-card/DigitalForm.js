@@ -5,9 +5,10 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import { useRouter } from "next/navigation";
+import ImageUploadComponent from "./ImageUploadComponent";
 
 const DigitalForm = () => {
-  const { userProfile,user } = useContext(AppStateContext);
+  const { userProfile, user } = useContext(AppStateContext);
   const mobileNumber = userProfile?.mobile;
   const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
   const router = useRouter();
@@ -42,10 +43,31 @@ const DigitalForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageType, setImageType] = useState("");
+  const imageTypeOptions = [
+    {
+      value: "profile_image",
+      label: "Profile Image",
+      icon: "👤",
+      description: "Personal profile photo",
+    },
+    {
+      value: "company_logo",
+      label: "Company Logo",
+      icon: "🏢",
+      description: "Business logo or brand image",
+    },
+    {
+      value: "qr_code",
+      label: "QR Code",
+      icon: "📱",
+      description: "QR code for quick access",
+    },
+  ];
   // Fetch existing data on component mount
   useEffect(() => {
     const fetchExistingData = async () => {
@@ -53,12 +75,12 @@ const DigitalForm = () => {
         setIsLoading(true);
         const response = await axios.get(
           `${apiUrl}/web/digital/visiting/card/${mobileNumber}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,  // Add Bearer token here
-          },
-        }
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.token}`, // Add Bearer token here
+            },
+          }
         );
 
         if (response.data.status && response.data.data) {
@@ -204,7 +226,7 @@ const DigitalForm = () => {
         }
         break;
 
-         case "whatsapp_phone":
+      case "whatsapp_phone":
         if (!value.trim()) {
           newErrors.whatsapp_phone = "Mobile number is required";
         } else if (!validateMobile(value)) {
@@ -214,7 +236,7 @@ const DigitalForm = () => {
           delete newErrors.whatsapp_phone; // Remove the error if valid
         }
         break;
-         case "whatsapp_mobile":
+      case "whatsapp_mobile":
         if (!value.trim()) {
           newErrors.whatsapp_mobile = "Mobile number is required";
         } else if (!validateMobile(value)) {
@@ -224,7 +246,7 @@ const DigitalForm = () => {
           delete newErrors.whatsapp_mobile; // Remove the error if valid
         }
         break;
-         case "primary_phone":
+      case "primary_phone":
         if (!value.trim()) {
           newErrors.primary_phone = "Mobile number is required";
         } else if (!validateMobile(value)) {
@@ -371,12 +393,66 @@ const DigitalForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleImageUpload = async () => {
+    if (!formData.id) {
+      toast.error("Something went wrong?");
+      return;
+    }
+
+    // Validate image type selection
+    if (!imageType) {
+      // toast.error("Please select an image type before uploading");
+      return;
+    }
+    try {
+      // Create FormData for file upload
+      const uploadFormData = new FormData();
+      uploadFormData.append("id", formData.id);
+      uploadFormData.append("image", selectedImage);
+      uploadFormData.append("type", imageType); // Add type to payload
+
+      // Make API call to upload image
+      const response = await axios.post(
+        `${apiUrl}/web/digital/card/imageUpload`,
+        uploadFormData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        // const selectedTypeLabel = imageTypeOptions.find(
+        //   (option) => option.value === imageType
+        // )?.label;
+        // toast.success(`${selectedTypeLabel} uploaded successfully!`);
+        // Reset form after successful upload
+        // clearImage();
+        setSelectedImage(null);
+        setImagePreview(null);
+        setImageType("");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+
+      if (error.response?.status === 401) {
+        toast.error("Authentication failed. Please login again.");
+      } else if (error.response?.status === 413) {
+        toast.error("Image file is too large. Please select a smaller image.");
+      } else {
+        toast.error("Failed to upload image. Please try again.");
+      }
+    }
+  };
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) {
       toast.error("Please fix the errors in the form");
+      const el = document.getElementById("form-data");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
 
@@ -396,13 +472,14 @@ const DigitalForm = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`, 
+            Authorization: `Bearer ${user?.token}`,
           },
         }
       );
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Digital visiting card updated successfully!");
+        handleImageUpload();
         router.push(formData.mobile);
       }
     } catch (error) {
@@ -423,11 +500,10 @@ const DigitalForm = () => {
       </div>
     );
   }
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-4 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white shadow-2xl rounded-2xl overflow-hidden">
+        <div className="bg-white shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-primary px-6 py-6 sm:px-8">
             <h1 className="text-3xl font-bold text-white text-center">
@@ -441,17 +517,29 @@ const DigitalForm = () => {
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="px-6 py-8 sm:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="px-6 py-4 sm:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <ImageUploadComponent
+                formData={formData}
+                token={user?.token}
+                selectedImage={selectedImage}
+                setSelectedImage={setSelectedImage}
+                imageType={imageType}
+                setImageType={setImageType}
+                imageTypeOptions={imageTypeOptions}
+                handleImageUpload={handleImageUpload}
+                imagePreview={imagePreview}
+                setImagePreview={setImagePreview}
+              />
               {/* Personal Information Section */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-3">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Personal Information
                 </h2>
               </div>
 
               {/* Name */}
-              <div>
+              <div id="form-data">
                 <label
                   htmlFor="name"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -612,7 +700,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Business Information Section */}
-              <div className="md:col-span-2 mt-8">
+              <div className="md:col-span-3 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Business Information
                 </h2>
@@ -718,7 +806,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Bank Details */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-3">
                 <label
                   htmlFor="bank_details"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -737,14 +825,14 @@ const DigitalForm = () => {
               </div>
 
               {/* Address Information Section */}
-              <div className="md:col-span-2 mt-8">
+              <div className="md:col-span-3 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Address Information
                 </h2>
               </div>
 
               {/* Address */}
-              <div className="md:col-span-2">
+              <div className="md:col-span-3">
                 <label
                   htmlFor="address"
                   className="block text-sm font-medium text-gray-700 mb-2"
@@ -893,7 +981,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Social Media Section */}
-              <div className="md:col-span-2 mt-8">
+              <div className="md:col-span-3 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Social Media Links
                 </h2>
@@ -1058,7 +1146,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Additional Fields Section */}
-              {/* <div className="md:col-span-2 mt-8">
+              {/* <div className="md:col-span-3 mt-8">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Additional Information
                 </h2>

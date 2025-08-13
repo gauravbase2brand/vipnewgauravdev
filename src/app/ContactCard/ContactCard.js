@@ -26,7 +26,7 @@ const Accordion = ({ title, children, icon }) => {
           <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
             {icon}
           </div>
-          <span className="text-sm font-medium text-gray-700">{title}</span>
+          <span className="text-sm font-bold text-gray-700">{title}</span>
         </div>
         <div className="mr-4">
           {isOpen ? (
@@ -126,6 +126,9 @@ const ContactCard = () => {
             twitter: apiData.twitter || "",
             linkedin: apiData.linkedin || "",
             location: apiData.location || "",
+            profile_image: apiData.profile_image || "",
+            qr_code: apiData.qr_code || "",
+            company_logo: apiData.company_logo || "",
           });
         }
       } catch (error) {
@@ -251,23 +254,34 @@ const ContactCard = () => {
           ))}
         </div>
       )}
-      <div className="bg-secondary rounded-3xl shadow-2xl overflow-hidden w-full max-w-sm animate-[slideUp_0.6s_ease-out]">
+      <div className="bg-secondary rounded-xl shadow-2xl overflow-hidden w-full max-w-sm animate-[slideUp_0.6s_ease-out]">
         {/* Profile Section */}
         <div className="bg-white text-center p-2 rounded-2xl mb-3 relative">
-          <div className="w-28 h-28 mx-auto mb-5 rounded-full border-4 border-purple-600 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-60 pointer-events-none"
+            style={{
+              backgroundImage: `url(${formData.company_logo})`,
+            }}
+            aria-hidden="true"
+          />
+          <div className="w-28 h-28 mx-auto mb-5 rounded-full border-4 border-purple-600 overflow-hidden relative">
             <img
-              src="/assets/crawn-user.png"
+              src={
+                formData.profile_image
+                  ? formData.profile_image
+                  : "/assets/crawn-user.png"
+              }
               alt="Ramnish Thakur"
               className="w-full h-full object-cover"
             />
           </div>
           {formData.name && (
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl font-bold text-gray-800 mb-2 relative">
               {formData.name}
             </h2>
           )}
           {formData.company && (
-            <p className="text-gray-600 font-medium">{formData.company}</p>
+            <p className="font-bold text-gray-800  relative">{formData.company}</p>
           )}
           {/* <span className="absolute top-[10%] right-[25px]">
             <CiSaveUp2 fontSize={25} />
@@ -295,8 +309,8 @@ const ContactCard = () => {
                 />
               </svg>
             </div>
-            {formData.whatsapp_mobile ||
-              (formData.whatsapp_phone ? (
+            {(formData.whatsapp_mobile ||
+              formData.whatsapp_phone) ? (
                 <>
                   <Link href={`https://wa.me/${formData.whatsapp_mobile}`}>
                     <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
@@ -314,17 +328,17 @@ const ContactCard = () => {
                       </svg>
                     </div>
                   </Link>
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-bold text-gray-700">
                     {`+91-${
                       formData.whatsapp_mobile || formData.whatsapp_phone
                     }`}
                   </span>
                 </>
               ) : (
-                <span className="text-sm font-medium text-gray-700">
+                <span className="text-sm font-bold text-gray-800">
                   {`+91-${formData.mobile}`}
                 </span>
-              ))}
+              )}
           </Link>
           {/* Email */}
           {formData.email && (
@@ -353,7 +367,7 @@ const ContactCard = () => {
                   />
                 </svg>
               </div>
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-sm font-bold text-gray-700">
                 {formData.email}
               </span>
             </Link>
@@ -394,7 +408,7 @@ const ContactCard = () => {
                 />
               </svg>
             </div>
-            <span className="text-sm font-medium text-gray-700">
+            <span className="text-sm font-bold text-gray-700">
               www.vipnumbershop.com
             </span>
           </Link>
@@ -502,7 +516,7 @@ const ContactCard = () => {
                   </h4>
                   <div className="space-y-2 text-xs">
                     <div className="flex justify-between">
-                      <span className="font-medium text-gray-800">
+                      <span className="font-bold text-gray-800">
                         <span
                           dangerouslySetInnerHTML={{
                             __html: formData.bank_details.replace(
@@ -516,7 +530,7 @@ const ContactCard = () => {
                     {formData.upi_id && (
                       <div className="flex justify-between">
                         <span className="text-gray-600">UPI:</span>
-                        <span className="font-medium text-gray-800">
+                        <span className="font-bold text-gray-800">
                           {formData.upi_id}
                         </span>
                       </div>
@@ -524,7 +538,7 @@ const ContactCard = () => {
                     {formData.payment_number && (
                       <div className="flex justify-between">
                         <span className="text-gray-600">Payment Number:</span>
-                        <span className="font-medium text-gray-800">
+                        <span className="font-bold text-gray-800">
                           {formData.payment_number}
                         </span>
                       </div>
@@ -532,7 +546,7 @@ const ContactCard = () => {
                     {formData.gst_number && (
                       <div className="flex justify-between">
                         <span className="text-gray-600">GST No:</span>
-                        <span className="font-medium text-gray-800">
+                        <span className="font-bold text-gray-800">
                           {formData.gst_number}
                         </span>
                       </div>
@@ -541,21 +555,27 @@ const ContactCard = () => {
                 </div>
 
                 {/* QR Code */}
-                {/* <div className="bg-white rounded-xl p-4 shadow-sm text-center">
-                <h4 className="font-semibold text-gray-800 mb-3 text-sm">
-                  Scan to Pay
-                </h4>
-                <div className="flex justify-center">
-                  <img
-                    src="/assets/qr-code.png"
-                    alt="Payment QR Code"
-                    className="w-24 h-24 border border-gray-200 rounded-lg"
-                  />
-                </div>
-                <p className="text-xs text-gray-600 mt-2">
-                  Scan this QR code with any UPI app to make payment
-                </p>
-              </div> */}
+                {formData.qr_code && (
+                  <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                    <h4 className="font-semibold text-gray-800 mb-3 text-sm">
+                      Scan to Pay
+                    </h4>
+                    <div className="flex justify-center">
+                      <img
+                        src={
+                          formData.qr_code
+                            ? formData.qr_code
+                            : "/assets/qr-code.png"
+                        }
+                        alt="Payment QR Code"
+                        className="w-24 h-24 border border-gray-200 rounded-lg"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-600 mt-2">
+                      Scan this QR code with any UPI app to make payment
+                    </p>
+                  </div>
+                )}
               </div>
             </Accordion>
           )}
@@ -747,7 +767,7 @@ const ContactCard = () => {
             >
               <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full flex items-center justify-center gap-2 mx-auto hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0">
                 <FaShareAlt />
-                <span className="text-sm font-medium">Share Contact</span>
+                <span className="text-sm font-bold">Share Contact</span>
               </button>
             </RWebShare>
           </div>
