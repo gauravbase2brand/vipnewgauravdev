@@ -8,7 +8,6 @@ import { RWebShare } from "react-web-share";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
-
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -166,6 +165,36 @@ const ContactCard = () => {
       </div>
     );
   }
+
+  const handleSaveContact = () => {
+    const { name, mobile, whatsapp_mobile } = formData;
+
+    if (name && mobile && whatsapp_mobile) {
+      // Create vCard format
+      const vCard = `
+      BEGIN:VCARD
+      VERSION:3.0
+      FN:${name}
+      TEL:${mobile}
+      NOTE:WhatsApp: ${whatsapp_mobile}
+      END:VCARD
+          `;
+
+      // Create a Blob object with vCard data
+      const blob = new Blob([vCard], { type: "text/vcard" });
+
+      // Create a download link for the vCard
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${name}-contact.vcf`; // Save file with contact name
+      link.click(); // Trigger the download
+
+      toast.success("Contact saved as vCard!");
+    } else {
+      toast.error("Please provide all the details!");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
@@ -287,9 +316,12 @@ const ContactCard = () => {
               {formData.company}
             </p>
           )}
-          {/* <span className="absolute top-[10%] right-[25px]">
+          <span
+            className="absolute top-[10%] right-[25px] sm:hidden"
+            onClick={handleSaveContact}
+          >
             <CiSaveUp2 fontSize={25} />
-          </span> */}
+          </span>
         </div>
 
         {/* Contact Information */}
@@ -465,121 +497,122 @@ const ContactCard = () => {
           )}
           {(formData.bank_details ||
             formData.upi_id ||
-            formData.payment_number) && (formData.bank_status !== "0") && (
-            <Accordion
-              title="Account Details"
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="800px"
-                  height="800px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="9"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M8 8H12C13.1046 8 14 8.89543 14 10V11.1429C14 12.2474 13.1046 13.1429 12 13.1429H9.33333L13.3333 17"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M8 8L16 8"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M10 10.5718L16 10.5718"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              }
-            >
-              <div className="pt-3 space-y-4">
-                {/* Bank Details */}
-                <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <h4 className="font-semibold text-gray-800 mb-3 text-sm">
-                    Bank Details :-
-                  </h4>
-                  <div className="space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span className="font-bold text-gray-800">
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: formData.bank_details.replace(
-                              /\n/g,
-                              "<br />"
-                            ),
-                          }}
-                        />
-                      </span>
-                    </div>
-                    {formData.upi_id && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">UPI:</span>
-                        <span className="font-bold text-gray-800">
-                          {formData.upi_id}
-                        </span>
-                      </div>
-                    )}
-                    {formData.payment_number && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Payment Number:</span>
-                        <span className="font-bold text-gray-800">
-                          {formData.payment_number}
-                        </span>
-                      </div>
-                    )}
-                    {formData.gst_number && (
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">GST No:</span>
-                        <span className="font-bold text-gray-800">
-                          {formData.gst_number}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* QR Code */}
-                {formData.qr_code && (
-                  <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+            formData.payment_number) &&
+            formData.bank_status !== "0" && (
+              <Accordion
+                title="Account Details"
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="800px"
+                    height="800px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="9"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 8H12C13.1046 8 14 8.89543 14 10V11.1429C14 12.2474 13.1046 13.1429 12 13.1429H9.33333L13.3333 17"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8 8L16 8"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 10.5718L16 10.5718"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                }
+              >
+                <div className="pt-3 space-y-4">
+                  {/* Bank Details */}
+                  <div className="bg-white rounded-xl p-4 shadow-sm">
                     <h4 className="font-semibold text-gray-800 mb-3 text-sm">
-                      Scan to Pay
+                      Bank Details :-
                     </h4>
-                    <div className="flex justify-center">
-                      <img
-                        src={
-                          formData.qr_code
-                            ? formData.qr_code
-                            : "/assets/qr-code.png"
-                        }
-                        alt="Payment QR Code"
-                        className="w-24 h-24 border border-gray-200 rounded-lg"
-                      />
+                    <div className="space-y-2 text-xs">
+                      <div className="flex justify-between">
+                        <span className="font-bold text-gray-800">
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: formData.bank_details.replace(
+                                /\n/g,
+                                "<br />"
+                              ),
+                            }}
+                          />
+                        </span>
+                      </div>
+                      {formData.upi_id && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">UPI:</span>
+                          <span className="font-bold text-gray-800">
+                            {formData.upi_id}
+                          </span>
+                        </div>
+                      )}
+                      {formData.payment_number && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Payment Number:</span>
+                          <span className="font-bold text-gray-800">
+                            {formData.payment_number}
+                          </span>
+                        </div>
+                      )}
+                      {formData.gst_number && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">GST No:</span>
+                          <span className="font-bold text-gray-800">
+                            {formData.gst_number}
+                          </span>
+                        </div>
+                      )}
                     </div>
-                    <p className="text-xs text-gray-600 mt-2">
-                      Scan this QR code with any UPI app to make payment
-                    </p>
                   </div>
-                )}
-              </div>
-            </Accordion>
-          )}
+
+                  {/* QR Code */}
+                  {formData.qr_code && (
+                    <div className="bg-white rounded-xl p-4 shadow-sm text-center">
+                      <h4 className="font-semibold text-gray-800 mb-3 text-sm">
+                        Scan to Pay
+                      </h4>
+                      <div className="flex justify-center">
+                        <img
+                          src={
+                            formData.qr_code
+                              ? formData.qr_code
+                              : "/assets/qr-code.png"
+                          }
+                          alt="Payment QR Code"
+                          className="w-24 h-24 border border-gray-200 rounded-lg"
+                        />
+                      </div>
+                      <p className="text-xs text-gray-600 mt-2">
+                        Scan this QR code with any UPI app to make payment
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </Accordion>
+            )}
         </div>
 
         {/* Social Media Section */}
