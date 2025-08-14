@@ -167,32 +167,6 @@ const ContactCard = () => {
     );
   }
 
-const handleSaveContact = () => {
-  const { name, mobile, email } = formData;
-
-  if (name && mobile && email) {
-    // Create vCard format
-    const vCard = `
-    BEGIN:VCARD
-    VERSION:3.0
-    FN:${name}
-    TEL:${mobile}
-    EMAIL:${email}
-    END:VCARD
-    `;
-
-    // Create a Blob object with vCard data
-    const blob = new Blob([vCard], { type: "text/vcard" });
-
-    // Use FileSaver.js to trigger the download
-    saveAs(blob, `${name}-contact.vcf`);
-
-    toast.success("Contact saved as vCard!");
-  } else {
-    toast.error("Please provide all the details!");
-  }
-};
-
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
@@ -314,12 +288,11 @@ const handleSaveContact = () => {
               {formData.company}
             </p>
           )}
-          <span
+          {/* <span
             className="absolute top-[10%] right-[25px] sm:hidden"
-            onClick={handleSaveContact}
           >
             <CiSaveUp2 fontSize={25} />
-          </span>
+          </span> */}
         </div>
 
         {/* Contact Information */}
