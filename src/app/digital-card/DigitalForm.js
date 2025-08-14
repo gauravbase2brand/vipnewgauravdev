@@ -711,12 +711,28 @@ const DigitalForm = () => {
               </div>
 
               {/* Business Information Section */}
-              <div className="md:col-span-3 mt-8">
-                <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
-                  Business Information
-                </h2>
-              </div>
-
+              <label className="inline-flex items-center cursor-pointer gap-4">
+                <input
+                  type="checkbox"
+                  id="bank_status"
+                  name="bank_status"
+                  checked={formData.bank_status}
+                  onChange={handleCheckboxChange}
+                  className="form-checkbox h-5 w-5 text-blue-600"
+                />
+                <span className="text-xl font-semibold text-red-500 border-b border-gray-200">
+                  Enable Bank Details
+                </span>
+              </label>
+              {formData.bank_status && (
+                <>
+                  <div className="md:col-span-3 mt-2">
+                    <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
+                      Business Information
+                    </h2>
+                  </div>
+                </>
+              )}
               {/* Company */}
               <div>
                 <label
@@ -742,118 +758,109 @@ const DigitalForm = () => {
                   <p className="text-red-500 text-sm mt-1">{errors.company}</p>
                 )}
               </div>
-
-              {/* GST Number */}
-              <div>
-                <label
-                  htmlFor="gst_number"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  GST Number
-                </label>
-                <input
-                  type="text"
-                  id="gst_number"
-                  name="gst_number"
-                  value={formData.gst_number}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.gst_number
-                      ? "border-red-500 bg-red-50"
-                      : "border-gray-300"
-                  }`}
-                  placeholder="22AAAAA0000A1Z5"
-                />
-                {errors.gst_number && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.gst_number}
-                  </p>
-                )}
-              </div>
-
-              {/* Payment Number */}
-              <div>
-                <label
-                  htmlFor="payment_number"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Payment Number
-                </label>
-                <input
-                  type="text"
-                  id="payment_number"
-                  name="payment_number"
-                  value={formData.payment_number}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Payment number"
-                />
-              </div>
-
-              {/* UPI ID */}
-              <div>
-                <label
-                  htmlFor="upi_id"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  UPI ID
-                </label>
-                <input
-                  type="text"
-                  id="upi_id"
-                  name="upi_id"
-                  value={formData.upi_id}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.upi_id
-                      ? "border-red-500 bg-red-50"
-                      : "border-gray-300"
-                  }`}
-                  placeholder="john@upi"
-                />
-                {errors.upi_id && (
-                  <p className="text-red-500 text-sm mt-1">{errors.upi_id}</p>
-                )}
-              </div>
-
-              {/* Bank Details */}
-
-              <div className="md:col-span-3">
-                <div className="flex gap-3 mb-2 items-center">
-                  <label
-                    htmlFor="bank_details"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Bank Details
-                  </label>
-                  <label className="inline-flex items-center cursor-pointer">
+              {formData.bank_status && (
+                <>
+                  {/* GST Number */}
+                  <div>
+                    <label
+                      htmlFor="gst_number"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      GST Number
+                    </label>
                     <input
-                      type="checkbox"
-                      id="bank_status"
-                      name="bank_status"
-                      checked={formData.bank_status}
-                      onChange={handleCheckboxChange}
-                      className="form-checkbox h-5 w-5 text-blue-600"
+                      type="text"
+                      id="gst_number"
+                      name="gst_number"
+                      value={formData.gst_number}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
+                        errors.gst_number
+                          ? "border-red-500 bg-red-50"
+                          : "border-gray-300"
+                      }`}
+                      placeholder="22AAAAA0000A1Z5"
                     />
-                    <span className="ml-2 text-sm text-gray-700">
-                      Enable Bank Details
-                    </span>
-                  </label>
-                </div>
+                    {errors.gst_number && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.gst_number}
+                      </p>
+                    )}
+                  </div>
 
-                <textarea
-                  id="bank_details"
-                  name="bank_details"
-                  value={formData.bank_details}
-                  onChange={handleInputChange}
-                  rows={3}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  placeholder="Enter bank details"
-                />
-              </div>
+                  {/* Payment Number */}
+                  <div>
+                    <label
+                      htmlFor="payment_number"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      Payment Number
+                    </label>
+                    <input
+                      type="text"
+                      id="payment_number"
+                      name="payment_number"
+                      value={formData.payment_number}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="Payment number"
+                    />
+                  </div>
 
+                  {/* UPI ID */}
+                  <div>
+                    <label
+                      htmlFor="upi_id"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
+                      UPI ID
+                    </label>
+                    <input
+                      type="text"
+                      id="upi_id"
+                      name="upi_id"
+                      value={formData.upi_id}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
+                        errors.upi_id
+                          ? "border-red-500 bg-red-50"
+                          : "border-gray-300"
+                      }`}
+                      placeholder="john@upi"
+                    />
+                    {errors.upi_id && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.upi_id}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Bank Details */}
+
+                  <div className="md:col-span-3">
+                    <div className="flex gap-3 mb-2 items-center">
+                      <label
+                        htmlFor="bank_details"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Bank Details
+                      </label>
+                    </div>
+
+                    <textarea
+                      id="bank_details"
+                      name="bank_details"
+                      value={formData.bank_details}
+                      onChange={handleInputChange}
+                      rows={3}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      placeholder="Enter bank details"
+                    />
+                  </div>
+                </>
+              )}
               {/* Address Information Section */}
-              <div className="md:col-span-3 mt-8">
+              <div className="md:col-span-3 mt-2">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Address Information
                 </h2>
@@ -1009,7 +1016,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Social Media Section */}
-              <div className="md:col-span-3 mt-8">
+              <div className="md:col-span-3 mt-2">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Social Media Links
                 </h2>
@@ -1174,7 +1181,7 @@ const DigitalForm = () => {
               </div>
 
               {/* Additional Fields Section */}
-              {/* <div className="md:col-span-3 mt-8">
+              {/* <div className="md:col-span-3 mt-2">
                 <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
                   Additional Information
                 </h2>
