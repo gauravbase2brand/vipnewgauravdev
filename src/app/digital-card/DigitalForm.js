@@ -40,6 +40,7 @@ const DigitalForm = () => {
     linkedin: "",
     location: "",
     id: "",
+    bank_status: true,
   });
 
   const [errors, setErrors] = useState({});
@@ -68,6 +69,14 @@ const DigitalForm = () => {
       description: "QR code for quick access",
     },
   ];
+  const handleCheckboxChange = (e) => {
+    const { checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      bank_status: checked,
+    }));
+  };
+
   // Fetch existing data on component mount
   useEffect(() => {
     const fetchExistingData = async () => {
@@ -115,6 +124,7 @@ const DigitalForm = () => {
             linkedin: apiData.linkedin || "",
             location: apiData.location || "",
             id: apiData.id || "",
+            bank_status: apiData.bank_status === "1" ? true : false,
           });
 
           // toast.success("Data loaded successfully!");
@@ -465,6 +475,7 @@ const DigitalForm = () => {
         `${apiUrl}/web/digital/visiting/card/${formData.id}`,
         {
           ...formData,
+          bank_status: formData.bank_status ? 1 : 0,
           account_section: "Sales",
           valid: formattedDate,
           active: 1,
@@ -806,13 +817,30 @@ const DigitalForm = () => {
               </div>
 
               {/* Bank Details */}
+
               <div className="md:col-span-3">
-                <label
-                  htmlFor="bank_details"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Bank Details
-                </label>
+                <div className="flex gap-3 mb-2 items-center">
+                  <label
+                    htmlFor="bank_details"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Bank Details
+                  </label>
+                  <label className="inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      id="bank_status"
+                      name="bank_status"
+                      checked={formData.bank_status}
+                      onChange={handleCheckboxChange}
+                      className="form-checkbox h-5 w-5 text-blue-600"
+                    />
+                    <span className="ml-2 text-sm text-gray-700">
+                      Enable Bank Details
+                    </span>
+                  </label>
+                </div>
+
                 <textarea
                   id="bank_details"
                   name="bank_details"
