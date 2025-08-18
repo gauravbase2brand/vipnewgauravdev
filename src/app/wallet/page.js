@@ -201,6 +201,7 @@ const Wallet = () => {
       cf_2171: todayDate,
       cf_2173: "Release",
       cf_2175: "1",
+      cf_2834:"W2W-Transfer"
     };
 
     const payload2 = {
@@ -213,6 +214,7 @@ const Wallet = () => {
       cf_2171: todayDate,
       cf_2173: "Release",
       cf_2175: "1",
+      cf_2834:"W2W-Transfer"
     };
 
     try {

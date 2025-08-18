@@ -8,7 +8,7 @@ import { RWebShare } from "react-web-share";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
-import { saveAs } from 'file-saver';
+
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -81,7 +81,20 @@ const ContactCard = () => {
     bank_status: "",
   });
   const [isLoading, setIsLoading] = useState(true);
-  const { user } = useContext(AppStateContext);
+  const { userProfile, user } = useContext(AppStateContext);
+  const walletBalance = Number(userProfile?.contact_cf?.wallet_balance ?? 0);
+  if (walletBalance <= 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-6">
+        <div className="bg-white shadow-xl p-6 rounded-lg text-center max-w-md">
+          <p className="text-gray-800 font-semibold">
+            To get your digital visiting card, you’ll need to buy a mobile
+            number first.
+          </p>
+        </div>
+      </div>
+    );
+  }
   useEffect(() => {
     const fetchExistingData = async () => {
       try {
@@ -166,7 +179,6 @@ const ContactCard = () => {
       </div>
     );
   }
-
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
@@ -288,9 +300,7 @@ const ContactCard = () => {
               {formData.company}
             </p>
           )}
-          {/* <span
-            className="absolute top-[10%] right-[25px] sm:hidden"
-          >
+          {/* <span className="absolute top-[10%] right-[25px]">
             <CiSaveUp2 fontSize={25} />
           </span> */}
         </div>
@@ -316,9 +326,16 @@ const ContactCard = () => {
                 />
               </svg>
             </div>
-            {formData.whatsapp_mobile || formData.whatsapp_phone ? (
+            {formData.whatsapp_mobile === "yes" ||
+            formData.whatsapp_phone === "yes" ? (
               <>
-                <Link href={`https://wa.me/${formData.whatsapp_mobile}`}>
+                <Link
+                  href={`https://wa.me/${
+                    formData.whatsapp_mobile === "yes"
+                      ? formData.mobile
+                      : formData.primary_phone
+                  }`}
+                >
                   <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                     <svg
                       width="20"
@@ -335,12 +352,16 @@ const ContactCard = () => {
                   </div>
                 </Link>
                 <span className="text-sm font-bold text-gray-700">
-                  {`+91-${formData.whatsapp_mobile || formData.whatsapp_phone}`}
+                  {`+91-${
+                    formData.whatsapp_mobile === "yes"
+                      ? formData.mobile
+                      : formData.primary_phone
+                  }`}
                 </span>
               </>
             ) : (
               <span className="text-sm font-bold text-gray-800">
-                {`+91-${formData.mobile}`}
+                {`+91-${formData.mobile || formData.primary_phone}`}
               </span>
             )}
           </Link>
