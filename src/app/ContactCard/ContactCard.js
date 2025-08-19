@@ -167,14 +167,15 @@ const ContactCard = () => {
       </div>
     );
   }
-  const generateVCard = (contact) => {
+const generateVCard = (contact) => {
+  // Basic vCard format
   return `
 BEGIN:VCARD
 VERSION:3.0
 FN:${contact.name}
 TEL:${contact.tel}
 EMAIL:${contact.email}
-ADR;TYPE=HOME:;;${contact.address}
+ADR;TYPE=HOME:;;${contact.address};${contact.city};${contact.state};${contact.postal_code}
 END:VCARD
   `;
 };
@@ -184,30 +185,27 @@ const downloadVCard = () => {
     name: 'John Doe',
     email: 'john.doe@example.com',
     tel: '+1234567890',
-    address: '123 Main St, Anytown, USA'
+    address: '123 Main St, Anytown, USA',
+    city: 'Anytown',
+    state: 'USA',
+    postal_code: '12345'
   };
 
-  // Generate the vCard data using the contact information
+  // Generate vCard data
   const vCardData = generateVCard(contact);
 
-  // Create a Blob from the vCard data
+  // Create a Blob with the vCard data
   const blob = new Blob([vCardData], { type: 'text/vcard' });
 
-  // Create an object URL for the Blob
-  const url = window.URL.createObjectURL(blob);
-
-  // Create an anchor tag to trigger the download
+  // Create a temporary link to trigger the download
   const a = document.createElement('a');
-  a.style.display = 'none'; // Hide the anchor tag
-  a.href = url; // Set the href to the Blob URL
-  a.download = `${contact.name}.vcf`; // Set the download filename
-  document.body.appendChild(a); // Append the anchor to the document
-  a.click(); // Programmatically click the anchor to start the download
-
-  // Revoke the object URL to release memory
-  window.URL.revokeObjectURL(url);
-  document.body.removeChild(a);
+  a.href = URL.createObjectURL(blob);
+  a.download = `${contact.name}.vcf`; // Set the file name
+  document.body.appendChild(a); // Append link to DOM
+  a.click(); // Trigger download
+  document.body.removeChild(a); // Remove the link element
 };
+
 
 
 
