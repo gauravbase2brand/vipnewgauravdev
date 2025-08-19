@@ -1,9 +1,18 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
 
-const ImageUploadComponent = ({selectedImage, setSelectedImage,imageType, setImageType,imageTypeOptions,handleImageUpload,imagePreview, setImagePreview }) => {
+const ImageUploadComponent = ({
+  formData,
+  selectedImage,
+  setSelectedImage,
+  imageType,
+  setImageType,
+  imageTypeOptions,
+  handleImageUpload,
+  imagePreview,
+  setImagePreview,
+}) => {
   const fileInputRef = useRef(null);
-
   // Handle file selection
   const handleFileSelect = (event) => {
     const file = event.target.files[0];
@@ -216,7 +225,7 @@ const ImageUploadComponent = ({selectedImage, setSelectedImage,imageType, setIma
         )}
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-3 justify-center">
-          {selectedImage && imageType &&(
+          {selectedImage && imageType && (
             <>
               <button
                 type="button"
@@ -228,12 +237,41 @@ const ImageUploadComponent = ({selectedImage, setSelectedImage,imageType, setIma
                     : "bg-primary text-white"
                 }`}
               >
-               Upload Image
+                Upload Image
               </button>
             </>
           )}
         </div>
       </div>
+      {(formData?.profile_image ||
+        formData?.company_logo ||
+        formData?.qr_code) && (
+        <div class="grid gap-4 mt-2">
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg aspect-square object-cover max-h-[220px]"
+                src={formData?.profile_image}
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg aspect-square object-cover max-h-[220px]"
+                src={formData?.company_logo}
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg aspect-square object-cover max-h-[220px]"
+                src={formData?.qr_code}
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

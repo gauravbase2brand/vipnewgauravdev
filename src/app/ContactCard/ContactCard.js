@@ -81,20 +81,8 @@ const ContactCard = () => {
     bank_status: "",
   });
   const [isLoading, setIsLoading] = useState(true);
-  const { userProfile, user } = useContext(AppStateContext);
-  const walletBalance = Number(userProfile?.contact_cf?.wallet_balance ?? 0);
-  if (walletBalance <= 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-6">
-        <div className="bg-white shadow-xl p-6 rounded-lg text-center max-w-md">
-          <p className="text-gray-800 font-semibold">
-            To get your digital visiting card, you’ll need to buy a mobile
-            number first.
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const { user } = useContext(AppStateContext);
+
   useEffect(() => {
     const fetchExistingData = async () => {
       try {
