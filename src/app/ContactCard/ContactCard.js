@@ -168,6 +168,7 @@ const ContactCard = () => {
     );
   }
 const downloadVCard = (contact) => {
+  // Creating a simple vCard string format
   const vCard = `
 BEGIN:VCARD
 VERSION:3.0
@@ -179,14 +180,14 @@ URL:${contact.website}
 END:VCARD
   `;
 
-  // Create a Blob with the vCard data and set the type as 'text/vcard'
+  // Create a Blob object from the vCard string
   const blob = new Blob([vCard], { type: "text/vcard" });
+
+  // Create a temporary anchor element for triggering the download
   const link = document.createElement("a");
-  
-  // Create a download link for the .vcf file
-  link.href = URL.createObjectURL(blob);
-  link.download = `${contact.name}.vcf`;  // Use contact's name as filename
-  link.click();  // Trigger the download
+  link.href = URL.createObjectURL(blob); // Create a URL for the Blob object
+  link.download = `${contact.name}.vcf`; // Set the file name as the contact's name
+  link.click(); // Trigger the download by clicking the link
 };
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
