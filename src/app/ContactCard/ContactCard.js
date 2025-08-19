@@ -168,7 +168,6 @@ const ContactCard = () => {
     );
   }
 const generateVCard = (contact) => {
-  // Basic vCard format
   return `
 BEGIN:VCARD
 VERSION:3.0
@@ -191,20 +190,20 @@ const downloadVCard = () => {
     postal_code: '12345'
   };
 
-  // Generate vCard data
   const vCardData = generateVCard(contact);
+ const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" }); 
+    const url = URL.createObjectURL(blob); 
 
-  // Create a Blob with the vCard data
-  const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const a = document.createElement("a"); 
+    a.href = url; 
+    a.download = `${formData.name}.vcf`; 
+    document.body.appendChild(a); 
+    a.click(); 
 
-  // Create a temporary link to trigger the download
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `${contact.name}.vcf`; // Set the file name
-  document.body.appendChild(a); // Append link to DOM
-  a.click(); // Trigger download
-  document.body.removeChild(a); // Remove the link element
+    window.URL.revokeObjectURL(url); 
+    document.body.removeChild(a);
 };
+
 
 
 
