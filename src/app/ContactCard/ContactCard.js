@@ -169,6 +169,7 @@ const ContactCard = () => {
   }
 
 // Function to generate vCard format
+
 const generateVCard = (contact) => {
   return `
 BEGIN:VCARD
@@ -181,7 +182,6 @@ END:VCARD
   `;
 };
 
-// Function to download the vCard file
 const downloadVCard = () => {
   const contact = {
     name: 'John Doe',
@@ -193,25 +193,15 @@ const downloadVCard = () => {
     postal_code: '12345'
   };
 
+  // Generate vCard data
   const vCardData = generateVCard(contact);
+  
+  // Create a Blob object for the vCard content
+  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
 
-  // Directly trigger the download
-  const a = document.createElement('a');
-  const blob = new Blob([vCardData], { type: 'application/vcf;charset=utf-8' });
-
-  a.href = URL.createObjectURL(blob);
-  a.download = `${contact.name}.vcf`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
+  // Use file-saver to download the vCard
+  saveAs(blob, `${contact.name}.vcf`);
 };
-
-
-
-
-
-
-
 
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
