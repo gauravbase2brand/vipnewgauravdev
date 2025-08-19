@@ -170,23 +170,213 @@ const ContactCard = () => {
 
 // Function to generate vCard format
 
+
+"use client";
+import { FaShareAlt, FaPlus, FaMinus } from "react-icons/fa";
+import { CiSaveUp2 } from "react-icons/ci";
+import Link from "next/link";
+import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { RWebShare } from "react-web-share";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
+import { saveAs } from "file-saver";
+const Accordion = ({ title, children, icon }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="bg-white rounded-2xl mb-3 shadow-sm border border-gray-100 overflow-hidden">
+      <button
+        className="flex justify-between items-center w-full p-2 text-left hover:shadow-md  transition-all duration-300 active:shadow-sm cursor-pointer"
+        onClick={toggleAccordion}
+      >
+        <div className="flex items-center">
+          <div className="w-10 h-10 bg-secondary rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+            {icon}
+          </div>
+          <span className="text-sm font-bold text-gray-700">{title}</span>
+        </div>
+        <div className="mr-4">
+          {isOpen ? (
+            <FaMinus className="text-gray-500" />
+          ) : (
+            <FaPlus className="text-gray-500" />
+          )}
+        </div>
+      </button>
+      {isOpen && (
+        <div className="px-2 pb-4 border-t border-gray-100 bg-gray-50 transition-all duration-300 ease-in-out">
+          {children}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const ContactCard = () => {
+  const params = useParams();
+  const mobileNumber = params.slug;
+  const [showCrackers, setShowCrackers] = useState(true);
+  const apiUrl = process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL;
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+  const [formData, setFormData] = useState({
+    mobile: "",
+    primary_phone: "",
+    email: "",
+    whatsapp_mobile: "",
+    whatsapp_phone: "",
+    name: "",
+    active: "1",
+    account_section: "",
+    valid: "1",
+    company: "",
+    gst_number: "",
+    payment_number: "",
+    upi_id: "",
+    bank_details: "",
+    address: "",
+    city: "",
+    district: "",
+    state: "",
+    postal_code: "",
+    youtube: "",
+    instagram: "",
+    facebook: "",
+    snapchat: "",
+    twitter: "",
+    linkedin: "",
+    location: "",
+    bank_status: "",
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(AppStateContext);
+
+  useEffect(() => {
+    const fetchExistingData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await axios.get(
+          `${apiUrl}/web/digital/visiting/card/${mobileNumber}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${user?.token}`, // Add Bearer token here
+            },
+          }
+        );
+
+        if (response.data.status && response.data.data) {
+          const apiData = response.data.data;
+
+          // Map API response to form data
+          setFormData({
+            mobile: apiData.mobile || "",
+            primary_phone: apiData.primary_phone || "",
+            email: apiData.email || "",
+            whatsapp_mobile: apiData.whatsapp_mobile || "",
+            whatsapp_phone: apiData.whatsapp_phone || "",
+            name: apiData.name || "",
+            active: apiData.active === "Active" ? "1" : "0",
+            account_section: apiData.account_section || "",
+            valid: apiData.valid || "1",
+            company: apiData.company || "",
+            gst_number: apiData.gst_number || "",
+            payment_number: apiData.payment_number || "",
+            upi_id: apiData.upi_id || "",
+            bank_details: apiData.bank_details || "",
+            address: apiData.address || "",
+            city: apiData.city || "",
+            district: apiData.district || "",
+            state: apiData.state || "",
+            postal_code: apiData.postal_code || "",
+            youtube: apiData.youtube || "",
+            instagram: apiData.instagram || "",
+            facebook: apiData.facebook || "",
+            snapchat: apiData.snapchat || "",
+            twitter: apiData.twitter || "",
+            linkedin: apiData.linkedin || "",
+            location: apiData.location || "",
+            profile_image: apiData.profile_image || "",
+            qr_code: apiData.qr_code || "",
+            company_logo: apiData.company_logo || "",
+            bank_status: apiData.bank_status || "",
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        toast.error(
+          "Failed to load existing data. You can still create a new card."
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (mobileNumber) {
+      fetchExistingData();
+    } else {
+      setIsLoading(false);
+    }
+  }, [mobileNumber]);
+
+  useEffect(() => {
+    // Hide crackers after 4 seconds
+    const timer = setTimeout(() => {
+      setShowCrackers(false);
+    }, 9000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+        <div className="flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mr-4"></div>
+        </div>
+      </div>
+    );
+  }
+
+// Function to generate vCard format
 const generateVCard = (contact) => {
   const vCardLines = [
     "BEGIN:VCARD",
-    "VERSION:3.0",
-    "PRODID:-//Apple Inc.//iOS 17.0.2//EN", // Added PRODID
+    "VERSION:3.0", // Sticking to 3.0 for broader Android compatibility
     `FN:${contact.name || ''}`,
-    `N:${contact.name || ''};;;;`,
-    contact.mobile ? `TEL;TYPE=CELL:${contact.mobile}` : '',
-    contact.primary_phone ? `TEL;TYPE=WORK:${contact.primary_phone}` : '',
-    contact.email ? `EMAIL;TYPE=INTERNET:${contact.email}` : '',
-    contact.company ? `ORG:${contact.company}` : '',
-    contact.address || contact.city || contact.state || contact.postal_code ? 
-      `ADR;TYPE=HOME:;;${contact.address || ''};${contact.city || ''};${contact.state || ''};${contact.postal_code || ''};` : '',
-    "END:VCARD"
+    `N:${contact.name || ''};;;;`, // N field is crucial for Android
   ];
-  // Filter out empty lines and join with CRLF
-  return vCardLines.filter(line => line !== '').join('\r\n');
+
+  if (contact.mobile) {
+    vCardLines.push(`TEL;TYPE=CELL:${contact.mobile}`);
+  }
+  if (contact.primary_phone) {
+    vCardLines.push(`TEL;TYPE=WORK:${contact.primary_phone}`);
+  }
+  if (contact.email) {
+    vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
+  }
+  if (contact.company) {
+    vCardLines.push(`ORG:${contact.company}`);
+  }
+
+  // Address field: Ensure all parts are present, even if empty, and use correct delimiters
+  const addressParts = [
+    contact.address || '',
+    contact.city || '',
+    contact.state || '',
+    contact.postal_code || ''
+  ];
+  // Join with semicolons, ensuring empty parts are still represented
+  vCardLines.push(`ADR;TYPE=HOME:;;${addressParts.join(';')}`);
+
+  vCardLines.push("END:VCARD");
+
+  // Join with CRLF for strict vCard compliance
+  return vCardLines.join('\r\n');
 };
 
 const downloadVCard = (formData) => {
