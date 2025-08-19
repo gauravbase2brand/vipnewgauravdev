@@ -195,11 +195,15 @@ const downloadVCard = () => {
 
   const vCardData = generateVCard(contact);
 
-  // Create a Blob with application/vcf MIME type (android-friendly)
+  // Directly trigger the download
+  const a = document.createElement('a');
   const blob = new Blob([vCardData], { type: 'application/vcf;charset=utf-8' });
 
-  // Use FileSaver.js to trigger download
-  saveAs(blob, `${contact.name}.vcf`);
+  a.href = URL.createObjectURL(blob);
+  a.download = `${contact.name}.vcf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 };
 
 
