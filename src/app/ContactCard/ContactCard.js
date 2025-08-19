@@ -167,6 +167,8 @@ const ContactCard = () => {
       </div>
     );
   }
+
+// Function to generate vCard format
 const generateVCard = (contact) => {
   return `
 BEGIN:VCARD
@@ -179,6 +181,7 @@ END:VCARD
   `;
 };
 
+// Function to download the vCard file
 const downloadVCard = () => {
   const contact = {
     name: 'John Doe',
@@ -192,10 +195,13 @@ const downloadVCard = () => {
 
   const vCardData = generateVCard(contact);
 
-  // Create a Blob and use FileSaver.js to download it
-  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-  saveAs(blob, `${contact.name}.vcf`); // Trigger the download with the .vcf extension
+  // Create a Blob with application/vcf MIME type (android-friendly)
+  const blob = new Blob([vCardData], { type: 'application/vcf;charset=utf-8' });
+
+  // Use FileSaver.js to trigger download
+  saveAs(blob, `${contact.name}.vcf`);
 };
+
 
 
 
