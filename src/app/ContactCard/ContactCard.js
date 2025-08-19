@@ -167,35 +167,35 @@ const ContactCard = () => {
       </div>
     );
   }
-const downloadVCard = (contact) => {
-  if (!contact || !contact.name || !contact.mobile) {
-    console.error("Invalid contact data");
-    return;
-  }
+const downloadVCard = () => {
+  const contact = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    tel: '+1234567890',
+    address: '123 Main St, Anytown, USA'
+  };
 
-  const vCard = `
-BEGIN:VCARD
-VERSION:3.0
-FN:${contact.name}
-TEL:${contact.mobile}
-EMAIL:${contact.email || ""}
-ADR;TYPE=HOME:;;${contact.address || ""};${contact.city || ""};${contact.state || ""};${contact.postal_code || ""}
-END:VCARD
-  `;
+  // Generate the vCard data using the contact information
+  const vCardData = generateVCard(contact);
 
-  const blob = new Blob([vCard], { type: "text/vcard" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `${contact.name}.vcf`;
+  // Create a Blob from the vCard data
+  const blob = new Blob([vCardData], { type: 'text/vcard' });
 
-  // Create a temporary file input element to trigger import
-  const fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = ".vcf";
+  // Create an object URL for the Blob
+  const url = window.URL.createObjectURL(blob);
 
-  // Trigger file input click
-  fileInput.click();
+  // Create an anchor tag to trigger the download
+  const a = document.createElement('a');
+  a.style.display = 'none'; // Hide the anchor tag
+  a.href = url; // Set the href to the Blob URL
+  a.download = `${contact.name}.vcf`; // Set the download filename
+  document.body.appendChild(a); // Append the anchor to the document
+  a.click(); // Programmatically click the anchor to start the download
+
+  // Revoke the object URL to release memory
+  window.URL.revokeObjectURL(url);
 };
+
 
 
 
