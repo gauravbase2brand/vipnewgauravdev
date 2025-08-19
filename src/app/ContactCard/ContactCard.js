@@ -168,27 +168,37 @@ const ContactCard = () => {
     );
   }
 const downloadVCard = (contact) => {
-  // Creating a simple vCard string format
+  // Ensure contact data is valid
+  if (!contact || !contact.name || !contact.mobile) {
+    console.error('Invalid contact data');
+    return;
+  }
+
+  // Creating the vCard format string
   const vCard = `
 BEGIN:VCARD
 VERSION:3.0
 FN:${contact.name}
 TEL:${contact.mobile}
-EMAIL:${contact.email}
-ADR;TYPE=HOME:;;${contact.address};${contact.city};${contact.state};${contact.postal_code}
-URL:${contact.website}
+EMAIL:${contact.email || ''}
+ADR;TYPE=HOME:;;${contact.address || ''};${contact.city || ''};${contact.state || ''};${contact.postal_code || ''}
+URL:${contact.website || ''}
 END:VCARD
   `;
 
-  // Create a Blob object from the vCard string
+  // Check the vCard string
+  console.log(vCard);
+
+  // Create a Blob object with the vCard data
   const blob = new Blob([vCard], { type: "text/vcard" });
 
-  // Create a temporary anchor element for triggering the download
+  // Create an invisible anchor link to trigger the file download
   const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob); // Create a URL for the Blob object
-  link.download = `${contact.name}.vcf`; // Set the file name as the contact's name
-  link.click(); // Trigger the download by clicking the link
+  link.href = URL.createObjectURL(blob);  // Create a URL for the Blob object
+  link.download = `${contact.name}.vcf`; // Use the contact name as the filename
+  link.click();  // Trigger the download
 };
+
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
