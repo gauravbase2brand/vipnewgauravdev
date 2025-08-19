@@ -167,7 +167,7 @@ const ContactCard = () => {
       </div>
     );
   }
-  const downloadVCard = (contact) => {
+const downloadVCard = (contact) => {
   const vCard = `
 BEGIN:VCARD
 VERSION:3.0
@@ -179,11 +179,14 @@ URL:${contact.website}
 END:VCARD
   `;
 
+  // Create a Blob with the vCard data and set the type as 'text/vcard'
   const blob = new Blob([vCard], { type: "text/vcard" });
   const link = document.createElement("a");
+  
+  // Create a download link for the .vcf file
   link.href = URL.createObjectURL(blob);
-  link.download = `${contact.name}.vcf`;
-  link.click();
+  link.download = `${contact.name}.vcf`;  // Use contact's name as filename
+  link.click();  // Trigger the download
 };
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
