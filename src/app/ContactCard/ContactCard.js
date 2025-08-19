@@ -8,7 +8,7 @@ import { RWebShare } from "react-web-share";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
-
+import { saveAs } from 'file-saver';
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -191,20 +191,10 @@ const downloadVCard = () => {
   };
 
   const vCardData = generateVCard(contact);
-  
-  // Create a Blob with proper MIME type and charset
-  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  
-  // Create a temporary link to trigger the download
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `${contact.name}.vcf`; // Force the download as .vcf
-  document.body.appendChild(a); // Append to DOM
-  a.click(); // Trigger download
-  document.body.removeChild(a); // Remove from DOM
 
-  URL.revokeObjectURL(url); // Clean up the object URL
+  // Create a Blob and use FileSaver.js to download it
+  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+  saveAs(blob, `${contact.name}.vcf`); // Trigger the download with the .vcf extension
 };
 
 
