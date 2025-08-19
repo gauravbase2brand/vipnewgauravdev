@@ -191,18 +191,22 @@ const downloadVCard = () => {
   };
 
   const vCardData = generateVCard(contact);
- const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" }); 
-    const url = URL.createObjectURL(blob); 
+  
+  // Create a Blob with proper MIME type and charset
+  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  
+  // Create a temporary link to trigger the download
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${contact.name}.vcf`; // Force the download as .vcf
+  document.body.appendChild(a); // Append to DOM
+  a.click(); // Trigger download
+  document.body.removeChild(a); // Remove from DOM
 
-    const a = document.createElement("a"); 
-    a.href = url; 
-    a.download = `${formData.name}.vcf`; 
-    document.body.appendChild(a); 
-    a.click(); 
-
-    window.URL.revokeObjectURL(url); 
-    document.body.removeChild(a);
+  URL.revokeObjectURL(url); // Clean up the object URL
 };
+
 
 
 
