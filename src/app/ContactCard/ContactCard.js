@@ -177,10 +177,8 @@ const downloadVCard = (contact) => {
   const vCard = `
 BEGIN:VCARD
 VERSION:3.0
-FN:${encodeURIComponent(contact.name)}
-TEL:${encodeURIComponent(contact.mobile)}
-EMAIL:${encodeURIComponent(contact.email || "")}
-ADR;TYPE=HOME:;;${encodeURIComponent(contact.address || "")};${encodeURIComponent(contact.city || "")};${encodeURIComponent(contact.state || "")};${encodeURIComponent(contact.postal_code || "")}
+FN:${contact.name}
+TEL:${contact.mobile}
 END:VCARD
   `;
 
@@ -196,7 +194,6 @@ END:VCARD
   link.download = `${contact.name}.vcf`;  // Use the contact's name as the filename
   link.click();  // Trigger the download
 };
-
 
 
   return (
