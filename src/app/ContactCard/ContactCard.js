@@ -181,7 +181,6 @@ FN:${contact.name}
 TEL:${contact.mobile}
 EMAIL:${contact.email || ""}
 ADR;TYPE=HOME:;;${contact.address || ""};${contact.city || ""};${contact.state || ""};${contact.postal_code || ""}
-URL:${contact.website || ""}
 END:VCARD
   `;
 
