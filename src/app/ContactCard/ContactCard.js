@@ -167,6 +167,18 @@ const ContactCard = () => {
       </div>
     );
   }
+  const generateVCard = (contact) => {
+  return `
+BEGIN:VCARD
+VERSION:3.0
+FN:${contact.name}
+TEL:${contact.tel}
+EMAIL:${contact.email}
+ADR;TYPE=HOME:;;${contact.address}
+END:VCARD
+  `;
+};
+
 const downloadVCard = () => {
   const contact = {
     name: 'John Doe',
