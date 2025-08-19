@@ -183,16 +183,18 @@ ADR;TYPE=HOME:;;${contact.address || ""};${contact.city || ""};${contact.state |
 END:VCARD
   `;
 
-  // Ensure that Blob is created properly and file is downloadable
   const blob = new Blob([vCard], { type: "text/vcard" });
   const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);  // Create a URL for the Blob
-  link.download = `${contact.name}.vcf`;  // Ensure proper file name and extension
+  link.href = URL.createObjectURL(blob);
+  link.download = `${contact.name}.vcf`;
 
-  // Append link to body (some browsers require it) and trigger the download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);  // Clean up the DOM
+  // Create a temporary file input element to trigger import
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = ".vcf";
+
+  // Trigger file input click
+  fileInput.click();
 };
 
 
