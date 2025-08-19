@@ -171,26 +171,36 @@ const ContactCard = () => {
 // Function to generate vCard format
 
 const generateVCard = (contact) => {
-  return `
-BEGIN:VCARD
-VERSION:3.0
-FN:${contact.name}
-TEL:${contact.tel}
-EMAIL:${contact.email}
-ADR;TYPE=HOME:;;${contact.address};${contact.city};${contact.state};${contact.postal_code}
-END:VCARD
-  `;
+  const vCardLines = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "PRODID:-//Apple Inc.//iOS 17.0.2//EN", // Added PRODID
+    `FN:${contact.name || ''}`,
+    `N:${contact.name || ''};;;;`,
+    contact.mobile ? `TEL;TYPE=CELL:${contact.mobile}` : '',
+    contact.primary_phone ? `TEL;TYPE=WORK:${contact.primary_phone}` : '',
+    contact.email ? `EMAIL;TYPE=INTERNET:${contact.email}` : '',
+    contact.company ? `ORG:${contact.company}` : '',
+    contact.address || contact.city || contact.state || contact.postal_code ? 
+      `ADR;TYPE=HOME:;;${contact.address || ''};${contact.city || ''};${contact.state || ''};${contact.postal_code || ''};` : '',
+    "END:VCARD"
+  ];
+  // Filter out empty lines and join with CRLF
+  return vCardLines.filter(line => line !== '').join('\r\n');
 };
 
-const downloadVCard = () => {
+const downloadVCard = (formData) => {
+  // Use actual formData from the component
   const contact = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    tel: '+1234567890',
-    address: '123 Main St, Anytown, USA',
-    city: 'Anytown',
-    state: 'USA',
-    postal_code: '12345'
+    name: formData.name,
+    email: formData.email,
+    mobile: formData.mobile,
+    primary_phone: formData.primary_phone,
+    address: formData.address,
+    city: formData.city,
+    state: formData.state,
+    postal_code: formData.postal_code,
+    company: formData.company,
   };
 
   // Generate vCard data
@@ -200,7 +210,7 @@ const downloadVCard = () => {
   const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
 
   // Use file-saver to download the vCard
-  saveAs(blob, `${contact.name}.vcf`);
+  saveAs(blob, `${contact.name || 'contact'}.vcf`);
 };
 
   return (
