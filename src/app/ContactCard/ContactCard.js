@@ -173,26 +173,30 @@ const downloadVCard = (contact) => {
     return;
   }
 
-  // Ensure fields are properly encoded and all optional fields are handled
+  // Creating the vCard format string with contact data
   const vCard = `
 BEGIN:VCARD
 VERSION:3.0
-FN:${contact.name}
-TEL:${contact.mobile}
-EMAIL:${contact.email || ""}
-ADR;TYPE=HOME:;;${contact.address || ""};${contact.city || ""};${contact.state || ""};${contact.postal_code || ""}
+FN:${encodeURIComponent(contact.name)}
+TEL:${encodeURIComponent(contact.mobile)}
+EMAIL:${encodeURIComponent(contact.email || "")}
+ADR;TYPE=HOME:;;${encodeURIComponent(contact.address || "")};${encodeURIComponent(contact.city || "")};${encodeURIComponent(contact.state || "")};${encodeURIComponent(contact.postal_code || "")}
 END:VCARD
   `;
 
+  // Log the vCard content to verify its structure
+  console.log(vCard);
+
   // Create a Blob object with the vCard data and specify the MIME type as 'text/vcard'
   const blob = new Blob([vCard], { type: "text/vcard" });
-  
+
   // Create a link to download the Blob as a .vcf file
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);  // Create a URL for the Blob
   link.download = `${contact.name}.vcf`;  // Use the contact's name as the filename
   link.click();  // Trigger the download
 };
+
 
 
   return (
