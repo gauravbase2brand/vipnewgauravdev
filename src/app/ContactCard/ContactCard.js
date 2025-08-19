@@ -206,6 +206,7 @@ const downloadVCard = () => {
 
   // Revoke the object URL to release memory
   window.URL.revokeObjectURL(url);
+  document.body.removeChild(a);
 };
 
 
