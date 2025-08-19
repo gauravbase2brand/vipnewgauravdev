@@ -167,6 +167,24 @@ const ContactCard = () => {
       </div>
     );
   }
+  const downloadVCard = (contact) => {
+  const vCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${contact.name}
+TEL:${contact.mobile}
+EMAIL:${contact.email}
+ADR;TYPE=HOME:;;${contact.address};${contact.city};${contact.state};${contact.postal_code}
+URL:${contact.website}
+END:VCARD
+  `;
+
+  const blob = new Blob([vCard], { type: "text/vcard" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `${contact.name}.vcf`;
+  link.click();
+};
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
@@ -288,9 +306,9 @@ const ContactCard = () => {
               {formData.company}
             </p>
           )}
-          {/* <span className="absolute top-[10%] right-[25px]">
-            <CiSaveUp2 fontSize={25} />
-          </span> */}
+          <span className="absolute top-[10%] right-[25px] sm:hidden">
+            <CiSaveUp2 fontSize={25} onClick={() => downloadVCard(formData)} />
+          </span>
         </div>
 
         {/* Contact Information */}
@@ -340,7 +358,7 @@ const ContactCard = () => {
                   </div>
                 </Link>
                 <span className="text-sm font-bold text-gray-700">
-                  {`+91-${
+                  {`${
                     formData.whatsapp_mobile === "yes"
                       ? formData.mobile
                       : formData.primary_phone
@@ -349,7 +367,7 @@ const ContactCard = () => {
               </>
             ) : (
               <span className="text-sm font-bold text-gray-800">
-                {`+91-${formData.mobile || formData.primary_phone}`}
+                {`${formData.mobile || formData.primary_phone}`}
               </span>
             )}
           </Link>
@@ -582,7 +600,7 @@ const ContactCard = () => {
                               : "/assets/qr-code.png"
                           }
                           alt="Payment QR Code"
-                          className="w-24 h-24 border border-gray-200 rounded-lg"
+                          className="w-full h-full border border-gray-200 rounded-lg"
                         />
                       </div>
                       <p className="text-xs text-gray-600 mt-2">
