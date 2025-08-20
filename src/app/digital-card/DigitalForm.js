@@ -36,7 +36,7 @@ const DigitalForm = () => {
     whatsapp_mobile: "no",
     whatsapp_phone: "no",
     name: "",
-    active: "1",
+    active: "",
     account_section: "",
     valid: "1",
     company: "",
@@ -120,7 +120,7 @@ const DigitalForm = () => {
             whatsapp_mobile: apiData.whatsapp_mobile || "",
             whatsapp_phone: apiData.whatsapp_phone || "",
             name: apiData.name || "",
-            active: apiData.active === "Active" ? "1" : "0",
+            active: apiData.active === "Active" ? "yes" : "no",
             account_section: apiData.account_section || "",
             valid: apiData.valid || "1",
             company: apiData.company || "",
@@ -475,7 +475,6 @@ const DigitalForm = () => {
           bank_status: formData.bank_status ? 1 : 0,
           account_section: "Sales",
           valid: formattedDate,
-          active: 1,
         },
         {
           headers: {
