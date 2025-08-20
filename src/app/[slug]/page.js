@@ -389,9 +389,9 @@ export async function generateMetadata({ params }) {
 export default async function CityPage({ params }) {
   const meta = await params;
   const config = cityConfigs[meta.slug.toLowerCase()];
-  const isTenDigitNumber = /^\d{10}$/.test(meta.slug);
+  const isVip = meta.slug.toLowerCase().startsWith('vip-');
 
-  if (isTenDigitNumber) {
+  if (isVip) {
     return <ContactCard/>;
   }
   if (!config) {

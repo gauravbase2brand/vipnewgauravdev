@@ -7,7 +7,7 @@ const Notification = () => {
   const [notification, setNotification] = useState([]);
   const [currentNotification, setCurrentNotification] = useState(0); // Store the index of the current notification
   const [currentText, setCurrentText] = useState(""); // Store the current text
-
+  const [vipPrefix, setVipPrefix] = useState("");
   const notificationTexts = [
     "🔥 {{Number_for_Display}} Sold Out!",
     "⏳ Sold Out! {{Number_for_Display}} is Gone!",
@@ -15,6 +15,13 @@ const Notification = () => {
     "❌ Sold Out! {{Number_for_Display}} Found a New Owner!",
     "💨 You Blinked! {{Number_for_Display}} Sold Out!",
   ];
+  useEffect(() => {
+    const path = window.location.pathname; // Get the current path of the URL
+    const match = path.match(/^\/(vip-)/); // Match "vip-" at the start of the URL path
+    if (match) {
+      setVipPrefix(match[1]); // Extract "vip-" from "/vip-" and log it
+    }
+  }, []);
 
   useEffect(() => {
     axios
@@ -69,6 +76,7 @@ const Notification = () => {
       clearTimeout(intervalTimeout); // Cleanup interval timeout
     };
   }, [notification, currentNotification]);
+  if (vipPrefix === "vip-") return;
 
   return (
     <>

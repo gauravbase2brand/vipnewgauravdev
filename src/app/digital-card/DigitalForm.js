@@ -58,6 +58,7 @@ const DigitalForm = () => {
     location: "",
     id: "",
     bank_status: true,
+    url_extension: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -145,6 +146,7 @@ const DigitalForm = () => {
             profile_image: apiData.profile_image || "",
             qr_code: apiData.qr_code || "",
             company_logo: apiData.company_logo || "",
+            url_extension: apiData.url_extension || "",
           });
 
           // toast.success("Data loaded successfully!");
@@ -341,7 +343,9 @@ const DigitalForm = () => {
     if (!formData.state.trim()) {
       newErrors.state = "State is required";
     }
-
+    if (!formData.url_extension.trim()) {
+      newErrors.url_extension = `${formData.name} your Domain url is required`;
+    }
     if (!formData.postal_code.trim()) {
       newErrors.postal_code = "Postal code is required";
     } else if (!validatePostalCode(formData.postal_code)) {
@@ -487,7 +491,7 @@ const DigitalForm = () => {
       if (response.status === 200 || response.status === 201) {
         toast.success("Digital visiting card updated successfully!");
         handleImageUpload();
-        router.push(formData.mobile);
+        router.push(`vip-${formData.url_extension}`);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -508,20 +512,20 @@ const DigitalForm = () => {
   //   );
   // }
 
-    useEffect(() => {
+  useEffect(() => {
     if (formData.mobile.length !== 10) {
       setFormData((prev) => ({
         ...prev,
         whatsapp_mobile: "no", // Reset WhatsApp checkbox if mobile is invalid
       }));
-    }else if(formData.primary_phone.length !== 10){
+    } else if (formData.primary_phone.length !== 10) {
       setFormData((prev) => ({
         ...prev,
         whatsapp_phone: "no", // Reset WhatsApp checkbox if mobile is invalid
       }));
     }
-  }, [formData.mobile,formData.primary_phone]);
-  
+  }, [formData.mobile, formData.primary_phone]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -739,6 +743,44 @@ const DigitalForm = () => {
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
+              <div>
+                <label
+                  htmlFor="url_extension"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  Domain Url <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="url_extension"
+                  name="url_extension"
+                  value={formData.url_extension}
+                  onChange={(e) => {
+                    let value = e.target.value;
+                    // Remove invalid characters (allow only letters, numbers, hyphen)
+                    value = value.replace(/[^a-zA-Z0-9-]/g, "");
+                    // Replace multiple hyphens with a single hyphen
+                    value = value.replace(/-+/g, "-");
+                    // Remove hyphen at the start
+                    value = value.replace(/^-/, "");
+
+                    handleInputChange({
+                      target: { name: "url_extension", value },
+                    });
+                  }}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
+                    errors.url_extension
+                      ? "border-red-500 bg-red-50"
+                      : "border-gray-300"
+                  }`}
+                  placeholder="deepak97800"
+                />
+                {errors.url_extension && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.url_extension}
+                  </p>
                 )}
               </div>
 

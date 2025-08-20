@@ -8,7 +8,7 @@ import { RWebShare } from "react-web-share";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -168,68 +168,72 @@ const ContactCard = () => {
     );
   }
 
-// Function to generate vCard format
+  // Function to generate vCard format
 
-const generateVCard = (contact) => {
-  const vCardLines = [
-    "BEGIN:VCARD",
-    "VERSION:3.0", // Sticking to 3.0 for broader Android compatibility
-    `FN:${contact.name || ''}`,
-    `N:${contact.name || ''};;;;`, // N field is crucial for Android
-  ];
+  const generateVCard = (contact) => {
+    const mobile = contact.mobile ? contact.mobile.replace(/-/g, '') : "";
+  const primaryPhone = contact.primary_phone
+    ? contact.primary_phone.replace(/-/g, '')
+    : "";
+    const vCardLines = [
+      "BEGIN:VCARD",
+      "VERSION:3.0", // Sticking to 3.0 for broader Android compatibility
+      `FN:${contact.name || ""}`,
+      `N:${contact.name || ""};;;;`, // N field is crucial for Android
+    ];
 
-  if (contact.mobile) {
-    vCardLines.push(`TEL;TYPE=CELL:${contact.mobile}`);
-  }
-  if (contact.primary_phone) {
-    vCardLines.push(`TEL;TYPE=WORK:${contact.primary_phone}`);
-  }
-  if (contact.email) {
-    vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
-  }
-  if (contact.company) {
-    vCardLines.push(`ORG:${contact.company}`);
-  }
+    if (mobile) {
+      vCardLines.push(`TEL;TYPE=CELL:${mobile}`);
+    }
+    if (primaryPhone) {
+      vCardLines.push(`TEL;TYPE=WORK:${primaryPhone}`);
+    }
+    if (contact.email) {
+      vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
+    }
+    if (contact.company) {
+      vCardLines.push(`ORG:${contact.company}`);
+    }
 
-  // Address field: Ensure all parts are present, even if empty, and use correct delimiters
-  const addressParts = [
-    contact.address || '',
-    contact.city || '',
-    contact.state || '',
-    contact.postal_code || ''
-  ];
-  // Join with semicolons, ensuring empty parts are still represented
-  vCardLines.push(`ADR;TYPE=HOME:;;${addressParts.join(';')}`);
+    // Address field: Ensure all parts are present, even if empty, and use correct delimiters
+    const addressParts = [
+      contact.address || "",
+      contact.city || "",
+      contact.state || "",
+      contact.postal_code || "",
+    ];
+    // Join with semicolons, ensuring empty parts are still represented
+    vCardLines.push(`ADR;TYPE=HOME:;;${addressParts.join(";")}`);
 
-  vCardLines.push("END:VCARD");
+    vCardLines.push("END:VCARD");
 
-  // Join with CRLF for strict vCard compliance
-  return vCardLines.join('\r\n');
-};
-
-const downloadVCard = (formData) => {
-  // Use actual formData from the component
-  const contact = {
-    name: formData.name,
-    email: formData.email,
-    mobile: formData.mobile,
-    primary_phone: formData.primary_phone,
-    address: formData.address,
-    city: formData.city,
-    state: formData.state,
-    postal_code: formData.postal_code,
-    company: formData.company,
+    // Join with CRLF for strict vCard compliance
+    return vCardLines.join("\r\n");
   };
 
-  // Generate vCard data
-  const vCardData = generateVCard(contact);
-  
-  // Create a Blob object for the vCard content
-  const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+  const downloadVCard = (formData) => {
+    // Use actual formData from the component
+    const contact = {
+      name: formData.name,
+      email: formData.email,
+      mobile: formData.mobile,
+      primary_phone: formData.primary_phone,
+      address: formData.address,
+      city: formData.city,
+      state: formData.state,
+      postal_code: formData.postal_code,
+      company: formData.company,
+    };
 
-  // Use file-saver to download the vCard
-  saveAs(blob, `${contact.name || 'contact'}.vcf`);
-};
+    // Generate vCard data
+    const vCardData = generateVCard(contact);
+
+    // Create a Blob object for the vCard content
+    const blob = new Blob([vCardData], { type: "text/vcard;charset=utf-8" });
+
+    // Use file-saver to download the vCard
+    saveAs(blob, `${contact.name || "contact"}.vcf`);
+  };
 
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
@@ -378,16 +382,9 @@ const downloadVCard = (formData) => {
                 />
               </svg>
             </div>
-            {formData.whatsapp_mobile === "yes" ||
-            formData.whatsapp_phone === "yes" ? (
+            {formData.whatsapp_mobile === "yes" ? (
               <>
-                <Link
-                  href={`https://wa.me/${
-                    formData.whatsapp_mobile === "yes"
-                      ? formData.mobile
-                      : formData.primary_phone
-                  }`}
-                >
+                <Link href={`https://wa.me/${formData.mobile}`}>
                   <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                     <svg
                       width="20"
@@ -404,19 +401,63 @@ const downloadVCard = (formData) => {
                   </div>
                 </Link>
                 <span className="text-sm font-bold text-gray-700">
-                  {`${
-                    formData.whatsapp_mobile === "yes"
-                      ? formData.mobile
-                      : formData.primary_phone
-                  }`}
+                  {`${formData.mobile}`}
                 </span>
               </>
             ) : (
               <span className="text-sm font-bold text-gray-800">
-                {`${formData.mobile || formData.primary_phone}`}
+                {`${formData.mobile}`}
               </span>
             )}
           </Link>
+          {formData.primary_phone && (
+            <Link
+              href={`tel:+${formData.primary_phone}`}
+              className="bg-white rounded-2xl p-2 mb-3 flex items-center shadow-sm border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:translate-y-0 active:shadow-sm cursor-pointer"
+            >
+              <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+              {formData.whatsapp_phone === "yes" ? (
+                <>
+                  <Link href={`https://wa.me/${formData.primary_phone}`}>
+                    <div className="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </Link>
+                  <span className="text-sm font-bold text-gray-700">
+                    {`${formData.primary_phone}`}
+                  </span>
+                </>
+              ) : (
+                <span className="text-sm font-bold text-gray-800">
+                  {`${formData.primary_phone}`}
+                </span>
+              )}
+            </Link>
+          )}
           {/* Email */}
           {formData.email && (
             <Link
