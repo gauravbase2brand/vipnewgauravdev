@@ -45,7 +45,7 @@ function useIsMobile(breakpoint = 768, debounceDelay = 200) {
 export function ResponsiveHeader() {
   const isMobile = useIsMobile();
   const pathName = usePathname();
-  const isTenDigitNumber = /^\d{10}$/.test(pathName.split("/").pop());
+  const isTenDigitNumber = /vip-/.test(pathName);
   const route = pathName === "/influencer";
   const cart = pathName === "/place-order";
   const details = pathName === "/details";
@@ -66,7 +66,7 @@ export function ResponsiveFooter() {
   const cart = pathName === "/place-order";
   const declined = pathName === "/payment-declined";
   const thankyou = pathName === "/thank-you";
-  const isTenDigitNumber = /^\d{10}$/.test(pathName.split("/").pop());
+  const isTenDigitNumber = /vip-/.test(pathName);
   if (isTenDigitNumber || cart || declined || thankyou) return null;
 
   return isMobile ? <MobileFooter /> : <Footer />;

@@ -171,10 +171,6 @@ const ContactCard = () => {
   // Function to generate vCard format
 
   const generateVCard = (contact) => {
-    const mobile = contact.mobile ? contact.mobile.replace(/-/g, '') : "";
-  const primaryPhone = contact.primary_phone
-    ? contact.primary_phone.replace(/-/g, '')
-    : "";
     const vCardLines = [
       "BEGIN:VCARD",
       "VERSION:3.0", // Sticking to 3.0 for broader Android compatibility
@@ -182,11 +178,11 @@ const ContactCard = () => {
       `N:${contact.name || ""};;;;`, // N field is crucial for Android
     ];
 
-    if (mobile) {
-      vCardLines.push(`TEL;TYPE=CELL:${mobile}`);
+    if (contact.mobile) {
+      vCardLines.push(`TEL;TYPE=CELL:${contact.mobile}`);
     }
-    if (primaryPhone) {
-      vCardLines.push(`TEL;TYPE=WORK:${primaryPhone}`);
+    if (contact.primary_phone) {
+      vCardLines.push(`TEL;TYPE=WORK:${contact.primary_phone}`);
     }
     if (contact.email) {
       vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);

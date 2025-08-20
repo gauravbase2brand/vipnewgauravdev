@@ -494,8 +494,13 @@ const DigitalForm = () => {
         router.push(`vip-${formData.url_extension}`);
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("Failed to update digital visiting card. Please try again.");
+      if (error.response) {
+      const errorMessage = error.response.data.message || "Failed to update digital visiting card. Please try again.";
+      toast.error(errorMessage); // Display the error message from the API
+    } else {
+      // If no response from API, it's a network error or other issue
+      toast.error("Network error. Please try again.");
+    }
     } finally {
       setIsSubmitting(false);
     }
