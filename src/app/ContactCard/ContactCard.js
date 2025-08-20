@@ -695,12 +695,18 @@ const ContactCard = () => {
               </Accordion>
             )}
         </div>
-
         {/* Social Media Section */}
         <div className="bg-white rounded-2xl p-3 mx-5 mb-5 text-center shadow-sm border border-gray-100">
-          <h3 className="text-base font-semibold text-gray-700 mb-4">
-            Follow Us:
-          </h3>
+          {(formData.instagram ||
+            formData.facebook ||
+            formData.twitter ||
+            formData.linkedin ||
+            formData.snapchat ||
+            formData.youtube) && (
+              <h3 className="text-base font-semibold text-gray-700 mb-4">
+                Follow Us:
+              </h3>
+            )}
           <div className="flex justify-center gap-4">
             {/* Instagram */}
             {formData.instagram && (
