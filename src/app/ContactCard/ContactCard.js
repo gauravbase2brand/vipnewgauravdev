@@ -875,9 +875,9 @@ const ContactCard = () => {
           <div className="mt-5">
             <RWebShare
               data={{
-                text: "Check out Ramnish Thakur's contact card",
+                // text: "Check out Ramnish Thakur's contact card",
                 url: currentUrl,
-                title: "Ramnish Thakur - Project Manager",
+                // title: "Ramnish Thakur - Project Manager",
               }}
             >
               <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full flex items-center justify-center gap-2 mx-auto hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0">

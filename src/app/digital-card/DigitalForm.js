@@ -495,12 +495,28 @@ const DigitalForm = () => {
       }
     } catch (error) {
       if (error.response) {
-      const errorMessage = error.response.data.message || "Failed to update digital visiting card. Please try again.";
-      toast.error(errorMessage); // Display the error message from the API
-    } else {
-      // If no response from API, it's a network error or other issue
-      toast.error("Network error. Please try again.");
-    }
+        const errorMessage =
+          error.response.data.message ||
+          "Failed to update digital visiting card. Please try again.";
+
+        // Check if the error is related to the url_extension field
+        if (
+          errorMessage.includes(
+            "This URL extension is already taken by another user. Please choose a different one."
+          )
+        ) {
+          setErrors((prev) => ({
+            ...prev,
+            url_extension: errorMessage, // Set the specific error message for url_extension
+          }));
+          document.getElementById("url_extension").focus();
+        } else {
+          toast.error(errorMessage); // Show other errors in the toast
+        }
+      } else {
+        // If no response from API, it's a network error or other issue
+        toast.error("Network error. Please try again.");
+      }
     } finally {
       setIsSubmitting(false);
     }
