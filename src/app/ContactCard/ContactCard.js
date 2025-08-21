@@ -9,6 +9,7 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 import { AppStateContext } from "../contexts/AppStateContext/AppStateContext";
 import { saveAs } from "file-saver";
+import { FiDownload } from "react-icons/fi";
 const Accordion = ({ title, children, icon }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -241,7 +242,18 @@ const ContactCard = () => {
     // Use file-saver to download the vCard
     saveAs(blob, `${contact.name || "contact"}.vcf`);
   };
+const downloadQrCode = () => {
+    const qrCodeUrl = formData.qr_code ? formData.qr_code : "/assets/qr-code.png";
 
+    // Create an anchor element to trigger the download
+    const link = document.createElement("a");
+    link.href = qrCodeUrl;  // Set the href to the image URL
+    link.download = "QRCode.png";  // Specify the download filename
+    document.body.appendChild(link);
+    link.click();  // Trigger the download
+    document.body.removeChild(link);  // Clean up the link element
+  };
+  
   return (
     <div className="min-h-screen bg-primary flex items-center justify-center font-sans">
       {showCrackers && (
@@ -686,7 +698,7 @@ const ContactCard = () => {
                       <h4 className="font-semibold text-gray-800 mb-3 text-sm">
                         Scan to Pay
                       </h4>
-                      <div className="flex justify-center">
+                      <div className="relative  flex justify-center">
                         <img
                           src={
                             formData.qr_code
@@ -696,6 +708,13 @@ const ContactCard = () => {
                           alt="Payment QR Code"
                           className="w-full h-full border border-gray-200 rounded-lg"
                         />
+                        <button 
+                      onClick={downloadQrCode} 
+                      className="absolute bottom-2 right-2 bg-gray-800 bg-opacity-80 text-white p-2 rounded-full shadow-md hover:bg-gray-700 hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-all duration-200"
+                      title="Download QR Code"
+                    >
+                      <FiDownload fontSize={18} />
+                    </button>
                       </div>
                       <p className="text-xs text-gray-600 mt-2">
                         Scan this QR code with any UPI app to make payment
