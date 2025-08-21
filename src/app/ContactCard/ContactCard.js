@@ -188,21 +188,12 @@ const ContactCard = () => {
     ];
 
     if (contact.mobile) {
-      // vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
-      const formattedMobile = formatIndianNumber(contact.mobile);
-      // Get a clean, dialable number (e.g., "8219455487")
-      const dialableMobile = (contact.mobile.replace(/\D/g, '')).slice(-10);
-
-      // The VCF trick for Android and iOS
-      vCardLines.push(`item1.TEL:${dialableMobile}`);
-      vCardLines.push(`item1.X-ABLabel:${formattedMobile}`);
+      vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
     }
     if (contact.primary_phone) {
-      const formattedWork = formatIndianNumber(contact.primary_phone);
-      const dialableWork = (contact.primary_phone.replace(/\D/g, '')).slice(-10);
-      
-      vCardLines.push(`item2.TEL;TYPE=WORK:${dialableWork}`); // TYPE=WORK can be kept
-      vCardLines.push(`item2.X-ABLabel:${formattedWork}`);
+      vCardLines.push(
+        `TEL;TYPE=WORK:${formatPhoneNumber(contact.primary_phone)}`
+      );
     }
     if (contact.email) {
       vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
