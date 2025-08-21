@@ -171,6 +171,15 @@ const ContactCard = () => {
   // Function to generate vCard format
 
   const generateVCard = (contact) => {
+    const formatPhoneNumber = (phone) => {
+      if (!phone) return "";
+      const cleaned = phone.replace(/\D/g, "");
+      if (cleaned.length === 10) {
+        return `${cleaned.slice(0, 5)} ${cleaned.slice(5)}`;
+      }
+      return phone;
+    };
+
     const vCardLines = [
       "BEGIN:VCARD",
       "VERSION:3.0", // Sticking to 3.0 for broader Android compatibility
@@ -179,10 +188,12 @@ const ContactCard = () => {
     ];
 
     if (contact.mobile) {
-      vCardLines.push(`TEL;TYPE=CELL:${contact.mobile}`);
+      vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
     }
     if (contact.primary_phone) {
-      vCardLines.push(`TEL;TYPE=WORK:${contact.primary_phone}`);
+      vCardLines.push(
+        `TEL;TYPE=WORK:${formatPhoneNumber(contact.primary_phone)}`
+      );
     }
     if (contact.email) {
       vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
@@ -703,10 +714,10 @@ const ContactCard = () => {
             formData.linkedin ||
             formData.snapchat ||
             formData.youtube) && (
-              <h3 className="text-base font-semibold text-gray-700 mb-4">
-                Follow Us:
-              </h3>
-            )}
+            <h3 className="text-base font-semibold text-gray-700 mb-4">
+              Follow Us:
+            </h3>
+          )}
           <div className="flex justify-center gap-4">
             {/* Instagram */}
             {formData.instagram && (

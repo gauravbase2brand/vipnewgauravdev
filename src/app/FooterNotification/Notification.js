@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 
 const Notification = () => {
@@ -7,7 +8,7 @@ const Notification = () => {
   const [notification, setNotification] = useState([]);
   const [currentNotification, setCurrentNotification] = useState(0); // Store the index of the current notification
   const [currentText, setCurrentText] = useState(""); // Store the current text
-  const [vipPrefix, setVipPrefix] = useState("");
+  const pathname = usePathname();
   const notificationTexts = [
     "🔥 {{Number_for_Display}} Sold Out!",
     "⏳ Sold Out! {{Number_for_Display}} is Gone!",
@@ -15,15 +16,10 @@ const Notification = () => {
     "❌ Sold Out! {{Number_for_Display}} Found a New Owner!",
     "💨 You Blinked! {{Number_for_Display}} Sold Out!",
   ];
-  useEffect(() => {
-    const path = window.location.pathname; // Get the current path of the URL
-    const match = path.match(/^\/(vip-)/); // Match "vip-" at the start of the URL path
-    if (match) {
-      setVipPrefix(match[1]); // Extract "vip-" from "/vip-" and log it
-    }
-  }, []);
+  const isVipPage = pathname?.startsWith('/vip-');
 
   useEffect(() => {
+    if (isVipPage) return;
     axios
       .get(`${apiUrl}/web/lead/confirmed`)
       .then((response) => {
@@ -32,10 +28,10 @@ const Notification = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [apiUrl]);
+  }, [apiUrl,isVipPage]);
 
   useEffect(() => {
-    if (notification.length === 0) return; // Ensure we have notifications loaded
+    if (isVipPage || notification.length === 0) return; // Ensure we have notifications loaded
 
     let displayTimeout;
     let intervalTimeout;
@@ -75,8 +71,8 @@ const Notification = () => {
       clearTimeout(displayTimeout); // Cleanup display timeout
       clearTimeout(intervalTimeout); // Cleanup interval timeout
     };
-  }, [notification, currentNotification]);
-  if (vipPrefix === "vip-") return;
+  }, [notification, currentNotification, isVipPage]);
+   if (isVipPage) return null;
 
   return (
     <>
