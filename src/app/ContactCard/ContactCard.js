@@ -188,12 +188,18 @@ const ContactCard = () => {
     ];
 
     if (contact.mobile) {
-      vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
+      // vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
+      const formattedMobile = formatPhoneNumber(contact.mobile);
+      vCardLines.push(`item1.TEL:${contact.mobile}`);
+      vCardLines.push(`item1.X-ABLabel:${formattedMobile}`);
     }
     if (contact.primary_phone) {
-      vCardLines.push(
-        `TEL;TYPE=WORK:${formatPhoneNumber(contact.primary_phone)}`
-      );
+      // vCardLines.push(
+      //   `TEL;TYPE=WORK:${formatPhoneNumber(contact.primary_phone)}`
+      // );
+      const formattedWork = formatPhoneNumber(contact.primary_phone);
+       vCardLines.push(`item2.TEL:${contact.primary_phone}`);
+      vCardLines.push(`item2.X-ABLabel:${formattedWork}`);
     }
     if (contact.email) {
       vCardLines.push(`EMAIL;TYPE=INTERNET:${contact.email}`);
