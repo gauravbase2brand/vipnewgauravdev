@@ -170,28 +170,6 @@ const ContactCard = () => {
 
   // Function to generate vCard format
 
-    // This is a more robust function to handle various phone number inputs
-  const formatIndianNumber = (phone) => {
-    if (!phone) return "";
-
-    // 1. Remove all non-digit characters (hyphens, spaces, brackets)
-    let cleaned = phone.replace(/\D/g, "");
-
-    // 2. Handle country code: If the number starts with "91" and is 12 digits long,
-    //    or if it's longer than 10 digits, take the last 10 digits.
-    if (cleaned.length > 10) {
-      cleaned = cleaned.slice(-10);
-    }
-
-    // 3. If the resulting number is exactly 10 digits, format it.
-    if (cleaned.length === 10) {
-      return `${cleaned.slice(0, 5)} ${cleaned.slice(5)}`;
-    }
-
-    // 4. If it's not 10 digits, return the original (or cleaned) number to avoid errors.
-    return phone;
-  };
-
   const generateVCard = (contact) => {
     const formatPhoneNumber = (phone) => {
       if (!phone) return "";
@@ -212,18 +190,18 @@ const ContactCard = () => {
     if (contact.mobile) {
       // vCardLines.push(`TEL;TYPE=CELL:${formatPhoneNumber(contact.mobile)}`);
       const formattedMobile = formatIndianNumber(contact.mobile);
-      // The TEL field should contain a clean number for the dialer to work.
-      const dialableMobile = contact.mobile.replace(/\D/g, '');
-      
-      // Use the item.X-ABLabel trick for Android
-      vCardLines.push(`item1.TEL;TYPE=CELL:${dialableMobile}`);
+      // Get a clean, dialable number (e.g., "8219455487")
+      const dialableMobile = (contact.mobile.replace(/\D/g, '')).slice(-10);
+
+      // The VCF trick for Android and iOS
+      vCardLines.push(`item1.TEL:${dialableMobile}`);
       vCardLines.push(`item1.X-ABLabel:${formattedMobile}`);
     }
     if (contact.primary_phone) {
-     const formattedWork = formatIndianNumber(contact.primary_phone);
-      const dialableWork = contact.primary_phone.replace(/\D/g, '');
-
-      vCardLines.push(`item2.TEL;TYPE=WORK:${dialableWork}`);
+      const formattedWork = formatIndianNumber(contact.primary_phone);
+      const dialableWork = (contact.primary_phone.replace(/\D/g, '')).slice(-10);
+      
+      vCardLines.push(`item2.TEL;TYPE=WORK:${dialableWork}`); // TYPE=WORK can be kept
       vCardLines.push(`item2.X-ABLabel:${formattedWork}`);
     }
     if (contact.email) {
