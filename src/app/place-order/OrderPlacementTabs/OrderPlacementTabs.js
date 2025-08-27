@@ -1754,21 +1754,21 @@ const OrderPlacementTabs = () => {
     if (responseData && unitPriceHome > 0) {
       const amountBelow = responseData[0]?.cf_2972
         ? parseFloat(responseData[0]?.cf_2972)
-        : null;
+        : 0;
       const amountAbove = responseData[0]?.cf_2974
         ? parseFloat(responseData[0]?.cf_2974)
-        : null;
+        : 0;
       if (
-        (amountBelow === null && amountAbove === null) ||
-        (amountBelow !== null &&
-          amountAbove === null &&
+        (amountBelow === 0 && amountAbove === 0) ||
+        (amountBelow !== 0 &&
+          amountAbove === 0 &&
           unitPriceHome < amountBelow) ||
-        (amountBelow === null &&
-          amountAbove !== null &&
+        (amountBelow === 0 &&
+          amountAbove !== 0 &&
           unitPriceHome > amountAbove) ||
-        // (amountBelow !== null && amountAbove !== null && unitPriceHome >= amountBelow && unitPriceHome <= amountAbove)
-        (amountBelow !== null &&
-          amountAbove !== null &&
+        // (amountBelow !== 0 && amountAbove !== 0 && unitPriceHome >= amountBelow && unitPriceHome <= amountAbove)
+        (amountBelow !== 0 &&
+          amountAbove !== 0 &&
           unitPriceHome >= Math.min(amountBelow, amountAbove) &&
           unitPriceHome <= Math.max(amountBelow, amountAbove))
       ) {
