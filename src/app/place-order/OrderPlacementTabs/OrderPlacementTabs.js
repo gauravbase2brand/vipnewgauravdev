@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { getOrderId, getProfile, phonePayOrder } from "../../Services/Services";
-import {useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useCallback } from "react";
 import { useGetQueryParams } from "../../utils";
@@ -139,9 +139,26 @@ const OrderPlacementTabs = () => {
   const [deliveryIsOpen, setDeliveryIsOpen] = useState(false);
   const [paySelected, setPaySelected] = useState("UPI");
   const [gatewayName, setGatewayName] = useState("PhonePe");
-  
+
   const [finalAmount, setFinalAmount] = useState();
   const [leadUpdate, setLeadUpdate] = useState(false);
+  const [hiddenDelivery, setHiddenDelivery] = useState(true);
+  const [unitPriceHome, setUnitPriceHome] = useState(0);
+  const [loadDelivery, setLoadDelivery] = useState(false);
+  useEffect(() => {
+    // Ensure original_amount exists and isn't empty
+    if (formData?.original_amount) {
+      const amount = parseFloat(formData?.original_amount);
+      if (!isNaN(amount)) {
+        setUnitPriceHome(amount); // Update the unitPriceHome directly
+      } else {
+        console.warn(
+          "Invalid original_amount value:",
+          formData?.original_amount
+        );
+      }
+    }
+  }, [formData?.original_amount]);
   const handleCheckboxChange = (pay) => {
     setIsChecked(!isChecked);
     setDeliveryCharges(isChecked ? 0 : pay); // Set delivery charges to 999 if checked, else 0
@@ -677,7 +694,11 @@ const OrderPlacementTabs = () => {
     discount_type: "Amount",
     total_discount: totalDiscount,
     // lead_page: productRtpDate ? "coming soon" : "",
-    lead_page: isChecked ? "Home Delivery" : comingsoon ? "coming soon" : "Paynow",
+    lead_page: isChecked
+      ? "Home Delivery"
+      : comingsoon
+      ? "coming soon"
+      : "Paynow",
     lead_action:
       newTotal - Math.min(newTotal, wBalance) === 0 ? "Payment Received" : "",
     // wallet_money_used: walletInput > 0 ? walletInput : "",
@@ -716,7 +737,11 @@ const OrderPlacementTabs = () => {
     discount_value: discountValue,
     discount_type: "Amount",
     total_discount: totalDiscount,
-    lead_page: isChecked ? "Home Delivery" : comingsoon ? "coming soon" : "Paynow",
+    lead_page: isChecked
+      ? "Home Delivery"
+      : comingsoon
+      ? "coming soon"
+      : "Paynow",
     lead_action: "",
     wallet_money_used: Math.min(newTotal, wBalance),
     contactid: contactid,
@@ -989,18 +1014,15 @@ const OrderPlacementTabs = () => {
               // Router.push("/payment-declined");
               window.PhonePeCheckout.closePage();
             } else if (response === "CONCLUDED") {
-              fetch(
-                `${apiUrl}/web/payment/verifypaymentstatus`,
-                {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    merchantOrderId: merchantOrderId,
-                  }),
-                }
-              )
+              fetch(`${apiUrl}/web/payment/verifypaymentstatus`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  merchantOrderId: merchantOrderId,
+                }),
+              })
                 .then((res) => res.json())
                 .then((data) => {
                   if (data.state === "PENDING" || data.state === "FAILED") {
@@ -1728,6 +1750,36 @@ const OrderPlacementTabs = () => {
       setFinalAmount(formData?.original_amount - wBalance);
     }
   }, [wBalance, isChecked]);
+  useEffect(() => {
+    if (responseData && unitPriceHome > 0) {
+      const amountBelow = responseData[0]?.cf_2972
+        ? parseFloat(responseData[0]?.cf_2972)
+        : null;
+      const amountAbove = responseData[0]?.cf_2974
+        ? parseFloat(responseData[0]?.cf_2974)
+        : null;
+      if (
+        (amountBelow === null && amountAbove === null) ||
+        (amountBelow !== null &&
+          amountAbove === null &&
+          unitPriceHome < amountBelow) ||
+        (amountBelow === null &&
+          amountAbove !== null &&
+          unitPriceHome > amountAbove) ||
+        // (amountBelow !== null && amountAbove !== null && unitPriceHome >= amountBelow && unitPriceHome <= amountAbove)
+        (amountBelow !== null &&
+          amountAbove !== null &&
+          unitPriceHome >= Math.min(amountBelow, amountAbove) &&
+          unitPriceHome <= Math.max(amountBelow, amountAbove))
+      ) {
+        setHiddenDelivery(false);
+        setLoadDelivery(false);
+      } else {
+        setHiddenDelivery(true);
+        setLoadDelivery(false);
+      }
+    }
+  }, [unitPriceHome, responseData, loadDelivery]);
   return (
     <>
       {skeleton ? (
@@ -1949,6 +2001,7 @@ const OrderPlacementTabs = () => {
                           handleAddToCart={handleAddToCart}
                           formatDate={formatDate}
                           removeFromWishList={handleDeleteItem}
+                          setLoadDelivery={setLoadDelivery}
                         />
                       ) : null}
                       <OrderPlacementQuestions />
@@ -2178,7 +2231,7 @@ const OrderPlacementTabs = () => {
                         !couponCode &&
                         total > 0 && (
                           <>
-                            {HideDelivery && (
+                            {HideDelivery && !hiddenDelivery && (
                               <HomeDelivery
                                 isChecked={isChecked}
                                 handleCheckboxChange={handleCheckboxChange}

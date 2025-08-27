@@ -22,7 +22,7 @@ const CardCollection = ({
   wishList,
   cardCount,
   cardEdit,
-  addToWishList,
+  addToWishList,setLoadDelivery
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
@@ -253,6 +253,7 @@ const CardCollection = ({
                                 onClick={() => {
                                   removeFromWishList(items?.id);
                                   setWishList(true);
+                                  setLoadDelivery(true);
                                 }}
                                 className="cursor-pointer text-center md:text-[16px] leading-5 bg-secondary  rounded-md text-darktext lg:p-2 lg:font-bold  p-1  text-[13px] font-medium hover:bg-secondary  hover:text-darktext flex items-center justify-center"
                                 disabled={wishList}
