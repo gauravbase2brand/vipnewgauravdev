@@ -139,26 +139,10 @@ const OrderPlacementTabs = () => {
   const [deliveryIsOpen, setDeliveryIsOpen] = useState(false);
   const [paySelected, setPaySelected] = useState("UPI");
   const [gatewayName, setGatewayName] = useState("PhonePe");
-
   const [finalAmount, setFinalAmount] = useState();
   const [leadUpdate, setLeadUpdate] = useState(false);
   const [hiddenDelivery, setHiddenDelivery] = useState(true);
-  const [unitPriceHome, setUnitPriceHome] = useState(0);
-  const [loadDelivery, setLoadDelivery] = useState(false);
-  useEffect(() => {
-    // Ensure original_amount exists and isn't empty
-    if (formData?.original_amount) {
-      const amount = parseFloat(formData?.original_amount);
-      if (!isNaN(amount)) {
-        setUnitPriceHome(amount); // Update the unitPriceHome directly
-      } else {
-        console.warn(
-          "Invalid original_amount value:",
-          formData?.original_amount
-        );
-      }
-    }
-  }, [formData?.original_amount]);
+
   const handleCheckboxChange = (pay) => {
     setIsChecked(!isChecked);
     setDeliveryCharges(isChecked ? 0 : pay); // Set delivery charges to 999 if checked, else 0
@@ -1750,36 +1734,80 @@ const OrderPlacementTabs = () => {
       setFinalAmount(formData?.original_amount - wBalance);
     }
   }, [wBalance, isChecked]);
+
+  //   useEffect(() => {
+  //   if (responseData && unitPriceHome > 0) {
+  //     const amountBelow = responseData[0]?.cf_2972
+  //       ? parseFloat(responseData[0]?.cf_2972)
+  //       : 0;
+  //     const amountAbove = responseData[0]?.cf_2974
+  //       ? parseFloat(responseData[0]?.cf_2974)
+  //       : 0;
+  //     if (
+  //       (amountBelow === 0 && amountAbove === 0) ||
+  //       (amountBelow !== 0 &&
+  //         amountAbove === 0 &&
+  //         unitPriceHome < amountBelow) ||
+  //       (amountBelow === 0 &&
+  //         amountAbove !== 0 &&
+  //         unitPriceHome > amountAbove) ||
+  //       // (amountBelow !== 0 && amountAbove !== 0 && unitPriceHome >= amountBelow && unitPriceHome <= amountAbove)
+  //       (amountBelow !== 0 &&
+  //         amountAbove !== 0 &&
+  //         unitPriceHome >= Math.min(amountBelow, amountAbove) &&
+  //         unitPriceHome <= Math.max(amountBelow, amountAbove))
+  //     ) {
+  //       setHiddenDelivery(false);
+  //       setLoadDelivery(false);
+  //     } else {
+  //       setHiddenDelivery(true);
+  //       setLoadDelivery(false);
+  //     }
+  //   }
+  // }, [unitPriceHome, responseData, loadDelivery]);
+
   useEffect(() => {
-    if (responseData && unitPriceHome > 0) {
+    if (responseData) {
       const amountBelow = responseData[0]?.cf_2972
         ? parseFloat(responseData[0]?.cf_2972)
         : 0;
       const amountAbove = responseData[0]?.cf_2974
         ? parseFloat(responseData[0]?.cf_2974)
         : 0;
-      if (
-        (amountBelow === 0 && amountAbove === 0) ||
-        (amountBelow !== 0 &&
-          amountAbove === 0 &&
-          unitPriceHome < amountBelow) ||
-        (amountBelow === 0 &&
-          amountAbove !== 0 &&
-          unitPriceHome > amountAbove) ||
-        // (amountBelow !== 0 && amountAbove !== 0 && unitPriceHome >= amountBelow && unitPriceHome <= amountAbove)
-        (amountBelow !== 0 &&
-          amountAbove !== 0 &&
-          unitPriceHome >= Math.min(amountBelow, amountAbove) &&
-          unitPriceHome <= Math.max(amountBelow, amountAbove))
-      ) {
-        setHiddenDelivery(false);
-        setLoadDelivery(false);
-      } else {
-        setHiddenDelivery(true);
-        setLoadDelivery(false);
+
+      let isDeliveryVisible = true; // Assume delivery is visible
+
+      // Condition 1: If both amountBelow and amountAbove are empty (no restrictions)
+      if (amountBelow === 0 && amountAbove === 0) {
+        isDeliveryVisible = true;
       }
+      // Condition 2: If amountBelow is set and amountAbove is empty (only check if unit_price < amountBelow)
+      else if (amountBelow > 0 && amountAbove === 0) {
+        isDeliveryVisible = filteredCartItems.every((item) => {
+          const unitPrice = parseFloat(item.unit_price);
+          return unitPrice < amountBelow;
+        });
+      }
+      // Condition 3: If amountAbove is set and amountBelow is empty (only check if unit_price > amountAbove)
+      else if (amountAbove > 0 && amountBelow === 0) {
+        isDeliveryVisible = filteredCartItems.every((item) => {
+          const unitPrice = parseFloat(item.unit_price);
+          return unitPrice > amountAbove;
+        });
+      }
+      // Condition 4: If both amountBelow and amountAbove are set (check if unit_price is between amountBelow and amountAbove)
+      else if (amountBelow > 0 && amountAbove > 0) {
+        isDeliveryVisible = filteredCartItems.every((item) => {
+          const unitPrice = parseFloat(item.unit_price);
+          return unitPrice <= amountBelow && unitPrice >= amountAbove;
+        });
+      }
+
+      // Set the visibility of delivery
+      setHiddenDelivery(!isDeliveryVisible); // If conditions are not met, hide delivery
     }
-  }, [unitPriceHome, responseData, loadDelivery]);
+  }, [responseData, filteredCartItems]);
+
   return (
     <>
       {skeleton ? (
@@ -2001,7 +2029,6 @@ const OrderPlacementTabs = () => {
                           handleAddToCart={handleAddToCart}
                           formatDate={formatDate}
                           removeFromWishList={handleDeleteItem}
-                          setLoadDelivery={setLoadDelivery}
                         />
                       ) : null}
                       <OrderPlacementQuestions />

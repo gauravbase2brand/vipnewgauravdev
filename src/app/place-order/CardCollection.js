@@ -22,7 +22,7 @@ const CardCollection = ({
   wishList,
   cardCount,
   cardEdit,
-  addToWishList,setLoadDelivery
+  addToWishList
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
@@ -242,7 +242,7 @@ const CardCollection = ({
                       >
                         <div className="flex justify-between">
                           <h2 className="lg:text-[20px] text-lg  text-center font-extrabold cursor-pointer">
-                            {items.productname}
+                            {items?.productname}
                           </h2>
                           <div className="flex items-center gap-3 justify-between">
                             {(cardCollectionTitle === "WishList" ||
@@ -253,7 +253,6 @@ const CardCollection = ({
                                 onClick={() => {
                                   removeFromWishList(items?.id);
                                   setWishList(true);
-                                  setLoadDelivery(true);
                                 }}
                                 className="cursor-pointer text-center md:text-[16px] leading-5 bg-secondary  rounded-md text-darktext lg:p-2 lg:font-bold  p-1  text-[13px] font-medium hover:bg-secondary  hover:text-darktext flex items-center justify-center"
                                 disabled={wishList}
