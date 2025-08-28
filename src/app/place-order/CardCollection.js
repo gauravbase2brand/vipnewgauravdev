@@ -141,7 +141,7 @@ const CardCollection = ({
                                 }}
                                 aria-label="Moved to Cart"
                               >
-                                {items.alreadyInCart ? (
+                                {items?.alreadyInCart ? (
                                   <MdOutlineDriveFileMoveRtl fontSize={16} />
                                 ) : (
                                   <FaPlusCircle fontSize={16}/>
@@ -285,7 +285,7 @@ const CardCollection = ({
                                   }}
                                   aria-label="Moved to Cart"
                                 >
-                                  {items.alreadyInCart ? (
+                                  {items?.alreadyInCart ? (
                                     <MdOutlineDriveFileMoveRtl />
                                   ) : (
                                     <FaPlusCircle />
