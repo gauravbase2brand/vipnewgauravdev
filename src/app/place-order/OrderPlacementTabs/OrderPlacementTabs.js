@@ -1695,34 +1695,34 @@ const OrderPlacementTabs = () => {
 
   useEffect(() => {
     const zip = userProfile?.address?.zip_code;
-    if (zip) {
-      handleSearchClick(zip);
+    if (zip && filteredCartItems.length > 0) {
+      handleSearchClick(zip,filteredCartItems);
     }
   }, [userProfile?.address?.zip_code, deliveryUpdate]);
 
-  const handleSearchClick = async (location) => {
+  const handleSearchClick = async (location,filteredCartNumbers) => {
     try {
-      const unitPrices = filteredCartItems.map((item) => ({
+      const unitPrices = filteredCartNumbers.map((item) => ({
         unitprice: parseFloat(item.unit_price),
-      }));
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}/web/address/search`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${user?.token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            search: location,
-            delivery: "yes",
-            unitprices: unitPrices,
-          }),
-        }
-      );
-      const data = await response.json();
-      setResponseData(data.result);
-      setDeliveryUpdate(false);
+      })); 
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}/web/address/search`,
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${user?.token}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              search: location,
+              delivery: "yes",
+              unitprices: unitPrices,
+            }),
+          }
+        );
+        const data = await response.json();
+        setResponseData(data.result);
+        setDeliveryUpdate(false);
     } catch (error) {
       console.error("Error fetching data:", error);
       setDeliveryUpdate(false);
