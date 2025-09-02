@@ -142,7 +142,7 @@ const OrderPlacementTabs = () => {
   const [finalAmount, setFinalAmount] = useState();
   const [leadUpdate, setLeadUpdate] = useState(false);
   const [hiddenDelivery, setHiddenDelivery] = useState(true);
-
+  const [deliveryUpdate, setDeliveryUpdate] = useState(false);
   const handleCheckboxChange = (pay) => {
     setIsChecked(!isChecked);
     setDeliveryCharges(isChecked ? 0 : pay); // Set delivery charges to 999 if checked, else 0
@@ -404,6 +404,7 @@ const OrderPlacementTabs = () => {
 
   //delete  product
   const handleDeleteItem = (productid) => {
+    setDeliveryUpdate(true);
     removeFromCart(productid);
     setCartItems(cartItems.filter((item) => item.id !== productid));
   };
@@ -1697,10 +1698,13 @@ const OrderPlacementTabs = () => {
     if (zip) {
       handleSearchClick(zip);
     }
-  }, [userProfile?.address?.zip_code]);
+  }, [userProfile?.address?.zip_code, deliveryUpdate]);
 
   const handleSearchClick = async (location) => {
     try {
+      const unitPrices = filteredCartItems.map((item) => ({
+        unitprice: parseFloat(item.unit_price),
+      }));
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_LEAFYMANGO_API_URL}/web/address/search`,
         {
@@ -1709,13 +1713,19 @@ const OrderPlacementTabs = () => {
             Authorization: `Bearer ${user?.token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ search: location, delivery: "yes" }),
+          body: JSON.stringify({
+            search: location,
+            delivery: "yes",
+            unitprices: unitPrices,
+          }),
         }
       );
       const data = await response.json();
       setResponseData(data.result);
+      setDeliveryUpdate(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setDeliveryUpdate(false);
     }
   };
 
